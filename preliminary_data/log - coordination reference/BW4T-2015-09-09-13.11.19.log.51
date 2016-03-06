@@ -1,0 +1,94 @@
+16:00:26,902 - sequence
+16:00:26,902 - room RoomC2 contains blocks:  G
+16:00:26,902 - room RoomC3 contains blocks:  G B W Y
+16:00:26,902 - room RoomC1 contains blocks:  O Y Y
+16:00:26,902 - room RoomA1 contains blocks:  P B O P Y P
+16:00:26,903 - room RoomB2 contains blocks:  R P W
+16:00:26,903 - room RoomB1 contains blocks:  W
+16:00:26,903 - room RoomB3 contains blocks:  O R G B W G
+16:00:26,903 - room RoomA3 contains blocks:  W R R
+16:00:26,903 - room RoomA2 contains blocks:  W
+16:00:26,903 - sequence O W P R B O
+16:00:27,325 - action Bot_1 goTo(RoomC1)
+16:00:27,697 - action Bot_2 goTo(RoomC3)
+16:00:27,742 - action Bot_3 goTo(RoomC3)
+16:00:32,310 - action Bot_1 goToBlock(43)
+16:00:32,611 - Bot Bot_3 collided.
+16:00:32,666 - action Bot_3 goTo(RoomC3)
+16:00:32,693 - action Bot_1 pickUp
+16:00:32,791 - action Bot_1 goTo(DropZone)
+16:00:33,067 - action Bot_2 goToBlock(41)
+16:00:33,455 - Bot Bot_3 collided.
+16:00:33,525 - action Bot_3 goTo(RoomC3)
+16:00:33,565 - action Bot_2 pickUp
+16:00:33,658 - action Bot_2 goTo(FrontDropZone)
+16:00:34,326 - Bot Bot_3 collided.
+16:00:34,388 - action Bot_3 goTo(RoomC3)
+16:00:35,709 - action Bot_3 goTo(RoomC2)
+16:00:38,288 - action Bot_3 goTo(RoomB1)
+16:00:38,941 - action Bot_1 putDown
+16:00:38,995 - action Bot_1 goTo(RoomC2)
+16:00:39,116 - action Bot_2 goTo(DropZone)
+16:00:40,025 - action Bot_2 putDown
+16:00:40,084 - action Bot_2 goTo(RoomC2)
+16:00:44,147 - action Bot_3 goTo(RoomB2)
+16:00:45,676 - action Bot_1 goTo(RoomB3)
+16:00:46,701 - action Bot_3 pickUp
+16:00:46,770 - action Bot_2 goTo(RoomB2)
+16:00:46,797 - action Bot_3 goTo(DropZone)
+16:00:51,546 - action Bot_1 goTo(RoomB2)
+16:00:53,479 - action Bot_2 goToBlock(52)
+16:00:53,626 - Bot Bot_1 collided.
+16:00:53,672 - action Bot_1 goTo(RoomB2)
+16:00:53,942 - action Bot_2 pickUp
+16:00:54,038 - action Bot_2 goTo(FrontDropZone)
+16:00:54,471 - Bot Bot_1 collided.
+16:00:54,532 - action Bot_1 goTo(RoomB2)
+16:00:55,119 - action Bot_3 putDown
+16:00:55,253 - action Bot_3 goTo(RoomC3)
+16:00:55,826 - action Bot_1 goTo(RoomC3)
+16:01:01,099 - action Bot_3 goToBlock(40)
+16:01:01,193 - Bot Bot_1 collided.
+16:01:01,260 - action Bot_1 goTo(RoomC3)
+16:01:01,503 - action Bot_3 pickUp
+16:01:01,601 - action Bot_3 goTo(FrontDropZone)
+16:01:01,926 - action Bot_2 goTo(DropZone)
+16:01:02,058 - Bot Bot_1 collided.
+16:01:02,119 - action Bot_1 goTo(RoomC3)
+16:01:02,850 - action Bot_2 putDown
+16:01:02,988 - action Bot_2 goTo(RoomB3)
+16:01:03,434 - action Bot_1 goTo(RoomA3)
+16:01:06,930 - action Bot_3 goTo(DropZone)
+16:01:07,831 - action Bot_3 putDown
+16:01:07,885 - action Bot_3 goTo(RoomA1)
+16:01:10,075 - action Bot_1 goTo(RoomA2)
+16:01:10,444 - action Bot_2 pickUp
+16:01:10,542 - action Bot_2 goTo(DropZone)
+16:01:12,630 - action Bot_1 goTo(RoomA1)
+16:01:16,489 - Bot Bot_3 collided.
+16:01:16,544 - action Bot_3 goTo(RoomA1)
+16:01:17,342 - Bot Bot_3 collided.
+16:01:17,414 - action Bot_3 goTo(RoomA1)
+16:01:18,023 - action Bot_2 putDown
+16:01:18,023 - Time to finish sequence is 168 minutes and 48 seconds
+16:01:18,023 - agentsummary Bot_1 handicaps none
+16:01:18,023 - agentsummary Bot_1 gooddrops 1
+16:01:18,023 - agentsummary Bot_1 wrongdrops 0
+16:01:18,023 - agentsummary Bot_1 nmessage 0
+16:01:18,023 - agentsummary Bot_1 idletime 2.484
+16:01:18,023 - agentsummary Bot_1 nroomsentered 9
+16:01:18,023 - agentsummary Bot_2 handicaps none
+16:01:18,023 - agentsummary Bot_2 gooddrops 3
+16:01:18,023 - agentsummary Bot_2 wrongdrops 0
+16:01:18,023 - agentsummary Bot_2 nmessage 0
+16:01:18,023 - agentsummary Bot_2 idletime 2.852
+16:01:18,023 - agentsummary Bot_2 nroomsentered 7
+16:01:18,023 - agentsummary Bot_3 handicaps none
+16:01:18,023 - agentsummary Bot_3 gooddrops 2
+16:01:18,023 - agentsummary Bot_3 wrongdrops 0
+16:01:18,023 - agentsummary Bot_3 nmessage 0
+16:01:18,023 - agentsummary Bot_3 idletime 3.15
+16:01:18,023 - agentsummary Bot_3 nroomsentered 7
+16:01:18,064 - action Bot_3 goTo(FrontRoomA1)
+16:01:18,079 - action Bot_1 goTo(RoomA1)
+16:01:18,214 - total time is 168 minutes and 48 seconds

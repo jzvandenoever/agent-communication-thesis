@@ -1,0 +1,35 @@
+module message[exit=always] {
+	program[order=linearall] {		
+		%%%%RECEIVE MESSAGES%%%%
+		%Receive the initial information.
+		forall bel( received(_, navpoint(ID, Name, X, Y, Neighbours)) ) do insert( navpoint(ID, Name, X, Y, Neighbours) ).
+		forall bel( received(_, sequence(List)) ) do insert( sequence(List) ).
+		
+		% Update travel information
+		forall bel( received(Agt, travelling(Room)), travelling(OtherRoom, Agt) ) do delete( travelling(OtherRoom, Agt) ) + insert( travelling(Room, Agt) ).
+		forall bel( received(Agt, visited(Room)) ) do insert( visited(Room) ).
+		% Update who is getting what blocks. And what blocks are still available.
+		forall bel( received(Agt, gettingBlock(Block, N)), gettingBlock(OtherBlock, M, Agt)) do delete( gettingBlock(OtherBlock, M, Agt)  ) + insert( gettingBlock(Block, N, Agt)  ).
+		forall bel( gettingBlock(_,N,_), aheadIndex(M), N>=M, NewIndex is N+1 ) do delete( aheadIndex(M) ) + insert( aheadIndex(NewIndex) ). 
+		forall bel( received(Agt, block(BlockID, Color, RoomID)) ) do insert( block(BlockID, Color, RoomID) ).
+		forall bel( received(Agt, holding(BlockID)), block(BlockID, Color, RoomID) ) do delete( block(BlockID, Color, RoomID) ) + insert( block(BlockID, Color, null) ).
+			
+		% we still need to translate these messages.
+		if bel(received(Agt,Mess), translate(Agt,Mess,Transl), strjoin([Agt, ' says'],WhoSays)) 
+			then sendToGUI(WhoSays,Transl)+delete(received(Agt,Mess)).
+			
+		% note, translate requires sender of message that is, me) as agent.
+		if bel(performSendMessage(all, Mess), me(Me), translate(Me,Mess,Transl)) 
+			then send(allother, Mess) + sendToGUI('I say',Transl) + delete(performSendMessage(all, Mess)).
+		
+		if bel(get_time(Time), previousT(LastTime), Diff is Time - LastTime, Diff > 2 ) then sendToGUI('!!!!ACTION SUGGESTION!!!!!', '').
+		forall bel(get_time(Time), previousT(LastTime), Diff is Time - LastTime, Diff > 2, interpret(Type, Message) ) do sendToGUI('', Message).
+		if bel(get_time(Time), previousT(LastTime), Diff is Time - LastTime, Diff > 2 ) then delete( previousT(LastTime) ) + insert( previousT(Time) ).
+	}
+	actionspec {
+		sendToGUI(Sender,Message) {
+			pre { true }
+			post { }
+		}	
+	} 
+}

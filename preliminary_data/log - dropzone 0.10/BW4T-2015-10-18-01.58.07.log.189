@@ -1,0 +1,97 @@
+05:47:24,649 - sequence
+05:47:24,650 - room RoomC2 contains blocks:  B G P
+05:47:24,650 - room RoomC3 contains blocks:  Y
+05:47:24,650 - room RoomC1 contains blocks:  P B Y Y
+05:47:24,650 - room RoomA1 contains blocks:  P Y R W G
+05:47:24,650 - room RoomB2 contains blocks:  G
+05:47:24,650 - room RoomB1 contains blocks:  W W O P R
+05:47:24,650 - room RoomB3 contains blocks:  R
+05:47:24,650 - room RoomA3 contains blocks:  G W Y P P R R
+05:47:24,651 - room RoomA2 contains blocks:  O
+05:47:24,651 - sequence G G W W P Y
+05:47:24,724 - action Bot_1 goTo(RoomB3)
+05:47:24,726 - action Bot_3 goTo(RoomC1)
+05:47:24,755 - action Bot_2 goTo(RoomB3)
+05:47:30,108 - action Bot_3 goTo(DropZone)
+05:47:31,266 - Bot Bot_2 collided.
+05:47:31,327 - action Bot_2 goTo(RoomB3)
+05:47:31,342 - action Bot_1 goTo(DropZone)
+05:47:32,636 - action Bot_2 goTo(DropZone)
+05:47:35,966 - action Bot_3 goTo(RoomA1)
+05:47:38,831 - action Bot_1 goTo(RoomC2)
+05:47:40,131 - action Bot_2 goTo(RoomA2)
+05:47:45,099 - action Bot_3 goTo(DropZone)
+05:47:45,503 - action Bot_1 goTo(DropZone)
+05:47:50,057 - action Bot_2 goTo(DropZone)
+05:47:52,159 - action Bot_1 goTo(RoomC2)
+05:47:54,183 - action Bot_3 goTo(RoomA1)
+05:47:58,841 - action Bot_1 goToBlock(39)
+05:47:59,276 - action Bot_1 pickUp
+05:47:59,345 - action Bot_1 goTo(DropZone)
+05:48:00,006 - action Bot_2 goTo(RoomA1)
+05:48:03,273 - action Bot_3 goToBlock(50)
+05:48:03,666 - action Bot_3 pickUp
+05:48:03,734 - action Bot_3 goTo(FrontDropZone)
+05:48:06,365 - action Bot_1 putDown
+05:48:06,435 - action Bot_1 goTo(RoomB2)
+05:48:09,115 - action Bot_2 goToBlock(49)
+05:48:09,517 - action Bot_2 pickUp
+05:48:09,587 - action Bot_2 goTo(FrontDropZone)
+05:48:12,358 - action Bot_3 goTo(DropZone)
+05:48:13,271 - action Bot_3 putDown
+05:48:13,339 - action Bot_3 goTo(RoomB2)
+05:48:14,770 - action Bot_1 goTo(DropZone)
+05:48:18,213 - action Bot_2 goTo(DropZone)
+05:48:19,122 - action Bot_2 putDown
+05:48:19,189 - action Bot_2 goTo(RoomA3)
+05:48:21,662 - action Bot_3 goTo(DropZone)
+05:48:23,054 - action Bot_1 goTo(RoomC3)
+05:48:28,291 - action Bot_2 goTo(DropZone)
+05:48:28,903 - action Bot_1 goTo(DropZone)
+05:48:29,944 - action Bot_3 goTo(RoomA3)
+05:48:34,739 - action Bot_1 goTo(RoomC2)
+05:48:37,407 - action Bot_2 goTo(RoomC1)
+05:48:39,037 - action Bot_3 goToBlock(59)
+05:48:39,387 - action Bot_3 pickUp
+05:48:39,458 - action Bot_3 goTo(DropZone)
+05:48:41,400 - action Bot_1 goToBlock(40)
+05:48:41,829 - action Bot_1 pickUp
+05:48:41,898 - action Bot_1 goTo(FrontDropZone)
+05:48:43,247 - action Bot_2 pickUp
+05:48:43,315 - action Bot_2 goTo(FrontDropZone)
+05:48:48,446 - action Bot_1 goTo(DropZone)
+05:48:48,811 - action Bot_3 putDown
+05:48:48,870 - Bot Bot_1 collided.
+05:48:48,878 - action Bot_3 goTo(RoomB1)
+05:48:48,893 - action Bot_1 goTo(DropZone)
+05:48:49,828 - action Bot_2 goTo(DropZone)
+05:48:50,196 - action Bot_1 putDown
+05:48:50,242 - Bot Bot_2 collided.
+05:48:50,266 - action Bot_1 goTo(RoomB1)
+05:48:50,294 - action Bot_2 goTo(DropZone)
+05:48:51,568 - action Bot_2 putDown
+05:48:51,568 - Time to finish sequence is 230 minutes and 35 seconds
+05:48:51,568 - agentsummary Bot_1 handicaps none
+05:48:51,568 - agentsummary bbot gooddrops 2
+05:48:51,568 - agentsummary bbot wrongdrops 0
+05:48:51,568 - agentsummary bbot nmessage 0
+05:48:51,568 - agentsummary bbot idletime 3.448
+05:48:51,568 - agentsummary bbot nroomsentered 12
+05:48:51,568 - agentsummary Bot_2 handicaps none
+05:48:51,568 - agentsummary bbot_210 gooddrops 2
+05:48:51,568 - agentsummary bbot_210 wrongdrops 0
+05:48:51,568 - agentsummary bbot_210 nmessage 0
+05:48:51,568 - agentsummary bbot_210 idletime 4.26
+05:48:51,568 - agentsummary bbot_210 nroomsentered 10
+05:48:51,568 - agentsummary Bot_3 handicaps none
+05:48:51,568 - agentsummary bbot_211 gooddrops 2
+05:48:51,568 - agentsummary bbot_211 wrongdrops 0
+05:48:51,568 - agentsummary bbot_211 nmessage 0
+05:48:51,568 - agentsummary bbot_211 idletime 2.749
+05:48:51,568 - agentsummary bbot_211 nroomsentered 10
+05:48:51,637 - action Bot_2 goTo(FrontDropZone)
+05:48:56,342 - action Bot_3 goTo(DropZone)
+05:48:57,736 - action Bot_1 goTo(DropZone)
+05:49:03,804 - action Bot_3 goTo(FrontDropZone)
+05:49:05,175 - action Bot_1 goTo(FrontDropZone)
+05:49:05,757 - total time is 230 minutes and 49 seconds

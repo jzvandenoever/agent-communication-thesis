@@ -1,0 +1,101 @@
+16:07:56,168 - sequence
+16:07:56,168 - room RoomC2 contains blocks:  Y G
+16:07:56,168 - room RoomC3 contains blocks:  B Y
+16:07:56,168 - room RoomC1 contains blocks:  Y Y O
+16:07:56,168 - room RoomA1 contains blocks:  B
+16:07:56,168 - room RoomB2 contains blocks:  O G
+16:07:56,169 - room RoomB1 contains blocks:  P Y Y R R
+16:07:56,169 - room RoomB3 contains blocks:  Y G O
+16:07:56,169 - room RoomA3 contains blocks:  W G W R B W
+16:07:56,169 - room RoomA2 contains blocks:  W G G R
+16:07:56,169 - sequence Y P W W Y B
+16:07:56,252 - action Bot_1 goTo(RoomC3)
+16:07:56,254 - action Bot_2 goTo(RoomC2)
+16:07:56,286 - action Bot_3 goTo(RoomC3)
+16:08:01,179 - Bot Bot_3 collided.
+16:08:01,234 - action Bot_3 goTo(RoomC3)
+16:08:01,248 - action Bot_1 goToBlock(41)
+16:08:01,734 - action Bot_1 pickUp
+16:08:01,810 - action Bot_1 goTo(DropZone)
+16:08:02,033 - Bot Bot_3 collided.
+16:08:02,096 - action Bot_3 goTo(RoomC3)
+16:08:02,466 - action Bot_2 goToBlock(38)
+16:08:02,826 - action Bot_2 pickUp
+16:08:02,897 - action Bot_2 goTo(DropZone)
+16:08:03,405 - action Bot_3 goTo(RoomA2)
+16:08:08,041 - action Bot_1 putDown
+16:08:08,149 - action Bot_1 goTo(RoomC3)
+16:08:09,818 - action Bot_2 goTo(RoomC3)
+16:08:10,905 - action Bot_3 goTo(RoomC1)
+16:08:13,998 - action Bot_1 goTo(RoomA1)
+16:08:15,659 - action Bot_2 putDown
+16:08:15,738 - action Bot_2 goTo(RoomA2)
+16:08:18,412 - action Bot_3 goTo(RoomB1)
+16:08:22,329 - action Bot_1 goTo(RoomA3)
+16:08:23,236 - action Bot_2 goTo(RoomC1)
+16:08:23,414 - action Bot_3 pickUp
+16:08:23,484 - action Bot_3 goTo(DropZone)
+16:08:25,704 - action Bot_1 goTo(RoomB2)
+16:08:30,745 - action Bot_2 goTo(RoomC2)
+16:08:31,003 - action Bot_3 putDown
+16:08:31,109 - action Bot_3 goTo(RoomB1)
+16:08:31,585 - action Bot_1 goTo(RoomA3)
+16:08:33,332 - action Bot_2 goTo(RoomA2)
+16:08:37,456 - action Bot_1 goToBlock(56)
+16:08:38,009 - action Bot_1 pickUp
+16:08:38,079 - action Bot_1 goTo(DropZone)
+16:08:38,579 - action Bot_3 goTo(RoomA2)
+16:08:41,659 - action Bot_2 goToBlock(62)
+16:08:42,006 - action Bot_2 pickUp
+16:08:42,076 - action Bot_2 goTo(DropZone)
+16:08:44,424 - action Bot_3 goTo(RoomC3)
+16:08:47,687 - action Bot_1 putDown
+16:08:47,793 - action Bot_1 goTo(RoomA3)
+16:08:51,917 - action Bot_3 goTo(RoomC1)
+16:08:52,255 - action Bot_2 putDown
+16:08:52,361 - action Bot_2 goTo(RoomA2)
+16:08:55,293 - action Bot_3 goToBlock(42)
+16:08:55,801 - action Bot_3 pickUp
+16:08:55,870 - action Bot_3 goTo(DropZone)
+16:08:56,902 - action Bot_1 goTo(RoomA2)
+16:08:59,476 - action Bot_1 goTo(RoomC3)
+16:09:02,119 - action Bot_3 putDown
+16:09:02,227 - action Bot_3 goTo(RoomC3)
+16:09:02,283 - action Bot_2 goTo(RoomC1)
+16:09:06,991 - action Bot_1 goTo(RoomA3)
+16:09:08,099 - action Bot_3 goToBlock(38)
+16:09:08,615 - action Bot_3 pickUp
+16:09:08,683 - action Bot_3 putDown
+16:09:08,758 - action Bot_3 goToBlock(40)
+16:09:09,343 - action Bot_3 pickUp
+16:09:09,414 - action Bot_3 goTo(DropZone)
+16:09:09,848 - action Bot_2 goToBlock(43)
+16:09:10,292 - action Bot_2 pickUp
+16:09:10,363 - action Bot_2 putDown
+16:09:10,435 - action Bot_2 goTo(RoomC3)
+16:09:13,709 - action Bot_1 goToBlock(60)
+16:09:13,960 - action Bot_1 pickUp
+16:09:14,036 - action Bot_1 goTo(DropZone)
+16:09:14,205 - action Bot_2 goTo(RoomA1)
+16:09:15,383 - action Bot_3 putDown
+16:09:15,383 - Time to finish sequence is 220 minutes and 25 seconds
+16:09:15,383 - agentsummary Bot_1 handicaps none
+16:09:15,383 - agentsummary bbot gooddrops 2
+16:09:15,383 - agentsummary bbot wrongdrops 0
+16:09:15,383 - agentsummary bbot nmessage 0
+16:09:15,383 - agentsummary bbot idletime 3.201
+16:09:15,383 - agentsummary bbot nroomsentered 12
+16:09:15,383 - agentsummary Bot_2 handicaps none
+16:09:15,383 - agentsummary bbot_192 gooddrops 1
+16:09:15,384 - agentsummary bbot_192 wrongdrops 0
+16:09:15,384 - agentsummary bbot_192 nmessage 0
+16:09:15,384 - agentsummary bbot_192 idletime 3.041
+16:09:15,384 - agentsummary bbot_192 nroomsentered 11
+16:09:15,384 - agentsummary Bot_3 handicaps none
+16:09:15,384 - agentsummary bbot_193 gooddrops 3
+16:09:15,384 - agentsummary bbot_193 wrongdrops 0
+16:09:15,384 - agentsummary bbot_193 nmessage 0
+16:09:15,384 - agentsummary bbot_193 idletime 3.295
+16:09:15,384 - agentsummary bbot_193 nroomsentered 12
+16:09:15,494 - action Bot_3 goTo(RoomC3)
+16:09:22,879 - total time is 220 minutes and 33 seconds

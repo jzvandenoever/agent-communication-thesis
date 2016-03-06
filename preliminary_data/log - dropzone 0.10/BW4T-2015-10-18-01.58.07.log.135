@@ -1,0 +1,91 @@
+06:48:37,500 - sequence
+06:48:37,500 - room RoomC2 contains blocks:  R Y G R G
+06:48:37,501 - room RoomC3 contains blocks:  R R
+06:48:37,501 - room RoomC1 contains blocks:  Y O
+06:48:37,501 - room RoomA1 contains blocks:  G G R P
+06:48:37,501 - room RoomB2 contains blocks:  O G O O
+06:48:37,501 - room RoomB1 contains blocks:  R R O
+06:48:37,501 - room RoomB3 contains blocks:  R G B W
+06:48:37,501 - room RoomA3 contains blocks:  Y G
+06:48:37,501 - room RoomA2 contains blocks:  B B
+06:48:37,502 - sequence R O R R Y G
+06:48:37,575 - action Bot_1 goTo(RoomB3)
+06:48:37,576 - action Bot_2 goTo(RoomC2)
+06:48:37,604 - action Bot_3 goTo(RoomA2)
+06:48:43,760 - action Bot_2 goTo(DropZone)
+06:48:44,203 - action Bot_1 goTo(DropZone)
+06:48:47,067 - action Bot_3 goTo(DropZone)
+06:48:50,420 - action Bot_2 goTo(RoomC2)
+06:48:51,667 - action Bot_1 goTo(RoomB1)
+06:48:56,986 - action Bot_3 goTo(RoomB1)
+06:48:57,072 - action Bot_2 goToBlock(38)
+06:48:57,467 - action Bot_2 pickUp
+06:48:57,536 - action Bot_2 goTo(DropZone)
+06:48:59,152 - action Bot_1 goTo(DropZone)
+06:49:04,475 - action Bot_3 goTo(DropZone)
+06:49:04,517 - action Bot_2 putDown
+06:49:04,585 - action Bot_2 goTo(RoomB1)
+06:49:06,639 - action Bot_1 goTo(RoomC2)
+06:49:11,952 - action Bot_3 goTo(RoomB1)
+06:49:12,075 - action Bot_2 pickUp
+06:49:12,143 - action Bot_2 goTo(DropZone)
+06:49:13,317 - action Bot_1 goToBlock(41)
+06:49:13,629 - action Bot_1 pickUp
+06:49:13,698 - action Bot_1 goTo(FrontDropZone)
+06:49:19,437 - action Bot_3 goToBlock(55)
+06:49:19,643 - action Bot_2 putDown
+06:49:19,712 - action Bot_2 goTo(RoomC2)
+06:49:19,753 - action Bot_1 goTo(DropZone)
+06:49:19,957 - action Bot_3 pickUp
+06:49:20,027 - action Bot_3 goTo(FrontDropZone)
+06:49:20,637 - action Bot_1 putDown
+06:49:20,706 - action Bot_1 goTo(RoomC2)
+06:49:26,400 - action Bot_2 goToBlock(39)
+06:49:26,867 - action Bot_2 pickUp
+06:49:26,896 - Bot Bot_1 collided.
+06:49:26,937 - action Bot_2 goTo(FrontDropZone)
+06:49:26,938 - action Bot_1 goTo(RoomC2)
+06:49:27,100 - action Bot_3 goTo(DropZone)
+06:49:27,745 - Bot Bot_1 collided.
+06:49:27,798 - action Bot_1 goTo(RoomC2)
+06:49:28,000 - action Bot_3 putDown
+06:49:28,068 - action Bot_3 goTo(RoomB3)
+06:49:29,083 - action Bot_1 pickUp
+06:49:29,150 - action Bot_1 goTo(FrontDropZone)
+06:49:33,173 - action Bot_2 goTo(DropZone)
+06:49:34,086 - action Bot_2 putDown
+06:49:34,153 - action Bot_2 goTo(RoomA1)
+06:49:34,968 - action Bot_1 goTo(DropZone)
+06:49:35,531 - action Bot_3 goTo(DropZone)
+06:49:35,872 - action Bot_1 putDown
+06:49:35,872 - Time to finish sequence is 291 minutes and 19 seconds
+06:49:35,872 - agentsummary Bot_1 handicaps none
+06:49:35,872 - agentsummary bbot gooddrops 2
+06:49:35,872 - agentsummary bbot wrongdrops 0
+06:49:35,872 - agentsummary bbot nmessage 0
+06:49:35,872 - agentsummary bbot idletime 2.128
+06:49:35,872 - agentsummary bbot nroomsentered 8
+06:49:35,872 - agentsummary Bot_2 handicaps none
+06:49:35,872 - agentsummary bbot_264 gooddrops 3
+06:49:35,872 - agentsummary bbot_264 wrongdrops 0
+06:49:35,872 - agentsummary bbot_264 nmessage 0
+06:49:35,872 - agentsummary bbot_264 idletime 2.339
+06:49:35,872 - agentsummary bbot_264 nroomsentered 8
+06:49:35,872 - agentsummary Bot_3 handicaps none
+06:49:35,872 - agentsummary bbot_265 gooddrops 1
+06:49:35,872 - agentsummary bbot_265 wrongdrops 0
+06:49:35,872 - agentsummary bbot_265 nmessage 0
+06:49:35,872 - agentsummary bbot_265 idletime 1.822
+06:49:35,872 - agentsummary bbot_265 nroomsentered 7
+06:49:35,941 - action Bot_1 goTo(FrontDropZone)
+06:49:43,000 - action Bot_3 goTo(RoomC3)
+06:49:43,243 - action Bot_2 goTo(DropZone)
+06:49:48,832 - action Bot_3 goTo(DropZone)
+06:49:52,338 - action Bot_2 goTo(FrontDropZone)
+06:49:54,633 - action Bot_3 goTo(RoomA3)
+06:50:03,712 - action Bot_3 goTo(DropZone)
+06:50:12,779 - action Bot_3 goTo(RoomC1)
+06:50:18,585 - action Bot_3 goTo(DropZone)
+06:50:24,394 - action Bot_3 goTo(RoomB2)
+06:50:32,668 - action Bot_3 goTo(DropZone)
+06:50:37,818 - total time is 292 minutes and 21 seconds

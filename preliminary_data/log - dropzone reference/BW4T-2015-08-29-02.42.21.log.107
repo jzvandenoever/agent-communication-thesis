@@ -1,0 +1,92 @@
+06:10:17,882 - sequence
+06:10:17,882 - room RoomC2 contains blocks:  R R R O
+06:10:17,882 - room RoomC3 contains blocks:  R Y
+06:10:17,882 - room RoomC1 contains blocks:  G Y P R B
+06:10:17,882 - room RoomA1 contains blocks:  Y
+06:10:17,882 - room RoomB2 contains blocks:  G W
+06:10:17,883 - room RoomB1 contains blocks:  B B R P
+06:10:17,883 - room RoomB3 contains blocks:  Y B B W R
+06:10:17,883 - room RoomA3 contains blocks:  R Y R B
+06:10:17,883 - room RoomA2 contains blocks:  O
+06:10:17,883 - sequence B R G G B R
+06:10:17,957 - action Bot_1 goTo(RoomB1)
+06:10:17,960 - action Bot_2 goTo(RoomA1)
+06:10:17,987 - action Bot_3 goTo(RoomA1)
+06:10:24,597 - action Bot_1 goTo(DropZone)
+06:10:26,167 - Bot Bot_3 collided.
+06:10:26,219 - action Bot_3 goTo(RoomA1)
+06:10:26,630 - action Bot_2 goTo(DropZone)
+06:10:27,012 - Bot Bot_3 collided.
+06:10:27,071 - action Bot_3 goTo(RoomA1)
+06:10:28,347 - action Bot_3 goTo(DropZone)
+06:10:32,097 - action Bot_1 goTo(RoomB1)
+06:10:35,759 - action Bot_2 goTo(RoomB1)
+06:10:37,461 - action Bot_3 goTo(RoomB2)
+06:10:39,581 - action Bot_1 goToBlock(52)
+06:10:40,103 - action Bot_1 pickUp
+06:10:40,172 - action Bot_1 goTo(DropZone)
+06:10:43,262 - action Bot_2 goToBlock(54)
+06:10:43,652 - action Bot_2 pickUp
+06:10:43,720 - action Bot_2 goTo(FrontDropZone)
+06:10:45,795 - action Bot_3 goTo(DropZone)
+06:10:48,109 - action Bot_1 putDown
+06:10:48,177 - action Bot_1 goTo(RoomB2)
+06:10:50,726 - action Bot_2 goTo(DropZone)
+06:10:51,645 - action Bot_2 putDown
+06:10:51,713 - action Bot_2 goTo(RoomC2)
+06:10:54,135 - action Bot_3 goTo(RoomC1)
+06:10:56,519 - action Bot_1 pickUp
+06:10:56,589 - action Bot_1 goTo(DropZone)
+06:10:58,419 - action Bot_2 goTo(DropZone)
+06:11:00,001 - action Bot_3 goTo(DropZone)
+06:11:04,629 - Bot Bot_2 collided.
+06:11:04,677 - action Bot_2 goTo(DropZone)
+06:11:04,931 - action Bot_1 putDown
+06:11:05,002 - action Bot_1 goTo(RoomC1)
+06:11:05,380 - Bot Bot_3 collided.
+06:11:05,422 - action Bot_3 goTo(DropZone)
+06:11:05,962 - action Bot_2 goTo(RoomC1)
+06:11:06,228 - Bot Bot_3 collided.
+06:11:06,291 - action Bot_3 goTo(DropZone)
+06:11:07,579 - action Bot_3 goTo(RoomC2)
+06:11:10,845 - action Bot_1 goToBlock(44)
+06:11:11,155 - action Bot_1 pickUp
+06:11:11,223 - action Bot_1 goTo(DropZone)
+06:11:11,311 - Bot Bot_2 collided.
+06:11:11,344 - action Bot_2 goTo(RoomC1)
+06:11:12,621 - action Bot_2 pickUp
+06:11:12,690 - action Bot_2 goTo(FrontDropZone)
+06:11:14,257 - action Bot_3 pickUp
+06:11:14,328 - action Bot_3 goTo(FrontDropZone)
+06:11:17,322 - action Bot_1 putDown
+06:11:17,391 - action Bot_1 goTo(RoomB3)
+06:11:17,719 - action Bot_2 goTo(DropZone)
+06:11:18,637 - action Bot_2 putDown
+06:11:18,706 - action Bot_2 goTo(RoomA3)
+06:11:20,165 - action Bot_3 goTo(DropZone)
+06:11:21,088 - action Bot_3 putDown
+06:11:21,088 - Time to finish sequence is 208 minutes and 50 seconds
+06:11:21,088 - agentsummary Bot_1 handicaps none
+06:11:21,088 - agentsummary bbot gooddrops 3
+06:11:21,088 - agentsummary bbot wrongdrops 0
+06:11:21,088 - agentsummary bbot nmessage 0
+06:11:21,088 - agentsummary bbot idletime 2.293
+06:11:21,088 - agentsummary bbot nroomsentered 8
+06:11:21,088 - agentsummary Bot_2 handicaps none
+06:11:21,088 - agentsummary bbot_292 gooddrops 2
+06:11:21,088 - agentsummary bbot_292 wrongdrops 0
+06:11:21,088 - agentsummary bbot_292 nmessage 0
+06:11:21,088 - agentsummary bbot_292 idletime 2.356
+06:11:21,088 - agentsummary bbot_292 nroomsentered 8
+06:11:21,088 - agentsummary Bot_3 handicaps none
+06:11:21,088 - agentsummary bbot_293 gooddrops 1
+06:11:21,088 - agentsummary bbot_293 wrongdrops 0
+06:11:21,088 - agentsummary bbot_293 nmessage 0
+06:11:21,088 - agentsummary bbot_293 idletime 2.077
+06:11:21,088 - agentsummary bbot_293 nroomsentered 8
+06:11:21,158 - action Bot_3 goTo(FrontDropZone)
+06:11:24,859 - action Bot_1 goTo(DropZone)
+06:11:27,807 - action Bot_2 goTo(DropZone)
+06:11:32,301 - action Bot_1 goTo(FrontDropZone)
+06:11:36,884 - action Bot_2 goTo(FrontDropZone)
+06:11:37,486 - total time is 209 minutes and 6 seconds

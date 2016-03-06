@@ -1,0 +1,15 @@
+use "../bw4t-client-3.8.2.jar" as environment with 
+	clientip ="localhost", clientport="2000", 
+	serverip = "localhost", serverport = "8000",
+	agentcount = "3", humancount = "0", launchgui = "false", 
+	goal = "true", map = "Random".
+
+define robot as agent {
+	use simple_team as main module.
+	use common.initial as init module.
+	use common.events as event module.
+} 
+
+launchpolicy{
+	when * launch robot.
+}

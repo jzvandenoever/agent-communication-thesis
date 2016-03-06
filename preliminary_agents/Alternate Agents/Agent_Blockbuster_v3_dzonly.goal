@@ -1,0 +1,156 @@
+% ------Agent_Blockbuster_v3 by Chris Rozemuller ---------
+% The aim of this agent is: Task completion with minimal duplication of effort, with minimal communication  
+% All agents initially know the goal sequence. Task progress is tracked using three predicates: 
+% 	seqDone(Colors) is a list of colors that have been delivered to the dropzone
+% 	seqAllocated(Colors,BlockIDs,Agents) three lists mapping allocated Colors to blockIDs and Agents.
+%   beenIn(Room) is concluded when a room has been visited, so it won't be explored again.
+% When an agent encounters an unknown block, the Color, BlockID and Location are communicated to all agents.
+% When an agent enters a room this is communicated and it is concluded by all agents that: 
+% 	If an agent is at the dropzone, then a possibly allocated delivery tasks of this agent is finished, and.
+% 	if the the next needed block is known then its delivery is the allocated to this agent.
+% 	otherwise it will visit a random room that is unvisited
+% After each room visit an agent will return to the dropzone to get a new task assigned.
+% Assumptions: all Rooms and Blocks are labeled unambigiously.
+% Task progression and room occupation are NOT perceived.
+init module {
+	knowledge {		
+		% A room is a place with exactly one neighbour, i.e., there is only one way to get to and from that place.
+		room(PlaceID) :- zone(_,PlaceID,_,_,Neighbours), length(Neighbours,1).
+		
+		% First unallocated color
+		nextNeededColor(Color) :- sequence(Seq), seqDone(SDone), seqAllocated(SAll,_,_), append(SDone,SAll,SNow), append(SNow, [Color|_], Seq).
+		% Unique BlockID that identifies with the first unallocated color (picking the lowest blockID in case of multiple options)
+		nextNeededBlock(Color, BlockID) :- nextNeededColor(Color), findall(ID, block(ID, Color,_,0), IDs), sort(IDs,[BlockID|_]). 
+		
+		%find the Color/ID/agent that is allocated to an Color/Id/Agent
+		findAllocation(Color,ID, Agent, [Color|_],[ID|_],[Agent|_]).
+		findAllocation(Color,ID, Agent, [_|RColor],[_|RID],[_|RAgent]):- findAllocation(Color, ID, Agent, RColor,RID,RAgent).
+		findAllocation(Color,ID, Agent):- seqAllocated(AllColor,AllID,AllAgent), findAllocation(Color, ID, Agent, AllColor,AllID,AllAgent).		 		
+	}
+	program {	
+		if bel(get_time(CurrentTime)) then insert(startTime(CurrentTime)).	
+		% Store map information, i.e., navigation points in the agent's belief base.
+		forall bel( percept(zone(ID, Name, X, Y, Neighbours)) ) do insert( zone(ID, Name, X, Y, Neighbours) ).
+		% Record the initial state of movement in belief base.
+		if bel( percept(state(State)) ) then insert( state(State) ).		
+		% Record initial location
+		if bel( percept(at(Place)) ) then insert( at(Place) ).		
+		% Record goal sequence
+		if bel( percept(sequence(Seq))) then insert(sequence(Seq)) + adopt(seqDone(Seq)).		
+		% Adopt initial goal going to a random place
+		if bel(room(PlaceID), PlaceID\='DropZone') then adopt(in(PlaceID)).
+	}	
+	actionspec {
+		% The goTo action makes the agent move to a place (location) in the BW4T environment.
+		% As long as the agent has not arrived at the place it is going to, it will be in "traveling" mode.
+		goTo(Location) {
+            pre { not(state(traveling)) }
+			post { true }
+		}
+		% goToBlock only when not traveling and in a room
+		goToBlock(BlockID) {
+            pre {in(_), not(state(traveling)) }
+			post { true }
+		}
+		% pickUp can only be performed when not holding a block
+		pickUp{
+			pre{not(state(traveling)), not(holding(_))}
+			post{ true }
+		}
+		% putDown can only be performed when holding a block
+		putDown{
+			pre{not(state(traveling)), holding(_)}
+			post{ true }
+		}
+	}
+	
+	beliefs{				
+		seqDone([]).					%Colors
+		seqAllocated([],[],[]).			%Colors, BlockIDs, Agents
+	}	
+	
+}
+
+main module [exit=nogoals] {
+	program {
+		if bel(in('DropZone'), holding(BlockID)) then putDown.	
+		if a-goal(at(Place);in(Place)) then goTo(Place).
+		if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place,_), not(atBlock(BlockID))) then goToBlock(BlockID).
+		if a-goal(holding(BlockID)), bel(atBlock(BlockID)) then pickUp.		
+			}
+}
+event module {
+	#import "../com_failure.pl".
+	program{
+		forall bel(messageFailed, received(X, Y)) do delete(received(X, Y)).
+		%Process conclusions/allocations from messages BEFORE updating percepts because percepts contain information other agents don't have.  
+
+%-------communication updates & conclusions about other agents-----------------------------------
+		% learn about blocks from other agents
+		forall bel( received(_,block(BlockID, ColorID, Place))) do insert(block(BlockID, ColorID, Place,0)).
+		
+		% deduce information based on location of other agents:
+		forall bel( received(Agent, in(Loc))) do {
+			if bel(Loc=='DropZone') then updateAllocations(Agent).
+			if bel(Loc \='DropZone', not(beenIn(Loc))) then insert(beenIn(Loc)). 
+		}				
+		forall bel(received(A,M)) do delete(received(A,M)).	
+			
+%-------percept updates-----------------------------------------		
+	    % Update the agent's state of movement.
+		forall bel( state(State), percept(state(NewState)) ) do delete( state(State) ) + insert( state(NewState) ).
+		
+		% Record when we are entering or leaving a room.
+		forall bel( percept(in(Place)), not(in(Place))) do insert( in(Place) ) + allother.send(in(Place)).
+		forall bel( percept(not(in(Place))) ) do delete( in(Place) ).
+		if bel(in(Place), not(beenIn(Place))) then insert(beenIn(Place)).
+		
+		% Record at location of agent
+		forall bel(percept(at(Place)), at(OldPlace), Place \= OldPlace) do delete(at(OldPlace)) + insert(at(Place)).
+		
+		% Record atblock location of agent
+		forall bel( percept(atBlock(BlockID)) ) do insert(atBlock(BlockID)).
+		forall bel( percept(not(atBlock(BlockID))) ) do delete(atBlock(BlockID)).
+		
+		% Discover new blocks (Note: communication could be limmited to only relevant blocks for the sequence)
+		forall bel( percept(color(BlockID, ColorID)), in(Place), not(block(BlockID, ColorID, Place,_))) do insert(block(BlockID, ColorID, Place,0)) +allother.send(block(BlockID, ColorID, Place)).
+		
+		% Record if a block is being held
+		forall bel( percept(holding(BlockID)) ) do insert(holding(BlockID)).
+		forall bel( percept(not(holding(BlockID))) ) do delete(holding(BlockID)).
+		
+%-------update own goals----------------------------------------------		
+		%set new goals when in dropzone
+		if not(goal(in(_);at(_))), bel(me(Me),in('DropZone')) then{
+			%update task allocations			
+			if true then updateAllocations(Me).
+			%check if a delivery task is allocated to Me
+			if bel(findAllocation(_,BlockID, Me), block(BlockID,_,Place,_)) then adopt(in(Place),holding(BlockID)).
+			%otherwise visit a random unvisited room (as long as the task is unfinished) 
+			if goal(seqDone(_)), bel(not(findAllocation(_,_, Me)), room(Place), not(beenIn(Place))) then adopt(in(Place)).
+			%there are no tasks left: wait in frontdropzone
+			if not(goal(in(_);at(_))) then adopt(at('FrontDropZone')).							
+		}
+		%return to dropzone when appropriate.
+		if not(goal(in(_);at(_))) then {
+			%carying the next block in the sequence: dropzone			
+			if bel(seqAllocated(_,[FirstNeededBlock|_],_),holding(FirstNeededBlock)) then adopt(in('DropZone')).
+			%carying a block further the sequence: wait in front of dropzone
+			if bel(seqAllocated(_,[FirstNeededBlock|_],_),holding(BlockID),  BlockID\=FirstNeededBlock, not(at('FrontDropZone'))) then adopt(at('FrontDropZone')).
+			%not carying anything: get new task in dropzone
+			if bel(in(_), not(holding(_))) then adopt(in('DropZone')).			
+		}		
+	}
+}
+
+module updateAllocations(Agent){		
+	program[order=linearall]{
+			% Assuming the agent is in the dropzone
+			% If the agent caries the first allocated color then it is delivered and the progression and allocation lists are updated, and the block is deleted:
+			if bel(seqDone(OldSDone), seqAllocated(AllColor,AllID,AllAgent), [Color|RestColor]=AllColor, [BlockID|RestID]=AllID, [Agent|RestAgent]=AllAgent, append(OldSDone,[Color],NewSDone),block(BlockID, ColorID, Place,1)) then 
+				delete(seqDone(OldSDone)) + delete(seqAllocated(AllColor, AllID, AllAgent)) + insert(seqDone(NewSDone)) + insert(seqAllocated(RestColor,RestID,RestAgent)) + delete(block(BlockID, ColorID, Place,1)).
+			% The agent gets assigned the next unalocated blockID (if it is known) and the block is flagged as in use.
+			if bel(seqAllocated(AllColor,AllID,AllAgent), nextNeededBlock(NColor, NBlockID),  append(AllColor,[NColor],NAllColor),  append(AllID,[NBlockID],NAllID),append(AllAgent,[Agent],NAllAgent), block(NBlockID, NColor, Place,0)) then
+					 	delete(seqAllocated(AllColor,AllID,AllAgent)) + insert(seqAllocated(NAllColor,NAllID,NAllAgent)) + delete(block(NBlockID, NColor, Place,0)) + insert(block(NBlockID, NColor, Place,1)).
+	}
+} 

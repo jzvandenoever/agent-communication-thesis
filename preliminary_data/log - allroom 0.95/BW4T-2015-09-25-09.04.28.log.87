@@ -1,0 +1,93 @@
+15:14:41,509 - sequence
+15:14:41,510 - room RoomC2 contains blocks:  Y P O W P
+15:14:41,510 - room RoomC3 contains blocks:  R
+15:14:41,510 - room RoomC1 contains blocks:  Y O B W B B
+15:14:41,510 - room RoomA1 contains blocks:  R G
+15:14:41,510 - room RoomB2 contains blocks:  O
+15:14:41,510 - room RoomB1 contains blocks:  Y B G R
+15:14:41,510 - room RoomB3 contains blocks:  P G Y O
+15:14:41,510 - room RoomA3 contains blocks:  W B
+15:14:41,511 - room RoomA2 contains blocks:  O O R
+15:14:41,511 - sequence P G Y Y O Y
+15:14:41,577 - action Bot_1 goTo(DropZone)
+15:14:41,579 - action Bot_2 goTo(DropZone)
+15:14:41,606 - action Bot_3 goTo(DropZone)
+15:14:42,358 - Bot Bot_2 collided.
+15:14:42,398 - Bot Bot_3 collided.
+15:14:42,398 - action Bot_2 goTo(DropZone)
+15:14:42,453 - action Bot_3 goTo(DropZone)
+15:14:42,466 - action Bot_1 goTo(RoomC3)
+15:14:43,252 - Bot Bot_3 collided.
+15:14:43,313 - action Bot_3 goTo(DropZone)
+15:14:43,715 - action Bot_2 goTo(RoomC3)
+15:14:44,101 - Bot Bot_3 collided.
+15:14:44,137 - action Bot_3 goTo(DropZone)
+15:14:45,407 - action Bot_3 goTo(RoomC3)
+15:14:48,319 - action Bot_1 goTo(RoomC1)
+15:14:49,544 - action Bot_2 goTo(RoomC2)
+15:14:51,249 - action Bot_3 goTo(RoomC1)
+15:14:51,715 - action Bot_1 goTo(RoomB3)
+15:14:52,117 - action Bot_2 goToBlock(39)
+15:14:52,627 - action Bot_2 pickUp
+15:14:52,695 - action Bot_2 goTo(DropZone)
+15:14:54,643 - action Bot_3 goTo(RoomB3)
+15:14:58,413 - action Bot_1 goToBlock(57)
+15:14:58,798 - action Bot_1 pickUp
+15:14:58,867 - action Bot_1 goTo(DropZone)
+15:14:59,775 - action Bot_2 putDown
+15:14:59,845 - action Bot_2 goTo(RoomC1)
+15:15:01,352 - action Bot_3 goTo(RoomB2)
+15:15:03,917 - action Bot_3 goTo(RoomB1)
+15:15:05,727 - action Bot_2 goTo(RoomC2)
+15:15:06,506 - action Bot_3 goTo(RoomA3)
+15:15:06,635 - action Bot_1 putDown
+15:15:06,704 - action Bot_1 goTo(RoomB3)
+15:15:08,289 - action Bot_2 goToBlock(38)
+15:15:08,682 - action Bot_2 pickUp
+15:15:08,749 - action Bot_2 goTo(FrontDropZone)
+15:15:13,199 - action Bot_3 goTo(RoomA1)
+15:15:14,216 - action Bot_1 goToBlock(58)
+15:15:14,606 - action Bot_1 pickUp
+15:15:14,676 - action Bot_1 goTo(DropZone)
+15:15:16,601 - action Bot_3 goTo(FrontDropZone)
+15:15:22,451 - action Bot_1 putDown
+15:15:22,516 - action Bot_1 goTo(RoomC1)
+15:15:28,368 - action Bot_1 goToBlock(44)
+15:15:28,627 - action Bot_1 pickUp
+15:15:28,693 - action Bot_1 goTo(DropZone)
+15:15:34,749 - action Bot_1 putDown
+15:15:34,815 - action Bot_1 goTo(RoomB3)
+15:15:42,296 - action Bot_1 pickUp
+15:15:42,367 - action Bot_1 goTo(DropZone)
+15:15:49,854 - action Bot_1 putDown
+15:15:49,924 - action Bot_1 goTo(RoomC1)
+15:15:55,746 - action Bot_1 pickUp
+15:15:55,814 - action Bot_1 goTo(DropZone)
+15:16:01,650 - action Bot_1 putDown
+15:16:01,718 - action Bot_1 goTo(RoomB2)
+15:16:10,065 - action Bot_1 goTo(RoomB1)
+15:16:12,648 - action Bot_1 goToBlock(53)
+15:16:13,004 - action Bot_1 pickUp
+15:16:13,074 - action Bot_1 goTo(DropZone)
+15:16:20,853 - action Bot_1 putDown
+15:16:20,853 - Time to finish sequence is 371 minutes and 42 seconds
+15:16:20,853 - agentsummary Bot_1 handicaps none
+15:16:20,853 - agentsummary bbot gooddrops 5
+15:16:20,853 - agentsummary bbot wrongdrops 1
+15:16:20,853 - agentsummary bbot nmessage 0
+15:16:20,853 - agentsummary bbot idletime 4.003
+15:16:20,853 - agentsummary bbot nroomsentered 16
+15:16:20,853 - agentsummary Bot_2 handicaps none
+15:16:20,853 - agentsummary bbot_312 gooddrops 1
+15:16:20,853 - agentsummary bbot_312 wrongdrops 0
+15:16:20,853 - agentsummary bbot_312 nmessage 0
+15:16:20,853 - agentsummary bbot_312 idletime 1.571
+15:16:20,853 - agentsummary bbot_312 nroomsentered 6
+15:16:20,853 - agentsummary Bot_3 handicaps none
+15:16:20,853 - agentsummary bbot_313 gooddrops 0
+15:16:20,853 - agentsummary bbot_313 wrongdrops 0
+15:16:20,853 - agentsummary bbot_313 nmessage 0
+15:16:20,853 - agentsummary bbot_313 idletime 1.733
+15:16:20,853 - agentsummary bbot_313 nroomsentered 8
+15:16:20,923 - action Bot_1 goTo(FrontDropZone)
+15:16:41,738 - total time is 372 minutes and 3 seconds

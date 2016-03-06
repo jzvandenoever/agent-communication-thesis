@@ -1,0 +1,47 @@
+15:10:39,400 - sequence
+15:10:39,400 - room RoomC2 contains blocks:  R G Y
+15:10:39,400 - room RoomC3 contains blocks:  W
+15:10:39,400 - room RoomC1 contains blocks:  O B O W R
+15:10:39,401 - room RoomA1 contains blocks:  O R Y Y
+15:10:39,401 - room RoomB2 contains blocks:  G R P
+15:10:39,401 - room RoomB1 contains blocks:  P B R O
+15:10:39,401 - room RoomB3 contains blocks:  Y Y O
+15:10:39,401 - room RoomA3 contains blocks:  B Y G
+15:10:39,401 - room RoomA2 contains blocks:  W W
+15:10:39,401 - sequence W O B O R Y
+15:10:39,464 - action Bot_1 goTo(DropZone)
+15:10:39,493 - action Bot_2 goTo(DropZone)
+15:10:39,495 - action Bot_3 goTo(DropZone)
+15:10:40,264 - Bot Bot_3 collided.
+15:10:40,331 - action Bot_3 goTo(DropZone)
+15:10:40,575 - Bot Bot_2 collided.
+15:10:40,632 - action Bot_2 goTo(DropZone)
+15:10:40,688 - action Bot_1 goTo(RoomC3)
+15:10:41,421 - Bot Bot_2 collided.
+15:10:41,455 - action Bot_2 goTo(DropZone)
+15:10:41,861 - action Bot_3 goTo(RoomC2)
+15:10:42,251 - Bot Bot_2 collided.
+15:10:42,303 - action Bot_2 goTo(DropZone)
+15:10:43,589 - action Bot_2 goTo(RoomC1)
+15:10:46,526 - action Bot_1 goToBlock(41)
+15:10:47,037 - action Bot_1 pickUp
+15:10:47,109 - action Bot_1 goTo(DropZone)
+15:10:48,522 - action Bot_3 goTo(RoomB3)
+15:10:49,453 - action Bot_2 goToBlock(42)
+15:10:49,882 - action Bot_2 pickUp
+15:10:49,951 - action Bot_2 goTo(FrontDropZone)
+15:10:53,397 - action Bot_1 putDown
+15:10:53,454 - action Bot_1 goTo(RoomC1)
+15:10:54,356 - action Bot_3 goTo(RoomC1)
+15:10:55,298 - action Bot_2 goTo(DropZone)
+15:10:56,208 - action Bot_2 putDown
+15:10:56,275 - action Bot_2 goTo(RoomC1)
+15:10:59,301 - action Bot_1 pickUp
+15:10:59,371 - action Bot_1 goTo(FrontDropZone)
+15:11:01,027 - action Bot_3 goToBlock(44)
+15:11:01,379 - action Bot_3 pickUp
+15:11:01,447 - action Bot_3 goTo(FrontDropZone)
+15:11:01,586 - Bot Bot_2 collided.
+15:11:01,624 - action Bot_2 goTo(RoomC1)
+15:11:02,907 - action Bot_2 goToBlock(44)
+15:12:39,590 - total time is 20 minutes and 19 seconds

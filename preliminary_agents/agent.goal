@@ -1,0 +1,227 @@
+init module {
+	knowledge {
+		% When are we done
+		seqDone(List) :- sequence(List), length(List, Len), seqIndex(Len).
+		
+		% A room is a place with exactly one neighbour, i.e., only way way to get to and from that place.
+		room(PlaceID) :- navpoint(_,PlaceID,_,_,Neighbours), length(Neighbours,1).
+		
+		% Get the closest Place based on graph hops needed to get there.
+		closestRoom(Places, Place) :- at(Current), findall (locDist(Dist, Loc), (member(Loc, Places), 
+					dist(Loc, Current, Dist)), Distances), sort(Distances, [locDist(Dist, Place)|_]).
+		closestBlock(Blocks, block(ID)) :- findall(Place, member(block(_, Place), Blocks), Places),
+					closestRoom(Places, Destination), member(block(ID, Place), Blocks), !.
+		
+		% Distance predicate. Based on the amount of neighbour steps.
+		dist(S, S, 0). 
+		dist(S, T, Dist) :- navpoint(_,S,_,_,Neighbours), member(T, Neighbours), Dist = 1.
+		dist(S, T, Dist) :- bfs(S,T, Dist).
+		
+		% Breadth First Search
+		bfs(S,T, Steps) :- navpoint(_,S,_,_,Edges), combine(Edges, 1, Queue), bfs(T, Steps,Queue,[S]).
+		bfs(T, N,[(T,N)|Queue],Searched) :- !.
+		bfs(T, N,[(Place, _)|Queue],Searched) :- member(Place, Searched), bfs(T, N,Queue,Searched), !.
+		bfs(T, N,[(Place, I)|Queue],Searched) :- navpoint(_,Place,_,_,Edges), J is I+1, subtract(Edges, Searched, NewEdges), combine(NewEdges, J, NewNodes), 
+												append(Queue, NewNodes, NewQueue), bfs(T, N, NewQueue, [Place|Searched]), !.
+		
+		combine([], Tuple, []).
+		combine([H|List], Tuple, [(H,Tuple)|Result]) :- combine(List, Tuple, Result).
+		
+		% Get the currently desired color.
+		%getColor(Color) :- seqIndex(N), sequence(S), nth0(N, S, Color).
+		getColor(Color, N) :- sequence(S), nth0(N, S, Color).
+		
+		someoneElseTookCareOfIt(Block) :- gettingBlock(Block,_, _).
+	}
+	
+	beliefs {
+		at(nowhere).
+		seqIndex(-1).
+		aheadIndex(-1).
+		dropZone('DropZone').
+		waitZone('FrontDropZone').
+	}
+	
+	program {
+		if bel(get_time(CurrentTime)) then insert(startTime(CurrentTime)).
+		% Store map information, i.e., navigation points in agent's belief base. And send it to potential human agents but we don't know who they are. 
+		%Duplicates are okay since we only do it once.
+		forall bel( percept(zone(ID, Name, X, Y, Neighbours)) ) do insert( navpoint(ID, Name, X, Y, Neighbours) ) + allother.send(navpoint(ID, Name, X, Y, Neighbours)).
+		
+		% Record current state of movement in belief base.
+		forall bel( percept(state(State)) ) do insert( state(State) ).
+		
+		% Store all possible places to go. Is always a reasonably limited number in this environment and as such does not constitute a performance issue.
+		forall bel( percept(place(PlaceID)) ) do insert( place(PlaceID) ).
+		
+		% The sequence of blocks that need to be gathered.
+		if bel( percept(sequence(List)) ) then insert( sequence(List) ) + adopt(seqDone(List)).
+		
+		forall bel( agent(A), me(M), A \== M ) do insert( travelling(null, A), gettingBlock(null, -1, A), at(A, null) ).
+		
+		%Introduce delay randomly with a small chance of collisions for a few agents.
+		if bel( X is random(20) ) then insert( delay(X) ).
+	}
+	
+		
+	actionspec {
+		% The goTo action makes the agent move to a place (location) in the BW4T environment.
+		% As long as the agent has not arrived at the place it is going to, it will be in "traveling" mode.
+		goTo(Location) {
+            pre { place(Location) }
+			post { true }
+		}
+
+		% The goToBlock action makes a agent pick up a block but only if they are in the same room.
+		goToBlock(Block) {
+			pre { block(Block,_, Room), in(Room) }
+			post{  }
+		}
+		
+		% Pick up the closest block.
+		pickUp{
+		    pre { not(holding(_,_)) }
+			post {  }
+		}
+		
+		%Put down the block you are holding.
+		putDown {
+			pre { holding(_,_) }
+			post { true }
+		}
+	}
+}
+
+main module[exit=nogoals]{
+	program {
+		%Sometimes you want to interrupt travel but usually you want to only do those if you are standing still.
+		#define actionRateLimit
+			bel( not(state(traveling)) ).
+		#define goPickThisUp(Block, Room)
+			a-goal( getBlock(Block, N) ), bel(block(Block,_,Room)).
+		#define dropOff(Block, N)
+			a-goal( getBlock(Block, N) ), bel(seqIndex(N), holding(Block,_)).
+		#define prepareDropOff(Block)
+			a-goal( getBlock(Block, N) ), bel(seqIndex(M), N>M, holding(Block,_)).
+		#define blocksOfColor(Color, Blocks)
+			bel(aheadIndex(N), getColor(Color, N), bagof(block(ID, Place), ( block(ID, Color, Place), not(someoneElseTookCareOfIt(ID)) ), Blocks )).
+		
+		if bel(delay(_)) then delete(nothing).
+		
+		% Wait if you are at the waitZone till you can drop it off.
+		if actionRateLimit, prepareDropOff(Block), bel( waitZone(Z), at(Z) ) then goTo(Z).
+		
+		% If in a room holding a block you don't need, drop it
+		if bel(in(_), holding(Block, C)), not(a-goal(getBlock(Block, N))) then putDown.
+			
+		% Pick up Blocks if you need that color.
+		if actionRateLimit, goPickThisUp(Block, Room), bel( not(holding(_,_)), in(Room), atBlock(Block) ) then pickUp.
+		if actionRateLimit, goPickThisUp(Block, Room), bel( not(holding(_,_)), in(Room), not(atBlock(Block)) ) then goToBlock(Block).
+		if goPickThisUp(Block, Room), bel( Room \== null, not(in(Room)) ) then adopt( in(Room) ).
+		
+		
+		% Dropping blocks off in the dropzone.
+		if dropOff(Block, N), bel( dropZone(Z), not(in(Z)) ) then adopt( in(Z) ).
+		if prepareDropOff(Block), bel( waitZone(Z), not(in(Z)) ) then adopt( at(Z) ).
+		if actionRateLimit, dropOff(Block, N), bel( dropZone(Z), in(Z) ) then putDown + insert( getBlock(Block, N) ) + allother.sendonce(delivered(Block)).
+		
+		%%%%UPDATE GOALS%%%%
+		%Maintain information of which block to get. First try going for the current color.
+		if not(a-goal( getBlock(ID, NotRelevant) )), bel( aheadIndex(N), getColor(Color, N)), 
+				blocksOfColor(Color, Blocks), bel( closestBlock(Blocks, block(ID)) ) 
+			then adopt(getBlock(ID, N)) + allother.send(gettingBlock(ID, N)).
+		
+		
+		% Drop off blocks you are holding at the DropZone first, then waitingZone
+		if actionRateLimit, a-goal( in(Room) ), bel( dropZone(Room) ) then goTo(Room) + allother.send(travelling(Room)).
+		if actionRateLimit, a-goal( at(Place) ), bel( waitZone(Place) ) then goTo(Place) + allother.send(travelling(Place)).
+		if actionRateLimit, a-goal( in(Room) ) then goTo(Room) + allother.send(travelling(Room)).
+		
+		%Where do we still need to look and look there.
+		if not(a-goal( in(X) )), bel(not(seqDone(_)), bagof(Place,( %get all possible places that are not visited yet
+				room(Place), not(visited(Place)), not(travelling(Place, _)), not(dropZone(Place))
+			), Places), closestRoom(Places, Destination) ) then adopt( in(Destination) ).
+		
+		% Don't stick around in the dropzone
+		if actionRateLimit, bel( dropZone(Z), in(Z), waitZone(W) ), not(a-goal((getBlock(Block, N); in(Room)) )) then adopt( at(W) ).
+		
+		% Stop once done.
+		if bel( seqDone(_), at(Place)) then goTo(Place).
+	}
+}
+
+event module {
+	#import "com_failure.pl".
+	program{
+		forall bel(messageFailed, received(X, Y)) do delete(received(X, Y)).
+		%Update the delay each count.
+		if bel(delay(X), X > 1, Y is X-1) then delete(delay(X)) + insert(delay(Y)).
+		if bel(delay(X), X == 1) then delete(delay(X)).
+		
+		%remove delivered blocks.
+		forall bel( getBlock(ID, _), block(ID, C, P) ) do delete( block(ID,C,P) ).
+		forall bel( received(Agt, delivered(ID)), block(ID, C, P) ) do delete( block(ID,C,P) ).
+						
+		%%%%LOCAL PERCEPTS%%%%
+		%Maintain state
+		if bel( state(State), percept(state(traveling)) ) then delete( state(State) ) + insert( state(traveling) ).
+		if bel( state(State), percept(state(NewState)) ) then delete( state(State) ) + insert( state(NewState) ).
+		
+		% Remember what room you are in right now.
+		if bel( percept(in(RoomID)) ) then insert ( in(RoomID) ).
+		if bel( percept(not(in(RoomID))) ) then delete( in(RoomID) ).
+		% Keep track of which rooms haven't been visited
+		if bel( in(RoomID), not(visited(RoomID)) ) then insert( visited(RoomID) ) + allother.send(visited(RoomID)). 
+		% At, same as in but for places.
+		if bel( at(PlaceID), percept(at(NewPlaceID)) ) then delete(at(PlaceID) ) + insert ( at(NewPlaceID) ) + allother.send(at(NewPlaceID)).
+		% At, but specifically for Blocks. Means you're close enough to pick them up.
+		forall bel( percept(atBlock(BlockID)) ) do insert ( atBlock(BlockID) ).
+		forall bel( percept(not(atBlock(BlockID))) ) do delete( atBlock(BlockID) ).
+		
+		% Blocks you see and their colors
+		forall bel( percept(color(BlockID, Color)), in(RoomID), not(block(BlockID, Color, RoomID)) ) do 
+				insert( block(BlockID, Color, RoomID) ) + 
+				allother.sendonce(block(BlockID, Color, RoomID)).
+		forall bel( percept(color(BlockID, Color)), block(BlockID, Color, RoomID), not(in(RoomID)), in(ActualID) ) do 
+				delete( block(BlockID, Color, RoomID)) + 
+				insert( block(BlockID, Color, ActualID) ) + 
+				allother.sendonce(block(BlockID, Color, RoomID)).
+		% Blocks you are holding
+		forall bel( percept(holding(BlockID)), block(BlockID,C,L) ) do delete( block(BlockID,C,L) ) + insert ( block(BlockID, C, null), holding(BlockID, C) ) + allother.send(holding(BlockID)).
+		forall bel( percept(not(holding(BlockID))), holding(BlockID, C) ) do delete( holding(BlockID, C) ).
+		
+		
+		
+		%%%%GLOBAL PERCEPTS%%%%
+		% Current index of the sequence needed.
+		if bel( percept(sequenceIndex(NewN)), seqIndex(N), NewN > N ) then delete( seqIndex(N) ) + insert( seqIndex(NewN) ).
+		if bel( seqIndex(N), aheadIndex(M), N>M ) then delete( aheadIndex(M) ) + insert( aheadIndex(N) ).
+		
+		
+		%%%%RECEIVE MESSAGES%%%%
+		% Update travel information
+		forall bel( received(Agt, travelling(Room)), travelling(OtherRoom, Agt) ) do delete( travelling(OtherRoom, Agt) ) + insert( travelling(Room, Agt) ).
+		forall bel( received(Agt, visited(Room)) ) do insert( visited(Room) ).
+		forall bel( received(Agt, at(Place)), at(Agt, OldPlace) ) do delete( at(Agt, OldPlace) ) + insert( (Agt, Place) ).
+		% Update who is getting what blocks. And what blocks are still available.
+		forall bel( received(Agt, gettingBlock(Block, N)), gettingBlock(OtherBlock, M, Agt)) do delete( gettingBlock(OtherBlock, M, Agt)  ) + insert( gettingBlock(Block, N, Agt)  ).
+		forall bel( gettingBlock(_,N,_), aheadIndex(M), N>=M, NewIndex is N+1 ) do delete( aheadIndex(M) ) + insert( aheadIndex(NewIndex) ). 
+		forall bel( received(Agt, block(BlockID, Color, RoomID)) ) do insert( block(BlockID, Color, RoomID) ).
+		forall bel( received(Agt, holding(BlockID)), block(BlockID, Color, RoomID) ) do delete( block(BlockID, Color, RoomID) ) + insert( block(BlockID, Color, null) ).
+		forall bel(received(Agt, Msg)) do delete(received(Agt,Msg)).
+		
+		%%%%UPDATE GOALS%%%%
+		% Remove the goal to get a block if it has already been gotten.
+		if a-goal( getBlock(ID, N)), bel( seqIndex(M), N<M ) then drop(getBlock(ID, N)).
+		% If conflicting block colors exist drop the goal of you have the biggest name.
+		if a-goal( getBlock(ID, N)), bel( gettingBlock(ID, M, Agt), N @> M ) then drop(getBlock(ID, N)).
+		if a-goal( getBlock(ID, N)), bel( gettingBlock(ID, N, Agt), me(M), Agt @> M ) then drop(getBlock(ID, N)).
+		
+		%remove in goals that others might be moving towards. do it based on closest.
+		if a-goal(in(Place)), bel( travelling(Place, Agt), not(visited(Place)), at(Agt, OtherIn), at(In), 
+			dist(Place, OtherIn, OtherToDist), dist(Place, In, ToDist), room(Place), 
+			ToDist > OtherToDist, at(Here) ) then drop( in(Place) ).
+		%Remove in goals after the sequence has been completed.
+		if a-goal( in(X) ), bel( seqDone(_) ) then drop( in(X) ).
+	}
+}

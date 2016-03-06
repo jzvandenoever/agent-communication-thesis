@@ -1,0 +1,93 @@
+09:24:30,500 - sequence
+09:24:30,500 - room RoomC2 contains blocks:  R R R
+09:24:30,500 - room RoomC3 contains blocks:  Y W
+09:24:30,500 - room RoomC1 contains blocks:  O B R O O Y
+09:24:30,501 - room RoomA1 contains blocks:  G W P
+09:24:30,501 - room RoomB2 contains blocks:  W O
+09:24:30,501 - room RoomB1 contains blocks:  G P
+09:24:30,501 - room RoomB3 contains blocks:  B Y G R O
+09:24:30,501 - room RoomA3 contains blocks:  W O
+09:24:30,501 - room RoomA2 contains blocks:  P P B
+09:24:30,501 - sequence W B R W P Y
+09:24:30,573 - action Bot_1 goTo(DropZone)
+09:24:30,574 - action Bot_3 goTo(DropZone)
+09:24:30,603 - action Bot_2 goTo(DropZone)
+09:24:31,364 - Bot Bot_3 collided.
+09:24:31,384 - Bot Bot_2 collided.
+09:24:31,417 - action Bot_2 goTo(DropZone)
+09:24:31,418 - action Bot_3 goTo(DropZone)
+09:24:31,461 - action Bot_1 goTo(RoomC3)
+09:24:32,235 - Bot Bot_3 collided.
+09:24:32,277 - action Bot_3 goTo(DropZone)
+09:24:32,747 - action Bot_2 goTo(RoomC2)
+09:24:33,084 - Bot Bot_3 collided.
+09:24:33,122 - action Bot_3 goTo(DropZone)
+09:24:34,397 - action Bot_3 goTo(RoomC1)
+09:24:37,347 - action Bot_1 pickUp
+09:24:37,418 - action Bot_1 goTo(DropZone)
+09:24:39,442 - action Bot_2 goTo(RoomC1)
+09:24:40,269 - action Bot_3 goToBlock(44)
+09:24:40,660 - action Bot_3 pickUp
+09:24:40,731 - action Bot_3 goTo(FrontDropZone)
+09:24:42,028 - action Bot_2 goTo(RoomC2)
+09:24:43,271 - action Bot_1 putDown
+09:24:43,341 - action Bot_1 goTo(RoomB1)
+09:24:44,642 - action Bot_2 goToBlock(38)
+09:24:44,995 - action Bot_2 pickUp
+09:24:45,066 - action Bot_2 goTo(FrontDropZone)
+09:24:50,882 - action Bot_1 goTo(RoomA2)
+09:24:56,737 - action Bot_1 goToBlock(65)
+09:24:57,210 - action Bot_1 pickUp
+09:24:57,280 - action Bot_1 goTo(DropZone)
+09:25:07,278 - action Bot_3 goTo(DropZone)
+09:25:07,635 - action Bot_1 putDown
+09:25:07,693 - Bot Bot_3 collided.
+09:25:07,706 - action Bot_1 goTo(RoomC2)
+09:25:07,720 - action Bot_3 goTo(DropZone)
+09:25:08,630 - action Bot_2 goTo(DropZone)
+09:25:09,026 - action Bot_3 putDown
+09:25:09,051 - Bot Bot_2 collided.
+09:25:09,094 - action Bot_3 goTo(RoomB1)
+09:25:09,109 - action Bot_2 goTo(DropZone)
+09:25:10,381 - action Bot_2 putDown
+09:25:10,448 - action Bot_2 goTo(RoomA1)
+09:25:14,389 - action Bot_1 goToBlock(38)
+09:25:16,571 - action Bot_3 goTo(RoomA2)
+09:25:19,575 - action Bot_2 goToBlock(50)
+09:25:19,890 - action Bot_2 pickUp
+09:25:19,933 - action Bot_2 goTo(DropZone)
+09:25:22,431 - action Bot_3 goTo(RoomA1)
+09:25:24,990 - action Bot_3 goToBlock(51)
+09:25:25,352 - action Bot_3 pickUp
+09:25:25,397 - action Bot_3 goTo(FrontDropZone)
+09:25:29,359 - action Bot_2 putDown
+09:25:29,400 - action Bot_2 goTo(RoomC3)
+09:25:34,019 - action Bot_3 goTo(DropZone)
+09:25:34,904 - action Bot_3 putDown
+09:25:34,934 - action Bot_3 goTo(RoomA1)
+09:25:35,229 - action Bot_2 goToBlock(41)
+09:25:35,571 - action Bot_2 pickUp
+09:25:35,613 - action Bot_2 goTo(DropZone)
+09:25:41,753 - action Bot_2 putDown
+09:25:41,753 - Time to finish sequence is 121 minutes and 17 seconds
+09:25:41,753 - agentsummary Bot_1 handicaps none
+09:25:41,753 - agentsummary bbot gooddrops 2
+09:25:41,753 - agentsummary bbot wrongdrops 0
+09:25:41,753 - agentsummary bbot nmessage 0
+09:25:41,753 - agentsummary bbot idletime 1.618
+09:25:41,753 - agentsummary bbot nroomsentered 7
+09:25:41,753 - agentsummary Bot_2 handicaps none
+09:25:41,753 - agentsummary bbot_132 gooddrops 3
+09:25:41,753 - agentsummary bbot_132 wrongdrops 0
+09:25:41,753 - agentsummary bbot_132 nmessage 0
+09:25:41,753 - agentsummary bbot_132 idletime 19.69
+09:25:41,753 - agentsummary bbot_132 nroomsentered 9
+09:25:41,753 - agentsummary Bot_3 handicaps none
+09:25:41,753 - agentsummary bbot_133 gooddrops 1
+09:25:41,753 - agentsummary bbot_133 wrongdrops 1
+09:25:41,753 - agentsummary bbot_133 nmessage 0
+09:25:41,753 - agentsummary bbot_133 idletime 23.246
+09:25:41,753 - agentsummary bbot_133 nroomsentered 7
+09:25:41,796 - action Bot_2 goTo(FrontDropZone)
+09:25:44,073 - action Bot_3 goTo(FrontDropZone)
+09:25:51,230 - total time is 121 minutes and 27 seconds

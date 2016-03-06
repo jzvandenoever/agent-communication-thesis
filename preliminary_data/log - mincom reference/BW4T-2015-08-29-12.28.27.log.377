@@ -1,0 +1,93 @@
+12:52:15,725 - sequence
+12:52:15,725 - room RoomC2 contains blocks:  W B R
+12:52:15,725 - room RoomC3 contains blocks:  G Y Y O
+12:52:15,725 - room RoomC1 contains blocks:  G W O
+12:52:15,725 - room RoomA1 contains blocks:  O R
+12:52:15,726 - room RoomB2 contains blocks:  G G P
+12:52:15,726 - room RoomB1 contains blocks:  G W P B O B B
+12:52:15,726 - room RoomB3 contains blocks:  B R W
+12:52:15,726 - room RoomA3 contains blocks:  Y
+12:52:15,726 - room RoomA2 contains blocks:  B R
+12:52:15,726 - sequence G G G G W W
+12:52:15,809 - action Bot_1 goTo(RoomA3)
+12:52:15,810 - action Bot_2 goTo(RoomA2)
+12:52:15,838 - action Bot_3 goTo(RoomB1)
+12:52:22,819 - action Bot_3 goToBlock(53)
+12:52:23,328 - action Bot_3 pickUp
+12:52:23,401 - action Bot_3 goTo(DropZone)
+12:52:24,083 - action Bot_1 goTo(RoomC3)
+12:52:25,281 - action Bot_2 goTo(RoomB3)
+12:52:30,828 - action Bot_1 goToBlock(41)
+12:52:31,214 - action Bot_2 goTo(RoomC3)
+12:52:31,325 - action Bot_1 pickUp
+12:52:31,345 - action Bot_3 putDown
+12:52:31,395 - action Bot_1 goTo(DropZone)
+12:52:31,457 - action Bot_3 goTo(RoomB1)
+12:52:36,292 - action Bot_2 goTo(RoomB1)
+12:52:37,661 - action Bot_1 putDown
+12:52:37,779 - action Bot_1 goTo(RoomC3)
+12:52:38,982 - action Bot_3 goTo(RoomC1)
+12:52:43,034 - action Bot_2 goTo(RoomA2)
+12:52:43,642 - action Bot_1 goTo(RoomC2)
+12:52:44,038 - action Bot_3 goToBlock(45)
+12:52:44,455 - action Bot_3 pickUp
+12:52:44,531 - action Bot_3 goTo(DropZone)
+12:52:46,236 - action Bot_1 goTo(RoomA1)
+12:52:48,939 - action Bot_2 goTo(RoomC3)
+12:52:50,772 - action Bot_3 putDown
+12:52:50,888 - action Bot_3 goTo(RoomC1)
+12:52:53,821 - action Bot_1 goTo(RoomB2)
+12:52:56,535 - action Bot_2 goTo(RoomC2)
+12:52:56,792 - action Bot_3 goTo(RoomC3)
+12:52:59,142 - action Bot_2 goTo(RoomA3)
+12:52:59,753 - action Bot_1 goToBlock(51)
+12:53:00,222 - action Bot_3 goTo(RoomA3)
+12:53:00,236 - action Bot_1 pickUp
+12:53:00,315 - action Bot_1 goTo(DropZone)
+12:53:06,438 - Bot Bot_3 collided.
+12:53:06,480 - action Bot_3 goTo(RoomA3)
+12:53:06,716 - action Bot_2 goTo(RoomC1)
+12:53:07,815 - action Bot_3 goTo(RoomB1)
+12:53:09,118 - action Bot_1 putDown
+12:53:09,235 - action Bot_1 goTo(RoomB2)
+12:53:14,581 - action Bot_3 goTo(RoomC1)
+12:53:15,144 - action Bot_2 goTo(RoomB3)
+12:53:17,618 - action Bot_1 goToBlock(50)
+12:53:18,113 - action Bot_1 pickUp
+12:53:18,185 - action Bot_1 putDown
+12:53:18,255 - action Bot_1 goTo(RoomC2)
+12:53:19,638 - action Bot_3 goToBlock(46)
+12:53:20,009 - action Bot_3 pickUp
+12:53:20,078 - action Bot_3 goTo(DropZone)
+12:53:21,911 - action Bot_2 goToBlock(62)
+12:53:22,235 - action Bot_2 pickUp
+12:53:22,311 - action Bot_2 goTo(DropZone)
+12:53:25,426 - action Bot_1 goToBlock(38)
+12:53:25,800 - action Bot_1 pickUp
+12:53:25,876 - action Bot_1 goTo(DropZone)
+12:53:26,262 - action Bot_3 putDown
+12:53:26,388 - action Bot_3 goTo(RoomC1)
+12:53:30,075 - action Bot_2 putDown
+12:53:30,075 - Time to finish sequence is 24 minutes and 40 seconds
+12:53:30,075 - agentsummary Bot_1 handicaps none
+12:53:30,075 - agentsummary bbot gooddrops 2
+12:53:30,075 - agentsummary bbot wrongdrops 0
+12:53:30,075 - agentsummary bbot nmessage 0
+12:53:30,075 - agentsummary bbot idletime 3.145
+12:53:30,075 - agentsummary bbot nroomsentered 10
+12:53:30,075 - agentsummary Bot_2 handicaps none
+12:53:30,075 - agentsummary bbot_22 gooddrops 1
+12:53:30,075 - agentsummary bbot_22 wrongdrops 0
+12:53:30,075 - agentsummary bbot_22 nmessage 0
+12:53:30,075 - agentsummary bbot_22 idletime 2.554
+12:53:30,075 - agentsummary bbot_22 nroomsentered 11
+12:53:30,075 - agentsummary Bot_3 handicaps none
+12:53:30,075 - agentsummary bbot_23 gooddrops 3
+12:53:30,075 - agentsummary bbot_23 wrongdrops 0
+12:53:30,075 - agentsummary bbot_23 nmessage 0
+12:53:30,075 - agentsummary bbot_23 idletime 3.165
+12:53:30,076 - agentsummary bbot_23 nroomsentered 11
+12:53:30,190 - action Bot_2 goTo(RoomB1)
+12:53:37,693 - action Bot_2 goToBlock(54)
+12:53:38,127 - action Bot_2 pickUp
+12:53:38,216 - total time is 24 minutes and 48 seconds

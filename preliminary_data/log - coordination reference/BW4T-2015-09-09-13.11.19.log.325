@@ -1,0 +1,94 @@
+13:47:15,004 - sequence
+13:47:15,005 - room RoomC2 contains blocks:  W W
+13:47:15,005 - room RoomC3 contains blocks:  P
+13:47:15,005 - room RoomC1 contains blocks:  W P P W O G B B
+13:47:15,005 - room RoomA1 contains blocks:  R
+13:47:15,005 - room RoomB2 contains blocks:  Y G
+13:47:15,005 - room RoomB1 contains blocks:  R G W Y B R G
+13:47:15,005 - room RoomB3 contains blocks: 
+13:47:15,005 - room RoomA3 contains blocks:  G P Y
+13:47:15,006 - room RoomA2 contains blocks:  Y P P G
+13:47:15,006 - sequence Y R G W G W
+13:47:15,611 - action Bot_1 goTo(RoomC1)
+13:47:15,677 - action Bot_3 goTo(RoomC1)
+13:47:20,566 - Bot Bot_3 collided.
+13:47:20,629 - action Bot_3 goTo(RoomC1)
+13:47:20,630 - action Bot_1 goTo(RoomC2)
+13:47:21,946 - action Bot_3 goTo(RoomC3)
+13:47:23,214 - action Bot_1 goTo(RoomC3)
+13:47:25,294 - Bot Bot_1 collided.
+13:47:25,335 - action Bot_3 goTo(RoomB3)
+13:47:25,363 - action Bot_1 goTo(RoomC3)
+13:47:26,646 - action Bot_1 goTo(RoomB3)
+13:47:30,366 - action Bot_3 goTo(RoomB2)
+13:47:31,699 - action Bot_1 goTo(RoomB2)
+13:47:32,939 - action Bot_3 pickUp
+13:47:33,036 - action Bot_3 goTo(DropZone)
+13:47:34,285 - action Bot_1 goTo(RoomB1)
+13:47:36,858 - action Bot_1 goTo(RoomA1)
+13:47:41,342 - action Bot_3 putDown
+13:47:41,437 - action Bot_3 goTo(RoomB1)
+13:47:41,884 - action Bot_1 goTo(RoomB1)
+13:47:46,931 - action Bot_1 goToBlock(52)
+13:47:47,491 - action Bot_1 pickUp
+13:47:47,602 - action Bot_1 goTo(DropZone)
+13:47:48,423 - Bot Bot_3 collided.
+13:47:48,464 - action Bot_3 goTo(RoomB1)
+13:47:49,777 - action Bot_3 goTo(RoomA2)
+13:47:55,528 - action Bot_1 putDown
+13:47:55,653 - action Bot_3 goTo(RoomC1)
+13:47:55,682 - action Bot_1 goTo(RoomA2)
+13:48:03,185 - action Bot_3 goToBlock(46)
+13:48:03,769 - action Bot_3 pickUp
+13:48:03,879 - action Bot_3 goTo(DropZone)
+13:48:05,634 - action Bot_1 goTo(RoomC1)
+13:48:10,196 - action Bot_3 putDown
+13:48:10,334 - action Bot_3 goTo(RoomA3)
+13:48:13,141 - action Bot_1 pickUp
+13:48:13,250 - action Bot_1 goTo(DropZone)
+13:48:19,100 - action Bot_1 putDown
+13:48:19,237 - action Bot_1 goTo(RoomA3)
+13:48:19,464 - action Bot_3 goTo(RoomC1)
+13:48:27,792 - action Bot_3 goTo(RoomB2)
+13:48:28,363 - action Bot_1 goTo(RoomB2)
+13:48:33,636 - action Bot_3 goToBlock(51)
+13:48:33,724 - Bot Bot_1 collided.
+13:48:33,784 - action Bot_1 goTo(RoomB2)
+13:48:34,056 - action Bot_3 pickUp
+13:48:34,169 - action Bot_3 goTo(DropZone)
+13:48:34,570 - Bot Bot_1 collided.
+13:48:34,640 - action Bot_1 goTo(RoomB2)
+13:48:42,811 - action Bot_3 putDown
+13:48:42,947 - action Bot_3 goTo(RoomC1)
+13:48:42,948 - action Bot_1 goTo(RoomC1)
+13:48:48,289 - Bot Bot_1 collided.
+13:48:48,324 - action Bot_1 goTo(RoomC1)
+13:48:48,760 - action Bot_3 goToBlock(44)
+13:48:49,112 - Bot Bot_1 collided.
+13:48:49,160 - action Bot_1 goTo(RoomC1)
+13:48:49,187 - action Bot_3 pickUp
+13:48:49,285 - action Bot_3 goTo(DropZone)
+13:48:49,957 - Bot Bot_1 collided.
+13:48:50,026 - action Bot_1 goTo(RoomC1)
+13:48:55,487 - action Bot_3 putDown
+13:48:55,487 - Time to finish sequence is 36 minutes and 25 seconds
+13:48:55,487 - agentsummary Bot_1 handicaps none
+13:48:55,487 - agentsummary Bot_1 gooddrops 2
+13:48:55,487 - agentsummary Bot_1 wrongdrops 0
+13:48:55,487 - agentsummary Bot_1 nmessage 0
+13:48:55,487 - agentsummary Bot_1 idletime 11.489
+13:48:55,487 - agentsummary Bot_1 nroomsentered 15
+13:48:55,487 - agentsummary Bot_2 handicaps none
+13:48:55,487 - agentsummary Bot_2 gooddrops 0
+13:48:55,487 - agentsummary Bot_2 wrongdrops 0
+13:48:55,487 - agentsummary Bot_2 nmessage 0
+13:48:55,487 - agentsummary Bot_2 idletime 0.0
+13:48:55,487 - agentsummary Bot_2 nroomsentered 0
+13:48:55,487 - agentsummary Bot_3 handicaps none
+13:48:55,487 - agentsummary Bot_3 gooddrops 4
+13:48:55,487 - agentsummary Bot_3 wrongdrops 0
+13:48:55,487 - agentsummary Bot_3 nmessage 0
+13:48:55,487 - agentsummary Bot_3 idletime 4.72
+13:48:55,487 - agentsummary Bot_3 nroomsentered 15
+13:48:55,531 - action Bot_1 goTo(RoomC1)
+13:48:55,655 - total time is 36 minutes and 25 seconds

@@ -1,0 +1,93 @@
+02:15:16,640 - sequence
+02:15:16,640 - room RoomC2 contains blocks:  R G
+02:15:16,640 - room RoomC3 contains blocks:  B Y G
+02:15:16,640 - room RoomC1 contains blocks:  Y P R
+02:15:16,641 - room RoomA1 contains blocks:  O O W W W
+02:15:16,641 - room RoomB2 contains blocks:  R W O Y
+02:15:16,641 - room RoomB1 contains blocks:  G Y
+02:15:16,641 - room RoomB3 contains blocks:  O Y W P O W Y
+02:15:16,641 - room RoomA3 contains blocks:  B
+02:15:16,641 - room RoomA2 contains blocks:  W
+02:15:16,642 - sequence B R W W O B
+02:15:16,892 - action Bot_2 goTo(RoomC1)
+02:15:16,894 - action Bot_3 goTo(RoomC1)
+02:15:17,136 - action Bot_1 goTo(RoomC3)
+02:15:21,769 - Bot Bot_2 collided.
+02:15:21,822 - action Bot_2 goTo(RoomC1)
+02:15:22,143 - action Bot_1 goToBlock(40)
+02:15:22,251 - action Bot_3 goToBlock(45)
+02:15:22,614 - Bot Bot_2 collided.
+02:15:22,642 - action Bot_1 pickUp
+02:15:22,645 - action Bot_2 goTo(RoomC1)
+02:15:22,725 - action Bot_1 goTo(DropZone)
+02:15:22,811 - action Bot_3 pickUp
+02:15:22,922 - action Bot_3 goTo(FrontDropZone)
+02:15:23,451 - Bot Bot_2 collided.
+02:15:23,519 - action Bot_2 goTo(RoomC1)
+02:15:24,818 - action Bot_2 goTo(RoomC2)
+02:15:27,366 - action Bot_2 goTo(RoomB1)
+02:15:28,402 - action Bot_3 goTo(FrontDropZone)
+02:15:28,497 - action Bot_3 goTo(FrontDropZone)
+02:15:28,595 - action Bot_3 goTo(FrontDropZone)
+02:15:28,649 - action Bot_3 goTo(FrontDropZone)
+02:15:28,745 - action Bot_3 goTo(FrontDropZone)
+02:15:28,839 - action Bot_3 goTo(FrontDropZone)
+02:15:28,935 - action Bot_3 goTo(FrontDropZone)
+02:15:28,975 - action Bot_1 putDown
+02:15:28,976 - action Bot_3 goTo(FrontDropZone)
+02:15:29,057 - action Bot_1 goTo(RoomC2)
+02:15:29,058 - action Bot_3 goTo(DropZone)
+02:15:29,466 - Bot Bot_3 collided.
+02:15:29,529 - action Bot_3 goTo(DropZone)
+02:15:30,824 - action Bot_3 putDown
+02:15:30,880 - action Bot_3 goTo(RoomC2)
+02:15:33,207 - action Bot_2 goTo(RoomB2)
+02:15:35,709 - action Bot_1 goTo(RoomB3)
+02:15:35,791 - action Bot_2 goToBlock(52)
+02:15:36,288 - action Bot_2 pickUp
+02:15:36,398 - action Bot_2 goTo(DropZone)
+02:15:37,570 - action Bot_3 goTo(RoomA1)
+02:15:41,572 - action Bot_1 goToBlock(62)
+02:15:41,992 - action Bot_1 pickUp
+02:15:42,100 - action Bot_1 goTo(FrontDropZone)
+02:15:45,072 - action Bot_3 goTo(RoomB2)
+02:15:45,100 - action Bot_2 putDown
+02:15:45,152 - action Bot_2 goTo(RoomB3)
+02:15:49,076 - action Bot_1 goTo(DropZone)
+02:15:49,961 - action Bot_1 putDown
+02:15:50,097 - action Bot_1 goTo(RoomB2)
+02:15:50,926 - action Bot_3 goToBlock(53)
+02:15:51,290 - action Bot_3 pickUp
+02:15:51,385 - action Bot_3 goTo(DropZone)
+02:15:52,611 - action Bot_2 goTo(RoomA3)
+02:15:57,614 - action Bot_2 goToBlock(64)
+02:15:57,940 - action Bot_2 pickUp
+02:15:58,034 - action Bot_2 goTo(FrontDropZone)
+02:15:58,390 - action Bot_1 goTo(RoomA3)
+02:15:59,988 - action Bot_3 putDown
+02:16:00,043 - action Bot_3 goTo(RoomA3)
+02:16:04,241 - action Bot_1 goTo(RoomA2)
+02:16:06,584 - action Bot_2 goTo(DropZone)
+02:16:07,504 - action Bot_2 putDown
+02:16:07,504 - Time to finish sequence is 71 minutes and 18 seconds
+02:16:07,504 - agentsummary Bot_1 handicaps none
+02:16:07,504 - agentsummary Bot_1 gooddrops 2
+02:16:07,504 - agentsummary Bot_1 wrongdrops 0
+02:16:07,504 - agentsummary Bot_1 nmessage 0
+02:16:07,504 - agentsummary Bot_1 idletime 2.511
+02:16:07,504 - agentsummary Bot_1 nroomsentered 8
+02:16:07,504 - agentsummary Bot_2 handicaps none
+02:16:07,504 - agentsummary Bot_2 gooddrops 2
+02:16:07,504 - agentsummary Bot_2 wrongdrops 0
+02:16:07,504 - agentsummary Bot_2 nmessage 0
+02:16:07,504 - agentsummary Bot_2 idletime 2.297
+02:16:07,504 - agentsummary Bot_2 nroomsentered 8
+02:16:07,504 - agentsummary Bot_3 handicaps none
+02:16:07,504 - agentsummary Bot_3 gooddrops 2
+02:16:07,504 - agentsummary Bot_3 wrongdrops 0
+02:16:07,504 - agentsummary Bot_3 nmessage 0
+02:16:07,504 - agentsummary Bot_3 idletime 2.839
+02:16:07,504 - agentsummary Bot_3 nroomsentered 6
+02:16:07,543 - action Bot_1 goTo(RoomA2)
+02:16:07,544 - action Bot_3 goTo(RightHallA)
+02:16:07,667 - total time is 71 minutes and 18 seconds

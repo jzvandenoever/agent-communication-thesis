@@ -1,0 +1,91 @@
+06:36:15,011 - sequence
+06:36:15,011 - room RoomC2 contains blocks:  O B
+06:36:15,011 - room RoomC3 contains blocks:  O G R
+06:36:15,011 - room RoomC1 contains blocks:  Y B R G Y
+06:36:15,011 - room RoomA1 contains blocks:  R B P Y Y
+06:36:15,011 - room RoomB2 contains blocks:  R
+06:36:15,011 - room RoomB1 contains blocks:  O G G W
+06:36:15,011 - room RoomB3 contains blocks:  Y R
+06:36:15,012 - room RoomA3 contains blocks:  G B P
+06:36:15,012 - room RoomA2 contains blocks:  P R B
+06:36:15,012 - sequence R O G G R Y
+06:36:15,095 - action Bot_3 goTo(RoomB1)
+06:36:15,097 - action Bot_1 goTo(RoomB1)
+06:36:15,125 - action Bot_2 goTo(RoomC1)
+06:36:20,499 - action Bot_2 goTo(DropZone)
+06:36:21,643 - Bot Bot_3 collided.
+06:36:21,685 - action Bot_3 goTo(RoomB1)
+06:36:21,781 - action Bot_1 goTo(DropZone)
+06:36:22,995 - action Bot_3 goTo(DropZone)
+06:36:26,345 - action Bot_2 goTo(RoomC1)
+06:36:29,283 - action Bot_1 goTo(RoomB1)
+06:36:30,499 - action Bot_3 goTo(RoomC1)
+06:36:32,194 - action Bot_2 goToBlock(45)
+06:36:32,705 - action Bot_2 pickUp
+06:36:32,778 - action Bot_2 goTo(DropZone)
+06:36:36,355 - action Bot_3 pickUp
+06:36:36,426 - action Bot_3 goTo(FrontDropZone)
+06:36:36,763 - action Bot_1 pickUp
+06:36:36,835 - action Bot_1 goTo(FrontDropZone)
+06:36:39,073 - action Bot_2 putDown
+06:36:39,141 - action Bot_2 goTo(RoomB1)
+06:36:43,500 - action Bot_1 goTo(DropZone)
+06:36:44,032 - action Bot_3 goTo(DropZone)
+06:36:44,407 - action Bot_1 putDown
+06:36:44,442 - Bot Bot_3 collided.
+06:36:44,477 - action Bot_1 goTo(RoomA3)
+06:36:44,479 - action Bot_3 goTo(DropZone)
+06:36:45,759 - action Bot_3 putDown
+06:36:45,826 - action Bot_3 goTo(RoomC2)
+06:36:46,595 - action Bot_2 goToBlock(55)
+06:36:47,110 - action Bot_2 pickUp
+06:36:47,178 - action Bot_2 goTo(DropZone)
+06:36:52,496 - action Bot_3 goTo(DropZone)
+06:36:53,606 - action Bot_1 goTo(DropZone)
+06:36:55,132 - action Bot_2 putDown
+06:36:55,196 - action Bot_2 goTo(RoomA1)
+06:36:59,186 - action Bot_3 goTo(RoomA1)
+06:37:02,740 - action Bot_1 goTo(RoomC3)
+06:37:04,301 - action Bot_2 goTo(DropZone)
+06:37:08,305 - action Bot_3 goTo(DropZone)
+06:37:08,562 - action Bot_1 goTo(DropZone)
+06:37:13,427 - action Bot_2 goTo(RoomC3)
+06:37:14,401 - action Bot_1 goTo(RoomC1)
+06:37:17,455 - action Bot_3 goTo(RoomB3)
+06:37:19,271 - action Bot_2 goToBlock(42)
+06:37:19,662 - action Bot_2 pickUp
+06:37:19,733 - action Bot_2 goTo(DropZone)
+06:37:20,261 - action Bot_1 goToBlock(43)
+06:37:20,613 - action Bot_1 pickUp
+06:37:20,683 - action Bot_1 goTo(FrontDropZone)
+06:37:24,984 - action Bot_3 goTo(DropZone)
+06:37:25,917 - action Bot_2 putDown
+06:37:25,983 - action Bot_2 goTo(RoomA2)
+06:37:25,985 - action Bot_1 goTo(DropZone)
+06:37:26,394 - Bot Bot_1 collided.
+06:37:26,457 - action Bot_1 goTo(DropZone)
+06:37:27,744 - action Bot_1 putDown
+06:37:27,744 - Time to finish sequence is 234 minutes and 57 seconds
+06:37:27,744 - agentsummary Bot_1 handicaps none
+06:37:27,744 - agentsummary bbot gooddrops 2
+06:37:27,745 - agentsummary bbot wrongdrops 0
+06:37:27,745 - agentsummary bbot nmessage 0
+06:37:27,745 - agentsummary bbot idletime 2.431
+06:37:27,745 - agentsummary bbot nroomsentered 10
+06:37:27,745 - agentsummary Bot_2 handicaps none
+06:37:27,745 - agentsummary bbot_328 gooddrops 3
+06:37:27,745 - agentsummary bbot_328 wrongdrops 0
+06:37:27,745 - agentsummary bbot_328 nmessage 0
+06:37:27,745 - agentsummary bbot_328 idletime 2.633
+06:37:27,745 - agentsummary bbot_328 nroomsentered 10
+06:37:27,745 - agentsummary Bot_3 handicaps none
+06:37:27,745 - agentsummary bbot_329 gooddrops 1
+06:37:27,745 - agentsummary bbot_329 wrongdrops 0
+06:37:27,745 - agentsummary bbot_329 nmessage 0
+06:37:27,745 - agentsummary bbot_329 idletime 4.894
+06:37:27,745 - agentsummary bbot_329 nroomsentered 9
+06:37:27,812 - action Bot_1 goTo(FrontDropZone)
+06:37:32,444 - action Bot_3 goTo(FrontDropZone)
+06:37:35,899 - action Bot_2 goTo(DropZone)
+06:37:45,814 - action Bot_2 goTo(FrontDropZone)
+06:37:46,380 - total time is 235 minutes and 15 seconds

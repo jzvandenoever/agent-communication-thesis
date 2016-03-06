@@ -1,0 +1,91 @@
+08:27:18,711 - sequence
+08:27:18,711 - room RoomC2 contains blocks:  P
+08:27:18,711 - room RoomC3 contains blocks:  Y W Y
+08:27:18,711 - room RoomC1 contains blocks:  P O
+08:27:18,711 - room RoomA1 contains blocks:  P P
+08:27:18,712 - room RoomB2 contains blocks:  W O P O W
+08:27:18,712 - room RoomB1 contains blocks:  G Y P
+08:27:18,712 - room RoomB3 contains blocks:  P Y B O Y
+08:27:18,712 - room RoomA3 contains blocks:  P Y Y
+08:27:18,712 - room RoomA2 contains blocks:  O P P P
+08:27:18,712 - sequence W P P P O P
+08:27:18,792 - action Bot_2 goTo(RoomA1)
+08:27:18,794 - action Bot_1 goTo(RoomB3)
+08:27:18,823 - action Bot_3 goTo(RoomA2)
+08:27:25,433 - action Bot_1 goTo(DropZone)
+08:27:27,448 - action Bot_2 goTo(DropZone)
+08:27:28,300 - action Bot_3 goTo(DropZone)
+08:27:32,919 - action Bot_1 goTo(RoomC1)
+08:27:36,551 - action Bot_2 goTo(RoomC2)
+08:27:38,236 - action Bot_3 goTo(RoomB2)
+08:27:38,768 - action Bot_1 goTo(DropZone)
+08:27:43,210 - action Bot_2 goTo(DropZone)
+08:27:44,596 - action Bot_1 goTo(RoomB2)
+08:27:46,542 - action Bot_3 goTo(DropZone)
+08:27:49,859 - action Bot_2 goTo(RoomB2)
+08:27:52,899 - action Bot_1 goTo(DropZone)
+08:27:54,852 - action Bot_3 goTo(RoomC2)
+08:27:58,169 - action Bot_2 goToBlock(46)
+08:27:58,635 - action Bot_2 pickUp
+08:27:58,705 - action Bot_2 goTo(DropZone)
+08:28:01,229 - action Bot_1 goTo(RoomC1)
+08:28:01,523 - action Bot_3 goToBlock(38)
+08:28:01,952 - action Bot_3 pickUp
+08:28:02,020 - action Bot_3 goTo(FrontDropZone)
+08:28:07,070 - action Bot_1 goToBlock(42)
+08:28:07,395 - action Bot_2 putDown
+08:28:07,462 - action Bot_2 goTo(RoomA1)
+08:28:07,599 - action Bot_1 pickUp
+08:28:07,669 - action Bot_1 goTo(FrontDropZone)
+08:28:08,172 - action Bot_3 goTo(DropZone)
+08:28:09,054 - action Bot_3 putDown
+08:28:09,124 - action Bot_3 goTo(RoomC1)
+08:28:13,120 - action Bot_1 goTo(DropZone)
+08:28:14,032 - action Bot_1 putDown
+08:28:14,098 - action Bot_1 goTo(RoomA1)
+08:28:14,958 - action Bot_3 goToBlock(43)
+08:28:15,390 - action Bot_3 pickUp
+08:28:15,458 - action Bot_3 goTo(FrontDropZone)
+08:28:16,597 - action Bot_2 pickUp
+08:28:16,666 - action Bot_2 goTo(DropZone)
+08:28:23,198 - action Bot_1 goToBlock(45)
+08:28:23,587 - action Bot_1 pickUp
+08:28:23,656 - action Bot_1 goTo(FrontDropZone)
+08:28:25,401 - action Bot_3 goTo(DropZone)
+08:28:25,780 - action Bot_2 putDown
+08:28:25,815 - Bot Bot_3 collided.
+08:28:25,849 - action Bot_2 goTo(RoomA3)
+08:28:25,851 - action Bot_3 goTo(DropZone)
+08:28:27,123 - action Bot_3 putDown
+08:28:27,190 - action Bot_3 goTo(RoomC3)
+08:28:33,061 - action Bot_3 goTo(DropZone)
+08:28:34,971 - action Bot_2 goTo(DropZone)
+08:28:38,533 - action Bot_1 goTo(DropZone)
+08:28:38,905 - action Bot_3 goTo(RoomB1)
+08:28:38,940 - Bot Bot_1 collided.
+08:28:38,988 - action Bot_1 goTo(DropZone)
+08:28:40,305 - action Bot_1 putDown
+08:28:40,305 - Time to finish sequence is 390 minutes and 23 seconds
+08:28:40,305 - agentsummary Bot_1 handicaps none
+08:28:40,305 - agentsummary bbot gooddrops 2
+08:28:40,305 - agentsummary bbot wrongdrops 0
+08:28:40,305 - agentsummary bbot nmessage 0
+08:28:40,305 - agentsummary bbot idletime 8.845
+08:28:40,305 - agentsummary bbot nroomsentered 10
+08:28:40,305 - agentsummary Bot_2 handicaps none
+08:28:40,305 - agentsummary bbot_346 gooddrops 2
+08:28:40,305 - agentsummary bbot_346 wrongdrops 0
+08:28:40,305 - agentsummary bbot_346 nmessage 0
+08:28:40,305 - agentsummary bbot_346 idletime 2.441
+08:28:40,305 - agentsummary bbot_346 nroomsentered 9
+08:28:40,305 - agentsummary Bot_3 handicaps none
+08:28:40,305 - agentsummary bbot_347 gooddrops 2
+08:28:40,306 - agentsummary bbot_347 wrongdrops 0
+08:28:40,306 - agentsummary bbot_347 nmessage 0
+08:28:40,306 - agentsummary bbot_347 idletime 7.415
+08:28:40,306 - agentsummary bbot_347 nroomsentered 10
+08:28:40,375 - action Bot_1 goTo(FrontDropZone)
+08:28:44,053 - action Bot_2 goTo(FrontDropZone)
+08:28:46,349 - action Bot_3 goTo(DropZone)
+08:28:53,782 - action Bot_3 goTo(FrontDropZone)
+08:28:54,339 - total time is 390 minutes and 37 seconds

@@ -1,0 +1,47 @@
+07:00:34,325 - sequence
+07:00:34,326 - room RoomC2 contains blocks:  G P P
+07:00:34,326 - room RoomC3 contains blocks:  Y G W O
+07:00:34,326 - room RoomC1 contains blocks:  B B O W
+07:00:34,326 - room RoomA1 contains blocks:  O G R
+07:00:34,326 - room RoomB2 contains blocks:  O R O
+07:00:34,326 - room RoomB1 contains blocks:  W
+07:00:34,326 - room RoomB3 contains blocks:  Y Y R R R
+07:00:34,326 - room RoomA3 contains blocks:  B
+07:00:34,326 - room RoomA2 contains blocks:  R Y G B
+07:00:34,326 - sequence R Y G O Y P
+07:00:34,413 - action Bot_1 goTo(DropZone)
+07:00:34,415 - action Bot_2 goTo(DropZone)
+07:00:34,443 - action Bot_3 goTo(DropZone)
+07:00:35,191 - Bot Bot_2 collided.
+07:00:35,211 - Bot Bot_3 collided.
+07:00:35,241 - action Bot_2 goTo(DropZone)
+07:00:35,256 - action Bot_3 goTo(DropZone)
+07:00:35,311 - action Bot_1 goTo(RoomC3)
+07:00:36,061 - Bot Bot_3 collided.
+07:00:36,115 - action Bot_3 goTo(DropZone)
+07:00:36,518 - action Bot_2 goTo(RoomC2)
+07:00:36,910 - Bot Bot_3 collided.
+07:00:36,977 - action Bot_3 goTo(DropZone)
+07:00:38,291 - action Bot_3 goTo(RoomC1)
+07:00:41,130 - action Bot_1 goTo(RoomB3)
+07:00:43,170 - action Bot_2 goTo(RoomB2)
+07:00:44,159 - action Bot_3 goTo(RoomB1)
+07:00:46,179 - action Bot_1 pickUp
+07:00:46,246 - action Bot_1 goTo(DropZone)
+07:00:49,199 - action Bot_3 goTo(RoomC3)
+07:00:49,846 - action Bot_2 goTo(RoomC2)
+07:00:53,712 - action Bot_1 putDown
+07:00:53,781 - action Bot_1 goTo(RoomC3)
+07:00:55,871 - action Bot_3 goToBlock(41)
+07:00:56,424 - action Bot_3 pickUp
+07:00:56,493 - action Bot_3 goTo(DropZone)
+07:00:56,495 - action Bot_2 pickUp
+07:00:56,568 - action Bot_2 goTo(FrontDropZone)
+07:00:59,633 - action Bot_1 goToBlock(44)
+07:01:00,064 - action Bot_1 pickUp
+07:01:00,133 - action Bot_1 goTo(FrontDropZone)
+07:01:02,797 - action Bot_3 putDown
+07:01:02,865 - action Bot_3 goTo(RoomB3)
+07:01:10,323 - action Bot_3 pickUp
+07:01:10,393 - action Bot_3 goTo(FrontDropZone)
+07:02:34,610 - total time is 405 minutes and 50 seconds

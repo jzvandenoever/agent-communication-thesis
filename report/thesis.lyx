@@ -1,0 +1,2188 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\listings_params "breaklines=true,frame=single,language=Prolog,numbers=left"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Thesis
+\end_layout
+
+\begin_layout Author
+Joris Z.
+ van den Oever
+\end_layout
+
+\begin_layout Abstract
+To be written
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Section
+Problem Statement
+\end_layout
+
+\begin_layout Standard
+Robotic systems have been getting more mobile and prevalent in recent years.
+ And with that comes new possibilities and uses.
+ One project trying to take advantage of this is the TRADR project, Long-Term
+ Human-Robot Teaming for Robot-Assisted Disaster Response
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruijff2015tradr"
+
+\end_inset
+
+.
+ It aims to create teams of robots and humans that work together to provide
+ incidence response.
+ Research into robot team communication is what prompted this research.
+\end_layout
+
+\begin_layout Standard
+Autonomous robots in in disaster areas, including the industrial areas given
+ by the TRADR use cases, need to be able to cooperate amongst themselves
+ and with humans
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kruijff2015tradr"
+
+\end_inset
+
+.
+ However because of the mobile nature of such robots this raises new questions
+ about what happens when communication becomes unreliable.
+ Wireless signals may not reach everywhere
+\begin_inset CommandInset citation
+LatexCommand cite
+key "micheli2015measurement,cisco"
+
+\end_inset
+
+ and wired communication isn't generally feasible when staying mobile.
+\end_layout
+
+\begin_layout Standard
+This requires us to look closer at the effects of having communication fail.
+ While it is easy to presume that this will have undersired effects it is
+ hard to predict what effects that will be.
+ Only once these effects, if they exist, have been measured we can look
+ at potential mitigation strategies.
+ And of course determine their effectiveness.
+\end_layout
+
+\begin_layout Subsection
+Research Questions
+\end_layout
+
+\begin_layout Standard
+To this end we will provide answers to the following questions:
+\end_layout
+
+\begin_layout Itemize
+What are the effects of communication failure of multi-agent team effectiveness?
+\end_layout
+
+\begin_layout Itemize
+If there are negative effects to the effectiveness, how can we mitigate
+ these effects?
+\end_layout
+
+\begin_layout Standard
+Here we define a single instance communication failure as the recipient
+ not having a message that the sender meant for it to have.
+ Irregardless of where in the transmission process the failure occured,
+ e.g.
+ while sending or receiving.
+ And effectiveness is both the rate of task completion, and the time taken
+ to complete the task.
+\end_layout
+
+\begin_layout Subsection
+Research approach
+\end_layout
+
+\begin_layout Standard
+To gather the data we will create simulations of agent teams enduring communicat
+ion failure.
+ How this is set up exactly is descriped in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Experiment-Design"
+
+\end_inset
+
+.
+ The differences will be used to see if the effects differ depending on
+ how the communication fails and how well different agent strategies deal
+ with the failure.
+ This will all be simulated as it allows for stricter control of the experimenta
+l dimensions in addition to making it easier to perform a large amount experimen
+t runs for each scenario.
+ Afterwards the results of the simulations can be compared to baselines
+ where no communication failure is happening to answer the first research
+ question.
+ Then based on the data we can see where the effects are strongest, and
+ if there are agents that work well in different situations.
+ From these we can identify potential mitigation strategies.
+ Which can be simulated in the same scenarios as before to compare their
+ effectiveness and answer the second question.
+\end_layout
+
+\begin_layout Standard
+The gathered data will be analysed using Chi square analysis to determine
+ if the results are significantly different from the reference data.
+ This will give us two analyses using both the one agent team baseline and
+ the no communication team.
+ This comparison we will only look at the rate of task completion within
+ the timeout period.
+ 
+\end_layout
+
+\begin_layout Standard
+If this shows there are indeed significant differences we can look for the
+ effect the different communication failure scenarios on task completion
+ time.
+ As a first step regression analysis can see if there is an effect using
+ both the type of team, size of the team, and the failure scenarios as independe
+nt variables.
+ Pending determination on if they have a signicant effect on the task completion
+ rate.
+ As an additional analysis to if there is a difference in how the different
+ team types are affected each team type will have a separate regression
+ analysis using the team size and failure scenarios.
+ The same analysis will be done using the task completion time as the dependent
+ variable.
+\end_layout
+
+\begin_layout Section
+Experiment Design
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Experiment-Design"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To determine the effects of communication failure, if any, on multi-agent
+ systems we will use a well explored domain for multi-agents systems.
+ The Blocks World for Teams GOAL environment as this is well defined and
+ thoroughly explored system for doing research on multi-agent systems.(references
+) The basic concept is that an agent, or multiple agents, have to bring
+ blocks to a certain place, the dropzone in a specific order.
+ The blocks are distinguished by color only so any block that is the right
+ color will suffice.
+ These blocks are found in rooms that have one entrance from the hallway
+ spaces.
+ While that is the basic scenario it has built in several option for adjusting
+ various environment variables such as the room placement
+\end_layout
+
+\begin_layout Subsection*
+Experiment Dimensions
+\end_layout
+
+\begin_layout Standard
+However it is not just the room placement that can be varied.
+ We have categorised the variables involved in the above mentioned experimental
+ setup.
+ Each categorgy has multiple dimensions as shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:experiment dimensions"
+
+\end_inset
+
+ and will be discussed in more detail.
+\end_layout
+
+\begin_layout Standard
+The environment is mainly the way the experiment world is constructed, how
+ many hallways and where, and the placement of the rooms, but also includes
+ the block sequence and agent collisions.
+\end_layout
+
+\begin_layout Standard
+Second is the agents and their teams themselves.
+ The team size can be adjusted, limited by the amount of computing power
+ available.
+ Though world limitations, such as only one agent can enter a room at a
+ time, might limit the effectiveness of a team larger than the amount of
+ rooms available or than there are blocks in the sequence.
+ Once you have a team you can consider team composition.
+ Are all agents the same or do they have different programs.
+ Finally, what kind of programs do the agents run with.
+ Minimal programs, full coordination, what kind of data do they share, which
+ resolution strategies are used, there is an almost infinite amount of possibili
+ties here.
+\end_layout
+
+\begin_layout Standard
+Finally there is the communication and how it can fail.
+ Does the sending or receiving fail, and if it does fail is it a fixed percentag
+e of messages that fails? Of does the failure rate increase over time? is
+ the message more likely to fail if the receipient is further away? Those
+ are several ways the failure of messages can be done.
+ Finally there is something to consider regarding communicating itself.
+ Do the global percepts provided by the environment always arrive? Since
+ they include things like when a block is delivered at the dropzone.
+ This could effectively be a side-channel for certain kinds of messages
+ that always succeeeds.
+ So the agents can not use it and have to distribute such information through
+ the normal channels.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+World size and room placement
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Block sequence
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(No) Agent collisions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agents
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Team size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hetero-/homogenous teams
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agent type
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Communication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Send/receiving failure
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Failure chance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(No) global percepts
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:experiment dimensions"
+
+\end_inset
+
+Experiment Dimensions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Experiment reduction
+\end_layout
+
+\begin_layout Standard
+The above mentioned experiment dimensions have too many options to realistically
+ test everything.
+ However we have evaluated all of them to see where the dimensions can be
+ reduced so it only requires a manageable amount of simulations.
+ The dimensions are discussed grouped by category as given by table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:experiment dimensions"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Environment
+\end_layout
+
+\begin_layout Standard
+The size and shape of the world the agents move around in for example can
+ be kept consistent and seen as outside of the scope for these experiments.
+ As that would be looking at the effects of the environment on communication
+ failure.
+ As such only one map design will be used across the experiments.
+ 
+\end_layout
+
+\begin_layout Standard
+However switching the sequence between random and only one colour is still
+ a possibility left to us.
+ However all the same colour, would eliminate the need to communicate about
+ where in the sequence the team is.
+ Which, for some types of agents, is the only thing communicated.
+ As such using random, where it can not be assumed the communication isn't
+ needed, is the preferred case.
+ While the simplicity that can be assumed with just one colour might help
+ in building the agents the increased communication if that isn't the case
+ is preferred.
+\end_layout
+
+\begin_layout Subsubsection*
+Agents
+\end_layout
+
+\begin_layout Standard
+Limiting the number of sizes used for the agent teams would drastically
+ reduce the experiment space as well.
+ And not all sizes need to be tested to get a sense of the effects, if there
+ is one, communication failures might have.
+ The case of having only one agent, would not need a lot of experimentation
+ as there is nothing to communicate with, however it will still be useful
+ to do once as a baseline reference.
+ Next, using a size sample of three agents will be useful to test, as this
+ is the minimum amount of agents needed to have a team where it is possible
+ to communicate with more than one agent at the same time.
+ Which is needed for some communication failure modes to matter.
+ Next would be five agents, as this is a larger group, but is also just
+ a bit more than half the amount of rooms available in the default map setup
+ and one less than the amount of blocks needed in the sequence.
+ This means the way tasks get divided amongst agents becomes important.
+ As not every agent can continue exploring after just one set of rooms.
+ As well as increasing the amount of agents involved in communicating.
+ The next step should not go too far, as experience with the environment
+ has shown that 10 agents start to tax the hardware and might degrade the
+ simulation.
+ But looking at a group with a size close to the amount of rooms available
+ will be interesting to see how that influences the behaviour.
+ As such going one agent fewer than the amount of rooms in the standard
+ setup, eight, has been chosen as the last group size.
+\end_layout
+
+\begin_layout Standard
+All these agent teams still need a team composition.
+ While they could have different programs, this might introduce higher order
+ effects that would make analysis more complicated, as well as requiring
+ a lot more simulations.
+ While these effects might be interesting, determining the effects, if any,
+ in the simple case takes priority.
+ So in the interest of limiting the time spent with simulations, and analyzing
+ homogenous agent teams will be used.
+ 
+\end_layout
+
+\begin_layout Standard
+But that still leaves options for varying the teams themselves, though they
+ will all have similar components as shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Agent-types"
+
+\end_inset
+
+.
+ These agent programs are chosen from all possibilities because they are
+ simple, build upon each other, and let us explore what happens with differing
+ degrees of communication.
+\end_layout
+
+\begin_layout Standard
+To properly compare the teams baselines are needed.
+ The simplest baseline is a single agent exploring rooms and delivering
+ blocks as soon as it finds the currently needed block.
+ This will let us evaluate how teams perform compared to a single agent,
+ even with the communication failure.
+ This is then used to make the team baseline, which only communicates which
+ blocks have been delivered.
+ A third team will also communicate which blocks can be found in rooms they
+ explore.
+\end_layout
+
+\begin_layout Standard
+From here the agent types branch out into two types that differ in their
+ coordination strategies.
+ The agents will coordinate their actions to see who is best suited to do
+ what task at any given moment.
+ But the way they coordinate differs, one team asks first if they can do
+ something, before conflict resolution happens if needed.
+ The other team starts doing a task, and then verifies that nobody else
+ is doing it, before going to conflict resolution.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename agent types.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Agent-types"
+
+\end_inset
+
+Agent types, each agent team has the capabilities of the previous one in
+ the graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Communication
+\end_layout
+
+\begin_layout Standard
+For the experiment it is pretty important to figure out what kind of communicati
+on failure is going to be tested.
+ The simplest of which is to test the difference between sending failure
+ and receiving failure.
+ As sending failure means that if a message fails no agent gets it but receiving
+ failure means that some part of the team may receive it.
+ So both options will be tested.
+\end_layout
+
+\begin_layout Standard
+This can be done with various ways of determining the likelihood that a
+ message will fail.
+ For reference each team will also do simulations without communication
+ failure, meaning 
+\begin_inset Formula $0\%$
+\end_inset
+
+.
+ To get insight into how different amounts of failure affect performance
+ using set percetages is very useful.
+ This will be a spread from 
+\begin_inset Formula $0$
+\end_inset
+
+ to a
+\begin_inset Formula $100\%$
+\end_inset
+
+.
+ To limit the amount of runs needed 
+\begin_inset Formula $25\%$
+\end_inset
+
+ increments will be used initially.
+ However all communication and no communication could have different results
+ from only a little or a lot of communication 
+\begin_inset Formula $5\%$
+\end_inset
+
+ and 
+\begin_inset Formula $95\%$
+\end_inset
+
+ will be tested as well.
+ Making the complete range of tested percentages 
+\begin_inset Formula $0,5,25,50,75,95,$
+\end_inset
+
+ and 
+\begin_inset Formula $100\%$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, how are global percepts treated.
+ These function similar to a second, infallible communication channel.
+ As this is all about testing the effects of communication failure these
+ will be ignored.
+ Instead for the current state of the sequence has to be communicated.
+ But to prevent complete breakdown given the fixed percentage failures the
+ agents can still see the state of the sequence when they enter the dropzone.
+ Allowing for some corrections as preliminary testing with already existing
+ agents has shown that without the correction programs break down fast.
+ Even a 
+\begin_inset Formula $5\%$
+\end_inset
+
+ failure can cut the amount of successful runs in half.
+ An overview of these results can be found in table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:prelim-success"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Analysis
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:com-effects-succes-fail"
+
+\end_inset
+
+ gives us an overview of what was expected to happen in the various scenarios.
+ While even the guaranteed successful scenarios might not finish within
+ the timeframe given for the experiments they should more often do so than
+ in scenarios where success might not always be possible.
+ In these cases different strategies can be compared for how much they slow
+ down compared to the reference and what the major causes for slowdown are.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Success Guaranteed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Could fail
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sequenceUpdate broadcast fails: wrong blocks delivered and lost
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+room/block information broadcast fails: slows down
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agent Intention Broadcast: slows down
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agent plan negotiation message failure: Might wait for permission forever
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:com-effects-succes-fail"
+
+\end_inset
+
+Table of the effects communication failure might have.
+ On the left success is guaranteed if given time.
+ On the right situations may arise where success is no longer possible.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mitigation Strategies
+\end_layout
+
+\begin_layout Section
+Future Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "thesis"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Goal Agents Source
+\end_layout
+
+\begin_layout Standard
+The agent teams each have their own main module.
+ However a lot of the other modules are shared as they share capabilities.
+ First the different agents are detailed.
+ Then the shared modules and knowledge.
+\end_layout
+
+\begin_layout Subsection
+No Communication Agent
+\end_layout
+
+\begin_layout Standard
+This agent does not communicate and serves as the basis for both the single
+ agent team and the no communication multiple agents team.
+ The only difference between the two is the amount of agents instantiated
+ by the .mas file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+use robot as knowledge.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+use robot as actionspec.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+use updateSequence as module.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+exit=nogoals.
+\end_layout
+
+\begin_layout Plain Layout
+
+module main { 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	%drop blocks in the dropzone when they are needed, and communicate this.
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel(in('DropZone'), holdingNextBlock) then putDown + updateSequence.
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	%drop blocks in rooms when they are not needed anymore
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel(in(Loc),Loc
+\backslash
+='DropZone', not(holdingNextBlock)) then putDown.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	%go to goal places
+\end_layout
+
+\begin_layout Plain Layout
+
+	if a-goal(in(Place)) then goTo(Place).
+ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	%go to goal blocks
+\end_layout
+
+\begin_layout Plain Layout
+
+	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place), not(atBlock
+(BlockID))) then goToBlock(BlockID).
+ 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	%pickup goal blocks 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	if a-goal(holding(BlockID)), bel(atBlock(BlockID)) then pickUp.		 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+robotEvents.mod2g
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+use robot as knowledge.
+\end_layout
+
+\begin_layout Plain Layout
+
+use robotGoals as module.
+\end_layout
+
+\begin_layout Plain Layout
+
+use updateSequence as module.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+module robotEvents {
+\end_layout
+
+\begin_layout Plain Layout
+
+	%-------communication updates & conclusions about other agents-------
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall bel( send('allother', Y) ) do allother.send(msg(Y)) + delete(send('alloth
+er', Y)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% deduce information based on deliveries of other agents:
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall (Agt).sent(msg('deliveryDone')) do updateSequence.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Update the agent's state of movement.
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall bel( state(State)), percept(state(NewState)) do delete( state(State)
+ ) + insert( state(NewState) ).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Record when we are entering or leaving a room.
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(in(Place)) do insert( in(Place) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(in(Place)), bel( not(visited(Place)), room(Place) ) do insert(
+ visited(Place) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(not(in(Place))) do delete( in(Place)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Discover new blocks
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(color(BlockID, ColorID)), bel( in(Place), not(block(BlockID,
+ ColorID, Place)) ) do insert( block(BlockID, ColorID, Place) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Record atblock location of agent
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(atBlock(BlockID)) do insert(atBlock(BlockID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(not(atBlock(BlockID))) do delete(atBlock(BlockID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Record if a block is being held
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(holding(BlockID)) do insert(holding(BlockID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(not(holding(BlockID))) do delete(holding(BlockID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	%remove blocks that are not held or in the room anymore
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall bel(in(Place), block(BlockID, ColorID, Place), not(holding(BlockID))),
+ not(percept(color(BlockID, ColorID))) do delete(block(BlockID, ColorID,
+ Place)).
+\end_layout
+
+\begin_layout Plain Layout
+
+			
+\end_layout
+
+\begin_layout Plain Layout
+
+	%remove blocks that are not held or in the room anymore
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall bel(in(Place), block(BlockID, ColorID, Place), not(holding(BlockID))),
+  not(percept(color(BlockID, ColorID))) do delete(block(BlockID, ColorID,
+ Place)).
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Update sequence when in dropzone.
+\end_layout
+
+\begin_layout Plain Layout
+
+	if percept(sequenceIndex(X)), bel(sequenceIndex(OldX)) then delete(sequenceInde
+x(OldX)) + insert(sequenceIndex(X)).
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel( in('DropZone'), seqDone(Seq), length(Seq, N), sequenceIndex(X),
+ N < X ,  sequence(NewSeq), length(NewSeq, X), append(NewSeq, _, Full) )
+ then delete( seqDone(Seq) ) + insert( seqDone(NewSeq) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	%remove obsolete goals
+\end_layout
+
+\begin_layout Plain Layout
+
+	if goal(holding(BlockID)), bel(not(block(BlockID, ColorID, Place))) then
+ drop(holding(BlockID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	%adopt new goals (and stop traveling)
+\end_layout
+
+\begin_layout Plain Layout
+
+	if not(goal(in(Place))), goal(seqDone(_)) then adoptgoals.
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Common Code
+\end_layout
+
+\begin_layout Standard
+robot.act2g:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+use robot as knowledge.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% The goTo action makes the agent move to a place (location) in the BW4T
+ environment.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+% As long as the agent has not arrived at the place it is going to, it will
+ be in "traveling" mode.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+define goTo(Location) with
+\end_layout
+
+\begin_layout Plain Layout
+
+	pre { not(state(traveling)) }
+\end_layout
+
+\begin_layout Plain Layout
+
+	post { true }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% goToBlock only when not traveling and in a room 
+\end_layout
+
+\begin_layout Plain Layout
+
+define goToBlock(BlockID) with
+\end_layout
+
+\begin_layout Plain Layout
+
+    pre {in(_), not(state(traveling)) }
+\end_layout
+
+\begin_layout Plain Layout
+
+	post { true }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% pickUp can only be performed when not holding a block 
+\end_layout
+
+\begin_layout Plain Layout
+
+define pickUp with
+\end_layout
+
+\begin_layout Plain Layout
+
+	pre{not(state(traveling)), not(holding(_))}
+\end_layout
+
+\begin_layout Plain Layout
+
+	post{ true }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% putDown can only be performed when holding a block 
+\end_layout
+
+\begin_layout Plain Layout
+
+define putDown with
+\end_layout
+
+\begin_layout Plain Layout
+
+	pre{not(state(traveling)), holding(_)}
+\end_layout
+
+\begin_layout Plain Layout
+
+	post{ true } 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+UpdateSequence.mod2g
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+use robot as knowledge.
+ order=linearall.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+module updateSequence{
+\end_layout
+
+\begin_layout Plain Layout
+
+	%update sequence 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel(seqDone(SDone), nextNeededColor(ColorID), append(SDone,[ColorID],NewSDon
+e) ) then delete(seqDone(SDone)) + insert(seqDone(NewSDone)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	%remove beliefs about the delivered block (if this agent was delivering
+ it)
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel(in('DropZone'), holding(BlockID), block(BlockID, ColorID, Place))
+ then delete(block(BlockID, ColorID, Place)).
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+robotGoals.mod2g
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+use robot as knowledge.
+ order=linear.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+module adoptgoals{
+\end_layout
+
+\begin_layout Plain Layout
+
+	%If holding the next needed block go to the dropzone.
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel( holding(BlockID), nextNeededColor(ColorID), block(BlockID, ColorID,
+ _)) then adopt(in('DropZone')).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	%Otherswise, If the next needed block is known then adopt a goal to go
+ there and hold it.
+\end_layout
+
+\begin_layout Plain Layout
+
+ 	if bel( nextNeededColor(ColorID), block(BlockID, ColorID, Place)) then
+ adopt(in(Place),holding(BlockID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	%Otherwise go to a random room we haven't seen yet'.
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel( not(finished), bagof(Place, (room(Place), not(dropZone(Place))),
+ Places), random_member(Dest, Places) ) then adopt(in(Dest)).
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+robotInit.mod2g
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+use robot as knowledge.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+module robotInit {
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Store map information, i.e., navigation points in the agent's belief base.
+\end_layout
+
+\begin_layout Plain Layout
+
+	forall percept(zone(ID, Name, X, Y, Neighbours)) do insert( zone(ID, Name,
+ X, Y, Neighbours) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Record the initial state of movement in belief base.
+\end_layout
+
+\begin_layout Plain Layout
+
+	if percept(state(State)) then insert( state(State) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Record goal sequence
+\end_layout
+
+\begin_layout Plain Layout
+
+	if percept( sequence(Seq) ) then insert(sequence(Seq), seqDone([])) + 
+ adopt(seqDone(Seq)).
+\end_layout
+
+\begin_layout Plain Layout
+
+	if percept( sequenceIndex(X) ) then insert( sequenceIndex(X) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	% Adopt initial goal going to a random place
+\end_layout
+
+\begin_layout Plain Layout
+
+	if bel(room(PlaceID), PlaceID
+\backslash
+='DropZone') then adopt(in(PlaceID)).
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Preliminary research data
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="10">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agents
+\backslash
+chance of failure
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+reference
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cuttoff
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+distance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% send failure
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Blockbuster Mincom
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+193
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+101
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+109
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+98
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+74
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64*
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+63
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Blockbuster dzone only
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+199
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+98
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Blockbuster all room
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+190
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+85
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+52
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+38
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60*
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum Coordination
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+188
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+168
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+182
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+182
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+162
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+138
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:prelim-success"
+
+\end_inset
+
+The amount of successes over 200 runs per agent per failure mode.
+ All agent and failure mode combinations resulted in a chi square 
+\begin_inset Formula $p<0.01$
+\end_inset
+
+ except for Coordination at 5%(
+\begin_inset Formula $p\thickapprox0.07)$
+\end_inset
+
+ The entries marked with * have been performed with fewer than 200 runs
+ and scaled up to the same amount so less accurate.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

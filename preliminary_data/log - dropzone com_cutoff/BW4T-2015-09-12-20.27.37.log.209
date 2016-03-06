@@ -1,0 +1,39 @@
+00:00:30,954 - sequence
+00:00:30,954 - room RoomC2 contains blocks:  Y G B
+00:00:30,955 - room RoomC3 contains blocks:  Y P B G Y P R
+00:00:30,955 - room RoomC1 contains blocks:  W O W G
+00:00:30,955 - room RoomA1 contains blocks:  Y G
+00:00:30,955 - room RoomB2 contains blocks:  R O
+00:00:30,955 - room RoomB1 contains blocks:  W B P
+00:00:30,955 - room RoomB3 contains blocks:  R P R
+00:00:30,955 - room RoomA3 contains blocks:  R W B
+00:00:30,955 - room RoomA2 contains blocks:  G
+00:00:30,955 - sequence Y W P Y R B
+00:00:31,093 - action Bot_1 goTo(RoomC3)
+00:00:31,121 - action Bot_2 goTo(RoomB1)
+00:00:31,144 - action Bot_3 goTo(RoomB2)
+00:00:36,146 - action Bot_1 goTo(DropZone)
+00:00:38,196 - action Bot_2 goTo(DropZone)
+00:00:39,078 - action Bot_3 goTo(DropZone)
+00:00:42,043 - action Bot_1 goTo(RoomC3)
+00:00:45,758 - action Bot_2 goTo(RoomB1)
+00:00:47,494 - action Bot_3 goTo(RoomC3)
+00:00:47,942 - action Bot_1 goToBlock(41)
+00:00:48,442 - action Bot_1 pickUp
+00:00:48,526 - action Bot_1 goTo(DropZone)
+00:00:53,312 - action Bot_2 pickUp
+00:00:53,388 - action Bot_2 goTo(FrontDropZone)
+00:00:53,389 - action Bot_3 goToBlock(42)
+00:00:53,893 - action Bot_3 pickUp
+00:00:53,970 - action Bot_3 goTo(FrontDropZone)
+00:00:54,824 - action Bot_1 putDown
+00:00:54,910 - action Bot_1 goTo(RoomC3)
+00:01:00,139 - action Bot_2 goTo(DropZone)
+00:01:00,840 - action Bot_1 goToBlock(45)
+00:01:01,052 - action Bot_2 putDown
+00:01:01,131 - action Bot_2 goTo(RoomC3)
+00:01:01,352 - action Bot_1 pickUp
+00:01:01,426 - action Bot_1 goTo(FrontDropZone)
+00:01:07,124 - action Bot_2 pickUp
+00:01:07,202 - action Bot_2 goTo(FrontDropZone)
+00:02:31,245 - total time is 214 minutes and 47 seconds

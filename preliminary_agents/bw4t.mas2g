@@ -1,0 +1,17 @@
+environment{
+	env = "bw4t-client-3.8.1.jar" .
+	% insert proper initialization parameters and values on the next line, or remove it.
+	init = [agentcount = "3", humancount = "0", launchgui = "false", goal = "true", map="Random"] .
+	
+}
+
+agentfiles{
+	% insert (list of) agent file references below.
+	"agent.goal" [name = agent] .
+}
+
+launchpolicy{
+	% insert appropriate launch rules for your environment and agents below.
+	when [max=3]@env do launch *:agent.
+}
+

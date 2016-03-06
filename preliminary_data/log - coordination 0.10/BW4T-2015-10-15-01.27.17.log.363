@@ -1,0 +1,92 @@
+01:47:44,767 - sequence
+01:47:44,767 - room RoomC2 contains blocks: 
+01:47:44,767 - room RoomC3 contains blocks:  W G O
+01:47:44,767 - room RoomC1 contains blocks:  W Y R W O
+01:47:44,767 - room RoomA1 contains blocks:  Y R W Y Y R G R O
+01:47:44,768 - room RoomB2 contains blocks:  P W W
+01:47:44,768 - room RoomB1 contains blocks:  R G
+01:47:44,768 - room RoomB3 contains blocks:  B R
+01:47:44,768 - room RoomA3 contains blocks:  O
+01:47:44,768 - room RoomA2 contains blocks:  G W P
+01:47:44,768 - sequence W Y Y G R W
+01:47:44,925 - action Bot_2 goTo(RoomC1)
+01:47:44,995 - action Bot_3 goTo(RoomC1)
+01:47:45,439 - action Bot_1 goTo(RoomC3)
+01:47:49,866 - Bot Bot_3 collided.
+01:47:49,943 - action Bot_3 goTo(RoomC1)
+01:47:50,293 - action Bot_2 goToBlock(41)
+01:47:50,457 - action Bot_1 goTo(RoomC2)
+01:47:50,731 - Bot Bot_3 collided.
+01:47:50,737 - action Bot_2 pickUp
+01:47:50,753 - action Bot_3 goTo(RoomC1)
+01:47:50,836 - action Bot_2 goTo(DropZone)
+01:47:51,554 - Bot Bot_3 collided.
+01:47:51,606 - action Bot_3 goTo(RoomC1)
+01:47:52,910 - action Bot_3 goToBlock(42)
+01:47:53,020 - action Bot_1 goTo(RoomB1)
+01:47:53,330 - action Bot_3 pickUp
+01:47:53,426 - action Bot_3 goTo(FrontDropZone)
+01:47:57,029 - action Bot_2 putDown
+01:47:57,082 - action Bot_2 goTo(RoomC2)
+01:47:58,762 - action Bot_3 goTo(DropZone)
+01:47:58,870 - action Bot_1 goTo(RoomB2)
+01:47:59,657 - action Bot_3 putDown
+01:47:59,713 - action Bot_3 goTo(RoomC2)
+01:48:01,443 - action Bot_1 goTo(RoomB3)
+01:48:03,729 - action Bot_2 goTo(RoomA1)
+01:48:04,029 - action Bot_1 goTo(RoomA3)
+01:48:06,385 - action Bot_3 goTo(RoomB2)
+01:48:09,075 - action Bot_1 goTo(RoomA2)
+01:48:11,210 - action Bot_2 goToBlock(49)
+01:48:11,587 - action Bot_2 pickUp
+01:48:11,644 - action Bot_1 goTo(RoomC3)
+01:48:11,683 - action Bot_2 goTo(DropZone)
+01:48:13,045 - action Bot_3 goTo(RoomC1)
+01:48:18,905 - action Bot_3 goToBlock(43)
+01:48:19,137 - action Bot_1 pickUp
+01:48:19,193 - action Bot_3 pickUp
+01:48:19,236 - action Bot_1 goTo(FrontDropZone)
+01:48:19,278 - action Bot_3 goTo(FrontDropZone)
+01:48:21,072 - action Bot_2 putDown
+01:48:21,206 - action Bot_2 goTo(RoomC1)
+01:48:24,248 - action Bot_1 goTo(DropZone)
+01:48:24,520 - action Bot_3 goTo(FrontDropZone)
+01:48:24,614 - action Bot_3 goTo(FrontDropZone)
+01:48:24,666 - action Bot_3 goTo(FrontDropZone)
+01:48:24,760 - action Bot_3 goTo(FrontDropZone)
+01:48:24,851 - action Bot_3 goTo(FrontDropZone)
+01:48:24,941 - action Bot_3 goTo(FrontDropZone)
+01:48:25,034 - action Bot_3 goTo(FrontDropZone)
+01:48:25,122 - action Bot_3 goTo(FrontDropZone)
+01:48:25,150 - action Bot_1 putDown
+01:48:25,239 - action Bot_1 goTo(FrontDropZone)
+01:48:25,239 - action Bot_3 goTo(DropZone)
+01:48:25,645 - Bot Bot_3 collided.
+01:48:25,697 - action Bot_3 goTo(DropZone)
+01:48:26,981 - action Bot_3 putDown
+01:48:27,023 - action Bot_2 pickUp
+01:48:27,052 - action Bot_3 goTo(RoomA1)
+01:48:27,116 - action Bot_2 goTo(DropZone)
+01:48:32,930 - action Bot_2 putDown
+01:48:32,930 - Time to finish sequence is 21 minutes and 6 seconds
+01:48:32,930 - agentsummary Bot_1 handicaps none
+01:48:32,930 - agentsummary Bot_1 gooddrops 1
+01:48:32,930 - agentsummary Bot_1 wrongdrops 0
+01:48:32,930 - agentsummary Bot_1 nmessage 0
+01:48:32,930 - agentsummary Bot_1 idletime 2.534
+01:48:32,931 - agentsummary Bot_1 nroomsentered 9
+01:48:32,931 - agentsummary Bot_2 handicaps none
+01:48:32,931 - agentsummary Bot_2 gooddrops 3
+01:48:32,931 - agentsummary Bot_2 wrongdrops 0
+01:48:32,931 - agentsummary Bot_2 nmessage 0
+01:48:32,931 - agentsummary Bot_2 idletime 2.047
+01:48:32,931 - agentsummary Bot_2 nroomsentered 7
+01:48:32,931 - agentsummary Bot_3 handicaps none
+01:48:32,931 - agentsummary Bot_3 gooddrops 2
+01:48:32,931 - agentsummary Bot_3 wrongdrops 0
+01:48:32,931 - agentsummary Bot_3 nmessage 0
+01:48:32,931 - agentsummary Bot_3 idletime 3.127
+01:48:32,931 - agentsummary Bot_3 nroomsentered 6
+01:48:32,967 - action Bot_3 goTo(LeftHallB)
+01:48:32,968 - action Bot_1 goTo(FrontDropZone)
+01:48:33,088 - total time is 21 minutes and 6 seconds

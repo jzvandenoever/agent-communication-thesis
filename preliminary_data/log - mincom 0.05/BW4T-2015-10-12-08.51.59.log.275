@@ -1,0 +1,94 @@
+09:33:16,898 - sequence
+09:33:16,899 - room RoomC2 contains blocks:  P G O O
+09:33:16,899 - room RoomC3 contains blocks:  W
+09:33:16,899 - room RoomC1 contains blocks:  W O G B
+09:33:16,899 - room RoomA1 contains blocks:  Y O
+09:33:16,899 - room RoomB2 contains blocks:  O R P
+09:33:16,899 - room RoomB1 contains blocks:  P O P B Y B B
+09:33:16,899 - room RoomB3 contains blocks: 
+09:33:16,899 - room RoomA3 contains blocks:  P W B W
+09:33:16,899 - room RoomA2 contains blocks:  O B R
+09:33:16,900 - sequence P P W P Y O
+09:33:16,962 - action Bot_1 goTo(RoomA3)
+09:33:16,992 - action Bot_2 goTo(RoomA2)
+09:33:16,993 - action Bot_3 goTo(RoomC2)
+09:33:23,209 - action Bot_3 goToBlock(38)
+09:33:23,481 - action Bot_3 pickUp
+09:33:23,550 - action Bot_3 goTo(DropZone)
+09:33:25,266 - action Bot_1 goToBlock(59)
+09:33:25,656 - action Bot_1 pickUp
+09:33:25,723 - action Bot_1 goTo(DropZone)
+09:33:26,499 - action Bot_2 goTo(RoomC2)
+09:33:30,398 - action Bot_3 putDown
+09:33:30,507 - action Bot_3 goTo(RoomC2)
+09:33:34,840 - action Bot_2 goTo(RoomB2)
+09:33:35,164 - action Bot_1 putDown
+09:33:35,271 - action Bot_1 goTo(RoomA3)
+09:33:37,203 - action Bot_3 goTo(RoomB2)
+09:33:41,523 - action Bot_2 goTo(RoomC2)
+09:33:43,911 - action Bot_3 goTo(RoomC2)
+09:33:44,378 - action Bot_1 pickUp
+09:33:44,448 - action Bot_1 goTo(DropZone)
+09:33:48,240 - action Bot_2 goTo(RoomA1)
+09:33:50,623 - action Bot_3 goTo(RoomA2)
+09:33:53,600 - action Bot_1 putDown
+09:33:53,709 - action Bot_1 goTo(RoomA3)
+09:33:55,734 - action Bot_2 goTo(RoomB2)
+09:33:58,934 - action Bot_3 goTo(RoomB2)
+09:34:01,610 - action Bot_2 goToBlock(51)
+09:34:02,120 - action Bot_2 pickUp
+09:34:02,189 - action Bot_2 goTo(DropZone)
+09:34:02,856 - action Bot_1 goTo(RoomB3)
+09:34:05,653 - action Bot_3 goTo(RoomC2)
+09:34:07,874 - action Bot_1 goTo(RoomB2)
+09:34:10,440 - action Bot_1 goTo(RoomC2)
+09:34:10,922 - action Bot_2 putDown
+09:34:11,033 - action Bot_2 goTo(RoomB2)
+09:34:12,378 - action Bot_3 goTo(RoomA1)
+09:34:17,159 - action Bot_1 goTo(RoomB3)
+09:34:19,388 - action Bot_2 goTo(RoomA1)
+09:34:19,916 - action Bot_3 goToBlock(47)
+09:34:20,383 - action Bot_3 pickUp
+09:34:20,452 - action Bot_3 goTo(DropZone)
+09:34:23,051 - action Bot_1 goTo(RoomA1)
+09:34:25,258 - action Bot_2 goTo(RoomA3)
+09:34:28,643 - action Bot_2 goTo(RoomB2)
+09:34:29,743 - action Bot_1 goTo(RoomB3)
+09:34:29,956 - action Bot_3 putDown
+09:34:30,067 - action Bot_3 goTo(RoomA1)
+09:34:34,518 - action Bot_2 goTo(RoomC2)
+09:34:36,433 - action Bot_1 goTo(RoomB2)
+09:34:39,011 - action Bot_1 goToBlock(49)
+09:34:39,229 - action Bot_3 goTo(RoomC2)
+09:34:39,350 - action Bot_1 pickUp
+09:34:39,418 - action Bot_1 goTo(DropZone)
+09:34:41,225 - action Bot_2 goToBlock(40)
+09:34:41,613 - action Bot_2 pickUp
+09:34:41,681 - action Bot_2 goTo(DropZone)
+09:34:46,733 - action Bot_3 goTo(RoomA2)
+09:34:47,976 - action Bot_1 putDown
+09:34:47,976 - Time to finish sequence is 42 minutes and 32 seconds
+09:34:47,976 - agentsummary Bot_1 handicaps none
+09:34:47,976 - agentsummary bbot gooddrops 3
+09:34:47,976 - agentsummary bbot wrongdrops 0
+09:34:47,976 - agentsummary bbot nmessage 0
+09:34:47,976 - agentsummary bbot idletime 3.189
+09:34:47,976 - agentsummary bbot nroomsentered 13
+09:34:47,976 - agentsummary Bot_2 handicaps none
+09:34:47,977 - agentsummary bbot_165 gooddrops 1
+09:34:47,977 - agentsummary bbot_165 wrongdrops 0
+09:34:47,977 - agentsummary bbot_165 nmessage 0
+09:34:47,977 - agentsummary bbot_165 idletime 3.168
+09:34:47,977 - agentsummary bbot_165 nroomsentered 12
+09:34:47,977 - agentsummary Bot_3 handicaps none
+09:34:47,977 - agentsummary bbot_166 gooddrops 2
+09:34:47,977 - agentsummary bbot_166 wrongdrops 0
+09:34:47,977 - agentsummary bbot_166 nmessage 0
+09:34:47,977 - agentsummary bbot_166 idletime 3.328
+09:34:47,977 - agentsummary bbot_166 nroomsentered 12
+09:34:48,083 - action Bot_1 goTo(RoomC2)
+09:34:48,188 - Bot Bot_2 collided.
+09:34:48,244 - action Bot_2 goTo(DropZone)
+09:34:55,031 - action Bot_3 goToBlock(63)
+09:34:55,367 - action Bot_3 pickUp
+09:34:55,483 - total time is 42 minutes and 39 seconds

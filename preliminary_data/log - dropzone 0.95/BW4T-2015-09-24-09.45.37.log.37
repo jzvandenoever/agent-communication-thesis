@@ -1,0 +1,93 @@
+02:54:24,987 - sequence
+02:54:24,988 - room RoomC2 contains blocks:  Y B
+02:54:24,988 - room RoomC3 contains blocks:  P G W Y W
+02:54:24,988 - room RoomC1 contains blocks:  P B Y
+02:54:24,988 - room RoomA1 contains blocks:  W
+02:54:24,988 - room RoomB2 contains blocks:  P
+02:54:24,988 - room RoomB1 contains blocks:  W B B B Y
+02:54:24,988 - room RoomB3 contains blocks:  B P
+02:54:24,988 - room RoomA3 contains blocks:  Y R G G B R
+02:54:24,988 - room RoomA2 contains blocks:  O W P
+02:54:24,989 - sequence P W W G P W
+02:54:25,061 - action Bot_1 goTo(RoomB2)
+02:54:25,089 - action Bot_2 goTo(RoomB3)
+02:54:25,091 - action Bot_3 goTo(RoomC1)
+02:54:30,479 - action Bot_3 goTo(DropZone)
+02:54:32,124 - action Bot_2 goTo(DropZone)
+02:54:32,530 - action Bot_1 goTo(DropZone)
+02:54:36,339 - action Bot_3 goTo(RoomC1)
+02:54:39,606 - action Bot_2 goTo(RoomB3)
+02:54:40,851 - action Bot_1 goTo(RoomC1)
+02:54:42,181 - action Bot_3 goToBlock(45)
+02:54:42,601 - action Bot_3 pickUp
+02:54:42,673 - action Bot_3 goTo(DropZone)
+02:54:46,712 - action Bot_1 goToBlock(45)
+02:54:47,084 - action Bot_2 pickUp
+02:54:47,126 - action Bot_2 goTo(DropZone)
+02:54:48,846 - action Bot_3 putDown
+02:54:48,887 - action Bot_3 goTo(RoomC3)
+02:54:54,585 - action Bot_2 putDown
+02:54:54,627 - action Bot_2 goTo(RoomA3)
+02:54:54,711 - action Bot_3 goTo(DropZone)
+02:55:00,533 - action Bot_3 goTo(RoomC3)
+02:55:03,745 - action Bot_2 goTo(DropZone)
+02:55:06,381 - action Bot_3 pickUp
+02:55:06,425 - action Bot_3 goTo(DropZone)
+02:55:12,250 - action Bot_3 putDown
+02:55:12,293 - action Bot_3 goTo(RoomC3)
+02:55:12,381 - Bot Bot_2 collided.
+02:55:12,402 - action Bot_2 goTo(DropZone)
+02:55:13,697 - action Bot_2 goTo(RoomB1)
+02:55:18,118 - action Bot_3 goToBlock(44)
+02:55:18,555 - action Bot_3 pickUp
+02:55:18,597 - action Bot_3 goTo(DropZone)
+02:55:21,181 - action Bot_2 goTo(DropZone)
+02:55:24,803 - action Bot_3 putDown
+02:55:24,843 - action Bot_3 goTo(RoomC3)
+02:55:28,648 - action Bot_2 goTo(RoomB1)
+02:55:30,695 - action Bot_3 goToBlock(41)
+02:55:31,136 - action Bot_3 pickUp
+02:55:31,178 - action Bot_3 goTo(DropZone)
+02:55:36,094 - action Bot_2 goToBlock(50)
+02:55:36,507 - action Bot_2 pickUp
+02:55:36,547 - action Bot_2 goTo(DropZone)
+02:55:37,383 - action Bot_3 putDown
+02:55:37,425 - action Bot_3 goTo(RoomC3)
+02:55:43,247 - action Bot_3 goToBlock(40)
+02:55:43,684 - action Bot_3 pickUp
+02:55:43,727 - action Bot_3 goTo(DropZone)
+02:55:44,376 - action Bot_2 putDown
+02:55:44,416 - action Bot_2 goTo(RoomA2)
+02:55:49,943 - action Bot_3 putDown
+02:55:49,984 - action Bot_3 goTo(RoomB3)
+02:55:54,344 - action Bot_2 goTo(DropZone)
+02:55:57,460 - action Bot_3 goTo(DropZone)
+02:56:04,296 - action Bot_2 goTo(RoomA2)
+02:56:04,464 - Bot Bot_3 collided.
+02:56:04,482 - action Bot_3 goTo(DropZone)
+02:56:05,759 - action Bot_3 goTo(RoomA2)
+02:56:14,230 - action Bot_2 pickUp
+02:56:14,273 - action Bot_2 goTo(DropZone)
+02:56:15,683 - action Bot_3 goTo(DropZone)
+02:56:24,207 - action Bot_2 putDown
+02:56:24,207 - Time to finish sequence is 1029 minutes and 59 seconds
+02:56:24,207 - agentsummary Bot_1 handicaps none
+02:56:24,207 - agentsummary bbot gooddrops 0
+02:56:24,207 - agentsummary bbot wrongdrops 0
+02:56:24,207 - agentsummary bbot nmessage 0
+02:56:24,207 - agentsummary bbot idletime 0.549
+02:56:24,207 - agentsummary bbot nroomsentered 3
+02:56:24,207 - agentsummary Bot_2 handicaps none
+02:56:24,207 - agentsummary bbot_375 gooddrops 1
+02:56:24,207 - agentsummary bbot_375 wrongdrops 2
+02:56:24,207 - agentsummary bbot_375 nmessage 0
+02:56:24,207 - agentsummary bbot_375 idletime 3.056
+02:56:24,207 - agentsummary bbot_375 nroomsentered 14
+02:56:24,207 - agentsummary Bot_3 handicaps none
+02:56:24,207 - agentsummary bbot_376 gooddrops 5
+02:56:24,207 - agentsummary bbot_376 wrongdrops 0
+02:56:24,207 - agentsummary bbot_376 nmessage 0
+02:56:24,207 - agentsummary bbot_376 idletime 3.869
+02:56:24,207 - agentsummary bbot_376 nroomsentered 17
+02:56:24,250 - action Bot_2 goTo(RoomA3)
+02:56:25,262 - total time is 1030 minutes and 0 seconds

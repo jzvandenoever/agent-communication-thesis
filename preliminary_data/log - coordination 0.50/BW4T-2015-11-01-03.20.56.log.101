@@ -1,0 +1,94 @@
+06:38:38,823 - sequence
+06:38:38,824 - room RoomC2 contains blocks:  O
+06:38:38,824 - room RoomC3 contains blocks:  G W G B R
+06:38:38,824 - room RoomC1 contains blocks:  P P
+06:38:38,824 - room RoomA1 contains blocks:  Y Y
+06:38:38,824 - room RoomB2 contains blocks:  W B R R
+06:38:38,824 - room RoomB1 contains blocks:  B W Y G R
+06:38:38,824 - room RoomB3 contains blocks:  Y W
+06:38:38,824 - room RoomA3 contains blocks:  G W
+06:38:38,824 - room RoomA2 contains blocks:  R B W Y W
+06:38:38,824 - sequence P P O B W Y
+06:38:39,126 - action Bot_1 goTo(RoomC1)
+06:38:39,301 - action Bot_3 goTo(RoomC1)
+06:38:39,598 - action Bot_2 goTo(RoomC1)
+06:38:44,147 - action Bot_1 goToBlock(45)
+06:38:44,187 - Bot Bot_3 collided.
+06:38:44,230 - action Bot_3 goTo(RoomC1)
+06:38:44,489 - Bot Bot_2 collided.
+06:38:44,540 - action Bot_2 goTo(RoomC1)
+06:38:44,541 - action Bot_1 pickUp
+06:38:44,650 - action Bot_1 goTo(DropZone)
+06:38:45,034 - Bot Bot_3 collided.
+06:38:45,077 - action Bot_3 goTo(RoomC1)
+06:38:45,339 - Bot Bot_2 collided.
+06:38:45,401 - action Bot_2 goTo(RoomC1)
+06:38:46,211 - Bot Bot_2 collided.
+06:38:46,260 - action Bot_2 goTo(RoomC1)
+06:38:46,369 - action Bot_3 goToBlock(44)
+06:38:46,783 - action Bot_3 pickUp
+06:38:46,878 - action Bot_3 goTo(FrontDropZone)
+06:38:47,060 - Bot Bot_2 collided.
+06:38:47,105 - action Bot_2 goTo(RoomC1)
+06:38:48,408 - action Bot_2 goTo(RoomC2)
+06:38:50,814 - action Bot_1 putDown
+06:38:50,869 - action Bot_1 goTo(RoomC2)
+06:38:50,992 - action Bot_2 goTo(RoomC3)
+06:38:52,194 - action Bot_3 goTo(DropZone)
+06:38:53,097 - action Bot_3 putDown
+06:38:53,152 - action Bot_3 goTo(RoomC2)
+06:38:53,588 - action Bot_2 goTo(RoomC2)
+06:38:56,182 - action Bot_2 goToBlock(38)
+06:38:56,717 - action Bot_2 pickUp
+06:38:56,811 - action Bot_2 goTo(DropZone)
+06:38:57,080 - Bot Bot_1 collided.
+06:38:57,122 - action Bot_1 goTo(RoomC2)
+06:38:58,427 - action Bot_1 goTo(RoomC3)
+06:38:59,827 - action Bot_3 goTo(RoomB1)
+06:39:00,987 - action Bot_1 goToBlock(42)
+06:39:01,442 - action Bot_1 pickUp
+06:39:01,537 - action Bot_1 goTo(FrontDropZone)
+06:39:03,940 - action Bot_2 putDown
+06:39:04,069 - action Bot_2 goTo(RoomB3)
+06:39:05,683 - action Bot_3 goTo(RoomC3)
+06:39:06,917 - action Bot_1 goTo(DropZone)
+06:39:07,411 - action Bot_1 putDown
+06:39:07,836 - action Bot_1 goTo(RoomB3)
+06:39:11,560 - action Bot_2 goTo(RoomC3)
+06:39:12,398 - action Bot_3 goTo(RoomB1)
+06:39:15,349 - action Bot_1 goTo(RoomB1)
+06:39:16,629 - action Bot_2 goToBlock(40)
+06:39:17,165 - action Bot_2 pickUp
+06:39:17,261 - action Bot_2 goTo(DropZone)
+06:39:18,605 - Bot Bot_3 collided.
+06:39:18,642 - action Bot_3 goTo(RoomB1)
+06:39:18,749 - action Bot_1 pickUp
+06:39:18,844 - action Bot_1 goTo(FrontDropZone)
+06:39:19,935 - action Bot_3 goTo(RoomB2)
+06:39:22,490 - action Bot_3 goTo(RoomA1)
+06:39:23,579 - action Bot_2 putDown
+06:39:23,633 - action Bot_2 goTo(RoomA3)
+06:39:25,498 - action Bot_1 goTo(DropZone)
+06:39:26,402 - action Bot_1 putDown
+06:39:26,403 - Time to finish sequence is 198 minutes and 26 seconds
+06:39:26,403 - agentsummary Bot_1 handicaps none
+06:39:26,403 - agentsummary Bot_1 gooddrops 3
+06:39:26,403 - agentsummary Bot_1 wrongdrops 0
+06:39:26,403 - agentsummary Bot_1 nmessage 0
+06:39:26,403 - agentsummary Bot_1 idletime 2.418
+06:39:26,403 - agentsummary Bot_1 nroomsentered 8
+06:39:26,403 - agentsummary Bot_2 handicaps none
+06:39:26,403 - agentsummary Bot_2 gooddrops 2
+06:39:26,403 - agentsummary Bot_2 wrongdrops 0
+06:39:26,403 - agentsummary Bot_2 nmessage 0
+06:39:26,403 - agentsummary Bot_2 idletime 3.145
+06:39:26,403 - agentsummary Bot_2 nroomsentered 8
+06:39:26,403 - agentsummary Bot_3 handicaps none
+06:39:26,403 - agentsummary Bot_3 gooddrops 1
+06:39:26,403 - agentsummary Bot_3 wrongdrops 0
+06:39:26,403 - agentsummary Bot_3 nmessage 0
+06:39:26,403 - agentsummary Bot_3 idletime 2.313
+06:39:26,403 - agentsummary Bot_3 nroomsentered 7
+06:39:26,443 - action Bot_3 goTo(LeftHallA)
+06:39:26,456 - action Bot_2 goTo(RightHallD)
+06:39:26,579 - total time is 198 minutes and 26 seconds

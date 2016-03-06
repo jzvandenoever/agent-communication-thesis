@@ -1,0 +1,91 @@
+06:32:15,009 - sequence
+06:32:15,010 - room RoomC2 contains blocks:  B G G P
+06:32:15,010 - room RoomC3 contains blocks:  P
+06:32:15,010 - room RoomC1 contains blocks:  G B G
+06:32:15,010 - room RoomA1 contains blocks: 
+06:32:15,010 - room RoomB2 contains blocks:  B R Y O R P
+06:32:15,010 - room RoomB1 contains blocks:  W B
+06:32:15,010 - room RoomB3 contains blocks:  W R O R
+06:32:15,010 - room RoomA3 contains blocks:  P O Y Y
+06:32:15,010 - room RoomA2 contains blocks:  O B B G
+06:32:15,010 - sequence B O B R W G
+06:32:15,135 - action Bot_2 goTo(RoomC1)
+06:32:15,340 - action Bot_3 goTo(RoomC3)
+06:32:15,614 - action Bot_1 goTo(RoomC3)
+06:32:20,232 - Bot Bot_3 collided.
+06:32:20,301 - action Bot_3 goTo(RoomC3)
+06:32:20,542 - action Bot_2 pickUp
+06:32:20,640 - action Bot_1 goTo(RoomC2)
+06:32:20,641 - action Bot_2 goTo(DropZone)
+06:32:21,576 - action Bot_3 goTo(RoomC2)
+06:32:23,216 - action Bot_1 goTo(RoomB1)
+06:32:24,129 - action Bot_3 goTo(RoomB3)
+06:32:26,477 - action Bot_2 putDown
+06:32:26,531 - action Bot_2 goTo(RoomC2)
+06:32:29,073 - action Bot_1 goTo(RoomB2)
+06:32:29,989 - action Bot_3 goToBlock(56)
+06:32:30,405 - action Bot_3 pickUp
+06:32:30,501 - action Bot_3 goTo(DropZone)
+06:32:31,664 - action Bot_1 goToBlock(50)
+06:32:32,127 - action Bot_1 pickUp
+06:32:32,223 - action Bot_1 goTo(FrontDropZone)
+06:32:33,223 - action Bot_2 goToBlock(38)
+06:32:33,687 - action Bot_2 pickUp
+06:32:33,784 - action Bot_2 goTo(FrontDropZone)
+06:32:38,317 - action Bot_3 putDown
+06:32:38,451 - action Bot_3 goTo(RoomB2)
+06:32:40,032 - action Bot_2 goTo(DropZone)
+06:32:40,059 - action Bot_1 goTo(FrontDropZone)
+06:32:40,156 - action Bot_1 goTo(FrontDropZone)
+06:32:40,250 - action Bot_1 goTo(FrontDropZone)
+06:32:40,344 - action Bot_1 goTo(FrontDropZone)
+06:32:40,440 - action Bot_1 goTo(FrontDropZone)
+06:32:40,534 - action Bot_1 goTo(FrontDropZone)
+06:32:40,626 - action Bot_1 goTo(FrontDropZone)
+06:32:40,721 - action Bot_1 goTo(FrontDropZone)
+06:32:40,815 - action Bot_1 goTo(FrontDropZone)
+06:32:40,872 - action Bot_1 goTo(FrontDropZone)
+06:32:40,952 - action Bot_2 putDown
+06:32:40,954 - action Bot_1 goTo(FrontDropZone)
+06:32:41,048 - action Bot_1 goTo(DropZone)
+06:32:41,076 - action Bot_2 goTo(RoomA1)
+06:32:41,463 - Bot Bot_1 collided.
+06:32:41,512 - action Bot_1 goTo(DropZone)
+06:32:42,815 - action Bot_1 putDown
+06:32:42,953 - action Bot_1 goTo(RoomB3)
+06:32:46,804 - action Bot_3 goTo(RoomB1)
+06:32:49,393 - action Bot_3 pickUp
+06:32:49,484 - action Bot_3 goTo(DropZone)
+06:32:50,192 - action Bot_2 goTo(RoomB1)
+06:32:50,471 - action Bot_1 goTo(RoomC1)
+06:32:55,252 - action Bot_2 goTo(RoomA2)
+06:32:57,000 - action Bot_3 putDown
+06:32:57,135 - action Bot_3 goTo(RoomC1)
+06:32:57,164 - action Bot_1 goToBlock(43)
+06:32:57,580 - action Bot_1 pickUp
+06:32:57,688 - action Bot_1 goTo(DropZone)
+06:33:01,138 - action Bot_2 goTo(RoomA3)
+06:33:03,002 - action Bot_3 goTo(RoomA2)
+06:33:03,878 - action Bot_1 putDown
+06:33:03,879 - Time to finish sequence is 192 minutes and 3 seconds
+06:33:03,879 - agentsummary Bot_1 handicaps none
+06:33:03,879 - agentsummary Bot_1 gooddrops 2
+06:33:03,879 - agentsummary Bot_1 wrongdrops 0
+06:33:03,879 - agentsummary Bot_1 nmessage 0
+06:33:03,879 - agentsummary Bot_1 idletime 3.676
+06:33:03,879 - agentsummary Bot_1 nroomsentered 8
+06:33:03,879 - agentsummary Bot_2 handicaps none
+06:33:03,879 - agentsummary Bot_2 gooddrops 2
+06:33:03,879 - agentsummary Bot_2 wrongdrops 0
+06:33:03,879 - agentsummary Bot_2 nmessage 0
+06:33:03,879 - agentsummary Bot_2 idletime 2.078
+06:33:03,879 - agentsummary Bot_2 nroomsentered 8
+06:33:03,879 - agentsummary Bot_3 handicaps none
+06:33:03,879 - agentsummary Bot_3 gooddrops 2
+06:33:03,879 - agentsummary Bot_3 wrongdrops 0
+06:33:03,879 - agentsummary Bot_3 nmessage 0
+06:33:03,879 - agentsummary Bot_3 idletime 2.47
+06:33:03,879 - agentsummary Bot_3 nroomsentered 8
+06:33:03,920 - action Bot_2 goTo(RoomA3)
+06:33:03,934 - action Bot_3 goTo(FrontRoomC1)
+06:33:04,080 - total time is 192 minutes and 3 seconds

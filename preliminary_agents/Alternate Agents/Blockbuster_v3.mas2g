@@ -1,0 +1,19 @@
+environment{
+ env = "../bw4t-client-3.8.2.jar" .
+	init = [ map="SuperRandom", clientip ="localhost", clientport="2000", serverip = "localhost", serverport = "8000",
+			 agentcount = "3", humancount = "0", launchgui = "false", goal = "true"].
+}
+agentfiles{
+%version that goes to the dropzone every time
+	%"Agent_Blockbuster_v3_dzonly.goal" [name = bbot].
+	
+%version that is a bit more efficient (with a slightly higher risk of miscommunication)
+	"Agent_Blockbuster_v3_allroom.goal" [name = bbot].
+	
+%version with minimal communication
+	%"Agent_Blockbuster_v3_mincom.goal" [name = bbot].	
+}
+
+launchpolicy{
+	when entity@env do launch bbot.
+}

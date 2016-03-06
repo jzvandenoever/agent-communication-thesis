@@ -1,0 +1,47 @@
+20:41:54,351 - sequence
+20:41:54,351 - room RoomC2 contains blocks:  R R G W Y Y Y W Y
+20:41:54,351 - room RoomC3 contains blocks:  Y O
+20:41:54,352 - room RoomC1 contains blocks:  P
+20:41:54,352 - room RoomA1 contains blocks:  O G G G B
+20:41:54,352 - room RoomB2 contains blocks:  W Y
+20:41:54,352 - room RoomB1 contains blocks:  G R
+20:41:54,352 - room RoomB3 contains blocks:  P
+20:41:54,352 - room RoomA3 contains blocks:  W R G
+20:41:54,352 - room RoomA2 contains blocks:  R P P
+20:41:54,352 - sequence Y R R P O R
+20:41:54,428 - action Bot_1 goTo(DropZone)
+20:41:54,430 - action Bot_2 goTo(DropZone)
+20:41:54,458 - action Bot_3 goTo(DropZone)
+20:41:55,215 - Bot Bot_2 collided.
+20:41:55,235 - Bot Bot_3 collided.
+20:41:55,255 - action Bot_2 goTo(DropZone)
+20:41:55,269 - action Bot_3 goTo(DropZone)
+20:41:55,363 - action Bot_1 goTo(RoomC3)
+20:41:56,066 - Bot Bot_3 collided.
+20:41:56,134 - action Bot_3 goTo(DropZone)
+20:41:56,541 - action Bot_2 goTo(RoomC3)
+20:41:56,934 - Bot Bot_3 collided.
+20:41:56,985 - action Bot_3 goTo(DropZone)
+20:41:58,285 - action Bot_3 goTo(RoomC2)
+20:42:01,205 - action Bot_1 goToBlock(47)
+20:42:01,596 - action Bot_1 pickUp
+20:42:01,664 - action Bot_1 goTo(DropZone)
+20:42:01,876 - Bot Bot_2 collided.
+20:42:01,918 - action Bot_2 goTo(RoomC3)
+20:42:03,205 - action Bot_2 goTo(RoomC1)
+20:42:04,912 - action Bot_3 goToBlock(38)
+20:42:05,349 - action Bot_3 pickUp
+20:42:05,420 - action Bot_3 goTo(FrontDropZone)
+20:42:06,597 - action Bot_2 goTo(RoomC2)
+20:42:07,808 - action Bot_1 putDown
+20:42:07,877 - action Bot_1 goTo(RoomC2)
+20:42:09,187 - action Bot_2 pickUp
+20:42:09,255 - action Bot_2 goTo(FrontDropZone)
+20:42:11,606 - action Bot_3 goTo(DropZone)
+20:42:12,520 - action Bot_3 putDown
+20:42:12,586 - action Bot_3 goTo(RoomB3)
+20:42:14,537 - action Bot_1 goToBlock(39)
+20:42:20,051 - action Bot_3 goToBlock(59)
+20:42:20,415 - action Bot_3 pickUp
+20:42:20,456 - action Bot_3 goTo(FrontDropZone)
+20:44:14,842 - total time is 351 minutes and 54 seconds
