@@ -3,12 +3,13 @@ order=linear.
 
 module adoptgoals{
 	%If holding the next needed block go to the dropzone.
-	if bel( holding(BlockID), nextNeededColor(ColorID), block(BlockID, ColorID, _)) 
-			then adopt(in('DropZone')).
+	if bel( holdingNextBlock ) then adopt(in('DropZone')).
+			
 	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it. 
-	if bel( nextNeededColor(ColorID), block(BlockID, ColorID, Place)) 
+	if bel( not(holdingNextBlock), nextNeededColor(ColorID), block(BlockID, ColorID, Place)) 
 			then adopt(in(Place),holding(BlockID)).
+			
 	%Otherwise go to a random room we haven't seen yet'.
-	if bel( not(finished), bagof( Place, ( room(Place), not(dropZone(Place)), not(visited(Place)) ), Places ), 
-		random_member(Dest, Places) ) then adopt(in(Dest)).
+	if bel( not(holdingNextBlock), not(finished), bagof( Place, ( room(Place), not(dropZone(Place)), 
+		not(visited(Place)) ), Places ), random_member(Dest, Places) ) then adopt(in(Dest)).
 }

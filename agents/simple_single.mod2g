@@ -20,5 +20,5 @@ module main {
 			then goToBlock(BlockID).
 	
 	%pickup goal blocks
-	if a-goal(holding(BlockID)), bel(atBlock(BlockID)) then pickUp.		
+	if a-goal(holding(BlockID)), bel(atBlock(BlockID)) then pickUp.
 }

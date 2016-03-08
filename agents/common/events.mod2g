@@ -37,7 +37,7 @@ module events {
 	if percept(sequenceIndex(X)), bel(sequenceIndex(OldX)) 
 		then delete(sequenceIndex(OldX)) + insert(sequenceIndex(X)).
 	if bel( in('DropZone'), seqDone(Seq), length(Seq, N), sequenceIndex(X), N < X , 
-		sequence(NewSeq), length(NewSeq, X), append(NewSeq, _, Full) )
+		sequence(Full), length(NewSeq, X), append(NewSeq, _, Full) )
 		then delete( seqDone(Seq) ) + insert( seqDone(NewSeq) ).
 				
 	%remove obsolete goals
