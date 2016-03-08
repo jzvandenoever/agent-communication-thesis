@@ -1,0 +1,20 @@
+use common.commonKnowledge as knowledge.
+use common.adoptGoals as module.
+use common.events as module.
+
+module blockComEvents {
+	forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( block(BlockID, ColorID, OtherPlace), 
+		Place \= OtherPlace ) do delete( block(BlockID, ColorID, OtherPlace) ) + 
+		insert( block(BlockID, ColorID, Place) ).
+	forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( not(block(BlockID, ColorID, Place)) ) 
+		do insert( block(BlockID, ColorID, Place) ).
+	forall (Agt).sent( msg(notblock(BlockID)) ), bel( block(BlockID, ColorID, Place) ) 
+		do delete( block(BlockID, ColorID, Place) ).
+	
+	% Transmit block related info
+	forall percept( color(BlockID, ColorID), in(Place) ), bel( not(block(BlockID, ColorID, Place)) ) 
+			do insert( send('allother', block(BlockID, ColorID, Place)) ).
+	forall percept(holding(BlockID)) do insert( send('allother', notblock(BlockID)) ).
+	
+	if true then events.
+}

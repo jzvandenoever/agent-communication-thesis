@@ -1,6 +1,7 @@
 use commonKnowledge as knowledge.
 use adoptGoals as module.
 use updateSequence as module.
+order=linearall.
 
 module events {
 	%-------communication updates & conclusions about other agents-----------------------------------
@@ -18,6 +19,9 @@ module events {
 	forall percept(not(in(Place))) do delete( in(Place) ).
 
 	% Discover new blocks
+	forall percept(color(BlockID, ColorID)), bel( in(Place), not(block(BlockID, ColorID, Place)),
+		block(BlockID, ColorID, OtherPlace), Place \= OtherPlace ) do 
+		delete( block(BlockID, ColorID, OtherPlace) ) + insert( block(BlockID, ColorID, Place) ).
 	forall percept(color(BlockID, ColorID)), bel( in(Place), not(block(BlockID, ColorID, Place)) ) 
 		do insert( block(BlockID, ColorID, Place) ).
 	
