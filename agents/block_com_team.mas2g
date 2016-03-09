@@ -1,8 +1,8 @@
-use "../bw4t-client-3.8.2.jar" as environment with 
+use "../bw4t-client-3.8.5.jar" as environment with 
 	clientip ="localhost", clientport="2000", 
 	serverip = "localhost", serverport = "8000",
 	agentcount = "3", humancount = "0", launchgui = "false", 
-	goal = "true", map = "Random".
+	goal = "true", map = "SuperRandom".
 
 define robot as agent {
 	use block_com_team as main module.
