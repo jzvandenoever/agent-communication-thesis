@@ -2,7 +2,7 @@ use "../bw4t-client-3.8.5.jar" as environment with
 	clientip ="localhost", clientport="2000", 
 	serverip = "localhost", serverport = "8000",
 	agentcount = "1", humancount = "0", launchgui = "false", 
-	goal = "true", map = "Random".
+	goal = "true", map = "SuperRandom".
 
 define robot as agent {
 	use simple_single as main module.

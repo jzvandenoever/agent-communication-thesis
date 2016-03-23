@@ -1,0 +1,10 @@
+use commonKnowledge as knowledge.
+use updateSequence as module.
+order=linearall.
+
+module comBasic {
+	%-------communication updates & conclusions about other agents-----------------------------------
+	forall bel( send('allother', Y) ) do allother.send(msg(Y)) + delete(send('allother', Y)).
+	% deduce information based on deliveries of other agents:
+	forall (Agt).sent(msg('deliveryDone')) do updateSequence.
+}

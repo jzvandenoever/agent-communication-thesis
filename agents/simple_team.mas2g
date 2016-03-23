@@ -7,7 +7,7 @@ use "../bw4t-client-3.8.5.jar" as environment with
 define robot as agent {
 	use simple_team as main module.
 	use common.initial as init module.
-	use common.events as event module.
+	use simple_team_events as event module.
 } 
 
 launchpolicy{

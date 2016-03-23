@@ -12,8 +12,8 @@ define goToBlock(BlockID) with
 	post { true }
 
 % pickUp can only be performed when not holding a block
-define pickUp with
-	pre{not(state(traveling)), not(holding(_))}
+define pickUp(BlockID) with
+	pre{atBlock(BlockID), not(state(traveling)), not(holding(_))}
 	post{ true }
 
 
