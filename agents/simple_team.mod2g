@@ -4,7 +4,7 @@ use common.updateSequence as module.
 exit=nogoals.
 
 module main {
-	if bel( finished ) then stop.
+	if bel( finished ) then exit-module.
 	
 	%drop blocks in the dropzone when they are needed, and communicate this
 	if bel(in('DropZone'), holdingNextBlock) 
