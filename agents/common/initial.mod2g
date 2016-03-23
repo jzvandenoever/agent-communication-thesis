@@ -7,6 +7,8 @@ module robotInit {
 
 	% Record the initial state of movement in belief base.
 	if percept(state(State)) then insert( state(State) ).
+	% Record initial location. 
+	if percept(at(Place)) then insert( at(Place) ).
 
 	% Record goal sequence
 	if percept( sequence(Seq) ) then insert(sequence(Seq), seqDone([])) + adopt(seqDone(Seq)).

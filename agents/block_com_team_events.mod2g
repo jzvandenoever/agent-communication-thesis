@@ -3,10 +3,12 @@ use common.adoptGoals as module.
 use common.events as module.
 use common.com_basic as module.
 use common.com_block_info as module.
+use common.com_visited as module.
 
 module blockComTeamEvents {
 	if true then comBasic.
 	if true then comBlocks.
+	if true then comVisited.
 	
 	if true then events.
 }

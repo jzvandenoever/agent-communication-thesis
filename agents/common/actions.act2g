@@ -25,3 +25,7 @@ define putDown with
 define stop with
 	pre{state(traveling)}
 	post{ true }
+	
+define skip with
+	pre{ true }
+	post{ true }

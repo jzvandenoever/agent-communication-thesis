@@ -1,0 +1,11 @@
+use commonKnowledge as knowledge.
+use updateSequence as module.
+order=linearall.
+
+module comVisited {
+	forall (Agt).sent( msg(visited(Place))), bel( not(visited(Place)) ) do 
+		insert( visited(Place) ).
+	
+	forall percept(in(Place)), bel( not(visited(Place)), room(Place) ) do 
+		insert( send('allother', visited(Place)) ).
+}

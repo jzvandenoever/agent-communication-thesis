@@ -1,15 +1,19 @@
 use commonKnowledge as knowledge.
 order=linearall.
 
-module updateSequence{ 
-	%update sequence
+module updateSequence{
+	% Update Ahead 
+	if bel( ahead(1) ) then delete( ahead(1) ).
+	if bel( ahead(N), M is N-1 ) then delete( ahead(N) ) + insert( ahead(M) ).
+	
+	% Update sequence
 	if bel( seqDone(SDone), nextNeededColor(ColorID), append(SDone,[ColorID],NewSDone) ) then 
 			delete(seqDone(SDone)) + insert(seqDone(NewSDone)).
 	
-	%edge case on the end of the sequence to make sure that the last one is transmitted.
+	% Edge case on the end of the sequence to make sure that the last one is transmitted.
 	if bel( seqDone(Seq), sequence(Seq) ) then allother.send(msg('deliveryDone')). 	
 		
-	%remove beliefs about the delivered block (if this agent was delivering it)
+	% Remove beliefs about the delivered block (if this agent was delivering it)
 	if bel(in('DropZone'), holding(BlockID), block(BlockID, ColorID, Place)) 
 			then delete(block(BlockID, ColorID, Place)).
 }

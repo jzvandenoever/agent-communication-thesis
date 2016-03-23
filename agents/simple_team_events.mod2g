@@ -2,9 +2,11 @@ use common.commonKnowledge as knowledge.
 use common.adoptGoals as module.
 use common.events as module.
 use common.com_basic as module.
+use common.com_visited as module.
 
 module blockComTeamEvents {
 	if true then comBasic.
+	if true then comVisited.
 	
 	if true then events.
 }
