@@ -15,7 +15,7 @@ module main {
 		
 	%drop blocks in rooms when they are not needed anymore
 	if bel(in(Loc),Loc\='DropZone', not(ahead(_)), not(holdingNextBlock)) then putDown.
-	if bel(in(Loc),Loc\='DropZone', ahead(N), not(holdingNextBlock), not(holdingNextBlock(N))) 
+	if bel(in(Loc),Loc\='DropZone', ahead(N), not(holdingNextBlock), not(holdingNeededBlock(N))) 
 		then putDown.
 	
 	%go to goal places

@@ -6,6 +6,7 @@ use common.com_block_info as module.
 use common.com_visited as module.
 
 module blockComTeamEvents {
+	
 	if true then comBasic.
 	
 	if true then comBlocks.
@@ -16,9 +17,9 @@ module blockComTeamEvents {
 	
 	forall percept( holding(BlockID) ), bel( not(ahead(_)), block(BlockID, Color, _), 
 		nextNeededColor(Color) ) do insert( ahead(1), send('allother', ahead(1)) ).
-	forall percept( holding(BlockID) ), bel( ahead(N), nextNeededColor(Color, N), 
-		not(holdingNextBlock), not(holdingNextBlock(N)), block(BlockID, Color, _), M is N+1 ) 
-		do insert( ahead(M), send('allother', ahead(M)) ).
+	forall percept( holding(BlockID) ), bel( ahead(N), block(BlockID, Color, _), 
+		nextNeededColor(Color, N), M is N+1 ) do delete( ahead(N) ) + 
+		insert( ahead(M), send('allother', ahead(M)) ).
 	if (Agt).sent( msg(ahead(1)) ), bel( not(ahead(_)) ) then insert( ahead(1) ).	
 	forall (Agt).sent( msg(ahead(N)) ), bel( N =\= 1, ahead(M) ) do delete( ahead(M) ) + insert( ahead(N) ).
 	

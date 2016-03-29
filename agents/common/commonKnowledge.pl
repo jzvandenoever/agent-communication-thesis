@@ -21,6 +21,8 @@ dropZone('DropZone').
 % Block information.
 holdingNextBlock :- holding(BlockID),block(BlockID, ColorID, Place), nextNeededColor(ColorID).
 holdingNextBlock(N) :- holding(BlockID),block(BlockID, ColorID, Place), nextNeededColor(ColorID, N).
+holdingNeededBlock(N) :- holding(BlockID), block(BlockID, ColorID, Place), seqDone(SDone), length(SDone, Len), 
+	SLen is Len+1, between(SLen, N, M), nextNeededColor(ColorId, M).
 nextNeededColor(ColorID) :- sequence(Seq), seqDone(SDone), append(SDone, [ColorID|_], Seq).
 nextNeededColor(ColorID, N) :- sequence(Seq), seqDone(SDone), length(SDone, Len), M is Len + N, 
 	nth1(M, Seq, ColorID).
