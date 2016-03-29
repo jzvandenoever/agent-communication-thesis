@@ -1,0 +1,545 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Experiment Design
+\end_layout
+
+\begin_layout Standard
+To determine the effects of communication failure, if any, on multi-agent
+ systems we will use a well explored domain for multi-agents systems.
+ The Blocks World for Teams GOAL environment as this is well defined and
+ thoroughly explored system for doing research on multi-agent systems.(references
+) The basic concept is that an agent, or multiple agents, have to bring
+ blocks to a certain place, the dropzone in a specific order.
+ The blocks are distinguished by color only so any block that is the right
+ color will suffice.
+ These blocks are found in rooms that have one entrance from the hallway
+ spaces.
+ While that is the basic scenario it has built in several option for adjusting
+ various environment variables such as the room placement
+\end_layout
+
+\begin_layout Subsection*
+Experiment Dimensions
+\end_layout
+
+\begin_layout Standard
+However it is not just the room placement that can be varied.
+ We have categorised the variables involved in the above mentioned experimental
+ setup.
+ Each categorgy has multiple dimensions as shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:experiment dimensions"
+
+\end_inset
+
+ and will be discussed in more detail.
+\end_layout
+
+\begin_layout Standard
+The environment is mainly the way the experiment world is constructed, how
+ many hallways and where, and the placement of the rooms, but also includes
+ the block sequence and agent collisions.
+\end_layout
+
+\begin_layout Standard
+Second is the agents and their teams themselves.
+ The team size can be adjusted, limited by the amount of computing power
+ available.
+ Though world limitations, such as only one agent can enter a room at a
+ time, might limit the effectiveness of a team larger than the amount of
+ rooms available or than there are blocks in the sequence.
+ Once you have a team you can consider team composition.
+ Are all agents the same or do they have different programs.
+ Finally, what kind of programs do the agents run with.
+ Minimal programs, full coordination, what kind of data do they share, which
+ resolution strategies are used, there is an almost infinite amount of possibili
+ties here.
+\end_layout
+
+\begin_layout Standard
+Finally there is the communication and how it can fail.
+ Does the sending or receiving fail, and if it does fail is it a fixed percentag
+e of messages that fails? Of does the failure rate increase over time? is
+ the message more likely to fail if the receipient is further away? Those
+ are several ways the failure of messages can be done.
+ Finally there is something to consider regarding communicating itself.
+ Do the global percepts provided by the environment always arrive? Since
+ they include things like when a block is delivered at the dropzone.
+ This could effectively be a side-channel for certain kinds of messages
+ that always succeeeds.
+ So the agents can not use it and have to distribute such information through
+ the normal channels.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Environment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+World size and room placement
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Block sequence
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(No) Agent collisions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agents
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Team size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hetero-/homogenous teams
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Agent type
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Communication
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Send/receiving failure
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Failure chance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(No) global percepts
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:experiment dimensions"
+
+\end_inset
+
+Experiment Dimensions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Experiment reduction
+\end_layout
+
+\begin_layout Standard
+The above mentioned experiment dimensions have too many options to realistically
+ test everything.
+ However we have evaluated all of them to see where the dimensions can be
+ reduced so it only requires a manageable amount of simulations.
+ The dimensions are discussed grouped by category as given by table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:experiment dimensions"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Environment
+\end_layout
+
+\begin_layout Standard
+The size and shape of the world the agents move around in for example can
+ be kept consistent and seen as outside of the scope for these experiments.
+ As that would be looking at the effects of the environment on communication
+ failure.
+ As such only one map design will be used across the experiments.
+ 
+\end_layout
+
+\begin_layout Standard
+However switching the sequence between random and only one colour is still
+ a possibility left to us.
+ However all the same colour, would eliminate the need to communicate about
+ where in the sequence the team is.
+ Which, for some types of agents, is the only thing communicated.
+ As such using random, where it can not be assumed the communication isn't
+ needed, is the preferred case.
+ While the simplicity that can be assumed with just one colour might help
+ in building the agents the increased communication if that isn't the case
+ is preferred.
+\end_layout
+
+\begin_layout Subsubsection*
+Agents
+\end_layout
+
+\begin_layout Standard
+Limiting the number of sizes used for the agent teams would drastically
+ reduce the experiment space as well.
+ And not all sizes need to be tested to get a sense of the effects, if there
+ is one, communication failures might have.
+ The case of having only one agent, would not need a lot of experimentation
+ as there is nothing to communicate with, however it will still be useful
+ to do once as a baseline reference.
+ Next, using a size sample of three agents will be useful to test, as this
+ is the minimum amount of agents needed to have a team where it is possible
+ to communicate with more than one agent at the same time.
+ Which is needed for some communication failure modes to matter.
+ Next would be five agents, as this is a larger group, but is also just
+ a bit more than half the amount of rooms available in the default map setup
+ and one less than the amount of blocks needed in the sequence.
+ This means the way tasks get divided amongst agents becomes important.
+ As not every agent can continue exploring after just one set of rooms.
+ As well as increasing the amount of agents involved in communicating.
+ The next step should not go too far, as experience with the environment
+ has shown that 10 agents start to tax the hardware and might degrade the
+ simulation.
+ But looking at a group with a size close to the amount of rooms available
+ will be interesting to see how that influences the behaviour.
+ As such going one agent fewer than the amount of rooms in the standard
+ setup, eight, has been chosen as the last group size.
+\end_layout
+
+\begin_layout Standard
+All these agent teams still need a team composition.
+ While they could have different programs, this might introduce higher order
+ effects that would make analysis more complicated, as well as requiring
+ a lot more simulations.
+ While these effects might be interesting, determining the effects, if any,
+ in the simple case takes priority.
+ So in the interest of limiting the time spent with simulations, and analyzing
+ homogenous agent teams will be used.
+ 
+\end_layout
+
+\begin_layout Standard
+But that still leaves options for varying the teams themselves, though they
+ will all have similar components as shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Agent-types"
+
+\end_inset
+
+.
+ These agent programs are chosen from all possibilities because they are
+ simple, build upon each other, and let us explore what happens with differing
+ degrees of communication.
+\end_layout
+
+\begin_layout Standard
+To properly compare the teams baselines are needed.
+ The simplest baseline is a single agent exploring rooms and delivering
+ blocks as soon as it finds the currently needed block.
+ This will let us evaluate how teams perform compared to a single agent,
+ even with the communication failure.
+ This is then used to make the team baseline, which only communicates which
+ blocks have been delivered.
+ A third team will also communicate which blocks can be found in rooms they
+ explore.
+\end_layout
+
+\begin_layout Standard
+From here the agent types branch out into two types that differ in their
+ coordination strategies.
+ The agents will coordinate their actions to see who is best suited to do
+ what task at any given moment.
+ But the way they coordinate differs, one team asks first if they can do
+ something, before conflict resolution happens if needed.
+ The other team starts doing a task, and then verifies that nobody else
+ is doing it, before going to conflict resolution.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename agent types.eps
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Agent-types"
+
+\end_inset
+
+Agent types, each agent team has the capabilities of the previous one in
+ the graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Communication
+\end_layout
+
+\begin_layout Standard
+For the experiment it is pretty important to figure out what kind of communicati
+on failure is going to be tested.
+ The simplest of which is to test the difference between sending failure
+ and receiving failure.
+ As sending failure means that if a message fails no agent gets it but receiving
+ failure means that some part of the team may receive it.
+ So both options will be tested.
+\end_layout
+
+\begin_layout Standard
+This can be done with various ways of determining the likelihood that a
+ message will fail.
+ For reference each team will also do simulations without communication
+ failure, meaning 
+\begin_inset Formula $0\%$
+\end_inset
+
+.
+ To get insight into how different amounts of failure affect performance
+ using set percetages is very useful.
+ This will be a spread from 
+\begin_inset Formula $0$
+\end_inset
+
+ to a
+\begin_inset Formula $100\%$
+\end_inset
+
+.
+ To limit the amount of runs needed 
+\begin_inset Formula $25\%$
+\end_inset
+
+ increments will be used initially.
+ However all communication and no communication could have different results
+ from only a little or a lot of communication 
+\begin_inset Formula $5\%$
+\end_inset
+
+ and 
+\begin_inset Formula $95\%$
+\end_inset
+
+ will be tested as well.
+ Making the complete range of tested percentages 
+\begin_inset Formula $0,5,25,50,75,95,$
+\end_inset
+
+ and 
+\begin_inset Formula $100\%$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, how are global percepts treated.
+ These function similar to a second, infallible communication channel.
+ As this is all about testing the effects of communication failure these
+ will be ignored.
+ Instead for the current state of the sequence has to be communicated.
+ But to prevent complete breakdown given the fixed percentage failures the
+ agents can still see the state of the sequence when they enter the dropzone.
+ Allowing for some corrections.
+ More limited testing without even that can still be done depending on the
+ results.
+\end_layout
+
+\end_body
+\end_document
