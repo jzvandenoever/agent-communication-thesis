@@ -6,17 +6,12 @@ exit=nogoals.
 module main {
 	if bel( finished ) then exit-module.
 	
-	% Wait if we have the next block ready.
-	%if bel(at('FrontDropZone'), holding(BlockID)) then skip.
-	
 	%drop blocks in the dropzone when they are needed, and communicate this
 	if bel(in('DropZone'), holdingNextBlock) 
 			then putDown + insert( send('allother', 'deliveryDone') ) + updateSequence.
 		
 	%drop blocks in rooms when they are not needed anymore
-	if bel(in(Loc),Loc\='DropZone', not(ahead(_)), not(holdingNextBlock)) then putDown.
-	if bel(in(Loc),Loc\='DropZone', ahead(N), not(holdingNextBlock), not(holdingNeededBlock(N))) 
-		then putDown.
+	if bel( in(Loc),Loc\='DropZone', not(holdingNextBlock) ) then putDown.
 	
 	%go to goal places
 	if a-goal(at(Place)) then goTo(Place).
