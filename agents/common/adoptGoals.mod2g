@@ -6,8 +6,9 @@ module adoptgoals{
 	if bel( holdingNextBlock ) then adopt(in('DropZone')).
 			
 	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it.
-	if bel( not(holdingWantBlock), wantColour(ColorID), block(BlockID, ColorID, Place), 
-		not(Place = held)) then adopt(in(Place),holding(BlockID)).
+	if bel( not(holdingWantBlock), wantColour(ColorID),  bagof((BlockID, Place), (block(BlockID, ColorID, Place), 
+		not(Place = held)), Blocks), random_member((DestBlock, Dest), Blocks) ) then 
+		adopt(in(Dest),holding(DestBlock)).
 	
 	if not(a-goal( in(_) )), bel( holdingWantBlock, not(holdingNextBlock) ) then adopt( at('FrontDropZone') ).
 			
