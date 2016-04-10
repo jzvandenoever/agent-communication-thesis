@@ -9,11 +9,11 @@ module comBlocks {
 		insert( block(BlockID, ColorID, Place) ).
 	forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( not(block(BlockID, ColorID, Place)) ) 
 		do insert( block(BlockID, ColorID, Place) ).
-	forall (Agt).sent( msg(notblock(BlockID)) ), bel( block(BlockID, ColorID, Place) ) 
-		do delete( block(BlockID, ColorID, Place) ).
+	forall (Agt).sent( msg(heldblock(BlockID)) ), bel( block(BlockID, ColorID, Place) ) 
+		do delete( block(BlockID, ColorID, Place) ) + insert( block(BlockID, ColorID, held) ).
 	
 	% Transmit block related info
 	forall percept( color(BlockID, ColorID), in(Place) ), bel( not(block(BlockID, ColorID, Place)) ) 
 			do insert( send('allother', block(BlockID, ColorID, Place)) ).
-	forall percept(holding(BlockID)) do insert( send('allother', notblock(BlockID)) ).
+	forall percept(holding(BlockID)) do insert( send('allother', heldblock(BlockID)) ).
 }
