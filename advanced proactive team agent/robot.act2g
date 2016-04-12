@@ -1,0 +1,27 @@
+use robot as knowledge.
+
+% The goTo action makes the agent move to a place (location) in the BW4T environment.
+% As long as the agent has not arrived at the place it is going to, it will be in "traveling" mode.
+define goTo(Location) with
+	pre { not(state(traveling)) }
+	post { true }
+
+% goToBlock only when not traveling and in a room
+define goToBlock(BlockID) with
+    pre {in(_), not(state(traveling)) }
+	post { true }
+
+% pickUp can only be performed when not holding a block
+define pickUp with
+	pre{not(state(traveling)), not(holding(_))}
+	post{ true }
+
+
+% putDown can only be performed when holding a block
+define putDown with
+	pre{not(state(traveling)), holding(_)}
+	post{ true }
+
+define stop with
+	pre{state(traveling)}
+	post{ true }

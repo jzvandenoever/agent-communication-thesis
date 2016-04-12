@@ -1,0 +1,21 @@
+use robot as knowledge.
+order=linear.
+
+module adoptgoals{
+	% If thinking ahead.
+	if bel( holding(BlockID), block(BlockID, ColorID, _), not(nextNeededColor(ColorID))) 
+			then adopt(at('FrontDropZone')).
+	if not(a-goal(in(_), holding(_))), bel( not(holding(_)), aheadIndex(N), sequenceIndex(M), N>M, nextNeededColor(ColorID, N), 
+		block(BlockID, ColorID, Place) ) then adopt(in(Place),holding(BlockID)) 
+		+ insert( send('allother', goal(holding(BlockID))) ).
+	
+	%If holding the next needed block go to the dropzone.
+	if bel( holding(BlockID), nextNeededColor(ColorID), block(BlockID, ColorID, _)) 
+			then adopt(in('DropZone')).
+	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it. 
+	if not(a-goal(in(_), holding(_))), bel( not(holding(_)),nextNeededColor(ColorID), block(BlockID, ColorID, Place)) 
+			then adopt(in(Place),holding(BlockID)) + insert( send('allother', goal(holding(BlockID))) ).
+	%Otherwise go to a random room we haven't seen yet'.
+	if bel( not(finished), bagof(Place, (room(Place), not(dropZone(Place)), not(teamGoal(_, in(Place)))), Places), 
+		random_member(Dest, Places) ) then adopt(in(Dest)) + insert( send('allother', goal(in(Dest))) ).
+}

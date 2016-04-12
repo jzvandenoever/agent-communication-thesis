@@ -4,6 +4,7 @@ use common.events as module.
 use common.com_basic as module.
 use common.com_block_info as module.
 use common.com_visited as module.
+use common.lookahead as module.
 
 module blockComTeamEvents {
 	
@@ -12,15 +13,19 @@ module blockComTeamEvents {
 	if true then comBlocks.
 	if true then comVisited.
 	
-	% maintain agent list.
-	forall (Agt).sent( msg(_) ), bel( not(agent(Agt)) ) do insert( agent(Agt) ).
-	
-	% Update aheadState
-	forall (Agt).sent( msg(holding(BlockID)) ), bel(not(holding(Agt, BlockID))) do 
-		insert( holding(Agt, BlockID) ).
-	forall (Agt).sent( msg(notHolding(BlockID)) ) do delete( holding(Agt, BlockID) ).
-	if percept( holding(BlockID) ) then insert( send('allother', holding(BlockID)) ).
-	if percept( not(holding(BlockID)) ) then insert( send('allother', notHolding(BlockID)) ).
+	if true then lookAhead.
 	
 	if true then events.
+	
+	forall (Agt).sent( msg(grabbing(BlockID)) ) do insert ( grabbing(Agt, BlockID) ).
+	forall (Agt).sent( msg(notGrabbing(BlockID)) ) do delete ( grabbing(Agt, BlockID) ).
+	
+	if a-goal( in(Place), holding(BlockID) ) then insert( grabbing(BlockID), 
+		send('allother', grabbing(BlockID)) ).
+	if bel( grabbing(BlockID) ), not(goal(in(_), holding(BlockID))) then delete( grabbing(BlockID) )
+		+ insert( send('allother', notGrabbing(BlockID)) ).
+	
+	forall bel( grabbing(BlockID), grabbing(Agt, BlockID), me(Me), Me < Agt ), 
+		a-goal( in(Place), holding(BlockID) ) do drop (in(Place), holding(BlockID)) + 
+		delete( grabbing(BlockID) ) + insert( send('allother', notGrabbing(BlockID)) ).
 }

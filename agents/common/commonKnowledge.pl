@@ -1,3 +1,4 @@
+:- dynamic(me/1).
 :- dynamic(state/1).
 :- dynamic(in/1).
 :- dynamic(at/1).
@@ -13,6 +14,8 @@
 :- dynamic(sequenceIndex/1).
 :- dynamic(send/2).
 :- dynamic(ahead/1).
+:- dynamic(grabbing/1).
+:- dynamic(grabbing/2).
 
 % LookAhead agent related knowledge
 agentCount(N) :- aggregate_all(count, agent(_), N).
@@ -21,15 +24,18 @@ interestingColours(CList) :- seqDone(Done), sequence(Seq), length(Done, From), a
 % No need for anything special.
 wantColour(ColourID) :- not(holding(BlockID)), interestingColours(Colours), 
 	member(ColourID, Colours), countOccurence(Colours, ColourID, N), 
-	aggregate_all(count, (holding(_, ABlock), block(ABlock, ColourID, _)), M), M=<N.
+	aggregate_all(count, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), M), 
+	M=<N.
 % If we are holding a colour we need to add 1 to the count.
 wantColour(ColourID) :- holding(BlockID), block(BlockID, ColorID, _), interestingColours(Colours), 
 	member(ColourID, Colours), countOccurence(Colours, ColourID, N), 
-	aggregate_all(count, (holding(_, ABlock), block(ABlock, ColourID, _)), M), Z is M+1, Z=<N.
+	aggregate_all(count, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), M),
+	Z is M+1, Z=<N.
 % Also see what we want if we are holding something we don't want.
 wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours), 
 	holding(BlockID), not(block(BlockID, ColorID, _)), countOccurence(Colours, ColourID, N), 
-	aggregate_all(count, (holding(_, ABlock), block(ABlock, ColourID, _)), M), M=<N.
+	aggregate_all(count, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), M),
+	M=<N.
 
 holdingWantBlock :- holding(BlockID),block(BlockID, ColorID, _), wantColour(ColorID).
 countOccurence([],X,0).
