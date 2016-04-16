@@ -1,0 +1,10 @@
+use robot as knowledge.
+order=linearall.
+
+module updateSequence{
+	%update sequence
+	if bel(sequenceIndex(N), M is N+1 ) then delete( sequenceIndex(N) ) + insert( sequenceIndex(M) ).
+	%remove beliefs about the delivered block (if this agent was delivering it)
+	if bel(in('DropZone'), holding(BlockID), block(BlockID, ColorID, Place)) 
+			then delete(block(BlockID, ColorID, Place)).
+}
