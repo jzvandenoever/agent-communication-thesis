@@ -1,0 +1,94 @@
+17:11:55,451 - sequence
+17:11:55,451 - room RoomC2 contains blocks:  B R
+17:11:55,451 - room RoomC3 contains blocks:  W
+17:11:55,452 - room RoomC1 contains blocks:  B P P
+17:11:55,452 - room RoomA1 contains blocks:  Y R P G
+17:11:55,452 - room RoomB2 contains blocks:  B P R G P
+17:11:55,452 - room RoomB1 contains blocks:  W P W
+17:11:55,452 - room RoomB3 contains blocks:  G
+17:11:55,452 - room RoomA3 contains blocks:  B G G
+17:11:55,452 - room RoomA2 contains blocks:  B O W Y O Y
+17:11:55,452 - sequence B O W W B B
+17:11:55,535 - action Bot_1 goTo(RoomC1)
+17:11:55,536 - action Bot_2 goTo(RoomB3)
+17:11:55,561 - action Bot_3 goTo(RoomB3)
+17:12:00,563 - action Bot_1 pickUp(41)
+17:12:00,633 - action Bot_1 goTo(DropZone)
+17:12:02,093 - Bot Bot_3 collided.
+17:12:02,153 - action Bot_3 goTo(RoomB3)
+17:12:02,556 - action Bot_2 goTo(RoomC2)
+17:12:02,962 - Bot Bot_3 collided.
+17:12:03,016 - action Bot_3 goTo(RoomB3)
+17:12:04,298 - action Bot_3 goTo(RoomB1)
+17:12:06,434 - action Bot_1 putDown
+17:12:06,503 - action Bot_1 goTo(RoomB1)
+17:12:07,671 - action Bot_3 goTo(RoomA3)
+17:12:08,391 - action Bot_2 goTo(RoomA1)
+17:12:13,929 - action Bot_1 goTo(RoomA1)
+17:12:14,334 - action Bot_3 goTo(RoomA1)
+17:12:15,857 - action Bot_2 goTo(RoomA2)
+17:12:17,707 - action Bot_3 goTo(RoomA2)
+17:12:18,431 - action Bot_2 goToBlock(61)
+17:12:18,817 - action Bot_2 pickUp(61)
+17:12:18,886 - action Bot_2 goTo(DropZone)
+17:12:18,967 - action Bot_1 goTo(RoomC3)
+17:12:20,259 - action Bot_3 goToBlock(64)
+17:12:20,688 - action Bot_3 pickUp(64)
+17:12:20,758 - action Bot_3 goTo(DropZone)
+17:12:27,266 - action Bot_1 goTo(RoomB2)
+17:12:29,128 - action Bot_2 putDown
+17:12:29,196 - action Bot_2 goTo(RoomA2)
+17:12:31,028 - action Bot_3 goTo(RoomA2)
+17:12:33,118 - action Bot_1 goTo(RoomB1)
+17:12:35,680 - action Bot_1 goToBlock(53)
+17:12:36,264 - action Bot_1 pickUp(53)
+17:12:36,334 - action Bot_1 goTo(DropZone)
+17:12:39,101 - action Bot_2 goToBlock(62)
+17:12:39,573 - action Bot_2 pickUp(62)
+17:12:39,641 - action Bot_2 goTo(DropZone)
+17:12:40,425 - Bot Bot_3 collided.
+17:12:40,458 - action Bot_3 goTo(RoomA2)
+17:12:41,736 - action Bot_3 putDown
+17:12:41,804 - action Bot_3 goTo(RoomB1)
+17:12:44,267 - action Bot_1 putDown
+17:12:44,334 - action Bot_1 goTo(RoomA1)
+17:12:47,666 - action Bot_3 goToBlock(55)
+17:12:48,055 - action Bot_3 pickUp(55)
+17:12:48,123 - action Bot_3 goTo(DropZone)
+17:12:49,960 - action Bot_2 putDown
+17:12:50,026 - action Bot_2 goTo(RoomA1)
+17:12:53,451 - action Bot_1 goTo(RoomB2)
+17:12:55,931 - action Bot_3 goTo(RoomA3)
+17:12:59,137 - action Bot_2 goTo(RoomA2)
+17:12:59,293 - action Bot_1 goToBlock(48)
+17:12:59,679 - action Bot_1 pickUp(48)
+17:12:59,746 - action Bot_1 goTo(DropZone)
+17:13:01,676 - action Bot_2 pickUp(60)
+17:13:01,743 - action Bot_2 goTo(DropZone)
+17:13:05,013 - action Bot_3 putDown
+17:13:05,067 - action Bot_3 goToBlock(57)
+17:13:05,447 - action Bot_3 pickUp(57)
+17:13:05,515 - action Bot_3 goTo(DropZone)
+17:13:08,307 - action Bot_1 putDown
+17:13:08,374 - action Bot_1 goTo(RoomB2)
+17:13:11,666 - action Bot_2 putDown
+17:13:11,667 - Time to finish sequence is 57 minutes and 49 seconds
+17:13:11,667 - agentsummary Bot_1 handicaps none
+17:13:11,667 - agentsummary robot gooddrops 3
+17:13:11,667 - agentsummary robot wrongdrops 0
+17:13:11,667 - agentsummary robot nmessage 0
+17:13:11,667 - agentsummary robot idletime 2.856
+17:13:11,667 - agentsummary robot nroomsentered 11
+17:13:11,667 - agentsummary Bot_2 handicaps none
+17:13:11,667 - agentsummary robot_0 gooddrops 3
+17:13:11,667 - agentsummary robot_0 wrongdrops 0
+17:13:11,667 - agentsummary robot_0 nmessage 0
+17:13:11,667 - agentsummary robot_0 idletime 2.557
+17:13:11,667 - agentsummary robot_0 nroomsentered 10
+17:13:11,667 - agentsummary Bot_3 handicaps none
+17:13:11,667 - agentsummary robot_1 gooddrops 0
+17:13:11,667 - agentsummary robot_1 wrongdrops 0
+17:13:11,667 - agentsummary robot_1 nmessage 0
+17:13:11,667 - agentsummary robot_1 idletime 2.966
+17:13:11,667 - agentsummary robot_1 nroomsentered 10
+17:13:11,718 - total time is 57 minutes and 49 seconds

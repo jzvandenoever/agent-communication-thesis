@@ -1,0 +1,93 @@
+18:43:13,186 - sequence
+18:43:13,187 - room RoomC2 contains blocks:  Y O Y
+18:43:13,187 - room RoomC3 contains blocks:  O G O
+18:43:13,187 - room RoomC1 contains blocks:  R B
+18:43:13,187 - room RoomA1 contains blocks:  G O
+18:43:13,187 - room RoomB2 contains blocks:  G R Y
+18:43:13,188 - room RoomB1 contains blocks:  O B R P O
+18:43:13,188 - room RoomB3 contains blocks:  Y O
+18:43:13,188 - room RoomA3 contains blocks:  O R R
+18:43:13,188 - room RoomA2 contains blocks:  O W B W R
+18:43:13,188 - sequence G R O O O Y
+18:43:13,269 - action Bot_1 goTo(RoomA2)
+18:43:13,270 - action Bot_2 goTo(RoomC1)
+18:43:13,298 - action Bot_3 goTo(RoomA3)
+18:43:18,604 - action Bot_2 goTo(RoomB3)
+18:43:21,889 - action Bot_3 goTo(RoomB3)
+18:43:22,341 - action Bot_1 goTo(RoomC3)
+18:43:25,243 - action Bot_2 goTo(RoomA2)
+18:43:26,903 - action Bot_3 goTo(RoomC3)
+18:43:29,822 - action Bot_1 goToBlock(42)
+18:43:30,254 - action Bot_1 pickUp(42)
+18:43:30,323 - action Bot_1 goTo(DropZone)
+18:43:31,054 - action Bot_2 goTo(RoomC3)
+18:43:31,912 - action Bot_3 goTo(RoomB2)
+18:43:36,490 - action Bot_1 putDown
+18:43:36,561 - action Bot_1 goTo(RoomA2)
+18:43:37,742 - action Bot_3 goTo(RoomA3)
+18:43:38,523 - action Bot_2 goTo(RoomB2)
+18:43:43,568 - action Bot_3 pickUp(59)
+18:43:43,638 - action Bot_3 goTo(DropZone)
+18:43:44,342 - action Bot_2 goToBlock(49)
+18:43:44,772 - action Bot_2 pickUp(49)
+18:43:44,839 - action Bot_2 goTo(DropZone)
+18:43:46,468 - action Bot_1 goToBlock(65)
+18:43:46,899 - action Bot_1 pickUp(65)
+18:43:46,969 - action Bot_1 goTo(DropZone)
+18:43:52,700 - action Bot_3 putDown
+18:43:52,770 - action Bot_3 goTo(RoomC3)
+18:43:52,973 - Bot Bot_2 collided.
+18:43:53,026 - action Bot_2 goTo(DropZone)
+18:43:54,303 - action Bot_2 goTo(RoomA3)
+18:43:57,210 - action Bot_1 goTo(RoomA2)
+18:43:58,556 - action Bot_3 pickUp(43)
+18:43:58,626 - action Bot_3 goTo(DropZone)
+18:44:03,363 - action Bot_2 putDown
+18:44:03,433 - action Bot_2 goToBlock(58)
+18:44:03,826 - action Bot_2 pickUp(58)
+18:44:03,896 - action Bot_2 goTo(DropZone)
+18:44:04,418 - action Bot_3 putDown
+18:44:04,489 - action Bot_3 goTo(RoomB3)
+18:44:07,072 - action Bot_1 putDown
+18:44:07,141 - action Bot_1 goToBlock(61)
+18:44:07,491 - action Bot_1 pickUp(61)
+18:44:07,561 - action Bot_1 goTo(DropZone)
+18:44:11,922 - action Bot_3 pickUp(57)
+18:44:11,990 - action Bot_3 goTo(DropZone)
+18:44:13,293 - action Bot_2 putDown
+18:44:13,362 - action Bot_2 goTo(RoomC3)
+18:44:17,719 - action Bot_1 putDown
+18:44:17,790 - action Bot_1 goTo(RoomB3)
+18:44:19,154 - action Bot_2 goToBlock(41)
+18:44:19,440 - action Bot_3 goTo(RoomB2)
+18:44:19,537 - action Bot_2 pickUp(41)
+18:44:19,605 - action Bot_2 goTo(DropZone)
+18:44:25,223 - action Bot_1 goToBlock(56)
+18:44:25,696 - action Bot_1 pickUp(56)
+18:44:25,697 - action Bot_2 goTo(RoomB2)
+18:44:25,753 - action Bot_1 goTo(DropZone)
+18:44:27,698 - action Bot_3 putDown
+18:44:27,766 - action Bot_3 goToBlock(50)
+18:44:28,240 - action Bot_3 pickUp(50)
+18:44:28,310 - action Bot_3 goTo(DropZone)
+18:44:33,577 - action Bot_1 putDown
+18:44:33,578 - Time to finish sequence is 41 minutes and 59 seconds
+18:44:33,578 - agentsummary Bot_1 handicaps none
+18:44:33,578 - agentsummary robot gooddrops 3
+18:44:33,578 - agentsummary robot wrongdrops 0
+18:44:33,578 - agentsummary robot nmessage 0
+18:44:33,578 - agentsummary robot idletime 2.821
+18:44:33,578 - agentsummary robot nroomsentered 9
+18:44:33,578 - agentsummary Bot_2 handicaps none
+18:44:33,578 - agentsummary robot_0 gooddrops 1
+18:44:33,578 - agentsummary robot_0 wrongdrops 0
+18:44:33,578 - agentsummary robot_0 nmessage 0
+18:44:33,578 - agentsummary robot_0 idletime 2.798
+18:44:33,578 - agentsummary robot_0 nroomsentered 11
+18:44:33,578 - agentsummary Bot_3 handicaps none
+18:44:33,578 - agentsummary robot_1 gooddrops 2
+18:44:33,578 - agentsummary robot_1 wrongdrops 0
+18:44:33,578 - agentsummary robot_1 nmessage 0
+18:44:33,578 - agentsummary robot_1 idletime 2.843
+18:44:33,578 - agentsummary robot_1 nroomsentered 11
+18:44:33,705 - total time is 41 minutes and 59 seconds

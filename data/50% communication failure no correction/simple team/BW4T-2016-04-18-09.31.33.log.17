@@ -1,0 +1,97 @@
+11:09:47,967 - sequence
+11:09:47,968 - room RoomC2 contains blocks:  P W W W
+11:09:47,968 - room RoomC3 contains blocks:  R W P W R
+11:09:47,968 - room RoomC1 contains blocks:  W P
+11:09:47,968 - room RoomA1 contains blocks:  O G Y P O
+11:09:47,968 - room RoomB2 contains blocks:  R W
+11:09:47,969 - room RoomB1 contains blocks:  R W G R
+11:09:47,969 - room RoomB3 contains blocks:  G W
+11:09:47,969 - room RoomA3 contains blocks:  Y Y Y
+11:09:47,969 - room RoomA2 contains blocks:  P
+11:09:47,969 - sequence R R Y P W W
+11:09:48,045 - action Bot_1 goTo(RoomC1)
+11:09:48,046 - action Bot_2 goTo(RoomC2)
+11:09:48,075 - action Bot_3 goTo(RoomC1)
+11:09:52,922 - Bot Bot_3 collided.
+11:09:52,979 - action Bot_3 goTo(RoomC1)
+11:09:53,018 - action Bot_1 goTo(RoomB3)
+11:09:54,214 - action Bot_2 goTo(RoomC3)
+11:09:54,254 - action Bot_3 goTo(RoomB2)
+11:09:56,767 - action Bot_2 goToBlock(42)
+11:09:57,195 - action Bot_2 pickUp(42)
+11:09:57,261 - action Bot_2 goTo(DropZone)
+11:09:59,647 - action Bot_1 goTo(RoomA1)
+11:10:00,063 - action Bot_3 goToBlock(54)
+11:10:00,524 - action Bot_3 pickUp(54)
+11:10:00,592 - action Bot_3 goTo(DropZone)
+11:10:03,384 - action Bot_2 putDown
+11:10:03,451 - action Bot_2 goTo(RoomC3)
+11:10:06,281 - action Bot_1 goTo(RoomA2)
+11:10:08,842 - action Bot_1 goTo(RoomB2)
+11:10:09,220 - action Bot_3 putDown
+11:10:09,235 - action Bot_2 goToBlock(46)
+11:10:09,276 - action Bot_3 goTo(RoomA3)
+11:10:09,610 - action Bot_2 pickUp(46)
+11:10:09,678 - action Bot_2 goTo(DropZone)
+11:10:15,492 - action Bot_1 goTo(RoomA3)
+11:10:15,734 - action Bot_2 putDown
+11:10:15,801 - action Bot_2 goTo(RoomB1)
+11:10:18,305 - action Bot_3 goTo(RoomB3)
+11:10:21,348 - action Bot_1 goTo(RoomB1)
+11:10:23,250 - action Bot_2 goTo(RoomA2)
+11:10:23,330 - action Bot_3 goTo(RoomA1)
+11:10:27,978 - action Bot_1 pickUp(56)
+11:10:28,045 - action Bot_1 goTo(DropZone)
+11:10:29,072 - action Bot_2 goTo(RoomA1)
+11:10:29,983 - action Bot_3 goTo(RoomA3)
+11:10:31,620 - action Bot_2 goToBlock(51)
+11:10:32,048 - action Bot_2 pickUp(51)
+11:10:32,115 - action Bot_2 goTo(DropZone)
+11:10:33,347 - action Bot_3 goTo(RoomB3)
+11:10:35,447 - action Bot_1 putDown
+11:10:35,514 - action Bot_1 goTo(RoomA1)
+11:10:38,340 - action Bot_3 goTo(RoomA3)
+11:10:41,491 - action Bot_2 goTo(RoomA1)
+11:10:43,319 - action Bot_3 goToBlock(63)
+11:10:43,862 - action Bot_3 pickUp(63)
+11:10:43,929 - action Bot_3 goTo(DropZone)
+11:10:44,566 - action Bot_1 goTo(RoomB1)
+11:10:49,564 - action Bot_1 goToBlock(59)
+11:10:50,071 - action Bot_1 pickUp(59)
+11:10:50,139 - action Bot_1 goTo(DropZone)
+11:10:50,531 - action Bot_2 putDown
+11:10:50,597 - action Bot_2 goToBlock(52)
+11:10:50,946 - action Bot_2 pickUp(52)
+11:10:51,012 - action Bot_2 goTo(DropZone)
+11:10:53,468 - action Bot_3 putDown
+11:10:53,536 - action Bot_3 goTo(RoomA2)
+11:10:58,000 - action Bot_1 goTo(RoomA3)
+11:11:00,303 - action Bot_2 goTo(RoomB1)
+11:11:03,400 - action Bot_3 goTo(RoomA1)
+11:11:05,961 - action Bot_3 goTo(RoomA2)
+11:11:07,027 - action Bot_1 putDown
+11:11:07,093 - action Bot_1 goToBlock(64)
+11:11:07,481 - action Bot_1 pickUp(64)
+11:11:07,548 - action Bot_1 goTo(DropZone)
+11:11:07,706 - action Bot_2 putDown
+11:11:07,773 - action Bot_2 pickUp(57)
+11:11:07,841 - action Bot_2 goTo(DropZone)
+11:11:08,517 - action Bot_3 goToBlock(65)
+11:11:08,941 - action Bot_3 pickUp(65)
+11:11:09,010 - action Bot_3 goTo(DropZone)
+11:11:15,254 - action Bot_2 putDown
+11:11:15,320 - action Bot_2 goTo(RoomB2)
+11:11:16,906 - action Bot_1 goTo(RoomA2)
+11:11:19,217 - action Bot_3 goTo(RoomB3)
+11:11:23,586 - action Bot_2 goTo(RoomC2)
+11:11:26,658 - action Bot_3 putDown
+11:11:26,725 - action Bot_3 pickUp(61)
+11:11:26,793 - action Bot_3 goTo(DropZone)
+11:11:26,794 - action Bot_1 putDown
+11:11:26,860 - action Bot_1 goTo(RoomA1)
+11:11:29,393 - action Bot_1 goTo(RoomC1)
+11:11:30,230 - action Bot_2 pickUp(41)
+11:11:30,298 - action Bot_2 goTo(DropZone)
+11:11:34,225 - action Bot_3 putDown
+11:11:34,293 - action Bot_3 goTo(RoomA1)
+11:11:34,406 - total time is 99 minutes and 55 seconds

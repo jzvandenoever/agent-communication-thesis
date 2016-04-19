@@ -1,0 +1,94 @@
+17:03:44,707 - sequence
+17:03:44,708 - room RoomC2 contains blocks:  O G R O
+17:03:44,708 - room RoomC3 contains blocks:  B O O
+17:03:44,708 - room RoomC1 contains blocks:  W O B G
+17:03:44,708 - room RoomA1 contains blocks: 
+17:03:44,708 - room RoomB2 contains blocks:  P R
+17:03:44,708 - room RoomB1 contains blocks:  R Y P Y W
+17:03:44,709 - room RoomB3 contains blocks:  G
+17:03:44,709 - room RoomA3 contains blocks:  Y G R O
+17:03:44,709 - room RoomA2 contains blocks:  O B W B P
+17:03:44,709 - sequence O G Y G O W
+17:03:44,792 - action Bot_1 goTo(RoomB1)
+17:03:44,793 - action Bot_2 goTo(RoomC1)
+17:03:44,822 - action Bot_3 goTo(RoomA3)
+17:03:50,141 - action Bot_2 goToBlock(46)
+17:03:50,612 - action Bot_2 pickUp(46)
+17:03:50,680 - action Bot_2 goTo(DropZone)
+17:03:51,403 - action Bot_1 goTo(RoomA3)
+17:03:53,416 - action Bot_3 pickUp(60)
+17:03:53,483 - action Bot_3 goTo(DropZone)
+17:03:56,880 - action Bot_2 putDown
+17:03:56,946 - action Bot_2 goTo(RoomC1)
+17:03:58,054 - action Bot_1 goTo(RoomB2)
+17:04:02,569 - action Bot_3 goTo(RoomA3)
+17:04:02,779 - action Bot_2 goToBlock(48)
+17:04:03,255 - action Bot_2 pickUp(48)
+17:04:03,323 - action Bot_2 goTo(DropZone)
+17:04:03,893 - action Bot_1 goTo(RoomC3)
+17:04:09,513 - action Bot_2 putDown
+17:04:09,581 - action Bot_2 goTo(RoomB3)
+17:04:09,741 - action Bot_1 pickUp(44)
+17:04:09,811 - action Bot_1 putDown
+17:04:09,878 - action Bot_1 goTo(RoomA3)
+17:04:11,624 - action Bot_3 putDown
+17:04:11,692 - action Bot_3 pickUp(58)
+17:04:11,761 - action Bot_3 putDown
+17:04:11,830 - action Bot_3 goToBlock(57)
+17:04:12,182 - action Bot_3 pickUp(57)
+17:04:12,251 - action Bot_3 goTo(DropZone)
+17:04:16,511 - action Bot_1 goToBlock(58)
+17:04:16,899 - action Bot_1 pickUp(58)
+17:04:16,968 - action Bot_1 goTo(DropZone)
+17:04:17,024 - action Bot_2 goTo(RoomA2)
+17:04:21,620 - action Bot_3 putDown
+17:04:21,689 - action Bot_3 goTo(RoomA3)
+17:04:22,855 - action Bot_2 goTo(RoomB3)
+17:04:26,367 - action Bot_1 putDown
+17:04:26,433 - action Bot_1 goTo(RoomA3)
+17:04:28,669 - action Bot_2 goToBlock(56)
+17:04:29,147 - action Bot_2 pickUp(56)
+17:04:29,214 - action Bot_2 putDown
+17:04:29,282 - action Bot_2 goTo(RoomA2)
+17:04:30,739 - action Bot_3 goToBlock(60)
+17:04:31,249 - action Bot_3 pickUp(60)
+17:04:31,321 - action Bot_3 goTo(DropZone)
+17:04:35,486 - action Bot_2 goToBlock(61)
+17:04:35,488 - action Bot_1 goTo(RoomC3)
+17:04:35,939 - action Bot_2 pickUp(61)
+17:04:36,009 - action Bot_2 goTo(DropZone)
+17:04:40,788 - action Bot_3 putDown
+17:04:40,859 - action Bot_3 goTo(RoomB3)
+17:04:42,154 - action Bot_1 goToBlock(43)
+17:04:42,546 - action Bot_1 pickUp(43)
+17:04:42,615 - action Bot_1 putDown
+17:04:42,684 - action Bot_1 goTo(RoomB1)
+17:04:46,303 - action Bot_2 goTo(RoomA2)
+17:04:48,324 - action Bot_3 goTo(RoomC2)
+17:04:49,631 - action Bot_1 pickUp(55)
+17:04:49,699 - action Bot_1 goTo(DropZone)
+17:04:54,157 - action Bot_3 goTo(RoomA1)
+17:04:56,180 - action Bot_2 putDown
+17:04:56,248 - action Bot_2 pickUp(63)
+17:04:56,316 - action Bot_2 goTo(DropZone)
+17:04:57,111 - action Bot_1 putDown
+17:04:57,111 - Time to finish sequence is 21 minutes and 26 seconds
+17:04:57,111 - agentsummary Bot_1 handicaps none
+17:04:57,111 - agentsummary robot gooddrops 2
+17:04:57,111 - agentsummary robot wrongdrops 0
+17:04:57,111 - agentsummary robot nmessage 0
+17:04:57,111 - agentsummary robot idletime 2.698
+17:04:57,111 - agentsummary robot nroomsentered 10
+17:04:57,111 - agentsummary Bot_2 handicaps none
+17:04:57,111 - agentsummary robot_0 gooddrops 2
+17:04:57,112 - agentsummary robot_0 wrongdrops 0
+17:04:57,112 - agentsummary robot_0 nmessage 0
+17:04:57,112 - agentsummary robot_0 idletime 3.038
+17:04:57,112 - agentsummary robot_0 nroomsentered 10
+17:04:57,112 - agentsummary Bot_3 handicaps none
+17:04:57,112 - agentsummary robot_1 gooddrops 2
+17:04:57,112 - agentsummary robot_1 wrongdrops 0
+17:04:57,112 - agentsummary robot_1 nmessage 0
+17:04:57,112 - agentsummary robot_1 idletime 2.562
+17:04:57,112 - agentsummary robot_1 nroomsentered 8
+17:04:57,234 - total time is 21 minutes and 26 seconds
