@@ -1,0 +1,93 @@
+01:22:05,900 - sequence
+01:22:05,900 - room RoomC2 contains blocks:  P
+01:22:05,901 - room RoomC3 contains blocks:  W G O P G W
+01:22:05,901 - room RoomC1 contains blocks:  R
+01:22:05,901 - room RoomA1 contains blocks:  G Y O
+01:22:05,901 - room RoomB2 contains blocks:  P P W
+01:22:05,901 - room RoomB1 contains blocks:  Y
+01:22:05,901 - room RoomB3 contains blocks:  R R B
+01:22:05,902 - room RoomA3 contains blocks:  Y
+01:22:05,902 - room RoomA2 contains blocks:  P G R R R O G R Y
+01:22:05,902 - sequence P W P P G O
+01:22:05,988 - action Bot_1 goTo(RoomA3)
+01:22:05,989 - action Bot_2 goTo(RoomB3)
+01:22:06,018 - action Bot_3 goTo(RoomA2)
+01:22:12,949 - action Bot_2 goTo(RoomA1)
+01:22:14,223 - action Bot_1 goTo(RoomC1)
+01:22:15,429 - action Bot_3 goToBlock(57)
+01:22:15,822 - action Bot_3 pickUp(57)
+01:22:15,890 - action Bot_3 goTo(DropZone)
+01:22:19,606 - action Bot_2 goTo(RoomB2)
+01:22:22,504 - action Bot_1 goTo(RoomB2)
+01:22:25,437 - action Bot_2 goToBlock(49)
+01:22:25,868 - action Bot_2 pickUp(49)
+01:22:25,935 - action Bot_2 goTo(DropZone)
+01:22:26,109 - action Bot_3 putDown
+01:22:26,176 - action Bot_3 goTo(RoomB2)
+01:22:28,349 - action Bot_1 goToBlock(51)
+01:22:28,895 - action Bot_1 pickUp(51)
+01:22:28,963 - action Bot_1 goTo(DropZone)
+01:22:34,449 - action Bot_3 goTo(RoomB1)
+01:22:34,571 - action Bot_2 goTo(RoomC3)
+01:22:37,003 - action Bot_3 goTo(RoomC2)
+01:22:37,700 - action Bot_1 putDown
+01:22:37,768 - action Bot_1 goTo(RoomB2)
+01:22:40,381 - action Bot_2 goTo(DropZone)
+01:22:42,842 - action Bot_3 goToBlock(38)
+01:22:43,316 - action Bot_3 pickUp(38)
+01:22:43,383 - action Bot_3 goTo(DropZone)
+01:22:46,050 - action Bot_1 goToBlock(50)
+01:22:46,185 - action Bot_2 putDown
+01:22:46,253 - action Bot_2 goTo(RoomA3)
+01:22:46,416 - action Bot_1 pickUp(50)
+01:22:46,483 - action Bot_1 goTo(DropZone)
+01:22:50,401 - action Bot_3 putDown
+01:22:50,469 - action Bot_3 goTo(RoomB2)
+01:22:54,994 - action Bot_1 goTo(RoomC3)
+01:22:55,325 - action Bot_2 goTo(RoomA2)
+01:22:57,937 - action Bot_2 pickUp(58)
+01:22:58,004 - action Bot_2 goTo(DropZone)
+01:22:58,767 - action Bot_3 goTo(RoomC3)
+01:23:00,845 - action Bot_1 putDown
+01:23:00,913 - action Bot_1 goToBlock(43)
+01:23:01,383 - action Bot_1 pickUp(43)
+01:23:01,451 - action Bot_1 goTo(DropZone)
+01:23:04,602 - action Bot_3 pickUp(40)
+01:23:04,671 - action Bot_3 goTo(DropZone)
+01:23:07,419 - Bot Bot_2 collided.
+01:23:07,484 - action Bot_2 goTo(DropZone)
+01:23:07,659 - action Bot_1 putDown
+01:23:07,726 - action Bot_1 goTo(RoomA2)
+01:23:08,761 - action Bot_2 goTo(RoomA1)
+01:23:10,485 - action Bot_3 goTo(RoomC3)
+01:23:16,306 - action Bot_3 putDown
+01:23:16,374 - action Bot_3 goToBlock(41)
+01:23:16,847 - action Bot_3 pickUp(41)
+01:23:16,915 - action Bot_3 goTo(DropZone)
+01:23:17,639 - action Bot_1 pickUp(62)
+01:23:17,707 - action Bot_1 goTo(DropZone)
+01:23:17,828 - action Bot_2 putDown
+01:23:17,896 - action Bot_2 goToBlock(48)
+01:23:18,326 - action Bot_2 pickUp(48)
+01:23:18,394 - action Bot_2 goTo(DropZone)
+01:23:23,107 - action Bot_3 putDown
+01:23:23,107 - Time to finish sequence is 63 minutes and 27 seconds
+01:23:23,107 - agentsummary Bot_1 handicaps none
+01:23:23,107 - agentsummary robot gooddrops 2
+01:23:23,107 - agentsummary robot wrongdrops 0
+01:23:23,107 - agentsummary robot nmessage 0
+01:23:23,107 - agentsummary robot idletime 2.78
+01:23:23,107 - agentsummary robot nroomsentered 9
+01:23:23,107 - agentsummary Bot_2 handicaps none
+01:23:23,107 - agentsummary robot_0 gooddrops 1
+01:23:23,107 - agentsummary robot_0 wrongdrops 0
+01:23:23,107 - agentsummary robot_0 nmessage 0
+01:23:23,107 - agentsummary robot_0 idletime 2.677
+01:23:23,107 - agentsummary robot_0 nroomsentered 10
+01:23:23,107 - agentsummary Bot_3 handicaps none
+01:23:23,107 - agentsummary robot_1 gooddrops 3
+01:23:23,107 - agentsummary robot_1 wrongdrops 0
+01:23:23,107 - agentsummary robot_1 nmessage 0
+01:23:23,107 - agentsummary robot_1 idletime 2.886
+01:23:23,107 - agentsummary robot_1 nroomsentered 11
+01:23:23,182 - total time is 63 minutes and 27 seconds

@@ -1,0 +1,93 @@
+11:11:16,584 - sequence
+11:11:16,584 - room RoomC2 contains blocks:  G Y R P
+11:11:16,584 - room RoomC3 contains blocks:  R P O Y B
+11:11:16,584 - room RoomC1 contains blocks:  G
+11:11:16,584 - room RoomA1 contains blocks:  Y W G G
+11:11:16,584 - room RoomB2 contains blocks:  O G R G
+11:11:16,585 - room RoomB1 contains blocks:  R G B B
+11:11:16,585 - room RoomB3 contains blocks:  G Y
+11:11:16,585 - room RoomA3 contains blocks:  Y Y
+11:11:16,585 - room RoomA2 contains blocks:  B G
+11:11:16,585 - sequence G G O Y Y G
+11:11:16,680 - action Bot_1 goTo(RoomB1)
+11:11:16,682 - action Bot_2 goTo(RoomB2)
+11:11:16,714 - action Bot_3 goTo(RoomC2)
+11:11:22,953 - action Bot_3 goToBlock(38)
+11:11:23,309 - action Bot_3 pickUp(38)
+11:11:23,310 - action Bot_1 pickUp(57)
+11:11:23,367 - action Bot_3 goTo(DropZone)
+11:11:23,368 - action Bot_1 goTo(DropZone)
+11:11:24,544 - action Bot_2 goToBlock(55)
+11:11:24,980 - action Bot_2 pickUp(55)
+11:11:25,050 - action Bot_2 goTo(DropZone)
+11:11:30,305 - action Bot_3 putDown
+11:11:30,365 - Bot Bot_1 collided.
+11:11:30,374 - action Bot_3 goTo(RoomC1)
+11:11:30,417 - action Bot_1 goTo(DropZone)
+11:11:31,694 - action Bot_1 putDown
+11:11:31,762 - action Bot_1 goTo(RoomB3)
+11:11:33,743 - action Bot_2 goTo(RoomB2)
+11:11:36,204 - action Bot_3 pickUp(47)
+11:11:36,274 - action Bot_3 goTo(DropZone)
+11:11:39,242 - action Bot_1 goTo(RoomA1)
+11:11:42,076 - action Bot_2 putDown
+11:11:42,120 - action Bot_3 goTo(RoomC3)
+11:11:42,134 - action Bot_2 goToBlock(52)
+11:11:42,489 - action Bot_2 pickUp(52)
+11:11:42,557 - action Bot_2 goTo(DropZone)
+11:11:45,938 - action Bot_1 goTo(RoomA2)
+11:11:47,987 - action Bot_3 putDown
+11:11:48,056 - action Bot_3 goToBlock(44)
+11:11:48,409 - action Bot_3 pickUp(44)
+11:11:48,478 - action Bot_3 goTo(DropZone)
+11:11:48,522 - action Bot_1 goTo(RoomA3)
+11:11:51,074 - action Bot_1 goTo(RoomC2)
+11:11:51,158 - action Bot_2 putDown
+11:11:51,226 - action Bot_2 goTo(RoomA1)
+11:11:54,610 - action Bot_3 goTo(RoomC3)
+11:11:58,581 - action Bot_1 goTo(RoomA3)
+11:12:00,361 - action Bot_2 pickUp(48)
+11:12:00,433 - action Bot_2 goTo(DropZone)
+11:12:00,434 - action Bot_3 putDown
+11:12:00,508 - action Bot_3 goToBlock(45)
+11:12:00,900 - action Bot_3 pickUp(45)
+11:12:00,968 - action Bot_3 goTo(DropZone)
+11:12:06,092 - action Bot_1 goToBlock(63)
+11:12:06,489 - action Bot_1 pickUp(63)
+11:12:06,558 - action Bot_1 goTo(DropZone)
+11:12:07,142 - action Bot_3 putDown
+11:12:07,211 - action Bot_3 goTo(RoomC2)
+11:12:09,573 - action Bot_2 putDown
+11:12:09,641 - action Bot_2 goTo(RoomB2)
+11:12:13,925 - action Bot_3 goToBlock(39)
+11:12:14,437 - action Bot_3 pickUp(39)
+11:12:14,506 - action Bot_3 putDown
+11:12:14,575 - action Bot_3 goTo(RoomC3)
+11:12:16,029 - action Bot_1 goTo(RoomA1)
+11:12:17,534 - action Bot_3 goToBlock(47)
+11:12:17,960 - action Bot_2 goToBlock(53)
+11:12:18,002 - action Bot_3 pickUp(47)
+11:12:18,072 - action Bot_3 goTo(DropZone)
+11:12:18,331 - action Bot_2 pickUp(53)
+11:12:18,398 - action Bot_2 goTo(DropZone)
+11:12:24,340 - action Bot_3 putDown
+11:12:24,340 - Time to finish sequence is 24 minutes and 40 seconds
+11:12:24,340 - agentsummary Bot_1 handicaps none
+11:12:24,340 - agentsummary robot gooddrops 1
+11:12:24,340 - agentsummary robot wrongdrops 0
+11:12:24,340 - agentsummary robot nmessage 0
+11:12:24,340 - agentsummary robot idletime 2.224
+11:12:24,340 - agentsummary robot nroomsentered 9
+11:12:24,340 - agentsummary Bot_2 handicaps none
+11:12:24,340 - agentsummary robot_0 gooddrops 2
+11:12:24,340 - agentsummary robot_0 wrongdrops 0
+11:12:24,340 - agentsummary robot_0 nmessage 0
+11:12:24,340 - agentsummary robot_0 idletime 2.437
+11:12:24,340 - agentsummary robot_0 nroomsentered 7
+11:12:24,340 - agentsummary Bot_3 handicaps none
+11:12:24,340 - agentsummary robot_1 gooddrops 3
+11:12:24,341 - agentsummary robot_1 wrongdrops 0
+11:12:24,341 - agentsummary robot_1 nmessage 0
+11:12:24,341 - agentsummary robot_1 idletime 3.14
+11:12:24,341 - agentsummary robot_1 nroomsentered 11
+11:12:24,406 - total time is 24 minutes and 40 seconds
