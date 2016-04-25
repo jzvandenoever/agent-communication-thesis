@@ -1,0 +1,33 @@
+% create boxplot
+with(agents, boxplot(run_time ~ interaction(agent, com_failure, correction), las=2, pars=par(mai=c(2.1,.6,.2,.2))))
+
+% create scatterplots
+qplot(run_time, com_failure, facets=agent~correction, data=agents, shape=agent)
+qplot(com_failure, run_time, facets=agent~correction, data=agents, shape=agent, geom=c("point", "smooth"))
+
+% success comparisons. 
+agents.success_counts = with(agents, table(agent, com_failure, correction))
+%correct for the fact that we will dividing to correct for agent count. adjust the index 
+agents.success_counts[11] <- 150
+
+agents.success_counts = apply(agents.success_counts, c(1,2), function(x) {x/3})
+	, , com_failure = 0
+
+			  agent
+	correction block com simple single simple team
+		 False         0       0.00000           0
+		 True         48      16.66667          49
+
+	, , com_failure = 0.05
+
+			  agent
+	correction block com simple single simple team
+		 False         0             0           0
+		 True         50             0          50
+
+	, , com_failure = 0.5
+
+			  agent
+	correction block com simple single simple team
+		 False        22             0          18
+		 True         50             0          50
