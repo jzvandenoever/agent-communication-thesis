@@ -533,8 +533,28 @@ Agents
 \end_layout
 
 \begin_layout Standard
-Limiting the number of sizes used for the agent teams would drastically
- reduce the experiment space as well.
+There are several components to the agent dimension.
+ The ones identified are the size of the agent teams, the team composition,
+ and the agent programming itself.
+ While Communication
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Communication"
+
+\end_inset
+
+ is about how we modify the communication for the experiment, the components
+ of the agents will decide how the communication will go, and how much of
+ it there is.
+\end_layout
+
+\begin_layout Paragraph*
+Team size
+\end_layout
+
+\begin_layout Standard
+Limiting the sizes used for the agent teams would drastically reduce the
+ experiment space as well.
  And not all sizes need to be tested to get a sense of the effects, if there
  is one, communication failures might have.
  The case of having only one agent, would not need a lot of experimentation
@@ -559,6 +579,10 @@ Limiting the number of sizes used for the agent teams would drastically
  setup, eight, has been chosen as the last group size.
 \end_layout
 
+\begin_layout Paragraph
+Team composition
+\end_layout
+
 \begin_layout Standard
 All these agent teams still need a team composition.
  While they could have different programs, this might introduce higher order
@@ -569,6 +593,10 @@ All these agent teams still need a team composition.
  So in the interest of limiting the time spent with simulations, and analyzing
  homogenous agent teams will be used.
  
+\end_layout
+
+\begin_layout Paragraph*
+Agent Program
 \end_layout
 
 \begin_layout Standard
@@ -584,29 +612,94 @@ reference "fig:Agent-types"
  These agent programs are chosen from all possibilities because they are
  simple, build upon each other, and let us explore what happens with differing
  degrees of communication.
+ To properly compare the teams there must be a baseline.:
+\end_layout
+
+\begin_layout Itemize
+A single agent randomly visiting unexplored rooms and remembering which
+ block can be found where.
+ It delivers blocks to the dropzone as soon as it knows of the currently
+ needed block.
+ After having delivered a block it can check if it already knows of the
+ next needed block and deliver it right away.
+ If it does not it continues visiting random unexplored rooms.
 \end_layout
 
 \begin_layout Standard
-To properly compare the teams baselines are needed.
- The simplest baseline is a single agent exploring rooms and delivering
- blocks as soon as it finds the currently needed block.
- This will let us evaluate how teams perform compared to a single agent,
- even with the communication failure.
- This is then used to make the team baseline, which only communicates which
- blocks have been delivered.
- A third team will also communicate which blocks can be found in rooms they
- explore.
+By having one program that always exists of one agent will let us evaluate
+ how teams perform compared to a single agent, even with the communication
+ failure.
 \end_layout
 
 \begin_layout Standard
-From here the agent types branch out into two types that differ in their
- coordination strategies.
- The agents will coordinate their actions to see who is best suited to do
- what task at any given moment.
- But the way they coordinate differs, one team asks first if they can do
- something, before conflict resolution happens if needed.
- The other team starts doing a task, and then verifies that nobody else
- is doing it, before going to conflict resolution.
+This agent is then expanded upon to make the teams with different strategies:
+\end_layout
+
+\begin_layout Itemize
+A team of the baseline agents that now includes the ability to communicate
+ when the current block in the sequence has been delivered.
+ If an agent hears the block they were planning on delivering has already
+ been delivered they drop it in a room the next time they enter it.
+ However because of that agents can have outdated information on the location
+ of blocks.
+ This is updated when they enter a room, but if all blocks of the needed
+ colour have been moved out of their rooms the agents have nothing to do
+ anymore and will block access to rooms that other agents might need.
+ (#Discuss with Chris/Koen: since this will not cause a deadlock in the
+ perfect communication scenario if does this need to be addressed.
+ Or possible mitigation strategy since it can cause deadlocks if blocks
+ miss a message of the current block needed being delivered.)
+\end_layout
+
+\begin_layout Itemize
+The above team is extended to communicate which blocks can be found in the
+ rooms they enter.
+ This also updates the location of blocks that got picked up and dropped
+ in a different room.
+ The agents also share if they are holding a block.
+ If a block is being held by an agent the others will not try to find and
+ pick it up.
+\end_layout
+
+\begin_layout Standard
+The last set of agent teams is two ways to include coordination to the the
+ last agent team described.
+ The agents will coordinate their actions to prevent more than one agent
+ doing the same task and will work ahead.
+ This is done by picking up not just the current block in the sequence but
+ also picking up up the following blocks in the sequence.
+ To be able to coordinate this the agents also communicate if they intend
+ to pick something up.
+ So that others wont go for that colour in the sequence.
+ But the way the teams decide who picks what block differs:
+\end_layout
+
+\begin_layout Itemize
+The reactive team first asks the other agents for confirmation on their
+ action.
+ If another agent wants to do the same thing, the agent with the name that
+ compares as larger gets to do it.
+ This is achieved by having an agent with the same plan saying no if it
+ fulfills the name order condition.
+\end_layout
+
+\begin_layout Itemize
+The proactive team starts doing a task and perhaps does work unnecessarily.
+ And then verifies that nobody else is doing it.
+ If the same name order condition as for the other team holds, and the agent
+ als wants to that block in the sequence it returns a message telling it
+ to stop.
+\end_layout
+
+\begin_layout Standard
+(UPDATE THE DESCRIPTION OF THE FINAL AGENT TEAMS.
+ It only looks at the colour of the blocks for the lookahead code.
+ If a colour is planned on being picked up for more agents than is desired
+ in the next X blocks, where X is the amount of agents, only then will they
+ object.)
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -648,6 +741,13 @@ Agent types, each agent team has the capabilities of the previous one in
 
 \begin_layout Subsubsection*
 Communication
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Communication"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
