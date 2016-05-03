@@ -8,7 +8,7 @@ qplot(com_failure, run_time, facets=agent~correction, data=agents, shape=agent, 
 % success comparisons. 
 agents.success_counts = with(agents, table(agent, com_failure, correction))
 %correct for the fact that we will dividing to correct for agent count. adjust the index 
-agents.success_counts[11] <- 150
+agents.success_counts[11] <- agents.success_counts[11]*3
 
 agents.success_counts = apply(agents.success_counts, c(1,2), function(x) {x/3})
 	, , com_failure = 0
@@ -16,7 +16,7 @@ agents.success_counts = apply(agents.success_counts, c(1,2), function(x) {x/3})
 			  agent
 	correction block com simple single simple team
 		 False         0       0.00000           0
-		 True         48      16.66667          49
+		 True         48      50          49
 
 	, , com_failure = 0.05
 
