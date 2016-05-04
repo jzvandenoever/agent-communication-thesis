@@ -10,15 +10,14 @@ module adoptgoals{
 		not(Place = held)), Blocks), random_member((DestBlock, Dest), Blocks) ) then 
 		adopt(in(Dest),holding(DestBlock)).
 	
+	% Stand at the ready with an upcoming block near the dropzone if it is held.
 	if not(a-goal( in(_) )), bel( holdingWantBlock, not(holdingNextBlock) ) then adopt( at('FrontDropZone') ).
 			
 	%Otherwise go to a random room we haven't seen yet'.
 	if bel( not(finished), not(holdingWantBlock), bagof( Place,( room(Place), not(dropZone(Place)), not(visited(Place)) ),
 		 Places ), random_member(Dest, Places) ) then adopt(in(Dest)).
 	
-	
-	
-	% Visit random rooms if we don't know where a block we want is. 
+	% Visit random rooms if we don't know where a block we want is.
 	% Other agents must have moved it around while we visited.
 	if not(a-goal( in(_) )), bel( 
 		not(bagof( Place,( room(Place), not(dropZone(Place)), not(visited(Place))), Places)), 
