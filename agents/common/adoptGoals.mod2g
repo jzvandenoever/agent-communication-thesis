@@ -1,5 +1,5 @@
 use commonKnowledge as knowledge.
-order=linear.
+order=linearrandom.
 
 module adoptgoals{
 	%If holding the next needed block go to the dropzone.
@@ -7,7 +7,7 @@ module adoptgoals{
 			
 	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it.
 	if bel( not(holdingWantBlock), wantColour(ColorID),  bagof((BlockID, Place), (block(BlockID, ColorID, Place), 
-		not(Place = held)), Blocks), random_member((DestBlock, Dest), Blocks) ) then 
+		not(Place = held)), Blocks), member((DestBlock, Dest), Blocks) ) then 
 		adopt(in(Dest),holding(DestBlock)).
 	
 	% Stand at the ready with an upcoming block near the dropzone if it is held.
@@ -15,12 +15,12 @@ module adoptgoals{
 			
 	%Otherwise go to a random room we haven't seen yet'.
 	if bel( not(finished), not(holdingWantBlock), bagof( Place,( room(Place), not(dropZone(Place)), not(visited(Place)) ),
-		 Places ), random_member(Dest, Places) ) then adopt(in(Dest)).
+		 Places ), member(Dest, Places) ) then adopt(in(Dest)).
 	
 	% Visit random rooms if we don't know where a block we want is.
 	% Other agents must have moved it around while we visited.
 	if not(a-goal( in(_) )), bel( 
 		not(bagof( Place,( room(Place), not(dropZone(Place)), not(visited(Place))), Places)), 
 		bagof( Place,( room(Place), not(dropZone(Place))), Destinations), 
-		random_member(Dest, Destinations) ) then adopt(in(Dest)).
+		member(Dest, Destinations) ) then adopt(in(Dest)).
 }
