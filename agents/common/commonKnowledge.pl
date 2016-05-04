@@ -18,26 +18,26 @@
 :- dynamic(grabbing/2).
 
 % LookAhead agent related knowledge
+% Returns the amount of agents that we received a message of. This is the agents that we know of.
+% By not making it static it easily adapts to differing team sizes.
 agentCount(N) :- aggregate_all(count, agent(_), N).
+
+% The subset of the sequence from the current needed block with the next N blocks. Where N is 
+% agentCount(N). 
 interestingColours(CList) :- seqDone(Done), sequence(Seq), length(Done, From), agentCount(N), 
 	To is From+N, findall(E, (between(From, To, I), nth0(I, Seq, E)), CList).
-% No need for anything special.
-wantColour(ColourID) :- not(holding(BlockID)), interestingColours(Colours), 
-	member(ColourID, Colours), countOccurence(Colours, ColourID, N), 
+% If we are not holding something we check what colours that are interesting are already being held.
+% When one colour is found that is not already picked up or going to be picked up at the needed amount,
+% it is wanted. If we are holding that colour we can check if it is wanted by providing the colour of
+% that block
+wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours), countOccurence(Colours, ColourID, N), 
 	aggregate_all(count, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), M), 
-	M=<N.
-% If we are holding a colour we need to add 1 to the count.
-wantColour(ColourID) :- holding(BlockID), block(BlockID, ColorID, _), interestingColours(Colours), 
-	member(ColourID, Colours), countOccurence(Colours, ColourID, N), 
-	aggregate_all(count, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), M),
-	Z is M+1, Z=<N.
-% Also see what we want if we are holding something we don't want.
-wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours), 
-	holding(BlockID), not(block(BlockID, ColorID, _)), countOccurence(Colours, ColourID, N), 
-	aggregate_all(count, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), M),
-	M=<N.
+	M<N.
 
+% The block being held is a block that is wanted.
 holdingWantBlock :- holding(BlockID),block(BlockID, ColorID, _), wantColour(ColorID).
+
+% Counts the amount of times X is in list.
 countOccurence([],X,0).
 countOccurence([X|T],X,Y):- countOccurence(T,X,Z), Y is 1+Z.
 countOccurence([X1|T],X,Z):- X1\=X,countOccurence(T,X,Z).
