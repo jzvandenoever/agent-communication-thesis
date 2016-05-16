@@ -25,6 +25,7 @@ module blockComTeamEvents {
 	if bel( grabbing(BlockID) ), not(goal(in(_), holding(BlockID))) then delete( grabbing(BlockID) )
 		+ insert( send('allother', notGrabbing(BlockID)) ).
 	
+	% update for checking on colour. And count of that colour. 
 	forall bel( grabbing(BlockID), grabbing(Agt, BlockID), me(Me), Me < Agt ), 
 		a-goal( in(Place), holding(BlockID) ) do drop (in(Place), holding(BlockID)) + 
 		delete( grabbing(BlockID) ) + insert( send('allother', notGrabbing(BlockID)) ).
