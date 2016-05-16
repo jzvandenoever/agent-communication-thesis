@@ -16,6 +16,7 @@
 :- dynamic(ahead/1).
 :- dynamic(grabbing/1).
 :- dynamic(grabbing/2).
+:- dynamic(stop/0).
 
 % LookAhead agent related knowledge
 % Returns the amount of agents that we received a message of. This is the agents that we know of.
