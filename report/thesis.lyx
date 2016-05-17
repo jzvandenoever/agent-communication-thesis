@@ -178,6 +178,13 @@ Here we define a single instance communication failure as the recipient
 
 \begin_layout Subsection
 Research approach
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Research-approach"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -269,7 +276,7 @@ To determine the effects of communication failure, if any, on multi-agent
  various environment variables such as the room placement
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Experiment Dimensions
 \end_layout
 
@@ -482,7 +489,7 @@ Experiment Dimensions
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 Experiment reduction
 \end_layout
 
@@ -828,6 +835,57 @@ For half of the tests the agents can still see the state of the sequence
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:explor-success"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Experiment Setup
+\end_layout
+
+\begin_layout Standard
+With the above dimensions the experiment will be set up under the following
+ conditions:
+\end_layout
+
+\begin_layout Itemize
+All the simulations will be run on the same machine.
+\end_layout
+
+\begin_layout Itemize
+The simulations will be run on a dedicated machine that only has the operating
+ system running in addition to the simulations.
+\end_layout
+
+\begin_layout Itemize
+Only one simulation is run at the same time.
+\end_layout
+
+\begin_layout Standard
+These conditions are to prevent the available processing power on the system
+ from influencing simulations between runs.
+ And if there is only the one simulation running on the system other processes
+ can not starve it either.
+ 
+\end_layout
+
+\begin_layout Standard
+These simulations will be run through a python script to automate the entire
+ process.
+ It will gather and group the logs of each set of simulations with the same
+ values for the experiment dimensions.
+ Every set of runs is a new instance of the BW4T server to which a new instance
+ of the runtime connects.
+ This runtime will be run with only one mas file provided, a timeout, and
+ the repeat amount.
+ The timeout and repeat will be the same between sets.
+ The resulting data will be analysed after being converted into a csv file
+ as described in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Research-approach"
 
 \end_inset
 
