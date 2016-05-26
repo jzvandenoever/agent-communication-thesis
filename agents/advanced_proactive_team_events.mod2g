@@ -1,5 +1,4 @@
 use common.commonKnowledge as knowledge.
-use common.adoptGoals as module.
 use common.events as module.
 use common.com_basic as module.
 use common.com_block_info as module.
@@ -20,13 +19,13 @@ module blockComTeamEvents {
 	forall (Agt).sent( msg(grabbing(BlockID)) ) do insert ( grabbing(Agt, BlockID) ).
 	forall (Agt).sent( msg(notGrabbing(BlockID)) ) do delete ( grabbing(Agt, BlockID) ).
 	
-	if a-goal( in(Place), holding(BlockID) ) then insert( grabbing(BlockID), 
-		send('allother', grabbing(BlockID)) ).
-	if bel( grabbing(BlockID) ), not(goal(in(_), holding(BlockID))) then delete( grabbing(BlockID) )
-		+ insert( send('allother', notGrabbing(BlockID)) ).
+	if a-goal( in(Place), holding(BlockID) ) then insert( grabbing(BlockID) ) +
+		allother.send(msg(grabbing(BlockID)) ).
+	if bel( grabbing(BlockID) ), not(goal(in(_), holding(BlockID))) then delete( grabbing(BlockID) ) +
+		allother.send(msg(notGrabbing(BlockID)) ).
 	
 	% update for checking on colour. And count of that colour. 
 	forall bel( grabbing(BlockID), grabbing(Agt, BlockID), me(Me), Me < Agt ), 
 		a-goal( in(Place), holding(BlockID) ) do drop (in(Place), holding(BlockID)) + 
-		delete( grabbing(BlockID) ) + insert( send('allother', notGrabbing(BlockID)) ).
+		delete( grabbing(BlockID) ) + allother.send(msg(notGrabbing(BlockID)) ).
 }

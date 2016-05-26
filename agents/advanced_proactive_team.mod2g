@@ -15,10 +15,8 @@ module main {
 		not(wantColour(ColorID)) ) then putDown.
 	
 	%go to goal places
-	if a-goal(at(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
-	if a-goal(in(Place)) then goTo(Place) + insert( state(traveling) ).
-	if a-goal(at(Place)) then goTo(Place).
-	if a-goal(in(Place)) then goTo(Place).
+	if a-goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
+	if a-goal(at(Place); in(Place)) then goTo(Place).
 	
 	%go to goal blocks
 	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place), not(atBlock(BlockID))) 

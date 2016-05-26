@@ -7,5 +7,5 @@ module comVisited {
 		insert( visited(Place) ).
 	
 	forall percept(in(Place)), bel( not(visited(Place)), room(Place) ) do 
-		insert( send('allother', visited(Place)) ).
+		allother.send(msg(visited(Place)) ).
 }

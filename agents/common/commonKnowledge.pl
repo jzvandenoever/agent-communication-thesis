@@ -47,9 +47,15 @@ countOccurence([X1|T],X,Z):- X1\=X,countOccurence(T,X,Z).
 % A room is a place with exactly one neighbour, i.e., there is only one way to get 
 % to and from that place.
 room(PlaceID) :- zone(_,PlaceID,_,_,Neighbours), length(Neighbours,1).
+% Predicate used to provide the dropzone location for goals and actions.
 dropZone('DropZone').
 
 % Block information.
+% Is the agent holding the next needed block.
 holdingNextBlock :- holding(BlockID),block(BlockID, ColorID, Place), nextNeededColor(ColorID).
-nextNeededColor(ColorID) :- sequence(Seq), seqDone(SDone), append(SDone, [ColorID|_], Seq). 
+% What is the current colour that needs to be dropped off.
+nextNeededColor(ColorID) :- sequence(Seq), seqDone(SDone), append(SDone, [ColorID|_], Seq).
+
+% This detects if the agents has finished. 
+%Is used to exit immediately once the goal is complete by any agent.
 finished :- sequence(Seq), seqDone(Seq).

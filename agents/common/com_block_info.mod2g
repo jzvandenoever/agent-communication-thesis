@@ -13,6 +13,6 @@ module comBlocks {
 	
 	% Transmit block related info
 	forall percept( color(BlockID, ColorID), in(Place) ), bel( not(block(BlockID, ColorID, Place)) ) 
-			do insert( send('allother', block(BlockID, ColorID, Place)) ).
-	forall percept(holding(BlockID)) do insert( send('allother', heldblock(BlockID)) ).
+			do allother.send(msg(block(BlockID, ColorID, Place)) ).
+	forall percept(holding(BlockID)) do allother.send(msg(heldblock(BlockID)) ).
 }

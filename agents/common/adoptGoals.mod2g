@@ -6,21 +6,14 @@ module adoptgoals{
 	if bel( holdingNextBlock ) then adopt(in('DropZone')).
 			
 	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it.
-	if bel( not(holdingWantBlock), wantColour(ColorID),  bagof((BlockID, Place), (block(BlockID, ColorID, Place), 
-		not(Place = held)), Blocks), member((DestBlock, Dest), Blocks) ) then 
-		adopt(in(Dest),holding(DestBlock)).
+	if bel( not(holdingWantBlock), wantColour(ColorID), block(BlockID, ColorID, Place), 
+		not(Place = held) ) then adopt(in(Place),holding(BlockID)).
 	
 	% Stand at the ready with an upcoming block near the dropzone if it is held.
-	if not(a-goal( in(_) )), bel( holdingWantBlock, not(holdingNextBlock) ) then adopt( at('FrontDropZone') ).
+	if not(a-goal( in(_) )), bel( holdingWantBlock, not(holdingNextBlock) ) then 
+		adopt( at('FrontDropZone') ).
 			
 	%Otherwise go to a random room we haven't seen yet'.
-	if bel( not(finished), not(holdingWantBlock), bagof( Place,( room(Place), not(dropZone(Place)), not(visited(Place)) ),
-		 Places ), member(Dest, Places) ) then adopt(in(Dest)).
-	
-	% Visit random rooms if we don't know where a block we want is.
-	% Other agents must have moved it around while we visited.
-	if not(a-goal( in(_) )), bel( 
-		not(bagof( Place,( room(Place), not(dropZone(Place)), not(visited(Place))), Places)), 
-		bagof( Place,( room(Place), not(dropZone(Place))), Destinations), 
-		member(Dest, Destinations) ) then adopt(in(Dest)).
+	if bel( not(finished), not(holdingWantBlock), room(Place), not(dropZone(Place)), 
+		not(visited(Place)) ) then adopt(in(Place)).
 }
