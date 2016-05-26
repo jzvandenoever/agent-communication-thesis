@@ -49,6 +49,11 @@ if __name__ == "__main__":
                             type, value = parts[-2:]
                             summary[index][type] = value
 
+                        if not end_time and 'total time is' in line:
+                            print set_path, log_dir, logfile, line
+                        #if end_time and parts[2] in ('action', 'Bot'):
+                        #    print set_path, log_dir, logfile, parts
+
                     # if len(summary[1]) > 0:
                     if end_time is not None:
                         cur_summaries['amount'] += 1

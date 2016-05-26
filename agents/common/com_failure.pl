@@ -1,2 +1,2 @@
 %sendMessageFailed :- false.
-sendMessageFailed :- random(R), R>0.25.
+sendMessageFailed :- random(R), R>1.0.
