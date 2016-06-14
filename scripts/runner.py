@@ -17,7 +17,7 @@ DEFAULT_REPEATS = 1 # No repeats
 DEFAULT_TIMEOUT = 300 # five minutes]
 
 
-def detect_early_stop(log_lines):
+def detect_early_stop(log_lines, agent_count):
     for logline in log_lines:
         logline = logline.split()
         if logline[2] != 'action':
@@ -97,7 +97,7 @@ if __name__ == "__main__":
                     # Do stuff with the runtime output here.
                     log_lines = log_file.readlines()
                     # Do cycle detection, and nothing happens detection.
-                    if args.repeats == 1 and detect_early_stop(log_lines):
+                    if args.repeats == 1 and detect_early_stop(log_lines, agent_count):
                         break
 
                     poll = client.poll()
