@@ -5,16 +5,43 @@ import os
 import shutil
 import tempfile
 import re
+import threading
+from Queue import Queue, Empty
 
 FAILURES = [0, 5, 25, 50, 75, 95, 100]
 AGENT_COUNTS = [3, 5, 10]
-CMD = 'java -cp {runtime} goal.tools.Run "{mas}" --repeats {repeats} --timeout {timeout} ' \
+CMD = 'java -cp {runtime} goal.tools.Run "{mas}" -v --repeats {repeats} --timeout {timeout} ' \
       '--dropchance {failure}'
 BW4T_CMD = 'java -jar {bw4t}'
 DEFAULT_RUNTIME = 'runtime.jar'
 DEFAULT_BW4T = 'bw4t.jar'
 DEFAULT_REPEATS = 1  # No repeats
 DEFAULT_TIMEOUT = 300  # five minutes]
+
+
+def enqueue_output(out, queue, stop_event):
+    for line in iter(out.readline, b''):
+        if stop_event.is_set():
+            break
+        queue.put(line)
+
+
+def setup_nonblocking_read(output):
+    q = Queue()
+    t_stop = threading.Event()
+    t = threading.Thread(target=enqueue_output, args=(output, q, t_stop))
+    t.daemon = True  # thread dies with the program
+    t.start()
+    return q, t_stop
+
+
+def non_block_readline(q):
+    try:
+        line = q.get_nowait()
+    except Empty:
+        return ''
+    else:
+        return line
 
 
 def prepare_mas(maslocation, agent_count):
@@ -24,11 +51,13 @@ def prepare_mas(maslocation, agent_count):
     replacement_count = 'agentcount = "%s"' % agent_count
     for line in mas_contents:
         if 'agentcount' in line:
-            line = re.sub(r'agentcount ?= ?["\']\d+["\']]', replacement_count, line)
+            line = re.sub(r'agentcount ?= ?["\']\d+["\']', replacement_count, line)
+
         changed_mas.write(line)
     changed_mas.close()
-    dest_name = os.path.join(os.path.dirname(maslocation), os.path.basename(changed_mas.name))
-    os.rename(changed_mas.name, dest_name)
+    dest_name = os.path.join(os.path.dirname(maslocation),
+                             os.path.basename(changed_mas.name) + '.mas2g')
+    shutil.move(changed_mas.name, dest_name)
     return dest_name
 
 
@@ -77,10 +106,12 @@ def run(args):
             masfile = prepare_mas(maslocation, agent_count)
 
             for fail_chance in FAILURES:
+                print 'Doing run with {fail} chance of communication failure.'.format(fail=fail_chance)
                 bw4t_path = os.path.dirname(args.bw4t)
                 bw4t_logs = bw4t_path.join('log')
                 if os.path.exists(bw4t_logs):
                     shutil.rmtree(bw4t_path.join('log'))
+                print 'Removed old logs if existing.'
 
                 server = subprocess.Popen(shlex.split(BW4T_CMD.format(bw4t=args.bw4t)),
                                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -88,6 +119,7 @@ def run(args):
                 while True:
                     line = server.stdout.readline()
                     if 'Launching the BW4T Server Graphical User Interface.' in line:
+                        print 'Launched BW4T server.'
                         break
 
                 client_command = CMD.format(runtime=args.runtime, repeats=args.repeats, mas=masfile,
@@ -100,26 +132,40 @@ def run(args):
 
                 agents = {}
                 # Process runtime data.
+                print 'start processing'
+                client_q, client_t = setup_nonblocking_read(client.stdout)
+                server_q, server_t = setup_nonblocking_read(server.stdout)
                 while True:
-                    line = client.stdout.readline()
-                    serverlines = server.stdout.readline()
+                    line = non_block_readline(client_q)
+                    serverlines = non_block_readline(server_q)
                     # Do stuff with the runtime output here.
                     log_lines = log_file.readlines()
                     # Do cycle detection, and nothing happens detection.
                     if args.repeats == 1 and detect_early_stop(log_lines, agents, agent_count):
+                        print 'Stopped because of action cycles.'
                         break
 
                     # Detect the end of the run.
                     poll = client.poll()
-                    if line.endswith('milliseconds to run jobs.') or poll is None:
-                        print line, poll
+                    if line.endswith('milliseconds to run jobs.\n') or poll is not None:
+                        print 'Finished run'
                         break
-
+                
+                print 'Shutting down'
+                client_t.set()
+                server_t.set()
                 client.terminate()
                 server.terminate()
-                client.communicate()
+                client.wait()
+                print 'shut down'  # shut down client server read threads.
 
-                os.renames(bw4t_logs, os.path.join(mas_name, '%.2f' % (fail_chance / 100.0)))
+                try:
+                    os.renames(bw4t_logs, os.path.join(mas_name, '%d' % agent_count,
+                                                       '%.2f' % (fail_chance / 100.0)))
+                except OSError as e:
+                    print 'error moving logs to %s' % os.path.join(mas_name, '%d' % agent_count,
+                                                                   '%.2f' % (fail_chance / 100.0))
+                    print e
                 print 'Ran {mas} with the following failure chance: {chance}'.format(mas=mas_name,
                                                                                      chance=fail_chance)
             os.remove(masfile)

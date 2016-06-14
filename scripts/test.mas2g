@@ -1,0 +1,22 @@
+use "../bw4t-client-3.8.5.jar" as environment with 
+	clientip ="localhost", clientport="2000", 
+	serverip = "localhost", serverport = "8000", speed = "100",  map = "SuperRandom",
+	agentcount = "1", humancount = "0", launchgui = "false", goal = "true".
+
+define robot as agent {
+	use robot as main module.
+	use robotInit as init module.
+	use robotEvents as event module.
+} 
+
+define observer as agent {
+	use "../observer/obs_main.mod2g" as main module.
+	use "../observer/obs_init.mod2g" as init module.
+	use "../observer/obs_events.mod2g" as event module.
+} 
+
+
+launchpolicy{
+	launch observer.
+	when * launch robot.
+}
