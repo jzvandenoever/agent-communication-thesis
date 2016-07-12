@@ -8,7 +8,7 @@ module main {
 	
 	%drop blocks in the dropzone when they are needed, and communicate this
 	if bel(in('DropZone'), holdingNextBlock) 
-			then putDown + insert( send('allother', 'deliveryDone') ) + updateSequence.
+			then putDown + allother.send( msg('deliveryDone') ) + updateSequence.
 		
 	%drop blocks in rooms when they are not needed anymore
 	if bel( in(Loc),Loc\='DropZone', holding(BlockID), block(BlockID, ColorID, _),
@@ -24,4 +24,6 @@ module main {
 	
 	%pickup goal blocks
 	if a-goal(holding(BlockID)), bel(atBlock(BlockID)) then pickUp(BlockID).
+	
+	if bel( in('DropZone') ) then goTo('FrontDropZone').
 }

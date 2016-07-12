@@ -24,9 +24,10 @@
 agentCount(N) :- findall(Agent, agent(Agent), Agents), length(Agents, N).
 
 % The subset of the sequence from the current needed block with the next N blocks. Where N is 
-% agentCount(N). 
-interestingColours(CList) :- seqDone(Done), sequence(Seq), length(Done, From), agentCount(N), 
-	To is From+N, findall(E, (between(From, To, I), nth0(I, Seq, E)), CList).
+% agentCount(N).
+interestingColours(CList) :- stillNeededColours(List), agentCount(N), length(CList, N),
+	append(CList, _, List).
+stillNeededColours(CList) :- seqDone(Done), sequence(Seq), append(Done, CList, Seq).
 % If we are not holding something we check what colours that are interesting are already being held.
 % When one colour is found that is not already picked up or going to be picked up at the needed amount,
 % it is wanted. If we are holding that colour we can check if it is wanted by providing the colour of
@@ -35,6 +36,8 @@ wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours),
 	countOccurence(Colours, ColourID, N), 
 	findall(ABlock, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), Blocks), 
 	length(Blocks, M), M<N.
+%wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours), 
+%	countOccurence(Colours, ColourID, N).
 
 % The block being held is a block that is wanted.
 holdingWantBlock :- holding(BlockID),block(BlockID, ColorID, _), wantColour(ColorID).
