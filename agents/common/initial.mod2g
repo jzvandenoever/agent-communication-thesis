@@ -9,6 +9,9 @@ module robotInit {
 	if percept(state(State)) then insert( state(State) ).
 	% Record initial location. 
 	if percept(at(Place)) then insert( at(Place) ).
+	
+	% Maintain list of other agents.
+	if percept( player(X) ) then insert ( agent(X) ).
 
 	% Record goal sequence
 	if percept( sequence(Seq) ) then insert(sequence(Seq), seqDone([])) + adopt(seqDone(Seq)).

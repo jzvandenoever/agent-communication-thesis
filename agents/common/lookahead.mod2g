@@ -1,10 +1,7 @@
 use commonKnowledge as knowledge.
 order=linearall.
 
-module lookAhead {
-	% maintain agent list.
-	forall (Agt).sent( msg(_) ), bel( not(agent(Agt)) ) do insert( agent(Agt) ).
-	
+module lookAhead {	
 	% Update aheadState
 	forall (Agt).sent( msg(holding(BlockID)) ), bel(not(holding(Agt, BlockID))) do 
 		insert( holding(Agt, BlockID) ).

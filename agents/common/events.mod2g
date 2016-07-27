@@ -4,6 +4,9 @@ use updateSequence as module.
 order=linearall.
 
 module events {
+	% Sometimes not all other agents are passed along at the init.
+	if percept( player(X) ), not(bel( agent(X) )) then insert( agent(X) ). 
+	
 	% Update the agent's state of movement.
 	forall bel( state(State)), percept(state(NewState))  
 		do delete( state(State) ) + insert( state(NewState) ).

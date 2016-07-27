@@ -1,0 +1,45 @@
+use common.commonKnowledge as knowledge.
+use common.events as module.
+use common.com_basic as module.
+use common.com_block_info as module.
+use common.com_visited as module.
+use common.lookahead as module.
+
+module blockComTeamEvents {
+	
+	if true then comBasic.
+	
+	if true then comBlocks.
+	if true then comVisited.
+	
+	if true then lookAhead.
+	
+	if true then events.
+	
+	% Keeping track of messages received regarding intentions to get blocks.
+	forall (Agt).sent( msg(grabbing(BlockID)) ), not(bel( grabbing(Agt, BlockID) )) 
+		do insert ( grabbing(Agt, BlockID) ).
+	forall (Agt).sent( msg(notGrabbing(BlockID)) ) do delete ( grabbing(Agt, BlockID) ).
+	forall (Agt).sent( msg(notGrabbing(A, BlockID)) ), bel( me(A)) do delete ( grabbing(BlockID) ).
+	forall (Agt).sent( msg(notGrabbing(A, BlockID)) ), bel( me(Me), Me \= A ) 
+		do delete ( grabbing(A, BlockID) ).
+	
+	% Epress intention to grab a block. And do it if you get the okay.
+	if a-goal( in(Place), holding(BlockID) ) then allother.send(msg(grabbing(BlockID)) ).
+	forall (Agt).sent( msg(ok(BlockID)) ) do insert ( canGrab(Agt, BlockID) ).
+	if bel(findall(BlockID, canGrab(_,BlockID), Grabbing), agentCount(N), length(Grabbing, N), 
+		canGrab(_, BlockID) ) then insert ( grabbing(BlockID) ).
+	forall bel( grabbing(BlockID), canGrab(Agt, BlockID) ) do delete( canGrab(Agt, BlockID) ).
+	if bel( grabbing(BlockID), holding(BlockID) ) then delete( grabbing(BlockID) ) +
+		allother.send(msg(notGrabbing(BlockID)) ).
+	
+	% update for checking on colour. And count of that colour. 
+	forall (Agt).sent( msg(grabbing(BlockID)) ), bel( not(grabbing(BlockID)), not(holding(BlockID)) )
+		do (Agt).send( msg(ok(BlockID)) ).
+	forall (Agt).sent( msg(grabbing(BlockID)) ), bel( ( grabbing(BlockID); holding(BlockID) ), 
+		me(Me), Me > Agt ) do allother.send(msg(notGrabbing(Agt, BlockID)) ) + 
+		delete( grabbing(Agt, BlockID) ).
+		
+	
+	if bel( grabbing(X, BlockID), grabbing(X, BlockID2), BlockID \= BlockID2 ) then insert( agent(X) ).
+}

@@ -1,0 +1,29 @@
+use common.commonKnowledge as knowledge.
+use common.actions as actionspec.
+use common.updateSequence as module.
+exit=nogoals.
+
+module main {
+	if bel( finished ) then exit-module.
+	
+	%drop blocks in the dropzone when they are needed, and communicate this
+	if bel(in('DropZone'), holdingNextBlock) 
+			then putDown + allother.send( msg('deliveryDone') ) + updateSequence.
+		
+	%drop blocks in rooms when they are not needed anymore
+	if bel( in(Loc),Loc\='DropZone', holding(BlockID), block(BlockID, ColorID, _),
+		not(wantColour(ColorID)) ) then putDown.
+	
+	%go to goal places
+	if a-goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
+	if a-goal(at(Place); in(Place)) then goTo(Place).
+	
+	%go to goal blocks
+	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place), not(atBlock(BlockID))) 
+			then goToBlock(BlockID).
+	
+	%pickup goal blocks
+	if a-goal(holding(BlockID)), bel(atBlock(BlockID), grabbing(BlockID)) then pickUp(BlockID).
+	
+	if bel( in('DropZone') ) then goTo('FrontDropZone').
+}
