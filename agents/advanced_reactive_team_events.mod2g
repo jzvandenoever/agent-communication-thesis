@@ -39,7 +39,4 @@ module blockComTeamEvents {
 	forall (Agt).sent( msg(grabbing(BlockID)) ), bel( ( grabbing(BlockID); holding(BlockID) ), 
 		me(Me), Me > Agt ) do allother.send(msg(notGrabbing(Agt, BlockID)) ) + 
 		delete( grabbing(Agt, BlockID) ).
-		
-	
-	if bel( grabbing(X, BlockID), grabbing(X, BlockID2), BlockID \= BlockID2 ) then insert( agent(X) ).
 }
