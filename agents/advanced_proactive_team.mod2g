@@ -19,11 +19,10 @@ module main {
 	if a-goal(at(Place); in(Place)) then goTo(Place).
 	
 	%go to goal blocks
-	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place), not(atBlock(BlockID))) 
-			then goToBlock(BlockID).
+	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place)) then goToBlock(BlockID).
 	
 	%pickup goal blocks
-	if a-goal(holding(BlockID)), bel(atBlock(BlockID)) then pickUp(BlockID).
+	if a-goal(holding(BlockID)) then pickUp(BlockID).
 	
 	if bel( in('DropZone') ) then goTo('FrontDropZone').
 }

@@ -8,21 +8,19 @@
 :- dynamic(atBlock/1).
 :- dynamic(holding/1).
 :- dynamic(holding/2).
-:- dynamic(agent/1).
+:- dynamic(player/1).
 :- dynamic(sequence/1).
 :- dynamic(seqDone/1).
 :- dynamic(sequenceIndex/1).
-:- dynamic(send/2).
 :- dynamic(ahead/1).
 :- dynamic(grabbing/1).
 :- dynamic(grabbing/2).
-:- dynamic(stop/0).
 :- dynamic(canGrab/2).
 
 % LookAhead agent related knowledge
 % Returns the amount of agents that we received a message of. This is the agents that we know of.
 % By not making it static it easily adapts to differing team sizes.
-agentCount(N) :- findall(Agent, agent(Agent), Agents), length(Agents, N).
+agentCount(N) :- findall(Player, player(Player), Players), length(Players, N).
 
 % The subset of the sequence from the current needed block with the next N blocks. Where N is 
 % agentCount(N).
