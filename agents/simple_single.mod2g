@@ -4,21 +4,20 @@ use common.updateSequence as module.
 exit=nogoals.
 
 module main {
-	if bel( finished ) then stop.
-	
 	%drop blocks in the dropzone when they are needed, and communicate this
-	if bel(in('DropZone'), holdingNextBlock) then putDown + updateSequence.
+	if a-goal(delivered(BlockID)), bel( in('DropZone'), holding(BlockID) ) then putDown + 
+		updateSequence(BlockID).
 		
 	%drop blocks in rooms when they are not needed anymore
-	if bel(in(Loc),Loc\='DropZone', not(holdingNextBlock)) then putDown.
-	
-	%go to goal places
-	if a-goal(at(Place)) then goTo(Place).
-	if a-goal(in(Place)) then goTo(Place).
+	if bel(in(Loc),Loc\='DropZone', holding(BlockID)), not(a-goal(delivered(BlockID))) then putDown.
 	
 	%go to goal blocks
-	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place)) then goToBlock(BlockID).
+	if a-goal(delivered(BlockID)), bel(in(Place), block(BlockID,_,Place)) then goToBlock(BlockID).
 	
-	%pickup goal blocks
-	if a-goal(holding(BlockID)) then pickUp(BlockID).
+	%pickup goal blocks (Yes the not holding is needed. Otherwise the action just keeps failing.)
+	if a-goal(delivered(BlockID)), bel(not(holding(BlockID))) then pickUp(BlockID).
+	
+	%go to goal places
+	if a-goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
+	if a-goal(at(Place); in(Place)) then goTo(Place).
 }

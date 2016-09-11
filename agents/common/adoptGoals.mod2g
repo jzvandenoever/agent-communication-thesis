@@ -2,18 +2,24 @@ use commonKnowledge as knowledge.
 order=linearrandom.
 
 module adoptgoals{
-	%If holding the next needed block go to the dropzone.
-	if bel( holdingNextBlock ) then adopt(in('DropZone')).
-			
-	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it.
-	if bel( not(holdingWantBlock), wantColour(ColorID), block(BlockID, ColorID, Place), 
-		not(Place = held) ) then adopt(in(Place),holding(BlockID)).
+	% Using not(a-goal(delivered(BlockID))) caused errors.
+	if a-goal(delivered(BlockID)) then {
+		% If holding the block to deliver go to the dropzone.
+		if bel( holding(BlockID), dropZone(Place) ) then adopt( in(Place) ).
 	
-	% Stand at the ready with an upcoming block near the dropzone if it is held.
-	if not(a-goal( in(_) )), bel( holdingWantBlock, not(holdingNextBlock) ) then 
-		adopt( at('FrontDropZone') ).
+		% If not in the location of the block to deliver, go there.
+		if bel( not(holding(BlockID)), block(BlockID, _, Place) ) then 
+		adopt( in(Place) ).
+	}
+	% These lines only happen if we have no a-goal(delivered(_)).
+	% Otherswise, see if there is a block that needs to be delivered.
+	if a-goal(sequence(Seq)), bel( colorToDeliver(ColorID, Seq), block(BlockID, ColorID, Place), 
+		not(Place = held) ) then adopt( delivered(BlockID) ).
 			
-	%Otherwise go to a random room we haven't seen yet'.
-	if bel( not(finished), not(holdingWantBlock), room(Place), not(dropZone(Place)), 
-		not(visited(Place)) ) then adopt(in(Place)).
+	% Otherwise go to a random room we haven't seen yet'.
+	if not(goal-a(sequence(X))), bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then 
+		adopt( in(Place) ).
+		
+	% If we're in the dropzone we want to be out of that.'
+	if bel( dropZone(Place), in(Place) ) then adopt( at('FrontDropZone') ). 
 }

@@ -4,22 +4,23 @@ use common.updateSequence as module.
 exit=nogoals.
 
 module main {
-	if bel( finished ) then exit-module.
+	% Optimisation for ending simulations if not agents are aware they are finished.
+	if a-goal(sequence(Seq)), bel( sequenceIndex(N), length(Seq, N)) then exit-module.
 	
 	%drop blocks in the dropzone when they are needed, and communicate this
-	if bel(in('DropZone'), holdingNextBlock) 
-			then putDown +  allother.send( msg('deliveryDone') ) + updateSequence.
+	if a-goal(delivered(BlockID)), bel( in('DropZone'), holding(BlockID) ) then putDown + 
+		allother.send( msg(deliveryDone(BlockID)) ) + updateSequence(BlockID).
 		
 	%drop blocks in rooms when they are not needed anymore
-	if bel(in(Loc),Loc\='DropZone', not(holdingNextBlock)) then putDown.
+	if bel(in(Loc),Loc\='DropZone', holding(BlockID)), not(a-goal(delivered(BlockID))) then putDown.
+	
+	%go to goal blocks
+	if a-goal(delivered(BlockID)), bel(in(Place), block(BlockID,_,Place)) then goToBlock(BlockID).
+	
+	%pickup goal blocks (Yes the not holding is needed. Otherwise the action just keeps failing.)
+	if a-goal(delivered(BlockID)), bel(not(holding(BlockID))) then pickUp(BlockID).
 	
 	%go to goal places
 	if a-goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
 	if a-goal(at(Place); in(Place)) then goTo(Place).
-	
-	%go to goal blocks
-	if a-goal(holding(BlockID)), bel(in(Place), block(BlockID,_,Place)) then goToBlock(BlockID).
-	
-	%pickup goal blocks
-	if a-goal(holding(BlockID)) then pickUp(BlockID).
 }

@@ -11,6 +11,6 @@ module robotInit {
 	if percept(at(Place)) then insert( at(Place) ).
 
 	% Record goal sequence
-	if percept( sequence(Seq) ) then insert(sequence(Seq), seqDone([])) + adopt(seqDone(Seq)).
+	if percept( sequence(Seq) ) then insert( sequence([]) ) + adopt( sequence(Seq) ).
 	if percept( sequenceIndex(X) ) then insert( sequenceIndex(X) ).
 }
