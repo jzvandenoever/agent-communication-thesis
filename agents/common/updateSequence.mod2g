@@ -2,11 +2,11 @@ use commonKnowledge as knowledge.
 order=linearall.
 
 module updateSequence(BlockID){
-	% Update sequence
-	if a-goal(sequence(Seq)), bel( sequence(SDone), colorToDeliver(ColorID, Seq), 
+	% Update sequence and fulfill the goal of delivering of BlockID.
+	if a-goal(sequence(Seq)), bel( sequence(SDone), nextColorInSeq(ColorID, Seq), 
 		append(SDone,[ColorID],NewSDone) ) then delete(sequence(SDone)) + 
 		insert(sequence(NewSDone), delivered(BlockID)).
 		
-	% Remove beliefs about the delivered block.
+	% Remove beliefs about the delivered block so we won't try to pick it up later.
 	if bel(block(BlockID, ColorID, Place)) then delete(block(BlockID, ColorID, Place)).
 }

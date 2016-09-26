@@ -21,11 +21,3 @@ define pickUp(BlockID) with
 define putDown with
 	pre{not(state(traveling)), holding(_)}
 	post{ true }
-
-define stop with
-	pre{state(traveling)}
-	post{ true }
-	
-define skip with
-	pre{ true }
-	post{ true }

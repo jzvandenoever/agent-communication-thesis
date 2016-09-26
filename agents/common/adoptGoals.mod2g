@@ -13,11 +13,11 @@ module adoptgoals{
 	}
 	% These lines only happen if we have no a-goal(delivered(_)).
 	% Otherswise, see if there is a block that needs to be delivered.
-	if a-goal(sequence(Seq)), bel( colorToDeliver(ColorID, Seq), block(BlockID, ColorID, Place), 
+	if a-goal(sequence(Seq)), bel( nextColorInSeq(ColorID, Seq), block(BlockID, ColorID, Place), 
 		not(Place = held) ) then adopt( delivered(BlockID) ).
 			
 	% Otherwise go to a random room we haven't seen yet'.
-	if not(goal-a(sequence(X))), bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then 
+	if bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then 
 		adopt( in(Place) ).
 		
 	% If we're in the dropzone we want to be out of that.'
