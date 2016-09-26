@@ -19,13 +19,14 @@ module blockComTeamEvents {
 	forall (Agt).sent( msg(grabbing(BlockID)) ) do insert ( grabbing(Agt, BlockID) ).
 	forall (Agt).sent( msg(notGrabbing(BlockID)) ) do delete ( grabbing(Agt, BlockID) ).
 	
-	if a-goal( in(Place), holding(BlockID) ) then insert( grabbing(BlockID) ) +
+	if a-goal( delivered(BlockID) ) then insert( grabbing(me, BlockID) ) +
 		allother.send(msg(grabbing(BlockID)) ).
-	if bel( grabbing(BlockID) ), not(goal(in(_), holding(BlockID))) then delete( grabbing(BlockID) ) +
-		allother.send(msg(notGrabbing(BlockID)) ).
+	if bel( grabbing(me, BlockID) ), not(a-goal(delivered(BlockID))) then 
+		delete( grabbing(me, BlockID) ) + allother.send(msg(notGrabbing(BlockID)) ).
 	
-	% update for checking on colour. And count of that colour. 
-	forall bel( grabbing(BlockID), grabbing(Agt, BlockID), me(Me), Me < Agt ), 
-		a-goal( in(Place), holding(BlockID) ) do drop (in(Place), holding(BlockID)) + 
-		delete( grabbing(BlockID) ) + allother.send(msg(notGrabbing(BlockID)) ).
+	% TODO: update for checking on colour. And count of that colour.
+	% If somehow two agents want to deliver the same block. Resolve the conflict.
+	forall bel( grabbing(me, BlockID), grabbing(Agt, BlockID), me(Me), Me < Agt ), 
+		a-goal( delivered(BlockID) ) do drop (delivered(BlockID)) + 
+		delete( grabbing(me, BlockID) ) + allother.send(msg(notGrabbing(BlockID)) ).
 }

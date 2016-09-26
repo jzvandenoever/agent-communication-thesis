@@ -11,8 +11,6 @@
 :- dynamic(player/1).
 :- dynamic(sequence/1).
 :- dynamic(sequenceIndex/1).
-:- dynamic(ahead/1).
-:- dynamic(grabbing/1).
 :- dynamic(grabbing/2).
 :- dynamic(canGrab/2).
 :- dynamic(delivered/1).
