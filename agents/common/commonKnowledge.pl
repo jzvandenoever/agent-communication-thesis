@@ -14,11 +14,13 @@
 :- dynamic(grabbing/2).
 :- dynamic(canGrab/2).
 :- dynamic(delivered/1).
+:- dynamic(lookahead/0).
 
 % LookAhead agent related knowledge
 % Returns the amount of agents that we received a message of. This is the agents that we know of.
-% By not making it static it easily adapts to differing team sizes.
-agentCount(N) :- findall(Player, player(Player), Players), length(Players, N).
+% By not making it static it easily adapts to differing team sizes. Do remember to count yourself however.
+agentCount(N) :- not(lookahead), N = 1.
+agentCount(N) :- lookahead, findall(Player, player(Player), Players), length(Players, M), N is M + 1.
 
 % A room is a place with exactly one neighbour, i.e., there is only one way to get 
 % to and from that place.
@@ -33,5 +35,16 @@ nextXColoursInSeq(Colors, X, Seq) :- sequence(SDone), append(SDone, Remainder, S
 	length(Colors, X), append(Colors, _, Remainder).
 nextXColoursInSeq(Remainder, X, Seq) :- sequence(SDone), append(SDone, Remainder, Seq),
 	length(Remainder, Y), Y<X.
+% In case the sequence is done we need to return that there are no blocks needed and not just fail.
+nextXColoursInSeq([], X, Seq) :- sequence(Seq).
 % Since we often just need the colour to deliver now here's a shortcut for that.
 nextColorInSeq(ColorID, Seq) :- nextXColoursInSeq([ColorID], 1, Seq).
+
+% Get the difference between two lists like the subtract/3 predicate however duplicates are removed one to
+% one. E.g. single_subtract([1,2,2,3,4],[2,4],Result). -> Result == [1,2,3]
+single_subtract([],_, []).
+single_subtract(Result,[], Result).
+single_subtract([X|FullList], Subtracting, Result) :- member(X, Subtracting), 
+	select(X, Subtracting, ReducedS), single_subtract(FullList, ReducedS, Result).
+single_subtract([X|FullList], Subtracting, [X|Result]) :- not(member(X, Subtracting)), 
+	single_subtract(FullList, Subtracting, Result).

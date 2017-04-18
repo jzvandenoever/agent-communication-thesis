@@ -4,17 +4,22 @@ order=linearrandom.
 module adoptgoals{
 	% Using not(a-goal(delivered(BlockID))) caused errors.
 	if a-goal(delivered(BlockID)) then {
+		% if holding/delivering a block that isn't the next block prepare for delivery.
+		if a-goal(sequence(Seq)), bel( holding(BlockID), block(BlockID, Color, Place),
+			not(nextColorInSeq(Color, Seq)) ) then adopt( in('FrontDropZone') ).
+		
 		% If holding the block to deliver go to the dropzone.
-		if bel( holding(BlockID), dropZone(Place) ) then adopt( in(Place) ).
+		if bel( holding(BlockID), nextColorInSeq(Color, Seq), dropZone(Place) ) then adopt( in(Place) ).
 	
 		% If not in the location of the block to deliver, go there.
-		if bel( not(holding(BlockID)), block(BlockID, _, Place) ) then 
-		adopt( in(Place) ).
+		if bel( not(holding(BlockID)), block(BlockID, _, Place) ) then  adopt( in(Place) ).
 	}
 	% These lines only happen if we have no a-goal(delivered(_)).
-	% Otherswise, see if there is a block that needs to be delivered.
-	if a-goal(sequence(Seq)), bel( nextColorInSeq(ColorID, Seq), block(BlockID, ColorID, Place), 
-		not(Place = held) ) then adopt( delivered(BlockID) ).
+	% Otherwise, see if there is a block that needs to be delivered and nobody is already going for it.
+	if a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors, N, Seq), 
+		findall(ColorID, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColorID, _)), TakenC),
+		single_subtract(Colors, TakenC, UntakenC), member(Color, UntakenC), 
+		block(BlockID, Color, Place), not(Place = held) ) then adopt( delivered(BlockID) ).
 			
 	% Otherwise go to a random room we haven't seen yet'.
 	if bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then 

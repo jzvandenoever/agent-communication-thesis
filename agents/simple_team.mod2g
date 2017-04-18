@@ -5,7 +5,7 @@ exit=nogoals.
 
 module main {
 	% Optimisation for ending simulations if not agents are aware they are finished.
-	if goal( sequence(Seq) ), bel( sequenceIndex(N), length(Seq, N)) then exit-module.
+	%if goal( sequence(Seq) ), bel( sequenceIndex(N), length(Seq, N)) then exit-module.
 	
 	%drop blocks in the dropzone when they are needed, and communicate this
 	if a-goal(delivered(BlockID)), bel( in('DropZone'), holding(BlockID) ) then putDown + 

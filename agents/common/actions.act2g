@@ -16,7 +16,6 @@ define pickUp(BlockID) with
 	pre{atBlock(BlockID), not(state(traveling)), not(holding(_))}
 	post{ true }
 
-
 % putDown can only be performed when holding a block
 define putDown with
 	pre{not(state(traveling)), holding(_)}
