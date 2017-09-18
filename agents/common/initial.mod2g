@@ -1,6 +1,10 @@
 use commonKnowledge as knowledge.
+order=linearall.
 
 module robotInit {
+	% Get all the other bots we know of at startup.
+	forall percept( player(X) ) do insert( player(X) ).
+	
 	% Store map information, i.e., navigation points in the agent's belief base.
 	forall percept(zone(ID, Name, X, Y, Neighbours))  
 		do insert( zone(ID, Name, X, Y, Neighbours) ).
@@ -9,11 +13,8 @@ module robotInit {
 	if percept(state(State)) then insert( state(State) ).
 	% Record initial location. 
 	if percept(at(Place)) then insert( at(Place) ).
-	
-	% Maintain list of other agents.
-	if percept( player(X) ) then insert ( agent(X) ).
 
 	% Record goal sequence
-	if percept( sequence(Seq) ) then insert(sequence(Seq), seqDone([])) + adopt(seqDone(Seq)).
+	if percept( sequence(Seq) ) then insert( sequence([]) ) + adopt( sequence(Seq) ).
 	if percept( sequenceIndex(X) ) then insert( sequenceIndex(X) ).
 }

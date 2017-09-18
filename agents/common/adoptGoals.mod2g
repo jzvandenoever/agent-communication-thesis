@@ -1,19 +1,17 @@
 use commonKnowledge as knowledge.
 order=linearrandom.
 
-module adoptgoals{
-	%If holding the next needed block go to the dropzone.
-	if bel( holdingNextBlock ) then adopt(in('DropZone')).
+module adoptGoals{
+	% See if there is a block that needs to be delivered and nobody is already going for it.
+	if a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors, N, Seq), 
+		findall(ColorID, (delivering(_,ABlock), block(ABlock, ColorID, _)), TakenC),
+		single_subtract(Colors, TakenC, UntakenC), member(Color, UntakenC), 
+		block(BlockID, Color, Place), not(Place = held) ) then adopt( delivered(BlockID) ).
 			
-	%Otherswise, If the next needed block is known then adopt a goal to go there and hold it.
-	if bel( not(holdingWantBlock), wantColour(ColorID), block(BlockID, ColorID, Place), 
-		not(Place = held) ) then adopt(in(Place),holding(BlockID)).
-	
-	% Stand at the ready with an upcoming block near the dropzone if it is held.
-	if not(a-goal( in(_) )), bel( holdingWantBlock, not(holdingNextBlock) ) then 
-		adopt( at('FrontDropZone') ).
-			
-	%Otherwise go to a random room we haven't seen yet'.
-	if bel( not(finished), not(holdingWantBlock), room(Place), not(dropZone(Place)), 
-		not(visited(Place)) ) then adopt(in(Place)).
+	% Otherwise go to a random room we haven't seen yet'.
+	if bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then 
+		adopt( in(Place) ).
+		
+	% If we're in the dropzone we want to be out of that.'
+	if bel( dropZone(Place), in(Place) ) then adopt( at('FrontDropZone') ). 
 }

@@ -1,0 +1,43 @@
+use simple_team as mas.
+use "../common/commonKnowledge" as knowledge.
+use "../common/actions" as actionspec.
+use "../common/updateSequence" as module.
+use "../simple_team" as module.
+
+timeout = 120.
+
+test main with 
+	pre{ goal(sequence(Seq)) }
+	in{
+		%drop blocks in the dropzone that should be delivered, and communicate this
+		% seems the testing framework can't handle multiple actions in one rule very well.
+		a-goal( delivered(BlockID) ), bel( not(state(traveling)), in('DropZone'), holding(BlockID) ) 
+			leadsto done( putDown ). %, sent( deliveryDone(BlockID) ).
+%		a-goal( delivered(BlockID) ), bel( not(state(traveling)), in('DropZone'), holding(BlockID) )  
+%			leadsto done( updateSequence(BlockID) ).
+		never done( updateSequence(BlockID) ), not(bel( in('DropZone') )).
+		never done( updateSequence(BlockID) ), not(sent( deliveryDone(BlockID) )).
+			
+		% Test we don't try to pick up blocks while already holding a block.
+		% Does done hold if precondition failed?
+		never bel(holding(BlockID)), done(pickUp(BlockId)).
+		
+%		%pick up blocks that need delivering if you are in the same room.
+%		a-goal( delivered(BlockID) ), bel( in(Place), block(BlockID,_,Place), not(state(traveling)), 
+%		not(atBlock(BlockID)), not(holding(_)) ) leadsto done( goToBlock(BlockID) ).
+		a-goal(delivered(BlockID)), bel( not(state(traveling)), not(holding(_)), block(BlockID, _, _), 
+			atBlock(BlockID) ) leadsto done( pickUp(BlockID) ).		
+
+		% Make sure that when we have manually updated the state we correct it.
+		a-goal(at(Place); in(Place)), bel( state(stopped) ) leadsto bel( state(traveling) ).
+%		%go to goal places
+		a-goal( at(Place); in(Place) ), not(bel( state(traveling) )) leadsto done( goTo(Place) ).
+		% Fix the presence of dropZone. Should also be done as goal.
+		never not(goal( at(Place); in(Place) )), done( goTo(Place) ).
+	}
+	post{ bel( sequenceIndex(N), length(Seq, N)) }
+	
+robot {
+	% Simple test with no other conditions.
+	do main.
+}

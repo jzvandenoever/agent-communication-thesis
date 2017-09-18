@@ -1,0 +1,40 @@
+use "../../tests/simple_team" as mas.
+use "../commonKnowledge" as knowledge.
+use "../adoptGoals" as module.
+timeout = 5.
+
+test adoptgoals with 
+	pre{ not(goal(in(_))), not(goal(at(_))), a-goal(sequence(Seq)) }
+	in{
+		% test finding blocks to deliver.
+		a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors, N, Seq), 
+		findall(ColorID, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColorID, _)), TakenC),
+		single_subtract(Colors, TakenC, UntakenC), member(Color, UntakenC), 
+		block(BlockID, Color, Place), not(Place = held) ) leadsto goal( delivered(BlockID) ).
+		
+		% Test visit unvisited rooms. We only want to evaluate this once. After the first instantiation we
+		% get our goal. And the first not clause stops the rest from evaluating.
+		not(goal(in(_))), bel( room(Place), not(dropZone(Place)), not(visited(Place))) leadsto 
+			goal(in(Place) ).
+			
+		% Test agent doesn't just stick around in the dropzone.'
+		not(goal(in(_))), bel( dropZone(Place), in(Place) ) leadsto goal( at('FrontDropZone') ). 
+	}
+	post{ }
+	
+robot {
+	% TODO split delivergoals and explore goals
+	
+	% Normal test
+	do adoptgoals.
+	
+	% Setup conditions for finding blocks to deliver. use seeded level.
+	
+	% Test leaving the dropzone. But needs all rooms to be visited first. How do I do that?
+	% create level with only dropzone?
+	%do drop( zone(Place, Name, X, Y, Neighbours) ) 
+	%	forall bel( room(Place), zone(Place, Name, X, Y, Neighbours)) ).
+	%do insert( dropZone('dropzone'), in('dropzone') ).
+	%do adoptgoals.
+	%do delete( dropZone('dropzone'), in('dropzone') ).
+}

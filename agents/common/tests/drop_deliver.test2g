@@ -1,0 +1,19 @@
+use "../../tests/simple_team" as mas.
+use "../commonKnowledge" as knowledge.
+use "../drop_deliver" as module.
+
+test drop_deliver(BlockID) with
+	pre{ goal(delivered(BlockID)) }
+	in{
+		bel( state(State) ) leadsto bel( state(stopped) ).
+		bel( state(State), not (State = stopped) ) leadsto not(bel( state(State) )).
+		bel( state(State) ) leadsto not(goal( delivered(BlockID) )).
+		
+		a-goal( in(Place) ) leadsto not(goal( in(Place) )).
+	}
+	post{ }
+
+robot {
+	do adopt( delivered(1) ).
+	do drop_deliver(1).
+}        

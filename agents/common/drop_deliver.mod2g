@@ -1,0 +1,9 @@
+use commonKnowledge as knowledge.
+order=linearall.
+
+module drop_deliver(BlockID) {
+	if bel( state(State) ) then delete( state(State) ) + insert( state(stopped) ) + 
+			drop(delivered(BlockID)).
+	% Also make sure to drop the go somewhere goal if we have one.
+	if a-goal( in(Place) ) then drop(in(Place)).
+}

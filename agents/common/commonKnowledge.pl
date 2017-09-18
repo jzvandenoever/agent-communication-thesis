@@ -8,45 +8,23 @@
 :- dynamic(atBlock/1).
 :- dynamic(holding/1).
 :- dynamic(holding/2).
-:- dynamic(agent/1).
+:- dynamic(player/1).
 :- dynamic(sequence/1).
-:- dynamic(seqDone/1).
 :- dynamic(sequenceIndex/1).
-:- dynamic(send/2).
-:- dynamic(ahead/1).
-:- dynamic(grabbing/1).
-:- dynamic(grabbing/2).
-:- dynamic(stop/0).
-:- dynamic(canGrab/2).
+:- dynamic(delivered/1).
+:- dynamic(delivering/2).
+:- dynamic(lookahead/0).
+:- dynamic(getPermission/0).
+:- dynamic(deliverPermission/1).
+:- dynamic(doDeliver/2).
+:- dynamic(doNotDeliver/2).
+:- dynamic(goingToBlock/0).
 
 % LookAhead agent related knowledge
 % Returns the amount of agents that we received a message of. This is the agents that we know of.
-% By not making it static it easily adapts to differing team sizes.
-agentCount(N) :- findall(Agent, agent(Agent), Agents), length(Agents, N).
-
-% The subset of the sequence from the current needed block with the next N blocks. Where N is 
-% agentCount(N).
-interestingColours(CList) :- stillNeededColours(List), agentCount(N), length(CList, N),
-	append(CList, _, List).
-stillNeededColours(CList) :- seqDone(Done), sequence(Seq), append(Done, CList, Seq).
-% If we are not holding something we check what colours that are interesting are already being held.
-% When one colour is found that is not already picked up or going to be picked up at the needed amount,
-% it is wanted. If we are holding that colour we can check if it is wanted by providing the colour of
-% that block
-wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours), 
-	countOccurence(Colours, ColourID, N), 
-	findall(ABlock, ((holding(_, ABlock); grabbing(_,ABlock)), block(ABlock, ColourID, _)), Blocks), 
-	length(Blocks, M), M<N.
-%wantColour(ColourID) :- interestingColours(Colours), member(ColourID, Colours), 
-%	countOccurence(Colours, ColourID, N).
-
-% The block being held is a block that is wanted.
-holdingWantBlock :- holding(BlockID),block(BlockID, ColorID, _), wantColour(ColorID).
-
-% Counts the amount of times X is in list.
-countOccurence([],X,0).
-countOccurence([X|T],X,Y):- countOccurence(T,X,Z), Y is 1+Z.
-countOccurence([X1|T],X,Z):- X1\=X,countOccurence(T,X,Z).
+% By not making it static it easily adapts to differing team sizes. Do remember to count yourself however.
+agentCount(N) :- not(lookahead), N = 1.
+agentCount(N) :- lookahead, findall(Player, player(Player), Players), length(Players, M), N is M + 1.
 
 % A room is a place with exactly one neighbour, i.e., there is only one way to get 
 % to and from that place.
@@ -55,11 +33,22 @@ room(PlaceID) :- zone(_,PlaceID,_,_,Neighbours), length(Neighbours,1).
 dropZone('DropZone').
 
 % Block information.
-% Is the agent holding the next needed block.
-holdingNextBlock :- holding(BlockID),block(BlockID, ColorID, Place), nextNeededColor(ColorID).
-% What is the current colour that needs to be dropped off.
-nextNeededColor(ColorID) :- sequence(Seq), seqDone(SDone), append(SDone, [ColorID|_], Seq).
+% Gives a list of the first X blocks to be delivered in order. If X is larger than the amount of blocks
+% to be delivered it just returns all blocks that still need to be delivered.
+nextXColoursInSeq(Colors, X, Seq) :- sequence(SDone), append(SDone, Remainder, Seq),
+	length(Colors, X), append(Colors, _, Remainder).
+nextXColoursInSeq(Remainder, X, Seq) :- sequence(SDone), append(SDone, Remainder, Seq),
+	length(Remainder, Y), Y<X.
+% In case the sequence is done we need to return that there are no blocks needed and not just fail.
+nextXColoursInSeq([], X, Seq) :- sequence(Seq).
+% Since we often just need the colour to deliver now here's a shortcut for that.
+nextColorInSeq(ColorID, Seq) :- nextXColoursInSeq([ColorID], 1, Seq).
 
-% This detects if the agents has finished. 
-%Is used to exit immediately once the goal is complete by any agent.
-finished :- sequence(Seq), seqDone(Seq).
+% Get the difference between two lists like the subtract/3 predicate however duplicates are removed one to
+% one. E.g. single_subtract([1,2,2,3,4],[2,4],Result). -> Result == [1,2,3]
+single_subtract([],_, []).
+single_subtract(Result,[], Result).
+single_subtract([X|FullList], Subtracting, Result) :- member(X, Subtracting), 
+	select(X, Subtracting, ReducedS), single_subtract(FullList, ReducedS, Result).
+single_subtract([X|FullList], Subtracting, [X|Result]) :- not(member(X, Subtracting)), 
+	single_subtract(FullList, Subtracting, Result).

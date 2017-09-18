@@ -1,0 +1,23 @@
+use "../../tests/simple_team" as mas.
+use "../commonKnowledge" as knowledge.
+use "../updateSequence" as module.
+timeout = 5.
+
+test updateSequence(BlockID) with
+	pre{ goal(sequence(Seq)) }
+	in{
+		%it's a if not a forall we're testing so only if we don't have a delivered yet does this hold. 
+		goal(sequence(Seq)), bel( not(delivered(BlockID)), sequence(SDone), nextColorInSeq(ColorID, Seq), 
+			append(SDone,[ColorID],NewSDone) ) leadsto bel( delivered(BlockID), sequence(NewSDone) ).
+		goal(sequence(Seq)), bel( not(delivered(BlockID)), sequence(SDone) ) leadsto 
+			not(bel( sequence(NewSDone) )).
+		
+		bel(block(BlockID, ColorID, Place)) leadsto not(bel( block(BlockID, ColorID, Place) )).
+	}
+	post{}
+	
+robot {
+	% Normal test
+	do insert( block(1, 'colour', 'place') ).
+	do updateSequence(1).
+}

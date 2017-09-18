@@ -1,0 +1,29 @@
+use "../../tests/simple_team" as mas.
+use "../commonKnowledge" as knowledge.
+use "../initial" as module.
+timeout = 5.
+
+test robotInit with 
+	pre{  }
+	in{
+		% Record post init module players entering the environment.
+		percept( player(X) ) leadsto bel( player(X) ).
+		
+			% Store map information, i.e., navigation points in the agent's belief base.
+		percept(zone(ID, Name, X, Y, Neighbours)) leadsto bel( zone(ID, Name, X, Y, Neighbours) ).
+	
+		% Record the initial state of movement in belief base.
+		percept(state(State)) leadsto bel( state(State) ).
+		% Record initial location. 
+		percept(at(Place)) leadsto bel( at(Place) ).
+	
+		% Record goal sequence
+		percept( sequence(Seq) ) leadsto bel( sequence([]) ), goal( sequence(Seq) ).
+		percept( sequenceIndex(X) ) leadsto bel( sequenceIndex(X) ).
+	}
+	post{ }
+	
+robot {
+	% Simple test with no other conditions.
+	do robotInit.
+}

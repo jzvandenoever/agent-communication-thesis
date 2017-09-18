@@ -1,8 +1,8 @@
-use "../bw4t-client-3.8.5.jar" as environment with 
+use "../bw4t-client-3.8.7-minimal.jar" as environment with 
 	clientip ="localhost", clientport="2000", 
 	serverip = "localhost", serverport = "8000",
-	agentcount = "3", humancount = "0", launchgui = "false", 
-	goal = "true", map = "SuperRandom".
+	agentcount = "3", 
+	goal = "true", map = "SuperRandom", speed = "100".
 
 define robot as agent {
 	use simple_team as main module.

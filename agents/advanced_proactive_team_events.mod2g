@@ -5,7 +5,7 @@ use common.com_block_info as module.
 use common.com_visited as module.
 use common.lookahead as module.
 
-module blockComTeamEvents {
+module proactiveTeamEvents {
 	
 	if true then comBasic.
 	
@@ -16,16 +16,16 @@ module blockComTeamEvents {
 	
 	if true then events.
 	
-	forall (Agt).sent( msg(grabbing(BlockID)) ) do insert ( grabbing(Agt, BlockID) ).
-	forall (Agt).sent( msg(notGrabbing(BlockID)) ) do delete ( grabbing(Agt, BlockID) ).
-	
-	if a-goal( in(Place), holding(BlockID) ) then insert( grabbing(BlockID) ) +
-		allother.send(msg(grabbing(BlockID)) ).
-	if bel( grabbing(BlockID) ), not(goal(in(_), holding(BlockID))) then delete( grabbing(BlockID) ) +
-		allother.send(msg(notGrabbing(BlockID)) ).
-	
-	% update for checking on colour. And count of that colour. 
-	forall bel( grabbing(BlockID), grabbing(Agt, BlockID), me(Me), Me < Agt ), 
-		a-goal( in(Place), holding(BlockID) ) do drop (in(Place), holding(BlockID)) + 
-		delete( grabbing(BlockID) ) + allother.send(msg(notGrabbing(BlockID)) ).
+	% If somehow two agents want to deliver the same colour in the sequence. Resolve the conflict.
+	forall a-goal( sequence(Seq) ), bel( delivering(me, BlockID), delivering(Agt, OtherBlockID),
+		% If there are blocks being delivered of the same colour... 
+		not(Agt = me), block(BlockID, Colour, _), block(OtherBlockID, Colour, _), agentCount(N),
+		% get list of colours that are being delivered excluding my own...
+		findall(ColourID, (delivering(Agt,ABlock), not(Agt = me), block(ABlock, ColourID, _)), TakenC),
+		% Check if more than one of that colour should be delivered... 
+		nextXColoursInSeq(Colours, N, Seq), single_subtract(Colours, TakenC, UntakenC),
+		% If only one needs to be delived, drop the goal if my name is of lower order than the other agent's' 
+		not(member(Colour, UntakenC)), me(Me), Me < Agt ), 
+		a-goal( delivered(BlockID) ) do drop (delivered(BlockID)) + 
+		delete( delivering(me, BlockID) ) + allother.send(msg(notDelivering(BlockID)) ).
 }

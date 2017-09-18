@@ -1,0 +1,9 @@
+use common.commonKnowledge as knowledge.
+use common.initial as module.
+
+module advanced_reactive_team_init {
+	% Do default init. Then declare that agents wants to look ahead.
+	if true then robotInit.
+	if true then insert(lookahead).
+	if true then insert(getPermission).
+}
