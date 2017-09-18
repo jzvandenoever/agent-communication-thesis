@@ -11,10 +11,14 @@
 :- dynamic(player/1).
 :- dynamic(sequence/1).
 :- dynamic(sequenceIndex/1).
-:- dynamic(grabbing/2).
-:- dynamic(canGrab/2).
 :- dynamic(delivered/1).
+:- dynamic(delivering/2).
 :- dynamic(lookahead/0).
+:- dynamic(getPermission/0).
+:- dynamic(deliverPermission/1).
+:- dynamic(doDeliver/2).
+:- dynamic(doNotDeliver/2).
+:- dynamic(goingToBlock/0).
 
 % LookAhead agent related knowledge
 % Returns the amount of agents that we received a message of. This is the agents that we know of.

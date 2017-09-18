@@ -8,8 +8,8 @@ define goTo(Location) with
 
 % goToBlock only when not traveling and in a room
 define goToBlock(BlockID) with
-    pre {in(_), not(state(traveling)), not(atBlock(BlockID)) }
-	post { true }
+    pre {in(_), not(state(traveling)), not(atBlock(BlockID)), not(goingToBlock) }
+	post { goingToBlock }
 
 % pickUp can only be performed when not holding a block
 define pickUp(BlockID) with

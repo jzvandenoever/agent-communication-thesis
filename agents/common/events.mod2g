@@ -1,7 +1,9 @@
 use commonKnowledge as knowledge.
 use adoptGoals as module.
+use adoptDeliverGoals as module.
 use drop_deliver as module.
 use updateSequence as module.
+use initial as module.
 order=linearall.
 
 module events {
@@ -29,6 +31,7 @@ module events {
 	
 	% Record atblock location of agent
 	forall percept(atBlock(BlockID)) do insert(atBlock(BlockID)).
+	forall percept(atBlock(BlockID)) do delete(goingToBlock).
 	forall percept(not(atBlock(BlockID))) do delete(atBlock(BlockID)).
 	
 	% Record if a block is being held
@@ -39,9 +42,10 @@ module events {
 	forall percept(not(holding(BlockID))) do delete(holding(BlockID)).
 	
 	%remove blocks that are not held or in the room anymore
-	forall bel(in(Place), block(BlockID, ColorID, Place), not(holding(BlockID))), 
-		not(percept(color(BlockID, ColorID))) do delete(block(BlockID, ColorID, Place)).
-	
+	forall bel( in(Place), block(BlockID, ColorID, Place), not(holding(BlockID)) ), 
+		not(percept( color(BlockID, ColorID) )) do delete(block(BlockID, ColorID, Place)).
+	if bel( in(Place), block(BlockID, ColorID, Place), not(holding(BlockID)) ), 
+		not(percept( color(BlockID, ColorID) )) then delete( holding(BlockID) ).
 	% Update sequence when in dropzone using on change only sequenceIndex
 	if percept(sequenceIndex(X)), bel(sequenceIndex(OldX)) 
 		then delete(sequenceIndex(OldX)) + insert(sequenceIndex(X)).
@@ -53,18 +57,23 @@ module events {
 				
 	% remove obsolete goals and make our state so that we can immediately perform gotos to the new goal.
 	% The block is gone.
-	if a-goal( delivered(BlockID) ), a-goal(sequence(Seq)), bel( not(block(BlockID, ColorID, Place)) ) 
+	if a-goal( delivered(BlockID) ), goal(sequence(_)), bel( not(block(BlockID, _, _)) ) 
 		then drop_deliver(BlockID).
 	% The block is not needed for the next X blocks.
-	if a-goal( delivered(BlockID) ), a-goal(sequence(Seq)), bel( block(BlockID, ColorID, Place), 
+	if a-goal( delivered(BlockID) ), goal(sequence(Seq)), bel( block(BlockID, ColorID, _), 
 		agentCount(X), nextXColoursInSeq(Colors, X, Seq), not(member(ColorID, Colors)) ) 
 		then drop_deliver(BlockID).
 	% Everything is delivered so we don't have to pick up this block any more.
-	if a-goal( delivered(BlockID) ), not(goal( sequence(Seq) )) then drop_deliver(BlockID).
+	if a-goal( delivered(BlockID) ), not(goal( sequence(_) )) then drop_deliver(BlockID).
 	% Another agent has picked up the same block so we can't deliver it.
 	if a-goal( delivered(BlockID) ), bel( block(BlockID, _, held), not(holding(BlockID)) ) 
 		then drop_deliver(BlockID).
+	% If blocks have been delivered. No goals are needed any more.
+	if not(goal( sequence(_) )), goal( in(Place) ) then drop( in(Place) ). 
 	
 	% adopt new goals (and stop traveling)
-	if not(goal(in(Place); at(Place))), a-goal(sequence(Seq)) then adoptgoals.
+	if not(goal( in(Place); at(Place) )), goal( sequence(_) ), goal( delivered(BlockID) ) 
+		then adoptDeliverGoals(BlockID).
+	if not(goal( in(Place); at(Place) )), goal( sequence(_) ), not(goal( delivered(_) )) 
+		then adoptGoals.
 }

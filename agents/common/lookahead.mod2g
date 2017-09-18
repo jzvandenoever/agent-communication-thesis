@@ -1,11 +1,12 @@
 use commonKnowledge as knowledge.
 order=linearall.
 
-module lookAhead {	
-	% Update aheadState
-	forall (Agt).sent( msg(holding(BlockID)) ), bel(not(holding(Agt, BlockID))) do 
-		insert( holding(Agt, BlockID) ).
-	forall (Agt).sent( msg(notHolding(BlockID)) ) do delete( holding(Agt, BlockID) ).
-	if percept( holding(BlockID) ) then allother.send(msg(holding(BlockID)) ).
-	if percept( not(holding(BlockID)) ) then allother.send(msg(notHolding(BlockID)) ).
+module lookAhead {
+	forall (Agt).sent( msg(delivering(BlockID)) ) do insert ( delivering(Agt, BlockID) ).
+	forall (Agt).sent( msg(notDelivering(BlockID)) ) do delete ( delivering(Agt, BlockID) ).
+	
+	if a-goal( delivered(BlockID) ) then insert( delivering(me, BlockID) ) + 
+		allother.send( msg(delivering(BlockID)) ).
+	if bel( delivering(me, BlockID) ), not(a-goal( delivered(BlockID) )) then delete(  ) +
+		allother.send(msg(notDelivering(BlockID)) ).
 }

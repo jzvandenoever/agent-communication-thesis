@@ -1,0 +1,18 @@
+use commonKnowledge as knowledge.
+order=linearrandom.
+
+module adoptDeliverGoals(BlockID){
+	% If we need permission to make deliveries don't act on deliveries 
+	if bel( getPermission, not(deliverPermission(BlockID)) ) then delete( at(nothingJustDoSomething) ).
+	
+	% if holding/delivering a block that isn't the next block prepare for delivery.
+	if a-goal(sequence(Seq)), bel( holding(BlockID), block(BlockID, Color, _),
+		not(nextColorInSeq(Color, Seq)) ) then adopt( at('FrontDropZone') ).
+	
+	% If holding the block to deliver go to the dropzone.
+	if a-goal(sequence(Seq)), bel( holding(BlockID), nextColorInSeq(Color, Seq), block(BlockID, Color, _),
+		dropZone(Place) ) then adopt( in(Place) ).
+
+	% If not in the location of the block to deliver, go there.
+	if bel( not(holding(BlockID)), block(BlockID, _, Place) ) then adopt( in(Place) ).
+}

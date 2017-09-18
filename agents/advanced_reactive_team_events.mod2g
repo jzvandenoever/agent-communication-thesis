@@ -16,27 +16,50 @@ module blockComTeamEvents {
 	
 	if true then events.
 	
-	% Keeping track of messages received regarding intentions to get blocks.
-	forall (Agt).sent( msg(grabbing(BlockID)) ), not(bel( grabbing(Agt, BlockID) )) 
-		do insert ( grabbing(Agt, BlockID) ).
-	forall (Agt).sent( msg(notGrabbing(BlockID)) ) do delete ( grabbing(Agt, BlockID) ).
-	forall (Agt).sent( msg(notGrabbing(A, BlockID)) ), bel( me(A)) do delete ( grabbing(me, BlockID) ).
-	forall (Agt).sent( msg(notGrabbing(A, BlockID)) ), bel( me(Me), Me \= A ) 
-		do delete ( grabbing(A, BlockID) ).
+	forall (Agt).sent( msg(doDeliver(BlockID)) ) do insert ( doDeliver(Agt, BlockID) ).
+	forall (Agt).sent( msg(doNotDeliver(BlockID)) ) do insert ( doNotDeliver(Agt, BlockID) ).
 	
-	% Epress intention to grab a block. And do it if you get the okay.
-	if a-goal( in(Place), holding(BlockID) ) then allother.send(msg(grabbing(BlockID)) ).
-	forall (Agt).sent( msg(ok(BlockID)) ) do insert ( canGrab(Agt, BlockID) ).
-	if bel(findall(BlockID, canGrab(_,BlockID), Grabbing), agentCount(N), length(Grabbing, N), 
-		canGrab(_, BlockID) ) then insert ( grabbing(me, BlockID) ).
-	forall bel( grabbing(me, BlockID), canGrab(Agt, BlockID) ) do delete( canGrab(Agt, BlockID) ).
-	if bel( grabbing(me, BlockID), holding(BlockID) ) then delete( grabbing(me, BlockID) ) +
-		allother.send(msg(notGrabbing(BlockID)) ).
+	% If somehow two agents want to deliver the same colour in the sequence. Resolve the conflict.
+	forall a-goal( sequence(Seq) ), bel( delivering(me, BlockID), delivering(Agt, OtherBlockID), 
+		% If there are blocks being delivered of the same colour... 
+		not(Agt = me), block(BlockID, Colour, _), block(OtherBlockID, Colour, _), agentCount(N),
+		% get list of colours that are being delivered excluding my own...
+		findall(ColourID, (delivering(Agt,ABlock), not(Agt = me), block(ABlock, ColourID, _)), TakenC),
+		% Check if more of that colour should be delivered and aren't all being delivered already... 
+		nextXColoursInSeq(Colours, N, Seq), single_subtract(Colours, TakenC, UntakenC) ) do {
+			% If there are to many blocks of that colour being delivered, tell the other agent to...
+			if bel( not(member(Colour, UntakenC)) ) then {
+				% drop it if my name is larger than the other agent's. 
+				if bel( me(Me), Me > Agt ) then (Agt).send( msg(doNotDeliver(OtherBlockID)) ).
+				% deliver it if my name is smaller than the other agent's.
+				% I will still be told to not deliver this block later. This is to prevent deadlocks.
+				if bel( me(Me), Me < Agt ) then (Agt).send( msg(doDeliver(OtherBlockID)) ).
+			}
+			% If there still needs to be one of that colour delivered, tell the other agent to...
+			if bel( member(Colour, UntakenC) ) then (Agt).send( msg(doDeliver(OtherBlockID)) ).
+		}
+	% If two agents want to deliver blocks 
+	forall bel( delivering(me, BlockID), delivering(Agt, OtherBlockID), not(Agt = me),
+		% If there are blocks being delivered different colours let the other agent. 
+		block(BlockID, Colour, _), block(OtherBlockID, OtherColour, _), not(Colour = OtherColour) ) do
+			(Agt).send( msg(doDeliver(OtherBlockID)) ).
+	% If another agents wants to deliver a block and I don't let them.
+	forall bel( not(delivering(me, _)), delivering(Agt, OtherBlockID) ) do
+			(Agt).send( msg(doDeliver(OtherBlockID)) ).
 	
-	% update for checking on colour. And count of that colour. 
-	forall (Agt).sent( msg(grabbing(BlockID)) ), bel( not(grabbing(me, BlockID)), not(holding(BlockID)) )
-		do (Agt).send( msg(ok(BlockID)) ).
-	forall (Agt).sent( msg(grabbing(BlockID)) ), bel( ( grabbing(me, BlockID); holding(BlockID) ), 
-		me(Me), Me > Agt ) do allother.send(msg(notGrabbing(Agt, BlockID)) ) + 
-		delete( grabbing(Agt, BlockID) ).
+	% If I aim to deliver a block..... 
+	if goal( delivered(BlockID) ), bel(
+		% Get the list of responses from other agents...
+		findall(Agt, (doDeliver(Agt, BlockID); doNotDeliver(Agt, BlockID)), Agts),
+		% then if I have gotten a response from all other agents...
+		length(Agts, N), agentCount(X), N is X-1 ) then {
+			% Stop trying to deliver the block if someone disagreed.
+			if bel( doNotDeliver(_, BlockID) ) then drop( delivering(me, BlockID) ) + 
+				delete( delivering(me, BlockID) ).
+			% If nobody told me not to deliver I can deliver the block.
+			if bel( not(doNotDeliver(Agt, BlockID)) ) then insert( deliverPermission(BlockID) ).
+			% Then clean up the responses.
+			forall bel( doDeliver(Agt, BlockID) ) do delete( doDeliver(Agt, BlockID) ).
+			forall bel( doNotDeliver(Agt, BlockID) ) do delete( doNotDeliver(Agt, BlockID) ).
+	}
 }
