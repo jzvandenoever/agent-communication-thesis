@@ -4,5 +4,5 @@ order=linearall.
 
 module comBasic {
 	% deduce information based on deliveries of other agents:
-	forall (Agt).sent(msg(deliveryDone(BlockID))) do updateSequence(BlockID).
+	forall (Agt).sent(msg(delivered(BlockID))) do updateSequence(BlockID).
 }

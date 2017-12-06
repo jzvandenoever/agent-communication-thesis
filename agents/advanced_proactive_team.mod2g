@@ -9,7 +9,7 @@ module main {
 	
 	%drop blocks in the dropzone when they are needed, and communicate this
 	if a-goal(delivered(BlockID)), bel( in('DropZone'), holding(BlockID) ) then putDown + 
-		allother.send( msg(deliveryDone(BlockID)) ) + updateSequence(BlockID).
+		allother.send( msg(delivered(BlockID)) ) + updateSequence(BlockID).
 		
 	%drop blocks in rooms when they are not needed anymore
 	if bel(in(Loc),Loc\='DropZone', holding(BlockID)), not(a-goal(delivered(BlockID))) then putDown.

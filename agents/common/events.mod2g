@@ -1,5 +1,5 @@
 use commonKnowledge as knowledge.
-use adoptGoals as module.
+use adoptExplorationGoals as module.
 use adoptDeliverGoals as module.
 use drop_deliver as module.
 use updateSequence as module.
@@ -75,5 +75,5 @@ module events {
 	if not(goal( in(Place); at(Place) )), goal( sequence(_) ), goal( delivered(BlockID) ) 
 		then adoptDeliverGoals(BlockID).
 	if not(goal( in(Place); at(Place) )), goal( sequence(_) ), not(goal( delivered(_) )) 
-		then adoptGoals.
+		then adoptExplorationGoals.
 }

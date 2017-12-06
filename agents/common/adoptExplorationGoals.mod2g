@@ -1,7 +1,7 @@
 use commonKnowledge as knowledge.
 order=linearrandom.
 
-module adoptGoals{
+module adoptExplorationGoals{
 	% See if there is a block that needs to be delivered and nobody is already going for it.
 	if a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors, N, Seq), 
 		findall(ColorID, (delivering(_,ABlock), block(ABlock, ColorID, _)), TakenC),
