@@ -9,7 +9,7 @@ module main {
 		updateSequence(BlockID).
 		
 	%drop blocks in rooms when they are not needed anymore
-	if bel(in(Loc),Loc\='DropZone', holding(BlockID)), not(a-goal(delivered(BlockID))) then putDown.
+	%if bel(in(Loc),Loc\='DropZone', holding(BlockID)), not(a-goal(delivered(BlockID))) then putDown.
 	
 	%go to goal blocks
 	if a-goal(delivered(BlockID)), bel(in(Place), block(BlockID,_,Place)) then goToBlock(BlockID).
@@ -18,6 +18,6 @@ module main {
 	if a-goal(delivered(BlockID)), bel(not(holding(BlockID))) then pickUp(BlockID).
 	
 	%go to goal places
-	if a-goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
-	if a-goal(at(Place); in(Place)) then goTo(Place).
+	%if a-goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
+	if a-goal(in(Place)) then goTo(Place).
 }
