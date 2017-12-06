@@ -96,7 +96,7 @@ LatexCommand tableofcontents
 Introduction
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Problem Statement
 \end_layout
 
@@ -158,22 +158,23 @@ To this end we will provide answers to the following questions:
 \end_layout
 
 \begin_layout Itemize
-What are the effects of communication failure of multi-agent team effectiveness?
+What are the effects of communication failure of multi-agent team effectiveness
+ at performing multi-stage tasks?
 \end_layout
 
 \begin_layout Itemize
-If there are negative effects to the effectiveness, how can we mitigate
- these effects?
+How can we make multi-agent teams resilient to the negative effects of communica
+tion failure on performing tasks?
 \end_layout
 
 \begin_layout Standard
 Here we define a single instance communication failure as the recipient
- not having a message that the sender meant for it to have.
+ not reading a message that was sent to it by the sender.
  Irregardless of where in the transmission process the failure occured,
  e.g.
  while sending or receiving.
- And effectiveness is both the rate of task completion, and the time taken
- to complete the task.
+ And effectiveness is both the amount of times it successfully completes
+ the task, and the time taken to complete the task.
 \end_layout
 
 \begin_layout Subsection
@@ -190,7 +191,24 @@ name "sub:Research-approach"
 \begin_layout Standard
 To gather the data we will create simulations of agent teams enduring communicat
 ion failure.
- How this is set up exactly is descriped in section 
+ To run the simulations we will use a well explored domain for multi-agents
+ systems: the Blocks World for Teams (BW4T) GOAL environment.
+ It is a well defined domain for doing research on multi-agent systems.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "johnson2009joint"
+
+\end_inset
+
+ The basic concept is that an agent, or multiple agents, have to bring blocks
+ to a certain place, the dropzone in a specific order.
+ The blocks are distinguished by color only so any block that is the right
+ color will suffice.
+ These blocks are found in rooms that have one entrance from the hallway
+ spaces.
+ While that is the basic scenario it has built in several option for adjusting
+ various environment variables such as the room placement.
+ How the simulations are set up exactly is described in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Experiment-Design"
@@ -198,13 +216,32 @@ reference "sec:Experiment-Design"
 \end_inset
 
 .
- However this will be done in two parts.
- The first part will be an exploratory one where pre-existing agent teams
- for BW4T will be used.
- These agents have been made for other purposes and will help identify potential
- stumbling blocks.
- The second part is a set of specifically designed agents to more closely
- evaluate the effects of different kinds of communication.
+ 
+\end_layout
+
+\begin_layout Standard
+The BW4T environment is very suitable for investigating communication failure
+ while doing multi-stage tasks because of several reasons.
+ It implements a simple multi-stage task that can be completed without communica
+tion but teams are faster when agents do communicate.
+ The environment only contains elements relevent to the multi-stage task
+ and can be controlled.
+ And GOAL is an open source programming language specially made for multi-agent
+ systems often used with BW4T.
+ So there already exist a lot of agents that can be used, either for the
+ research or as examples.
+ As well as GOAL having a robust agent communication support.
+\end_layout
+
+\begin_layout Standard
+The simulations will be done in two parts.
+ The first part will be exploratory; using pre-existing agent teams made
+ to solve BW4T scenearios.
+ These agents have been without considering communication failure and will
+ help identify potential stumbling blocks.
+ The second part uses a set of specifically designed agents to control for
+ different solving strategies and more closely evaluate the effects of different
+ kinds of communication.
 \end_layout
 
 \begin_layout Standard
@@ -251,6 +288,94 @@ nt variables.
 \end_layout
 
 \begin_layout Section
+Related Work
+\end_layout
+
+\begin_layout Standard
+Multi-agent systems and how the agents interact is a field that has been
+ explored from many angles.
+ (EXAMPLES).
+ The BW4T testbed focuses on joint activities based on a simple planning
+ problem adapted for multi-agent systems
+\begin_inset CommandInset citation
+LatexCommand cite
+key "johnson2009joint"
+
+\end_inset
+
+.
+ It applies few restrictions on the agent teams performing in the environment
+ allowing research on various aspects of coordination, planning, and interaction
+ between agents
+\begin_inset CommandInset citation
+LatexCommand cite
+key "johnson2012autonomy,wei2014multi,wei2014role,harbers2011explanation"
+
+\end_inset
+
+.
+ Communication is important for these problems but much of the research
+ in that direction relates to human-agent interaction
+\begin_inset CommandInset citation
+LatexCommand cite
+key "harbers2012enhancing,harbers2011explanation"
+
+\end_inset
+
+.
+ After all in a purely digital environment much more can be done to ensure
+ messages are transmitted properly.
+\end_layout
+
+\begin_layout Standard
+Multi-robot systems have physical contraints that influence how and when
+ messages can be sent.
+ As such there is research done on implicit communication
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kube1993collective"
+
+\end_inset
+
+ or how to effectively utilised limited and/or shared communication channels
+\begin_inset CommandInset citation
+LatexCommand cite
+key "rybski2002performance"
+
+\end_inset
+
+.
+ This is becoming more relevant with there appearing to be a trend of multi-agen
+t systems growing in size and complexity.
+ Such as the drone delivery systems currently in development for various
+ companies
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zhou2014unmanned"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+These systems are expected to deal with unreliable communication at least
+ some of the time and research is already being done to see how the communicatio
+n systems can be made more reliable
+\begin_inset CommandInset citation
+LatexCommand cite
+key "winfield2000distributed,parker1998alliance"
+
+\end_inset
+
+.
+ However this research is mostly done from a perspective of detecting that
+ a fault has happened or making sure that the communication systems work.
+ Rather than investigating what happens when communication fails.
+ 
+\end_layout
+
+\begin_layout Section
 Experiment Design
 \begin_inset CommandInset label
 LatexCommand label
@@ -262,18 +387,26 @@ name "sec:Experiment-Design"
 \end_layout
 
 \begin_layout Standard
-To determine the effects of communication failure, if any, on multi-agent
- systems we will use a well explored domain for multi-agents systems.
- The Blocks World for Teams GOAL environment as this is well defined and
- thoroughly explored system for doing research on multi-agent systems.(references
-) The basic concept is that an agent, or multiple agents, have to bring
- blocks to a certain place, the dropzone in a specific order.
- The blocks are distinguished by color only so any block that is the right
- color will suffice.
- These blocks are found in rooms that have one entrance from the hallway
- spaces.
- While that is the basic scenario it has built in several option for adjusting
- various environment variables such as the room placement
+The experiment will consist of multiple simulation runs in the BW4T environment.
+ Each simulation run requires an agent team to move around in a 2D environment
+ to pick up and deliver blocks to a room called the dropzone in a given
+ colour sequence.
+ These blocks have to be found in other rooms in the 2D environment.
+\end_layout
+
+\begin_layout Standard
+In this section we will discuss our choices for the environment variables
+ such as topology, block sequences, communication failure, and team composition.
+ The design of the agents themselves is discussed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Agent-Design"
+
+\end_inset
+
+.
+ First the variables will be classified in the different experiment dimensions
+ and then we will discuss how the variables will be reduced and why.
 \end_layout
 
 \begin_layout Subsection
@@ -281,53 +414,64 @@ Experiment Dimensions
 \end_layout
 
 \begin_layout Standard
-However it is not just the room placement that can be varied.
- We have categorised the variables involved in the above mentioned experimental
- setup.
- Each categorgy has multiple dimensions as shown in Table 
+We have categorised the variables, involved in the above mentioned experimental
+ setup into three dimensions, environment, agents, and communication failure.
+ There are several variables in each category as show in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:experiment dimensions"
 
 \end_inset
 
- and will be discussed in more detail.
+.
+ 
 \end_layout
 
 \begin_layout Standard
-The environment is mainly the way the experiment world is constructed, how
- many hallways and where, and the placement of the rooms, but also includes
- the block sequence and agent collisions.
+Environment is simulation topology, the sequence used, and optional rules
+ the agents function with.
+ Currently the only optional rule available there are agent collisions.
+ By default agents do not collide with each other and with this turned on
+ they would.
+ However it would only result in additional complexity to the agents while
+ it could be solved without communication.
+ As such it is not revelent to our research questions and do not have to
+ consider it in our experiment.
 \end_layout
 
 \begin_layout Standard
-Second is the agents and their teams themselves.
- The team size can be adjusted, limited by the amount of computing power
- available.
- Though world limitations, such as only one agent can enter a room at a
- time, might limit the effectiveness of a team larger than the amount of
- rooms available or than there are blocks in the sequence.
- Once you have a team you can consider team composition.
- Are all agents the same or do they have different programs.
- Finally, what kind of programs do the agents run with.
- Minimal programs, full coordination, what kind of data do they share, which
- resolution strategies are used, there is an almost infinite amount of possibili
-ties here.
+Second are the agents themselves.
+ Aside from the agent programs the team size can be adjusted, as well as
+ the team composition.
+ The former is the amount of agents present in the simulation, limited by
+ the amount of computing power available and map capacity.
+ Though topology limitations, such as rooms allowing no more than one agent
+ in a room, might limit the effectiveness of a team larger than the amount
+ of rooms available or than there are blocks in the sequence.
+ The latter is if the teams are homogenous or not.
+ As more than one agent program can be running in a team.
 \end_layout
 
 \begin_layout Standard
 Finally there is the communication and how it can fail.
- Does the sending or receiving fail, and if it does fail is it a fixed percentag
-e of messages that fails? Of does the failure rate increase over time? is
- the message more likely to fail if the receipient is further away? Those
- are several ways the failure of messages can be done.
- Finally there is something to consider regarding communicating itself.
- Do the global percepts provided by the environment always arrive? Since
- they include things like when a block is delivered at the dropzone.
- This could effectively be a side-channel for certain kinds of messages
- that always succeeeds.
- So the agents can not use it and have to distribute such information through
- the normal channels.
+ Does the sending or receiving fail.
+ Because if sending fails nobody gets the message and if receiving fails
+ a subset of agents does not get the message.
+ If it does fail is it a fixed percentage of messages that fails? Or does
+ the failure rate increase over time? is the message more likely to fail
+ if the receipient is further away? However because the intent is to find
+ the effects of the failure and not the communication systems themselves
+ the simplest model shall be used, a fixed percentage communication failure.
+ 
+\end_layout
+
+\begin_layout Standard
+Aside from the model of communication failure the communication with the
+ BW4T environment should be considered too.
+ As it provides updates on the task progress when a block is delivered correctly.
+ This could effectively be a side-channel for task updates that always succeeeds.
+ As such agents should ignore those task updates and only the normal communcatio
+n channels.
 \end_layout
 
 \begin_layout Standard
@@ -339,9 +483,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
+<lyxtabular version="3" rows="3" columns="3">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -359,16 +502,7 @@ Environment
 \begin_inset Text
 
 \begin_layout Plain Layout
-World size and room placement
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Block sequence
+Topology
 \end_layout
 
 \end_inset
@@ -377,7 +511,7 @@ Block sequence
 \begin_inset Text
 
 \begin_layout Plain Layout
-(No) Agent collisions
+Block sequence
 \end_layout
 
 \end_inset
@@ -402,20 +536,11 @@ Team size
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-hetero-/homogenous teams
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Agent type
+hetero-/homogenous teams
 \end_layout
 
 \end_inset
@@ -426,7 +551,7 @@ Agent type
 \begin_inset Text
 
 \begin_layout Plain Layout
-Communication
+Communication Failure
 \end_layout
 
 \end_inset
@@ -440,20 +565,11 @@ Send/receiving failure
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Failure chance
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-(No) global percepts
+Failure chance
 \end_layout
 
 \end_inset
@@ -476,7 +592,7 @@ name "tab:experiment dimensions"
 
 \end_inset
 
-Experiment Dimensions
+Experiment dimensions before reduction
 \end_layout
 
 \end_inset
@@ -491,22 +607,22 @@ Experiment Dimensions
 
 \begin_layout Subsection
 Experiment reduction
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Experiment-reduction"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 The above mentioned experiment dimensions have too many options to realistically
  test everything.
- However we have evaluated all of them to see where the dimensions can be
- reduced so it only requires a manageable amount of simulations.
- The dimensions are discussed grouped by category as given by table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:experiment dimensions"
-
-\end_inset
-
-.
- 
+ However not everything needs to be tested, some of the variables only need
+ a subset tested or can be eliminated by only using one of the options.
+ How and why this is done will be discussed per dimension in the subsections
+ below.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -514,25 +630,68 @@ Environment
 \end_layout
 
 \begin_layout Standard
-The size and shape of the world the agents move around in for example can
- be kept consistent and seen as outside of the scope for these experiments.
- As that would be looking at the effects of the environment on communication
- failure.
- As such only one map design will be used across the experiments.
+The map topology consists of several components, the size of the map, room
+ placement, block placement, and corridor placement.
  
 \end_layout
 
 \begin_layout Standard
-However switching the sequence between random and only one colour is still
- a possibility left to us.
- However all the same colour, would eliminate the need to communicate about
- where in the sequence the team is.
- Which, for some types of agents, is the only thing communicated.
- As such using random, where it can not be assumed the communication isn't
- needed, is the preferred case.
- While the simplicity that can be assumed with just one colour might help
- in building the agents the increased communication if that isn't the case
- is preferred.
+The size of the map is how big the map is overal.
+ Bigger maps can have more rooms, larger spaces, and can accomodate more
+ agents.
+ Room placement decides how many rooms there are and where on the map they
+ are placed, as well as their size.
+ More rooms means more places for blocks and more places that agents need
+ to look to find the blocks they need.
+ Block placement defines the rooms blocks are in and how many blocks there
+ are.
+ If not all blocks in the sequence are present the simulation can not end.
+ Blocks disappear if they are delivered at the wrong time.
+ As such it also determines how many 'spare' blocks there are present to
+ cover for incorrect deliveries.
+ Corridor placement determine the spaces agents have to move around in between
+ rooms.
+ These determine how many routes there are for agents to take.
+\end_layout
+
+\begin_layout Standard
+Map size can be kept consistent if we make it big enough to contain all
+ the variations we need, it does not need to be changed after that.
+ The amount of rooms only influences how many options agents have to look
+ at and how far they have to move to reach the rooms.
+ Varying this does not change what needs to be communicated as such only
+ one appropriate number needs to be chosen.
+ Corridors just need to connect the rooms that exist with the dropzone.
+ As such a single configuration is needed.
+ This means that all maps can be the same aside from the block placement.
+ We can already exclude all block placements that make the sequence impossible.
+ 
+\color red
+(Chris identified 12 block placement scenarios and made maps for them.
+ How to correctly refer to that?)
+\color inherit
+ These 6 maps are all the same aside from block placement and lets us reduce
+ the topology to 12 options.
+\end_layout
+
+\begin_layout Standard
+For the sequence options there are two big distinctions for our purposes.
+ All blocks are the same or they can differ.
+ When all blocks are the same it does not matter what order they are delivered
+ in as all blocks of the same colour are equal.
+ This means that the current block in the sequence doesn't matter.
+ Only if the task is finished or not.
+ This means that the agents will not have to communicate about the intermediate
+ steps.
+ Whereas the other option does require communicating intermediate task completio
+n.
+ As such sequences where the blocks can differ will be used.
+ However there are enough colours that the sequence can does not have to
+ contain repeating colours.
+ However not all combinations here have to be tried as we just need a sequence
+ where all colours are different and a sequence where there are duplicate
+ blocks.
+ Giving us 2 options for the sequence.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -540,170 +699,1336 @@ Agents
 \end_layout
 
 \begin_layout Standard
-There are several components to the agent dimension.
- The ones identified are the size of the agent teams, the team composition,
- and the agent programming itself.
- While Communication
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Communication"
-
-\end_inset
-
- is about how we modify the communication for the experiment, the components
- of the agents will decide how the communication will go, and how much of
- it there is.
-\end_layout
-
-\begin_layout Paragraph*
-Team size
+Outside the agent programming there are two variables affecting agents,
+ the size of the agent teams and the team composition.
 \end_layout
 
 \begin_layout Standard
-Limiting the sizes used for the agent teams would drastically reduce the
- experiment space as well.
- And not all sizes need to be tested to get a sense of the effects, if there
- is one, communication failures might have.
- The case of having only one agent, would not need a lot of experimentation
+Limiting the sizes used for the agent teams will significantly reduce the
+ experiment space as this is limited only by what the hardware can process.
+ By taking a sampling of the team sizes we can get a sense of the effects,
+ if there are any, communication failures might have.
+ 
+\end_layout
+
+\begin_layout Standard
+The case of having only 1 agent, would not need a lot of experimentation
  as there is nothing to communicate with, however it will still be useful
- to do once as a baseline reference.
- Next, using a size sample of three agents will be useful to test, as this
- is the minimum amount of agents needed to have a team where it is possible
+ to do once to get a effectiveness baseline for the agents.
+ 
+\end_layout
+
+\begin_layout Standard
+Next, using a size sample of 3 agents will be useful to test, as this is
+ the minimum amount of agents needed to have a team where it is possible
  to communicate with more than one agent at the same time.
- Which is needed for some communication failure modes to matter.
- Next would be five agents, as this is a larger group, but is also just
- a bit more than half the amount of rooms available in the default map setup
- and one less than the amount of blocks needed in the sequence.
+ Which is needed to see the effects of what happens with the cooperative
+ agents when only some of the agents' responses for task distribution arrives.
+ Ensuring this effect exists for all team sizes.
+\end_layout
+
+\begin_layout Standard
+The third team size would be 5 agents, as this is a larger group, but is
+ also just a bit more than half the amount of rooms available in the default
+ map setup and one less than the amount of blocks needed in the sequence.
  This means the way tasks get divided amongst agents becomes important.
  As not every agent can continue exploring after just one set of rooms.
  As well as increasing the amount of agents involved in communicating.
- The next step should not go too far, as experience with the environment
- has shown that 10 agents start to tax the hardware and might degrade the
- simulation.
- But looking at a group with a size close to the amount of rooms available
- will be interesting to see how that influences the behaviour.
- As such going one agent fewer than the amount of rooms in the standard
- setup, eight, has been chosen as the last group size.
+ 
 \end_layout
 
-\begin_layout Paragraph
-Team composition
+\begin_layout Standard
+The final team size should not go too far, as experience with the environment
+ has shown that 8 agents start to tax the hardware available to us and might
+ degrade the simulation.
+ This will also make teams with a size close to the amount of rooms available
+ and it might be interesting to see how that influences the behaviour.
+ As such going one agent fewer than the amount of rooms in the chosen maps,
+ 8, has been chosen as the last group size.
 \end_layout
 
 \begin_layout Standard
 All these agent teams still need a team composition.
- While they could have different programs, this might introduce higher order
- effects that would make analysis more complicated, as well as requiring
- a lot more simulations.
+ With this we mean the programs the agents follow.
+ While they could have differences, a heterogenous team, this might introduce
+ higher order effects that would make analysis more complicated, as well
+ as requiring a lot more simulations.
  While these effects might be interesting, determining the effects, if any,
  in the simple case takes priority.
  So in the interest of limiting the time spent with simulations, and analyzing
  homogenous agent teams will be used.
- 
 \end_layout
 
-\begin_layout Paragraph*
-Agent Program
+\begin_layout Subsubsection*
+Communication
 \end_layout
 
 \begin_layout Standard
-But that still leaves options for varying the teams themselves, though they
- will all have similar components as shown in figure 
+There are two variables to the communication, if the sending or receiving
+ fails, and how often the messages fail to arrive.
+\end_layout
+
+\begin_layout Standard
+When it comes to sending failure and receiving failure the difference is
+ as follows: sending failure means that if a message fails no agent gets
+ it but receiving failure means that some part of the team may receive it
+ while other agents don't.
+ The latter however increases variability between runs as the failure check
+ is made for each receiving agent instead of just for the one sending agent.
+ 
+\color red
+(Explain why receiving failure corresponds more with real life scenarios
+ because of dead zones.)
+\end_layout
+
+\begin_layout Standard
+The failure will be constant within each simulation run and could be any
+ amount between 
+\begin_inset Formula $0$
+\end_inset
+
+ and a 
+\begin_inset Formula $100\%$
+\end_inset
+
+ of the messages failing.
+ However just like with team sizes a sampling of failure percentages will
+ suffice to identify trends.
+ To limit the amount of runs needed 
+\begin_inset Formula $25\%$
+\end_inset
+
+ increments will be used.
+ However no messages failing and all messages failing could have different
+ results from only a little or a lot of messages failing.
+ Therefore 
+\begin_inset Formula $5\%$
+\end_inset
+
+ and 
+\begin_inset Formula $95\%$
+\end_inset
+
+ will be tested as well.
+ Making the complete range of tested percentages 
+\begin_inset Formula $0,5,25,50,75,95,$
+\end_inset
+
+ and 
+\begin_inset Formula $100\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\color black
+One final thing to take into consideration is that the exploratory data
+ has shown that without intermediate task state correction correction agent
+ teams can break down fast.
+ If agents can not determine that an intermediate task has already been
+ completed but they missed the message even a 
+\begin_inset Formula $5\%$
+\end_inset
+
+ failure can in many cases cut the amount of successful simulation runs
+ in half.
+ An overview of these results can be found in table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Agent-types"
+reference "tab:explor-success"
 
 \end_inset
 
 .
- These agent programs are chosen from all possibilities because they are
- simple, build upon each other, and let us explore what happens with differing
- degrees of communication.
- To properly compare the teams there must be a baseline.:
+ This effect is so strong that it might be difficult to identify other effects
+ that have less impact.
+ As such agents should be written in a way that allows them to update their
+ state when in the dropzone.
+ In this manner agents still have a cost to missing the message without
+ a single mistakenly delivered block potentially making the simulation run
+ impossible to complete.
+ 
+\color red
+(Discuss if it needs to be done with both options.
+ As it would just be a matter of turning this correction on or off.)
 \end_layout
 
-\begin_layout Itemize
-A single agent randomly visiting unexplored rooms and remembering which
- block can be found where.
- It delivers blocks to the dropzone as soon as it knows of the currently
- needed block.
- After having delivered a block it can check if it already knows of the
- next needed block and deliver it right away.
- If it does not it continues visiting random unexplored rooms.
-\end_layout
-
-\begin_layout Standard
-By having one program that always exists of one agent will let us evaluate
- how teams perform compared to a single agent, even with the communication
- failure.
+\begin_layout Subsection
+Experiment Setup
 \end_layout
 
 \begin_layout Standard
-This agent is then expanded upon to make the teams with different strategies:
-\end_layout
+So to summarize, the agents will do each situation with the following team
+ sizes: 3, 5, 8.
+ There will be 12 maps where only the block placement differs and all rooms
+ are equidistant to the dropzone.
+ (Chris' maps) Each agent team will attempt all maps.
+ Each of these maps will be done multiple times, these repeats are grouped
+ by the communication failure.
+ One set of runs for 
+\begin_inset Formula $0%\%
+$
+\end_inset
 
-\begin_layout Itemize
-A team of the baseline agents that now includes the ability to communicate
- when the current block in the sequence has been delivered.
- If an agent hears the block they were planning on delivering has already
- been delivered they drop it in a room the next time they enter it.
- However because of that agents can have outdated information on the location
- of blocks.
- This is updated when they enter a room, but if all blocks of the needed
- colour have been moved out of their rooms the agents have nothing to do
- anymore and will block access to rooms that other agents might need.
- (#Discuss with Chris/Koen: since this will not cause a deadlock in the
- perfect communication scenario if does this need to be addressed.
- Or possible mitigation strategy since it can cause deadlocks if blocks
- miss a message of the current block needed being delivered.)
-\end_layout
+, 
+\begin_inset Formula $5%\%
+$
+\end_inset
 
-\begin_layout Itemize
-The above team is extended to communicate which blocks can be found in the
- rooms they enter.
- This also updates the location of blocks that got picked up and dropped
- in a different room.
- The agents also share if they are holding a block.
- If a block is being held by an agent the others will not try to find and
- pick it up.
-\end_layout
+, 
+\begin_inset Formula $25%\%
+$
+\end_inset
 
-\begin_layout Standard
-The last set of agent teams is two ways to include coordination to the the
- last agent team described.
- The agents will coordinate their actions to prevent more than one agent
- doing the same task and will work ahead.
- This is done by picking up not just the current block in the sequence but
- also picking up up the following blocks in the sequence.
- To be able to coordinate this the agents also communicate if they intend
- to pick something up.
- So that others wont go for that colour in the sequence.
- But the way the teams decide who picks what block differs:
-\end_layout
+, 
+\begin_inset Formula $50%\%
+$
+\end_inset
 
-\begin_layout Itemize
-The reactive team first asks the other agents for confirmation on their
- action.
- If another agent wants to do the same thing, the agent with the name that
- compares as larger gets to do it.
- This is achieved by having an agent with the same plan saying no if it
- fulfills the name order condition.
-\end_layout
+, 
+\begin_inset Formula $75%\%
+$
+\end_inset
 
-\begin_layout Itemize
-The proactive team starts doing a task and perhaps does work unnecessarily.
- And then verifies that nobody else is doing it.
- If the same name order condition as for the other team holds, and the agent
- als wants to that block in the sequence it returns a message telling it
- to stop.
+, 
+\begin_inset Formula $95%\%
+$
+\end_inset
+
+, 
+\begin_inset Formula $100%\%
+$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-(UPDATE THE DESCRIPTION OF THE FINAL AGENT TEAMS.
- It only looks at the colour of the blocks for the lookahead code.
- If a colour is planned on being picked up for more agents than is desired
- in the next X blocks, where X is the amount of agents, only then will they
- object.)
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Team size
+\backslash
+failure chance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $25\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $50\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $75\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $95\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $100\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12 maps
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Overview of experiment setup.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These set of runs have repeats because of the random elements of the experiment.
+ There is the agent that, when provided multiple options, takes a random
+ decision and the random chance of messages not being sent.
+ As there is no prior knowledge on the effects of the random components
+ of the simulations, and the agents itself, a desired experimental run time
+ was used to determine the amount of repetitions performed.
+ Based on earlier tests and data 
+\color red
+(including that of Chris how to reference?)
+\color inherit
+ a succesful run will generally not take more than a minute.
+ Using this one minute gets us 252 minutes to do everything once.
+ If each agent program gets a week of runtime we can repeat the simulations
+ 40 times over the course of a week.
+ 
+\color red
+(Correct this based on the decision made regarding the intermediate task
+ completion correction.)
+\end_layout
+
+\begin_layout Standard
+The experiment itself will be set up under the following conditions:
+\end_layout
+
+\begin_layout Itemize
+All the simulations will be run on identical machines.
+\end_layout
+
+\begin_layout Itemize
+The simulations will be run on a dedicated machine that only has the operating
+ system running in addition to the simulations.
+\end_layout
+
+\begin_layout Itemize
+Only one simulation is run at the same time.
+\end_layout
+
+\begin_layout Standard
+These conditions are to prevent the available processing power on the system
+ from influencing simulations between runs.
+ And if there is only the one simulation running on the system other processes
+ can not starve it either.
+ 
+\end_layout
+
+\begin_layout Standard
+These simulations will be run through a python script to automate the entire
+ process.
+ It will gather and group the logs of each set of simulations with the same
+ values for the experiment dimensions.
+ Every run is a new instance of the BW4T server to which a new instance
+ of the runtime connects.
+ This runtime will be run with only one mas file provided and a timeout.
+ This is repeated for the repeat amount.
+ The timeout and repeat will be the same between sets.
+ The resulting data will be analysed after being converted into a csv file
+ as described in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Research-approach"
+
+\end_inset
+
+.
+ To reduce the amount of time needed each agent program will use a duplicated
+ instance on Amazon EC2.
+ As the instances are virtualised in the cloud their performance is identical
+ so it will still satisfy the first condition.
+ The instance will be a standard 
+\begin_inset Formula $t2.micro$
+\end_inset
+
+ with only the additional software the programs needed to run the simulations
+ and organise log outputs.
+\end_layout
+
+\begin_layout Standard
+The log output of the BW4T server and the GOAL runtime of each simulation
+ run will be packaged together for later processing once all simulation
+ runs are done.
+ How the logs will be processed is detailed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Analysis"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Agent Design
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Agent-Design"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -746,95 +2071,47 @@ Agent types, each agent team has the capabilities of the previous one in
 
 \end_layout
 
-\begin_layout Subsubsection*
-Communication
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Communication"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-For the experiment it is pretty important to figure out what kind of communicati
-on failure is going to be tested.
- The simplest of which is to test the difference between sending failure
- and receiving failure.
- As sending failure means that if a message fails no agent gets it but receiving
- failure means that some part of the team may receive it.
- So both options will be tested.
-\end_layout
-
-\begin_layout Standard
-This can be done with various ways of determining the likelihood that a
- message will fail.
- For reference each team will also do simulations without communication
- failure, meaning 
-\begin_inset Formula $0\%$
-\end_inset
-
-.
- To get insight into how different amounts of failure affect performance
- using set percetages is very useful.
- This will be a spread from 
-\begin_inset Formula $0$
-\end_inset
-
- to a
-\begin_inset Formula $100\%$
-\end_inset
-
-.
- To limit the amount of runs needed 
-\begin_inset Formula $25\%$
-\end_inset
-
- increments will be used initially.
- However all communication and no communication could have different results
- from only a little or a lot of communication 
-\begin_inset Formula $5\%$
-\end_inset
-
- and 
-\begin_inset Formula $95\%$
-\end_inset
-
- will be tested as well.
- Making the complete range of tested percentages 
-\begin_inset Formula $0,5,25,50,75,95,$
-\end_inset
-
- and 
-\begin_inset Formula $100\%$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Finally, how are global percepts treated.
- These function similar to a second, infallible communication channel.
- As this is all about testing the effects of communication failure these
- will be ignored.
- Instead for the current state of the sequence has to be communicated.
-\end_layout
-
-\begin_layout Standard
-For half of the tests the agents can still see the state of the sequence
- when they enter the dropzone.
- This allows for correcting the sequence state as the exploratory data has
- shown that without the correction programs break down fast otherwise.
- Even a 
-\begin_inset Formula $5\%$
-\end_inset
-
- failure can in many cases cut the amount of successful runs in half.
- An overview of these results can be found in table 
+The agent programs are written in an iterative manner as shown in figure
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:explor-success"
+reference "fig:Agent-types"
+
+\end_inset
+
+.
+ There is one base agent team consisting of one agent and the following
+ agent teams build upon that by adding different forms of communication.
+ For communication we need multiple agents so all agent teams except for
+ the base team will have multiple agents.
+ The communication methods are added in 3 iterations.
+ 
+\series bold
+The last iteration implements 2 variants so there are 5 different agent
+ teams an overview of which is given in figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Agent-types"
+
+\end_inset
+
+.
+
+\series default
+ The single agent team acting as the baseline for the performance of the
+ other agent teams.
+ Each of the 5 agent programs will be discussed below.
+ The baseline agent defines the default behaviour of the agent and the following
+ sections specify what form of communcation is added and how this affects
+ the behaviour.
+ Because it is a single agent the resulting task completion data can also
+ be used as a baseline for determining how effective the communication is
+ in improving the agents.
+ The full code for the agents can be found in appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "appendix:Goal-Agents-Source"
 
 \end_inset
 
@@ -842,58 +2119,1104 @@ reference "tab:explor-success"
 \end_layout
 
 \begin_layout Subsection
-Experiment Setup
+Baseline Agent
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Baseline-Agent"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-With the above dimensions the experiment will be set up under the following
- conditions:
-\end_layout
-
-\begin_layout Itemize
-All the simulations will be run on the same machine.
-\end_layout
-
-\begin_layout Itemize
-The simulations will be run on a dedicated machine that only has the operating
- system running in addition to the simulations.
-\end_layout
-
-\begin_layout Itemize
-Only one simulation is run at the same time.
-\end_layout
-
-\begin_layout Standard
-These conditions are to prevent the available processing power on the system
- from influencing simulations between runs.
- And if there is only the one simulation running on the system other processes
- can not starve it either.
- 
-\end_layout
-
-\begin_layout Standard
-These simulations will be run through a python script to automate the entire
- process.
- It will gather and group the logs of each set of simulations with the same
- values for the experiment dimensions.
- Every set of runs is a new instance of the BW4T server to which a new instance
- of the runtime connects.
- This runtime will be run with only one mas file provided, a timeout, and
- the repeat amount.
- The timeout and repeat will be the same between sets.
- The resulting data will be analysed after being converted into a csv file
- as described in section 
+The baseline agent team is a single agent performing a random exploration
+ algorithm.
+ It remembers which rooms are explored and the blocks that present.
+ The exploration is interrupted by a greedy delivery algortihm when it finds
+ a room with a block of the current colour in the sequence.
+ When the block is delivered it will check if it knows where the next colour
+ is located and deliver that too.
+ If there are more blocks of the same colour it will choose one at random.
+ If the agent has not found blocks of the right colour yet it will return
+ to the exploration algorithm.
+ Because it only delivers blocks that are of the current colour in the sequence
+ and is the only agent it is garuanteed to always succeed in the maps defined
+ in the experiment design subsection
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Research-approach"
+reference "sub:Experiment-reduction"
 
 \end_inset
 
 .
 \end_layout
 
+\begin_layout Standard
+The agent achieves this by performing the following steps:
+\end_layout
+
+\begin_layout Itemize
+First the events module processes all percepts it receives from the environment
+ to update its beliefs.
+ 
+\end_layout
+
+\begin_layout Itemize
+With the updated beliefs it determine if the current goals are still possible
+ and relevant.
+ If not the goals are dropped.
+ This will never happen with a single agent as it is the only entity affecting
+ the environment but the step exists so derivative agents can do it when
+ necessary.
+\end_layout
+
+\begin_layout Itemize
+If the agent has a goal to deliver a block it goes into the adoptDeliverGoals
+ module which provides the intermediate goals to get the block delivered
+ to the dropzone.
+\end_layout
+
+\begin_layout Itemize
+If there is no block to be delivered at this moment in time it goes into
+ the adoptExplorationGoals module.
+ This provides the goals to implement the greedy exploration algorithm described
+ earlier in the section and the goal to deliver a block if the right colour
+ is found.
+\end_layout
+
+\begin_layout Itemize
+Then the agent goes into the main module which performs the actions correspondin
+g to the various goals.
+\end_layout
+
+\begin_layout Itemize
+Finally, if the agent has delivered the entire sequence it stops.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename agent flow.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A high level flow diagram of the agent modules.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The goal modules and the main module will be discussed in more detail below.
+ The percepts will not be discussed as they are available in appendix
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Code:No-Communication-Agent"
+
+\end_inset
+
+ and further clarification of the details can be found in the BW4T specification.
+ The evaluation of the goals is skipped because there are no other agents
+ yet that can influence the environment as well.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\lang british
+adoptExplorationGoals
+\end_layout
+
+\begin_layout Standard
+First we look at the adoptExplorationGoals module.
+ The way we indicate that we want to go to a room is with the 
+\begin_inset Formula $in(Place)$
+\end_inset
+
+ goal.
+ The main module reacts to this by going to a room with the name 
+\begin_inset Formula $Place$
+\end_inset
+
+.
+ Once the agent is in that room we get a percept and process it to fulfill
+ the goal.
+ The way we adopt the
+\begin_inset Formula $in(Place)$
+\end_inset
+
+ goal in this module provides the exploration behaviour:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+if bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then adopt(
+ in(Place) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This rule looks at all rooms that are not the dropzone, this is the location
+ where the blocks have to delivered in BW4T, where the blocks will be delivered.
+ The agent learns of these locations when it is initialised.
+ If those rooms are entered for the first time adds a 
+\begin_inset Formula $visited(Place)$
+\end_inset
+
+ belief in the events module.
+ This belief lets the agent exclude visited rooms for future exploration
+ goals.
+ 
+\end_layout
+
+\begin_layout Standard
+Without additional configuration this rule would not implement a 
+\shape italic
+random 
+\shape default
+exploration however.
+ To achieve this the module has to use linear random order to check its
+ rules.
+ 
+\series bold
+This execution order means that the various rules in the module are executed
+ in linear order, stopping after the first rule that succeeds.
+ When evaluating a rule random valid options for the variables are be chosen
+ from all valid options.
+ In the rule above that means that it chooses 
+\begin_inset Formula $Place$
+\end_inset
+
+ at random from all 
+\begin_inset Formula $room(Place)$
+\end_inset
+
+ beliefs instead of always choosing the first in the belief base.
+ 
+\series default
+This differs from the default, linear order, which pick the first valid
+ option in the belief base instead.
+\end_layout
+
+\begin_layout Standard
+The module contains another rule to determine if it has found the next block
+ in the sequence.
+ Because the module uses linear random order this rule has been placed at
+ the start of the module so delivering blocks takes precedence over exploring.
+ 
+\series bold
+The following rule is the end result of the agent team iterations so it
+ is more complex than strictly necessary for the baseline agent team.
+ The reason the rule is in this form is because the agents share code to
+ ensure they are the same aside from the communication.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+if a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors,
+ N, Seq),
+\end_layout
+
+\begin_layout Plain Layout
+
+	findall(ColorID, (delivering(_,ABlock), block(ABlock, ColorID, _)), TakenC),
+\end_layout
+
+\begin_layout Plain Layout
+
+	single_subtract(Colors, TakenC, UntakenC), member(Color, UntakenC),
+\end_layout
+
+\begin_layout Plain Layout
+
+	block(BlockID, Color, Place), not(Place = held) ) then adopt( delivered(BlockID
+) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+However for the baseline agent this rule can be respresented in a simpler
+ form.
+ Here just the simple version will be explained and the rule will be discussed
+ again in subsection
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Room-and-block"
+
+\end_inset
+
+ and subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Proactive/reactive-action-coordi"
+
+\end_inset
+
+ below to explain the rest.
+ 
+\series default
+Introducing the more complex aspects as they become relevant for the discussed
+ agent team.
+ At this point in discussing the agents the rule can actually be represented
+ by the following simplified form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+if a-goal(sequence(Seq)), bel( nextXColoursInSeq([Color], 1, Seq),
+\end_layout
+
+\begin_layout Plain Layout
+
+	block(BlockID, Color, _) ) then adopt( delivered(BlockID) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As long as we still have a sequence of colours to be delivered it gets the
+ first colour of the sequence that hasn't been delivered yet.
+ This is done by using the 
+\begin_inset Formula $nextXColoursInSeq(ColourList,X,Seq)$
+\end_inset
+
+ predicate.
+ 
+\begin_inset Formula $ColourList$
+\end_inset
+
+ is the list of the first 
+\begin_inset Formula $X$
+\end_inset
+
+ colours in the sequence excluding the blocks that already have been delivered.
+ As 
+\begin_inset Formula $X=1$
+\end_inset
+
+ the predicate always returns the colour that needs to be delivered at this
+ moment.
+ 
+\end_layout
+
+\begin_layout Standard
+Then the rule selects a random block from the the ones that were found in
+ all visited rooms with the same color and adopts the goal to have it delivered.
+ This goal does nothing on its own but is used by adoptDeliverGoals module
+ to provide the intermediary goals.
+ The reason that the block chosen is random is that going for the closest
+ block will involve an additional path-finding algorithm in case after deliverin
+g there are multiple blocks of the same colour.
+ The agent is purposely kept simple so we chose not to implement that.
+\end_layout
+
+\begin_layout Standard
+If there are no blocks of the right colour the rule fails and will return
+ to the random exploration described earlier.
+\end_layout
+
+\begin_layout Subsubsection*
+adoptDeliverGoals
+\end_layout
+
+\begin_layout Standard
+The delivery algorithm works in a similar manner.
+ It also contains rules that are only relevant for later agent teams so
+ they will be discussed in the relevant subsections.
+ For the baseline agent we will look at two rules, the first is delivering
+ a block to the dropzone if the agent holds it, and the other is getting
+ to the block that needs to be delivered to pick it up.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+\align left
+
+if a-goal(sequence(Seq)), bel( holding(BlockID), nextColorInSeq(Color, Seq),
+ block(BlockID, Color, _), 	dropZone(Place) ) then adopt( in(Place) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once again it shares code with later agents so for the baseline agent we
+ examine it in a simpler form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+\align left
+
+if bel( holding(BlockID), dropZone(Place) ) then adopt( in(Place) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+If we<-the agent is> are holding the block and we know a dropzone
+\series default
+, adopt the goal to go there.
+ The 
+\begin_inset Formula $BlockID$
+\end_inset
+
+ is passed to the module as a parameter so this rule will not trigger if
+ the agent is holding a block that it does not need to deliver.
+ The main module is responsible for dropping the block once the agent is
+ in the dropzone.
+\end_layout
+
+\begin_layout Standard
+Getting to the block makes use of the 
+\begin_inset Formula $BlockID$
+\end_inset
+
+ variable as well to determine the room the block is in.
+ Then adopt the 
+\begin_inset Formula $in$
+\end_inset
+
+ goal so the main module goes there.
+ The main module then makes sure to pick up the block once the agent is
+ in the room.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+\align left
+
+if bel( not(holding(BlockID)), block(BlockID, _, Place) ) then adopt( in(Place)
+ ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+main
+\end_layout
+
+\begin_layout Standard
+Where the goal modules are about the agents reasoning, the main module acts
+ on it.
+ The order of the rules in this module matters as it determines the priority
+ of what needs to be done.
+ As such this module performs the rules in linear order.
+\end_layout
+
+\begin_layout Standard
+The first rule is delivering the block the agent holds if it is in the dropzone
+ and still holding the block.
+ Delivering here means putting down the block and going into the updateSequence
+ module.
+ This module updates the 
+\begin_inset Formula $sequence$
+\end_inset
+
+ belief to include the colour of the block just delivered.
+ And it removes the block from the beliefs to prevent the agent from trying
+ to deliver the block again.
+\end_layout
+
+\begin_layout Standard
+Then if the agent is in a room with the block it wants to deliver it should
+ move towards the block and do the goToBlock block action.
+ This will fail if the agent is already at the block.
+ This is followed by a separate rule that attempts to pick up the block
+ if it is not holding anything.
+\end_layout
+
+\begin_layout Standard
+Finally the agent checks if there are any 
+\begin_inset Formula $in(Place)$
+\end_inset
+
+ goals and if there are it performs a goto action to go there.
+ If the agent is already moving somewhere the goto action fails.
+\end_layout
+
+\begin_layout Subsection
+Simple agent team
+\end_layout
+
+\begin_layout Standard
+The first step to introduce communication to a single agent would be the
+ same agent but with several in the agent team.
+ With one change to guarantee that they would always be able to finish the
+ task.
+ The agents need to be informed when the current block in the sequence has
+ been delivered.
+ If the agents do not know what the other agents have done they would attempt
+ to do the entire sequence on their own.
+ This can make it impossible to finish instances if there are not enough
+ blocks of each colour to do the sequences in parallel.
+ All blocks delivered to the dropzone disappear from the environment so
+ they can not be reused later.
+ So in case a block is needed more than once in a sequence the agents can
+ never finish if all blocks of a certain colour are delivered before they
+ are needed.
+\end_layout
+
+\begin_layout Standard
+The agents can be informed of what the other agents have delivered in several
+ ways, which have been discussed in subsection
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Experiment-reduction"
+
+\end_inset
+
+ in the part about communication.
+ In our case we decided on having the agent sending a message to all other
+ agents whenever it delivers a block to the dropzone.
+ The communication clause added to the rule is the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+allother.send( msg(delivered(BlockID)) )
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The message is processed by the 
+\series bold
+new
+\series default
+ comBasic module that is performed before any of the steps the baseline
+ agent takes.
+ The module will then perform the updateSequence module as in the main module
+ but with the BlockID received in the message.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+forall (Agt).sent(msg(delivered(BlockID))) do updateSequence(BlockID).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here the benefit of removing the blocks in the updateSequence module shows
+ itself.
+ The receiving agent might have seen the same block in a room before and
+ still believe it is there.
+ If this belief is not updated it will get stuck trying to deliver a block
+ that no longer exists.
+\end_layout
+
+\begin_layout Standard
+When an agent receives 
+\begin_inset Formula $msg(deliveryDone(BlockID))$
+\end_inset
+
+ there are four situations it could be in;
+\end_layout
+
+\begin_layout Itemize
+The agent is holding a block and its colour is the next colour in the sequence.
+ It will continue trying to deliver the block.
+\end_layout
+
+\begin_layout Itemize
+The agent is not holding anything and trying to pick up a block.
+ If the next colour in the sequence is the same as before the agent will
+ continue.
+\end_layout
+
+\begin_layout Itemize
+The agent is holding a block and its colour is not the next colour in the
+ sequence.
+ In that case the agent follows the baseline exploration algorithm as described
+ in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Baseline-Agent"
+
+\end_inset
+
+ with one difference.
+ The first time it enters a room it will drop the block it is holding.
+ This is to prevent the risk of losing a block that is needed later because
+ all blocks dropped outside of a room will disappear from the environment.
+\end_layout
+
+\begin_layout Itemize
+The agent is not holding anything and the conditions above do not hold.
+ In that case the agent continues to follow the baseline exploration algorithm
+ as described in section
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Baseline-Agent"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+There is one situation where this can cause a deadlock.
+ When the agent is without options while in the dropzone.
+ It has already explored all rooms but due to the moving around of blocks
+ by other agents it is not aware where the next needed block might be.
+ So it will not go anywhere.
+ There is nothing it can do but at least one of the other agents does know.
+ The agent that moved the relevant block.
+ That agent can not deliver it however because only one agent can be in
+ a room at any given time.
+ So the delivering agent has to wait for the dropzone to be vacated but
+ that will never happen.
+ To prevent this an additional line as been added at the end of the adoptGoals
+ module:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+if bel( dropZone(Place), in(Place) ) then adopt( at('FrontDropZone') ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With these changes agents should now always complete the scenario.
+ After all, the dropzone will always become available for the next delivery,
+ and there is always at least one agent that knows the location of any given
+ block if a room has been visited.
+ And no blocks will be incorrectly delivered as the agents share their progress.
+ From here the agents follow the same algorithm as the baseline agent so
+ there is always one agent that can deliver the next block.
+ However the deadlock we discussed shows that there is still room for performanc
+e improvement.
+\end_layout
+
+\begin_layout Subsection
+Room and block coordination agent team
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Room-and-block"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Like the deadlock described above it can also happen that an agent will
+ enter a room expecting a block to be there and not find it.
+ This will update its knowledge on what is present in the room but it won't
+ know where to find the block.
+ If it doesn't know of any other blocks of the desired colour it will return
+ to the exploration algorithm.
+ If all rooms have already been visited it has no way to find where the
+ block ended up.
+ This is not a deadlock as one agent will still know the block location
+ but through communication the additional wait can be avoided.
+ 
+\end_layout
+
+\begin_layout Standard
+The agent team does this by introducing the comBlocks module.
+ This module sends a message for each block it sees for which it gets new
+ information and also processes those messages it gets from other agents.
+ This happens before the events module.
+ This means that not only do the agents send updates when a block is put
+ down in a different room but also that a message is sent the first time
+ a block is seen.
+ This is not something we want to avoid as it can be used to further optimize
+ the agent.
+ The agent receives the information on blocks others have found and can
+ use that to determine if there is a block it can deliver.
+\end_layout
+
+\begin_layout Standard
+The code below ensures that all agents in the team listen for updates on
+ block locations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( block(BlockID,
+ ColorID, OtherPlace),
+\end_layout
+
+\begin_layout Plain Layout
+
+	Place 
+\backslash
+= OtherPlace ) do delete( block(BlockID, ColorID, OtherPlace) ) +
+\end_layout
+
+\begin_layout Plain Layout
+
+	insert( block(BlockID, ColorID, Place) ).
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( not(block(BlockID,
+ ColorID, Place)) )
+\end_layout
+
+\begin_layout Plain Layout
+
+	do insert( block(BlockID, ColorID, Place) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These two lines process 
+\begin_inset Formula $block$
+\end_inset
+
+ messages for two possible cases, the first updates block location information
+ in the case an agent already knows of a block with the same ID.
+ The second line inserts beliefs for blocks the agent was unaware of.
+ This pattern prevents duplicate blocks where the location differs.
+\end_layout
+
+\begin_layout Standard
+The agents also share if they are holding a block to prevent other agents
+ from trying to pick up a block that was already grabbed.
+ It updates the 
+\begin_inset Formula $Place$
+\end_inset
+
+ for the 
+\begin_inset Formula $block(BlockID,ColorID,Place)$
+\end_inset
+
+ predicate to 'held' once an agent picks up the block.
+ Once the agent drops the block it is either removed by 
+\begin_inset Formula $BlockID$
+\end_inset
+
+ through the updateSequence module or because the agent sees that the block
+ is now present in the room.
+ Seeing the block in the room updates the location again as described above.
+ Agents only see blocks that are put down in a room.
+ Below is the code showing how the 
+\begin_inset Formula $heldblock(BlockID)$
+\end_inset
+
+ message that the agents use to communicate this is processed:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+forall (Agt).sent( msg(heldblock(BlockID)) ), bel( block(BlockID, ColorID,
+ Place) )
+\end_layout
+
+\begin_layout Plain Layout
+
+ 		do delete( block(BlockID, ColorID, Place) ) + insert( block(BlockID,
+ ColorID, held) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One thing to note is that the adoptExplorationGoals module has an addition
+ because of this change.
+ A condition is added to the rule that adopts the 
+\begin_inset Formula $delivered$
+\end_inset
+
+ goals to make sure the block the agent tries is not already held by another
+ agent.
+ However the block can still be picked up between adopting the goal and
+ getting to the block.
+ This will cause the agent to try and deliver a block it can not locate
+ so we added a rule to drop the 
+\begin_inset Formula $delivered$
+\end_inset
+
+ goal when that occurs.
+\end_layout
+
+\begin_layout Standard
+Finally because the agents already share the information on blocks the agents
+ do not need to visit rooms that other agents have visited.
+ They already know which blocks are in there.
+ Therefore this agent team also introduced the comVisited module to stop
+ agents from visting rooms they do not need to.
+ This module sends a message when an agent visits a room for the first time.
+ While this information could be derived from block communication this provides
+ more clarity in what the communication is intended for.
+ The message sent is identical to the 
+\begin_inset Formula $visited(Place)$
+\end_inset
+
+ belief used by the baseline exploration algorithm and treated the same
+ by the receiving agents.
+\end_layout
+
+\begin_layout Subsection
+Proactive/reactive action coordination agent teams
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Proactive/reactive-action-coordi"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The communication added in section
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Room-and-block"
+
+\end_inset
+
+ leaves one situation where an agent would do nothing.
+ When all rooms have been visited and there is only one block of the current
+ colour in the sequence.
+ If another agent has already picked up the block it will wait until it
+ can do something again.
+ This is because all agents are trying to go for the same block in the sequence
+ instead of dividing the work.
+\end_layout
+
+\begin_layout Standard
+The final two agent teams implement nearly identical planning algorithms
+ to divide the work.
+ The reason there are two teams is because we have identified two ways the
+ agent teams can coordinate which affects the way they communicate.
+ These two methods should have similar results when the communication has
+ no failures but could have different performances once failures are introduced.
+ The full details on how the communication is done for each team is discussed
+ below.
+ Before that the parts of the algorithm that are the same are discussed.
+\end_layout
+
+\begin_layout Standard
+The teams both communicate which block they intend to deliver to the other
+ agents.
+ The communication they share is part of the lookahead module.
+ This is where the agents communicate the intent to deliver a block and
+ also if the agent no longer intents deliver a block for any reason.
+\end_layout
+
+\begin_layout Standard
+The adoptExplorationGoals module has a rule to adopt the 
+\begin_inset Formula $deliver(BlockID)$
+\end_inset
+
+ goal and follows the following steps: if the current colour is already
+ being delivered the agent will behave as if that colour has already been
+ delivered, and so on for each colour that an agent is delivering.
+ If an agent has been working ahead it will wait with the block in front
+ of the dropzone until it should be delivered.
+\end_layout
+
+\begin_layout Standard
+To understand how this is done specifically we look again at the rule we
+ also showed in subsection
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Baseline-Agent"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+if a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors,
+ N, Seq),
+\end_layout
+
+\begin_layout Plain Layout
+
+	findall(ColorID, (delivering(_,ABlock), block(ABlock, ColorID, _)), TakenC),
+\end_layout
+
+\begin_layout Plain Layout
+
+	single_subtract(Colors, TakenC, UntakenC), member(Color, UntakenC),
+\end_layout
+
+\begin_layout Plain Layout
+
+	block(BlockID, Color, Place), not(Place = held) ) then adopt( delivered(BlockID
+) ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First we look at 
+\begin_inset Formula $agentCount(N)$
+\end_inset
+
+.
+ This predicate only returns the amount of agents if on initialization the
+ agent added the 
+\begin_inset Formula $lookahead$
+\end_inset
+
+ belief.
+ Otherwise it returns 1.
+ That's why the previous agents only attempt to deliver the current colour
+ in the sequence.
+\end_layout
+
+\begin_layout Standard
+Then 
+\begin_inset Formula $NextXColoursInSeq(Colors,N,Seq)$
+\end_inset
+
+ gives us list of the colours as 
+\begin_inset Formula $Colors$
+\end_inset
+
+ that still need to be delivered to a maximum of 
+\begin_inset Formula $N$
+\end_inset
+
+ colours.
+ It could be less in case there are less than 
+\begin_inset Formula $N$
+\end_inset
+
+ colours to be delivered.
+ This is combined with the list 
+\begin_inset Formula $TakenC$
+\end_inset
+
+ which is the list of all colours we know another agent is trying to deliver.
+ The list is created by finding all 
+\begin_inset Formula $delivering(Agent,BlockID)$
+\end_inset
+
+ beliefs and getting the corresponding colours.
+\end_layout
+
+\begin_layout Standard
+The list 
+\begin_inset Formula $Colors$
+\end_inset
+
+ then has the list 
+\begin_inset Formula $TakenC$
+\end_inset
+
+ subtracted from it, this list is called 
+\begin_inset Formula $UntakenC$
+\end_inset
+
+, leaving only the colours no other agent is delivering.
+ Each colour already being delivered is only subtracted once in case there
+ are duplicate colours in the sequence.
+ The agents should not skip a colour entirely because one block of the relevant
+ colour is already being delivered.
+\end_layout
+
+\begin_layout Standard
+The agent then picks a random element from 
+\begin_inset Formula $UntakenC$
+\end_inset
+
+ which is the colour it will try to deliver.
+ The rule then follows the same principles as with the baseline agent with
+ the addition for held blocks.
+\end_layout
+
+\begin_layout Paragraph
+4.4a Reactive action coordination agent team
+\end_layout
+
+\begin_layout Standard
+This team is called reactive because the agent sends a message broadcasting
+ which block it wants to deliver but does not act on it.
+ Then the agent reacts to the other agents in the team telling it what to
+ do.
+ Only if all agents give it the okay will start on the common algorithm
+ described above.
+\end_layout
+
+\begin_layout Standard
+If another agent planned the same goal, it resolves the conflict using the
+ following method: compare the agent names assigned by the BW4T environment
+ through string comparison.
+ If the other agent's name is larger that agent gets to deliver the block.
+ The agent doing the check informs the original agent by sending a dismissal.
+ The original agent will in turn confirm the plan of the agent with the
+ larger name as its name is smaller.
+\end_layout
+
+\begin_layout Standard
+The above steps are done after the adoptGoals steps in the baseline agent.
+ Because it needs the latest information to make the decision.
+\end_layout
+
+\begin_layout Paragraph*
+4.4b Proactive action coordination agent team
+\end_layout
+
+\begin_layout Standard
+Where the reactive agent team waits the proactive agent team acts first
+ and verifies later.
+ The team proactively adopts the goal first and then verifies that nobody
+ else is doing the same.
+ It uses the same conflict resolution method as the reactive team but it
+ drops the goal once it is informed another agent declined its plan.
+ This needs less information as an agent only needs to be informed when
+ another agent declines the goal.
+\end_layout
+
+\begin_layout Standard
+The above steps are done after the adoptGoals steps in the baseline agent.
+ Because it needs the latest information to make the decision.
+\end_layout
+
 \begin_layout Section
 Analysis
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Analysis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Data points to analyse: amount of succesful runs, time of successful runs
+ (less reliable since we expect to have less successes), amount of blocks
+ returned to rooms (incorrect/unnecessary blocks), difference between the
+ dropzone correction and without.
 \end_layout
 
 \begin_layout Standard
@@ -1095,6 +3418,13 @@ options "plain"
 \begin_layout Section
 \start_of_appendix
 Goal Agents Source
+\begin_inset CommandInset label
+LatexCommand label
+name "appendix:Goal-Agents-Source"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1106,6 +3436,13 @@ The agent teams each have their own main module.
 
 \begin_layout Subsection
 No Communication Agent
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Code:No-Communication-Agent"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1233,7 +3570,14 @@ module main {
 \end_layout
 
 \begin_layout Standard
-robotEvents.mod2g
+events.mod2g
+\begin_inset CommandInset label
+LatexCommand label
+name "code:events.mod2g"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1854,9 +4198,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="10">
+<lyxtabular version="3" rows="5" columns="9">
 <features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1891,7 +4234,7 @@ reference
 \begin_inset Text
 
 \begin_layout Plain Layout
-cuttoff
+communication cuttoff
 \end_layout
 
 \end_inset
@@ -1937,15 +4280,6 @@ cuttoff
 
 \begin_layout Plain Layout
 95%
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-distance
 \end_layout
 
 \end_inset
@@ -2033,15 +4367,6 @@ Blockbuster Mincom
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -2121,15 +4446,6 @@ Blockbuster dzone only
 
 \begin_layout Plain Layout
 16
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
@@ -2217,15 +4533,6 @@ Blockbuster all room
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -2305,15 +4612,6 @@ Maximum Coordination
 
 \begin_layout Plain Layout
 64
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \end_inset
