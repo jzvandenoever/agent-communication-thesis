@@ -1,7 +1,9 @@
-use "../../tests/simple_team" as mas.
+use "../../simple_team" as mas.
+use "../../simple_team" as module.
 use "../commonKnowledge" as knowledge.
 use "../events" as module.
-timeout = 60.
+use "../drop_deliver" as module.
+timeout = 120.
 
 test events with 
 	pre{  }
@@ -24,8 +26,8 @@ test events with
 		
 		% Discover new blocks
 		percept( color(BlockID, ColorID) ), bel( in(Place) ) leadsto bel( block(BlockID, ColorID, Place) ).
-		percept( color(BlockID, ColorID) ), bel( in(Place), block(BlockID, ColorID, OtherPlace), \
-			Place \= OtherPlace ) leadsto not(bel( block(BlockID, ColorID, OtherPlace) )).
+		percept( color(BlockID, ColorID) ), bel( in(Place), block(BlockID, ColorID, OtherPlace),
+			not(Place = OtherPlace) ) leadsto not(bel( block(BlockID, ColorID, OtherPlace) )).
 		
 		% Record atblock location of agent
 		percept( atBlock(BlockID) ) leadsto bel( atBlock(BlockID) ).
@@ -41,8 +43,7 @@ test events with
 			not(bel( block(BlockID, ColorID, Place) )). 
 		
 		%remove blocks that are not held or in the room anymore
-		bel( in(Place), block(BlockID, ColorID, Place), not(holding(BlockID)) ), 
-			not(percept( color(BlockID, ColorID) )) leadsto not(bel( block(BlockID, ColorID, Place) )).
+		%bel( in(Place), block(BlockID, ColorID, Place), not(holding(BlockID)) ), not(percept( color(BlockID, ColorID) )) leadsto not(bel( block(BlockID, ColorID, Place) )).
 		
 		% Update sequence when in dropzone using on change only sequenceIndex
 		percept( sequenceIndex(X) ) leadsto bel( sequenceIndex(X) ).
@@ -75,32 +76,6 @@ test events with
 	post{ }
 	
 robot {
-	% Simple test with no other conditions.
-	do events.
-	
-	% test visited checks
-	do insert( room('FrontDropZone') ).
-	do events.
-	do drop( room('FrontDropZone') ).
-
-	% preconditions for discovering blocks
-	% figure out how to setup percepts for tests.
-	
-	% atBlock only when percept's there.'
-	% percepts?
-	
-	% test holding blocks.
-	% percepts
-	
-	% test cleaning up old block knowledge.
-	do insert( in('Place'), block('BlockId', 'Color', 'Place'), not(holding('BlockId')) ). 
-	do events.
-	do drop( in('Place') ).
-	
-	% add stuff to test sequenceIndex
-	% percepts
-	
-	% insert conditions for goals.
-	% figure this out? do adopt( delivered('a colour') ).
-	% do events.
+	% Test the percepts by running through a whole scenario
+	do main.
 }

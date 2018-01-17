@@ -12,6 +12,6 @@ module adoptExplorationGoals{
 	if bel( room(Place), not(dropZone(Place)), not(visited(Place)) ) then 
 		adopt( in(Place) ).
 		
-	% If we're in the dropzone we want to be out of that.'
+	% If we're in the dropzone we want to be out of that.
 	if bel( dropZone(Place), in(Place) ) then adopt( at('FrontDropZone') ). 
 }
