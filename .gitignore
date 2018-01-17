@@ -49,7 +49,12 @@ Temporary Items
 # Eclipse files
 .project
 *.idea
-*.lyx#
 
-# Exclude test agent files used by Chris
-scripts/Agents
+# temp files
+*.lyx#
+*.lyx~
+*.dia~
+report/thesis.log
+
+# Exclude experimental 
+scripts

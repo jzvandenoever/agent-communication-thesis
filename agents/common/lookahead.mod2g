@@ -5,8 +5,9 @@ module lookAhead {
 	forall (Agt).sent( msg(delivering(BlockID)) ) do insert ( delivering(Agt, BlockID) ).
 	forall (Agt).sent( msg(notDelivering(BlockID)) ) do delete ( delivering(Agt, BlockID) ).
 	
-	if a-goal( delivered(BlockID) ) then insert( delivering(me, BlockID) ) + 
-		allother.send( msg(delivering(BlockID)) ).
-	if bel( delivering(me, BlockID) ), not(a-goal( delivered(BlockID) )) then delete(  ) +
-		allother.send(msg(notDelivering(BlockID)) ).
+	% Make sure to only send the message once per time we attempt to deliver a block.
+	if a-goal( delivered(BlockID) ), bel( not(delivering(me, BlockID)) ) then 
+		insert( delivering(me, BlockID) ) + allother.send( msg(delivering(BlockID)) ).
+	if bel( delivering(me, BlockID) ), not(a-goal( delivered(BlockID) )) then 
+		delete( delivering(me, BlockID) ) + allother.send( msg(notDelivering(BlockID)) ).
 }
