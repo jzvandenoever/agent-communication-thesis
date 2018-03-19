@@ -4,6 +4,8 @@ order=linearall.
 module robotInit {
 	% Get all the other bots we know of at startup.
 	forall percept( player(X) ) do insert( player(X) ).
+	% Store our own name for checking.
+	forall percept( ownName(X) ) do insert( me(X) ).
 	
 	% Store map information, i.e., navigation points in the agent's belief base.
 	forall percept(zone(ID, Name, X, Y, Neighbours))  

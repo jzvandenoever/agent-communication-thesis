@@ -5,6 +5,7 @@ use common.com_block_info as module.
 use common.com_visited as module.
 use common.lookahead as module.
 
+order=linearall.
 module blockComTeamEvents {
 	
 	if true then comBasic.
@@ -16,50 +17,48 @@ module blockComTeamEvents {
 	
 	if true then events.
 	
-	forall (Agt).sent( msg(doDeliver(BlockID)) ) do insert ( doDeliver(Agt, BlockID) ).
-	forall (Agt).sent( msg(doNotDeliver(BlockID)) ) do insert ( doNotDeliver(Agt, BlockID) ).
+	if goal( in(Place) ), bel( holding(_), not(Place = 'DropZone') ) then delete( holding('Nothing!') ).
 	
-	% If somehow two agents want to deliver the same colour in the sequence. Resolve the conflict.
-	forall a-goal( sequence(Seq) ), bel( delivering(me, BlockID), delivering(Agt, OtherBlockID), 
-		% If there are blocks being delivered of the same colour... 
-		not(Agt = me), block(BlockID, Colour, _), block(OtherBlockID, Colour, _), agentCount(N),
+	% Only track deliver messages for Blocks we are still trying to deliver.
+	forall (Agt).sent( msg(doDeliver(BlockID)) ), goal( delivered(BlockID) ) do insert ( doDeliver(Agt, BlockID) ).
+	forall (Agt).sent( msg(doNotDeliver(BlockID)) ), goal( delivered(BlockID) ) do insert ( doNotDeliver(Agt, BlockID) ).
+	
+	% Reset response tracking if we get told an agent is not delivering a block.
+	forall (Agt).sent( msg(notDelivering(_)) ) do delete ( sentDeliveryResponse(Agt) ).
+	
+	% If another agents want to deliver the same colour in the sequence. Resolve the conflict.
+	forall goal( sequence(Seq) ), bel( delivering(me, BlockID), delivering(Agt, OtherBlockID), 
+		% First make sure we are not comparing to ourself or an agent we already responded to.
+		not(Agt = me), not(sentDeliveryResponse(Agt)),
+		% If there are blocks being delivered of the same colour...
+		block(BlockID, Colour, _), block(OtherBlockID, Colour, _), agentCount(N),
 		% get list of colours that are being delivered excluding my own...
 		findall(ColourID, (delivering(Agt,ABlock), not(Agt = me), block(ABlock, ColourID, _)), TakenC),
-		% Check if more of that colour should be delivered and aren't all being delivered already... 
-		nextXColoursInSeq(Colours, N, Seq), single_subtract(Colours, TakenC, UntakenC) ) do {
-			% If there are to many blocks of that colour being delivered, tell the other agent to...
-			if bel( not(member(Colour, UntakenC)) ) then {
-				% drop it if my name is larger than the other agent's. 
-				if bel( me(Me), Me > Agt ) then (Agt).send( msg(doNotDeliver(OtherBlockID)) ).
-				% deliver it if my name is smaller than the other agent's.
-				% I will still be told to not deliver this block later. This is to prevent deadlocks.
-				if bel( me(Me), Me < Agt ) then (Agt).send( msg(doDeliver(OtherBlockID)) ).
-			}
-			% If there still needs to be one of that colour delivered, tell the other agent to...
-			if bel( member(Colour, UntakenC) ) then (Agt).send( msg(doDeliver(OtherBlockID)) ).
-		}
-	% If two agents want to deliver blocks 
-	forall bel( delivering(me, BlockID), delivering(Agt, OtherBlockID), not(Agt = me),
-		% If there are blocks being delivered different colours let the other agent. 
-		block(BlockID, Colour, _), block(OtherBlockID, OtherColour, _), not(Colour = OtherColour) ) do
-			(Agt).send( msg(doDeliver(OtherBlockID)) ).
-	% If another agents wants to deliver a block and I don't let them.
-	forall bel( not(delivering(me, _)), delivering(Agt, OtherBlockID) ) do
-			(Agt).send( msg(doDeliver(OtherBlockID)) ).
+		% Check what colours should be delivered right now and if we do not have to much of Colour... 
+		nextXColoursInSeq(Colours, N, Seq), single_subtract(Colours, TakenC, UntakenC), not(member(Colour, UntakenC)),
+		% Check if we have priority in delivering the Colour...
+		me(Me), Me > Agt)
+		% If we have priority tell the other agent not to deliver the block 
+		do (Agt).send( msg(doNotDeliver(OtherBlockID)) ) + insert( sentDeliveryResponse(Agt) ).
 	
-	% If I aim to deliver a block..... 
-	if goal( delivered(BlockID) ), bel(
-		% Get the list of responses from other agents...
-		findall(Agt, (doDeliver(Agt, BlockID); doNotDeliver(Agt, BlockID)), Agts),
-		% then if I have gotten a response from all other agents...
-		length(Agts, N), agentCount(X), N is X-1 ) then {
-			% Stop trying to deliver the block if someone disagreed.
-			if bel( doNotDeliver(_, BlockID) ) then drop( delivering(me, BlockID) ) + 
-				delete( delivering(me, BlockID) ).
-			% If nobody told me not to deliver I can deliver the block.
-			if bel( not(doNotDeliver(Agt, BlockID)) ) then insert( deliverPermission(BlockID) ).
-			% Then clean up the responses.
-			forall bel( doDeliver(Agt, BlockID) ) do delete( doDeliver(Agt, BlockID) ).
-			forall bel( doNotDeliver(Agt, BlockID) ) do delete( doNotDeliver(Agt, BlockID) ).
-	}
+	% If we have no objection to the other agent delivering a block.
+	forall bel( delivering(Agt, BlockID), not(Agt = me), not(sentDeliveryResponse(Agt)) 
+		% Then the other agent can just deliver the block and ensure we only send it once.
+		) do (Agt).send( msg(doDeliver(BlockID)) ) + insert( sentDeliveryResponse(Agt) ).
+	
+	% If I aim to deliver a block check if someone told us not to deliver the block...
+	if goal( delivered(BlockID) ), bel( doNotDeliver(_, BlockID) )
+		% Then stop wanting to deliver the block. No need to wait for all responses.
+		then drop( delivered(BlockID) ) + delete( delivering(me, BlockID) ).
+		
+	% If I aim to deliver a block check and we don't already have permission....'
+	if goal( delivered(BlockID) ), bel( not(deliverPermission(BlockID)),
+		% Get the list of responses from other agents, no need to check doNotDeliver we already dropped in that case...
+		findall(Agt, doDeliver(Agt, BlockID), Agts),
+		% then if I have gotten a response from all other agents we have deliverPermission.
+		length(Agts, N), agentCount(X), N is X-1 ) then insert( deliverPermission(BlockID) ).
+		
+	% Do cleanup of agent deliver messages.
+	forall bel( deliverPermission(BlockID), doDeliver(Agt, BlockID) ) do delete( doDeliver(Agt, BlockID) ).
+	forall not(goal( delivered(BlockID) )), bel( doNotDeliver(Agt, BlockID) ) do delete( doNotDeliver(Agt, BlockID) ).
 }

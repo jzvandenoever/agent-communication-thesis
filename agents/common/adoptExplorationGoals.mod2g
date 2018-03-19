@@ -3,7 +3,7 @@ order=linearrandom.
 
 module adoptExplorationGoals{
 	% See if there is a block that needs to be delivered and nobody is already going for it.
-	if a-goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors, N, Seq), 
+	if goal(sequence(Seq)), bel( agentCount(N), nextXColoursInSeq(Colors, N, Seq), 
 		findall(ColorID, (delivering(_,ABlock), block(ABlock, ColorID, _)), TakenC),
 		single_subtract(Colors, TakenC, UntakenC), member(Color, UntakenC), 
 		block(BlockID, Color, Place), not(Place = held) ) then adopt( delivered(BlockID) ).

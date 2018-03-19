@@ -1,16 +1,18 @@
-use common.commonKnowledge as knowledge.
-use common.actions as actionspec.
-use common.updateSequence as module.
+use commonKnowledge as knowledge.
+use actions as actionspec.
+use updateSequence as module.
 exit=nogoals.
 
-module main {
+module generic_main {
 	% Optimisation for ending simulations if not agents are aware they are finished.
 	if goal( sequence(Seq) ), bel( sequenceIndex(N), length(Seq, N) ) then exit-module.
 	
 	% Drop blocks in the dropzone when they are needed, and communicate this
-	% state(arrived) to make sure we are in the dropzone before doing putDown.
-	if a-goal(delivered(BlockID)), bel( in('DropZone'), state(arrived), holding(BlockID) ) then 
-		putDown + allother.send( msg(delivered(BlockID)) ) + updateSequence(BlockID).
+	% Check if the block is the next block to be delivered because sometimes two blocks of the same colour are waiting
+	% And the agents do not always change destinations before they enter the DropZone.
+	if a-goal(delivered(BlockID)), goal( sequence(Seq) ), bel( in('DropZone'), holding(BlockID),
+		nextColorInSeq(ColorID, Seq), block(BlockID, ColorID, _) ) then putDown + 
+		allother.send( msg(delivered(BlockID)) ) + updateSequence(BlockID).
 		
 	%drop blocks in rooms when they are not needed anymore
 	if bel(in(Loc),Loc\='DropZone', holding(BlockID)), not(a-goal(delivered(BlockID))) then putDown.
@@ -24,6 +26,4 @@ module main {
 	%go to goal places
 	if goal(at(Place); in(Place)), bel( state(stopped) ) then goTo(Place) + insert( state(traveling) ).
 	if goal(at(Place); in(Place)) then goTo(Place).
-	
-	%if bel( in('DropZone') ) then goTo('FrontDropZone').
 }

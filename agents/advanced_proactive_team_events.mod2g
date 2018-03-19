@@ -5,6 +5,7 @@ use common.com_block_info as module.
 use common.com_visited as module.
 use common.lookahead as module.
 
+order=linearall.
 module proactiveTeamEvents {
 	
 	if true then comBasic.

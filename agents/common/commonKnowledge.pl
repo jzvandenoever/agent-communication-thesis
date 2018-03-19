@@ -19,6 +19,7 @@
 :- dynamic(doDeliver/2).
 :- dynamic(doNotDeliver/2).
 :- dynamic(goingToBlock/0).
+:- dynamic(sentDeliveryResponse/1).
 
 % LookAhead agent related knowledge
 % Returns the amount of agents that we received a message of. This is the agents that we know of.
