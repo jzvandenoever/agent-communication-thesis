@@ -11,35 +11,34 @@ module events {
 	forall percept( player(X) ), not(bel( player(X) )) do insert( player(X) ).
 	
 	% Update the agent's state of movement.
-	forall percept(state(NewState)), bel( state(State))  
+	forall percept( state(NewState) ), bel( state(State) )  
 		do delete( state(State) ) + insert( state(NewState) ).
 	
 	% Record where we are.
-	forall percept(at(Place)), bel(at(OldPlace)) do delete( at(OldPlace) ) + insert( at(Place) ).
+	forall percept( at(Place) ), bel(at(OldPlace)) do delete( at(OldPlace) ) + insert( at(Place) ).
 	
 	% Record when we are entering or leaving a room.
-	forall percept(in(Place)) do insert( in(Place) ).
-	forall percept(in(Place)), bel( not(visited(Place)), room(Place) ) do insert( visited(Place) ).
-	forall percept(not(in(Place))) do delete( in(Place) ).
+	forall percept( in(Place) ) do insert( in(Place) ).
+	forall percept( in(Place) ), bel( not(visited(Place)), room(Place) ) do insert( visited(Place) ).
+	forall bel( in(Place) ), not(percept( in(Place) )) do delete( in(Place) ).
 
 	% Discover new blocks
-	forall percept(color(BlockID, ColorID)), bel( in(Place), not(block(BlockID, ColorID, Place)),
+	forall percept( color(BlockID, ColorID) ), bel( in(Place), not(block(BlockID, ColorID, Place) ),
 		block(BlockID, ColorID, OtherPlace), Place \= OtherPlace ) do 
 		delete( block(BlockID, ColorID, OtherPlace) ) + insert( block(BlockID, ColorID, Place) ).
 	forall percept(color(BlockID, ColorID)), bel( in(Place), not(block(BlockID, ColorID, Place)) ) 
 		do insert( block(BlockID, ColorID, Place) ).
 	
 	% Record atblock location of agent
-	forall percept(atBlock(BlockID)) do insert(atBlock(BlockID)).
-	forall percept(atBlock(BlockID)) do delete(goingToBlock).
-	forall percept(not(atBlock(BlockID))) do delete(atBlock(BlockID)).
+	forall percept( atBlock(BlockID) ) do insert( atBlock(BlockID) ).
+	forall percept( atBlock(BlockID) ) do delete( goingToBlock(BlockID) ).
+	forall bel( atBlock(BlockID) ), not(percept( atBlock(BlockID) )) do delete( atBlock(BlockID) ).
 	
 	% Record if a block is being held
-	forall percept(holding(BlockID)) do insert(holding(BlockID)).
+	forall percept( holding(BlockID) ) do insert( holding(BlockID) ).
 	% update held location regardless on if we know of the block already.
-	forall percept(holding(BlockID)), bel(block(BlockID, ColorID, Place)) do 
-		delete(block(BlockID, ColorID, Place)) + insert(block(BlockID, ColorID, held)).
-	forall percept(not(holding(BlockID))) do delete(holding(BlockID)).
+	forall percept( holding(BlockID) ), bel(block(BlockID, ColorID, Place)) do 
+		delete( block(BlockID, ColorID, Place) ) + insert( block(BlockID, ColorID, held) ).
 	
 	%remove blocks that are not held or in the room anymore
 	forall bel( in(Place), block(BlockID, ColorID, Place), not(holding(BlockID)) ), 
@@ -47,11 +46,11 @@ module events {
 	if bel( in(Place), block(BlockID, ColorID, Place), not(holding(BlockID)) ), 
 		not(percept( color(BlockID, ColorID) )) then delete( holding(BlockID) ).
 	% Update sequence when in dropzone using on change only sequenceIndex
-	if percept(sequenceIndex(X)), bel(sequenceIndex(OldX)) 
-		then delete(sequenceIndex(OldX)) + insert(sequenceIndex(X)).
+	if percept( sequenceIndex(X) ), bel( sequenceIndex(OldX) ) 
+		then delete( sequenceIndex(OldX) ) + insert( sequenceIndex(X) ).
 	% By using length with an ununified list we define the length of the list with unified variables.
 	% The following append then unifies the list to the first X atoms of the Full sequence.
-	if a-goal(sequence(Full)), bel( in('DropZone'), sequence(Seq), length(Seq, N), sequenceIndex(X), 
+	if a-goal( sequence(Full) ), bel( in('DropZone'), sequence(Seq), length(Seq, N), sequenceIndex(X), 
 		N < X , length(NewSeq, X), append(NewSeq, _, Full) )
 		then delete( sequence(Seq) ) + insert( sequence(NewSeq) ).
 				

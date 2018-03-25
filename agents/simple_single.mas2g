@@ -1,11 +1,11 @@
-use "../bw4t-client-3.8.7-minimal.jar" as environment with 
+use "../bw4t-client-3.9.1.jar" as environment with 
 	clientip ="localhost", clientport="2000", 
 	serverip = "localhost", serverport = "8000",
-	agentcount = "1", humancount = "0", launchgui = "false", 
-	goal = "true", map = "SuperRandom".
+	agentcount = "1", humancount = "0", launchgui = "false",
+	map = "SuperRandom", speed = "100".
 
 define robot as agent {
-	use simple_single as main module.
+	use common.generic_main as main module.
 	use common.initial as init module.
 	use common.events as event module.
 } 

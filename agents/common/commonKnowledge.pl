@@ -3,7 +3,7 @@
 :- dynamic(in/1).
 :- dynamic(at/1).
 :- dynamic(visited/1).
-:- dynamic(zone/5).
+:- dynamic(zone/3).
 :- dynamic(block/3).
 :- dynamic(atBlock/1).
 :- dynamic(holding/1).
@@ -18,7 +18,7 @@
 :- dynamic(deliverPermission/1).
 :- dynamic(doDeliver/2).
 :- dynamic(doNotDeliver/2).
-:- dynamic(goingToBlock/0).
+:- dynamic(goingToBlock/1).
 :- dynamic(sentDeliveryResponse/1).
 
 % LookAhead agent related knowledge
@@ -29,7 +29,7 @@ agentCount(N) :- lookahead, findall(Player, player(Player), Players), length(Pla
 
 % A room is a place with exactly one neighbour, i.e., there is only one way to get 
 % to and from that place.
-room(PlaceID) :- zone(_,PlaceID,_,_,Neighbours), length(Neighbours,1).
+room(PlaceName) :- zone(_,PlaceName,Neighbours), length(Neighbours,1).
 % Predicate used to provide the dropzone location for goals and actions.
 dropZone('DropZone').
 
