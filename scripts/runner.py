@@ -8,11 +8,10 @@ import re
 import threading
 from Queue import Queue, Empty
 
-FAILURES = [0, 5, 25, 50, 75, 95, 100]
-AGENT_COUNTS = [3, 5, 10]
-CMD = 'java -cp {runtime} goal.tools.Run "{mas}" -v --repeats {repeats} --timeout {timeout} ' \
-      '--dropchance {failure}'
-BW4T_CMD = 'java -jar {bw4t}'
+FAILURES = [0]#, 5, 25, 50, 75, 95, 100]
+AGENT_COUNTS = [3]#, 5, 10]
+CMD = 'java -cp {runtime} goal.tools.Run "{mas}" -v --repeats {repeats} --timeout {timeout}'
+BW4T_CMD = 'java -jar {bw4t} -gui false'
 DEFAULT_RUNTIME = 'runtime.jar'
 DEFAULT_BW4T = 'bw4t.jar'
 DEFAULT_REPEATS = 1  # No repeats
@@ -42,6 +41,15 @@ def non_block_readline(q):
         return ''
     else:
         return line
+
+
+def prepare_fail_chance(fail_chance, maslocation):
+    mas_dir = os.path.dirname(maslocation)
+    fail_file_loc = os.path.join(mas_dir, 'common/failure.pl')
+    print 'LOCATIONS:', mas_dir, fail_file_loc
+    with open(fail_file_loc, 'w+') as fail_file:
+        fail_file.write('dropChance({0}).'.format(fail_chance))
+        print 'TEST WRITE:', 'dropChance({0}).'.format(fail_chance)
 
 
 def prepare_mas(maslocation, agent_count):
@@ -74,6 +82,7 @@ def prepare_logfile(bw4t_logs):
         for listed_file in os.listdir(bw4t_logs):
             if listed_file.endswith(".log"):
                 log_file = open(os.path.join(bw4t_logs, listed_file))
+                print 'Found logfile:', listed_file
                 break
     return log_file
 
@@ -107,6 +116,8 @@ def run(args):
 
             for fail_chance in FAILURES:
                 print 'Doing run with {fail} chance of communication failure.'.format(fail=fail_chance)
+                #prepare_fail_chance(fail_chance, masfile)
+
                 bw4t_path = os.path.dirname(args.bw4t)
                 bw4t_logs = bw4t_path.join('log')
                 if os.path.exists(bw4t_logs):
@@ -118,28 +129,31 @@ def run(args):
                 # Make sure the server has started properly
                 while True:
                     line = server.stdout.readline()
-                    if 'Launching the BW4T Server Graphical User Interface.' in line:
+                    if 'Launching the BW4T Server Graphical User Interface.' in line or \
+                            'Launching the BW4T Server without a graphical user interface.' in line:
                         print 'Launched BW4T server.'
                         break
 
                 client_command = CMD.format(runtime=args.runtime, repeats=args.repeats, mas=masfile,
-                                            timeout=args.timeout, failure=fail_chance)
+                                            timeout=args.timeout)
                 # This way I don't need to check for spaces and stuff that needs escaping.
                 client = subprocess.Popen(shlex.split(client_command), stdout=subprocess.PIPE,
                                           stderr=subprocess.STDOUT)
-                # Setup the BW4T server log reading.
-                log_file = prepare_logfile(bw4t_logs)
+                # Setup the goal log reading.
+                #log_file = prepare_logfile(bw4t_logs)
 
                 agents = {}
                 # Process runtime data.
                 print 'start processing'
                 client_q, client_t = setup_nonblocking_read(client.stdout)
                 server_q, server_t = setup_nonblocking_read(server.stdout)
+                print 'setup client and server'
                 while True:
                     line = non_block_readline(client_q)
                     serverlines = non_block_readline(server_q)
                     # Do stuff with the runtime output here.
-                    log_lines = log_file.readlines()
+                    # log_lines = log_file.readlines()  # Haven't made the runtime output useful yet.
+
                     # Do cycle detection, and nothing happens detection.
                     if args.repeats == 1 and detect_early_stop(log_lines, agents, agent_count):
                         print 'Stopped because of action cycles.'
@@ -147,7 +161,7 @@ def run(args):
 
                     # Detect the end of the run.
                     poll = client.poll()
-                    if line.endswith('milliseconds to run jobs.\n') or poll is not None:
+                    if (line.startswith('ran for') and line.endswith('seconds.\n')) or poll is not None:
                         print 'Finished run'
                         break
                 
