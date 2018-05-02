@@ -2,12 +2,12 @@ use commonKnowledge as knowledge.
 order=linearall.
 
 module comBlocks {
-	forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( block(BlockID, ColorID, OtherPlace), 
+	forall bel( msg(_, block(BlockID, ColorID, Place)), block(BlockID, ColorID, OtherPlace), 
 		Place \= OtherPlace ) do delete( block(BlockID, ColorID, OtherPlace) ) + 
 		insert( block(BlockID, ColorID, Place) ).
-	forall (Agt).sent( msg(block(BlockID, ColorID, Place)) ), bel( not(block(BlockID, ColorID, Place)) ) 
+	forall bel( msg(_, block(BlockID, ColorID, Place)), not(block(BlockID, ColorID, Place)) ) 
 		do insert( block(BlockID, ColorID, Place) ).
-	forall (Agt).sent( msg(heldblock(BlockID)) ), bel( block(BlockID, ColorID, Place) ) 
+	forall bel( msg(_, heldblock(BlockID)) , block(BlockID, ColorID, Place) ) 
 		do delete( block(BlockID, ColorID, Place) ) + insert( block(BlockID, ColorID, held) ).
 	
 	% Transmit block related info

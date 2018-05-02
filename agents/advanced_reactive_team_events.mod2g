@@ -20,11 +20,11 @@ module blockComTeamEvents {
 	if goal( in(Place) ), bel( holding(_), not(Place = 'DropZone') ) then delete( holding('Nothing!') ).
 	
 	% Only track deliver messages for Blocks we are still trying to deliver.
-	forall (Agt).sent( msg(doDeliver(BlockID)) ), goal( delivered(BlockID) ) do insert ( doDeliver(Agt, BlockID) ).
-	forall (Agt).sent( msg(doNotDeliver(BlockID)) ), goal( delivered(BlockID) ) do insert ( doNotDeliver(Agt, BlockID) ).
+	forall bel( msg(Agt, doDeliver(BlockID)) ), goal( delivered(BlockID) ) do insert ( doDeliver(Agt, BlockID) ).
+	forall bel( msg(Agt, doNotDeliver(BlockID)) ), goal( delivered(BlockID) ) do insert ( doNotDeliver(Agt, BlockID) ).
 	
 	% Reset response tracking if we get told an agent is not delivering a block.
-	forall (Agt).sent( msg(notDelivering(_)) ) do delete ( sentDeliveryResponse(Agt) ).
+	forall bel( msg(Agt, notDelivering(_)) ) do delete ( sentDeliveryResponse(Agt) ).
 	
 	% If another agents want to deliver the same colour in the sequence. Resolve the conflict.
 	forall goal( sequence(Seq) ), bel( delivering(me, BlockID), delivering(Agt, OtherBlockID), 

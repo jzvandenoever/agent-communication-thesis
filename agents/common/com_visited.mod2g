@@ -2,7 +2,7 @@ use commonKnowledge as knowledge.
 order=linearall.
 
 module comVisited {
-	forall (Agt).sent( msg(visited(Place))), bel( not(visited(Place)) ) do 
+	forall bel( msg(_, visited(Place)), not(visited(Place)) ) do 
 		insert( visited(Place) ).
 	
 	forall percept(in(Place)), bel( not(visited(Place)), room(Place) ) do 

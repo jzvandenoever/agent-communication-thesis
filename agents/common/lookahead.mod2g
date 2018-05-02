@@ -2,8 +2,8 @@ use commonKnowledge as knowledge.
 order=linearall.
 
 module lookAhead {
-	forall (Agt).sent( msg(delivering(BlockID)) ) do insert ( delivering(Agt, BlockID) ).
-	forall (Agt).sent( msg(notDelivering(BlockID)) ) do delete ( delivering(Agt, BlockID) ).
+	forall bel( msg(Agt, delivering(BlockID)) ) do insert ( delivering(Agt, BlockID) ).
+	forall bel( msg(Agt, notDelivering(BlockID)) ) do delete ( delivering(Agt, BlockID) ).
 	
 	% Make sure to only send the message once per time we attempt to deliver a block.
 	if a-goal( delivered(BlockID) ), bel( not(delivering(me, BlockID)) ) then 
