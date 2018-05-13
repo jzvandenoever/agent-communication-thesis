@@ -9,9 +9,11 @@ import threading
 from Queue import Queue, Empty
 
 FAILURES = [0]#, 5, 25, 50, 75, 95, 100]
-AGENT_COUNTS = [3]#, 5, 10]
+AGENT_COUNTS = [1]#[3, 5, 10]
+BW4T_MAPS = ['ISO1.map', 'ISO2.map', 'ISO3.map', 'ISO4.map', 'ISO5.map', 'ISO6.map', 
+             'ISO7.map', 'ISO8.map', 'ISO9.map', 'ISO10.map', 'ISO11.map', 'ISO12.map']
 CMD = 'java -cp {runtime} goal.tools.Run "{mas}" -v --repeats {repeats} --timeout {timeout}'
-BW4T_CMD = 'java -jar {bw4t} -gui false'
+BW4T_CMD = 'java -jar {bw4t}'# -gui false'
 DEFAULT_RUNTIME = 'runtime.jar'
 DEFAULT_BW4T = 'bw4t.jar'
 DEFAULT_REPEATS = 1  # No repeats
@@ -46,20 +48,21 @@ def non_block_readline(q):
 def prepare_fail_chance(fail_chance, maslocation):
     mas_dir = os.path.dirname(maslocation)
     fail_file_loc = os.path.join(mas_dir, 'common/failure.pl')
-    print 'LOCATIONS:', mas_dir, fail_file_loc
     with open(fail_file_loc, 'w+') as fail_file:
         fail_file.write('dropChance({0}).'.format(fail_chance))
-        print 'TEST WRITE:', 'dropChance({0}).'.format(fail_chance)
 
 
-def prepare_mas(maslocation, agent_count):
+def prepare_mas(maslocation, bw4t_map, agent_count):
     mas_file = open(maslocation)
     mas_contents = mas_file.readlines()
     changed_mas = tempfile.NamedTemporaryFile(delete=False)
     replacement_count = 'agentcount = "%s"' % agent_count
+    replacement_map =  'map = "%s"' % bw4t_map
     for line in mas_contents:
         if 'agentcount' in line:
             line = re.sub(r'agentcount ?= ?["\']\d+["\']', replacement_count, line)
+        if 'map' in line:
+            line = re.sub(r'map ?= ?["]\w+["]', replacement_map, line)
 
         changed_mas.write(line)
     changed_mas.close()
@@ -110,78 +113,92 @@ def detect_early_stop(log_lines, agents, agent_count):
 
 def run(args):
     for maslocation in args.mas:
-        for agent_count in AGENT_COUNTS:
-            mas_name = os.path.basename(maslocation)
-            masfile = prepare_mas(maslocation, agent_count)
+        for bw4t_map in BW4T_MAPS:
+            print 'Doing runs on the following map:', bw4t_map
+            for agent_count in AGENT_COUNTS:
+                mas_name = os.path.basename(maslocation)
+                masfile = prepare_mas(maslocation, bw4t_map, agent_count)
 
-            for fail_chance in FAILURES:
-                print 'Doing run with {fail} chance of communication failure.'.format(fail=fail_chance)
-                #prepare_fail_chance(fail_chance, masfile)
+                for fail_chance in FAILURES:
+                    print 'Doing run with {fail} chance of communication failure.'.format(fail=fail_chance)
+                    prepare_fail_chance(fail_chance, masfile)
 
-                bw4t_path = os.path.dirname(args.bw4t)
-                bw4t_logs = bw4t_path.join('log')
-                if os.path.exists(bw4t_logs):
-                    shutil.rmtree(bw4t_path.join('log'))
-                print 'Removed old logs if existing.'
+                    bw4t_path = os.path.dirname(args.bw4t)
+                    bw4t_logs = bw4t_path.join('log')
+                    if os.path.exists(bw4t_logs):
+                        shutil.rmtree(bw4t_path.join('log'))
+                    print 'Removed old logs if existing.'
 
-                server = subprocess.Popen(shlex.split(BW4T_CMD.format(bw4t=args.bw4t)),
-                                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-                # Make sure the server has started properly
-                while True:
-                    line = server.stdout.readline()
-                    if 'Launching the BW4T Server Graphical User Interface.' in line or \
-                            'Launching the BW4T Server without a graphical user interface.' in line:
-                        print 'Launched BW4T server.'
-                        break
+                    server = subprocess.Popen(shlex.split(BW4T_CMD.format(bw4t=args.bw4t)),
+                                                          stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                    # Make sure the server has started properly
+                    while True:
+                        line = server.stdout.readline()
+                        if 'Launching the BW4T Server Graphical User Interface.' in line or \
+                                'Launching the BW4T Server without a graphical user interface.' in line:
+                            print 'Launched BW4T server.'
+                            break
 
-                client_command = CMD.format(runtime=args.runtime, repeats=args.repeats, mas=masfile,
-                                            timeout=args.timeout)
-                # This way I don't need to check for spaces and stuff that needs escaping.
-                client = subprocess.Popen(shlex.split(client_command), stdout=subprocess.PIPE,
-                                          stderr=subprocess.STDOUT)
-                # Setup the goal log reading.
-                #log_file = prepare_logfile(bw4t_logs)
+                    client_command = CMD.format(runtime=args.runtime, repeats=args.repeats, mas=masfile,
+                                                timeout=args.timeout)
+                    # Setup the goal log reading.
+                    log_file = prepare_logfile(bw4t_logs)
 
-                agents = {}
-                # Process runtime data.
-                print 'start processing'
-                client_q, client_t = setup_nonblocking_read(client.stdout)
-                server_q, server_t = setup_nonblocking_read(server.stdout)
-                print 'setup client and server'
-                while True:
-                    line = non_block_readline(client_q)
-                    serverlines = non_block_readline(server_q)
-                    # Do stuff with the runtime output here.
-                    # log_lines = log_file.readlines()  # Haven't made the runtime output useful yet.
+                    agents = {}
+                    # Process runtime data.
+                    print 'start processing'
+                    server_q, server_t = setup_nonblocking_read(server.stdout)
+                    print 'setup server'
+                    print 'repeating for %s times' % args.repeats
+                    for i in range(args.repeats):
+                        # This way I don't need to check for spaces and stuff that needs escaping.
+                        client = subprocess.Popen(shlex.split(client_command), stdout=subprocess.PIPE,
+                                                                               stderr=subprocess.STDOUT)
+                        client_q, client_t = setup_nonblocking_read(client.stdout)
+                        print 'setup client'
+                        while True:
+                            line = non_block_readline(client_q)
+                            serverline = non_block_readline(server_q)
+                            # Do stuff with the runtime output here.
+                            log_lines = log_file.readlines()
 
-                    # Do cycle detection, and nothing happens detection.
-                    if args.repeats == 1 and detect_early_stop(log_lines, agents, agent_count):
-                        print 'Stopped because of action cycles.'
-                        break
+                            # Do cycle detection, and nothing happens detection.
+                            if detect_early_stop(log_lines, agents, agent_count):
+                                print 'Stopped because of action cycles.'
+                                break
 
-                    # Detect the end of the run.
-                    poll = client.poll()
-                    if (line.startswith('ran for') and line.endswith('seconds.\n')) or poll is not None:
-                        print 'Finished run'
-                        break
-                
+                            # Detect the end of the run.
+                            poll = client.poll()
+                            if (line.startswith('ran for') and line.endswith('seconds.\n')) or poll is not None:
+                                print 'Finished run'
+                                break
+
+                        print 'Shutting down client'
+                        client_t.set()
+                        client.terminate()
+                        serverline = non_block_readline(server_q)
+                        while serverline:
+                            serverline = non_block_readline(server_q)
+
                 print 'Shutting down'
-                client_t.set()
                 server_t.set()
-                client.terminate()
                 server.terminate()
                 client.wait()
                 print 'shut down'  # shut down client server read threads.
 
                 try:
-                    os.renames(bw4t_logs, os.path.join(mas_name, '%d' % agent_count,
+                    os.renames(bw4t_logs, os.path.join(mas_name,
+                                                       bw4t_map,
+                                                       '%d' % agent_count,
                                                        '%.2f' % (fail_chance / 100.0)))
                 except OSError as e:
-                    print 'error moving logs to %s' % os.path.join(mas_name, '%d' % agent_count,
+                    print 'error moving logs to %s' % os.path.join(mas_name,
+                                                                   bw4t_map,
+                                                                   '%d' % agent_count,
                                                                    '%.2f' % (fail_chance / 100.0))
                     print e
                 print 'Ran {mas} with the following failure chance: {chance}'.format(mas=mas_name,
-                                                                                     chance=fail_chance)
+                                                                                    chance=fail_chance)
             os.remove(masfile)
     print 'Finished doing runs.'
 
@@ -189,10 +206,10 @@ def run(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run BW4T.')
     parser.add_argument('--bw4t', type=str, default=DEFAULT_BW4T,
-                        nargs=1, help='The location for the BW4T server.')
+                        help='The location for the BW4T server.')
     parser.add_argument('--runtime', type=str, default=DEFAULT_RUNTIME,
-                        nargs=1, help='The location for the GOAL runtime.')
-    parser.add_argument('--repeats', type=int, default=DEFAULT_REPEATS, nargs=1,
+                        help='The location for the GOAL runtime.')
+    parser.add_argument('--repeats', type=int, default=DEFAULT_REPEATS,
                         help='How many times should each mas file be tested per com '
                              'failure mode.')
     parser.add_argument('--timeout', type=int, default=DEFAULT_TIMEOUT,
