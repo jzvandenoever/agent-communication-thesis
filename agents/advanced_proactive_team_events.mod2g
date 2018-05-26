@@ -26,7 +26,7 @@ module proactiveTeamEvents {
 		% Check if more than one of that colour should be delivered... 
 		nextXColoursInSeq(Colours, N, Seq), single_subtract(Colours, TakenC, UntakenC),
 		% If only one needs to be delived, drop the goal if my name is of lower order than the other agent's' 
-		not(member(Colour, UntakenC)), me(Me), Me < Agt ), 
+		not(member(Colour, UntakenC)), me(Me), Me @< Agt ), 
 		a-goal( delivered(BlockID) ) do drop (delivered(BlockID)) + 
 		delete( delivering(me, BlockID) ) + allother.send(msg(notDelivering(BlockID)) ).
 }
