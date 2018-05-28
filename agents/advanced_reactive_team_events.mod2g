@@ -37,7 +37,7 @@ module blockComTeamEvents {
 		% Check what colours should be delivered right now and if we do not have to much of Colour... 
 		nextXColoursInSeq(Colours, N, Seq), single_subtract(Colours, TakenC, UntakenC), not(member(Colour, UntakenC)),
 		% Check if we have priority in delivering the Colour...
-		me(Me), Me @> Agt)
+		ownName(Me), Me @> Agt)
 		% If we have priority tell the other agent not to deliver the block 
 		do (Agt).send( msg(doNotDeliver(OtherBlockID)) ) + insert( sentDeliveryResponse(Agt) ).
 	

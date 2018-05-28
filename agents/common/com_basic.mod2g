@@ -4,6 +4,9 @@ use updateSequence as module.
 order=linearall.
 
 module comBasic {
+	% Process one time message to identify own name.
+	if (Agt).sent( me ) then insert( ownName(Agt) ).
+	
 	% Make sure we do not process messages from the previous round. 
 	forall bel( msg(Agt, MSG) ) do delete( msg(Agt, MSG) ).
 	%insert all messages as beliefs so we can have some of them 'fail' to arrive later.
