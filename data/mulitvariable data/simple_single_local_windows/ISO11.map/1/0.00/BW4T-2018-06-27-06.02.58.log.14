@@ -1,0 +1,47 @@
+06:17:19,285 - sequence
+06:17:19,285 - room RoomA3 contains blocks:  Y B
+06:17:19,285 - room RoomB3 contains blocks:  Y
+06:17:19,285 - room RoomA2 contains blocks:  R B
+06:17:19,285 - room RoomC1 contains blocks:  Y
+06:17:19,285 - room RoomB2 contains blocks:  R
+06:17:19,286 - room RoomA1 contains blocks:  R Y
+06:17:19,286 - room RoomC3 contains blocks:  B
+06:17:19,286 - room RoomB1 contains blocks:  R
+06:17:19,286 - room RoomC2 contains blocks:  B
+06:17:19,286 - sequence R R Y Y B B
+06:17:19,446 - action Bot_1 goTo(RoomA3)
+06:17:21,286 - action Bot_1 goTo(RoomC3)
+06:17:23,798 - action Bot_1 goTo(RoomB1)
+06:17:26,329 - action Bot_1 goToBlock(42)
+06:17:26,550 - action Bot_1 pickUp(42)
+06:17:26,567 - action Bot_1 goTo(DropZone)
+06:17:28,872 - action Bot_1 putDown
+06:17:28,891 - action Bot_1 goTo(RoomA2)
+06:17:31,003 - action Bot_1 goToBlock(35)
+06:17:31,192 - action Bot_1 pickUp(35)
+06:17:31,207 - action Bot_1 goTo(DropZone)
+06:17:33,475 - action Bot_1 putDown
+06:17:33,509 - action Bot_1 goTo(RoomA3)
+06:17:35,616 - action Bot_1 pickUp(32)
+06:17:35,632 - action Bot_1 goTo(DropZone)
+06:17:37,744 - action Bot_1 putDown
+06:17:37,759 - action Bot_1 goTo(RoomB3)
+06:17:39,868 - action Bot_1 pickUp(34)
+06:17:39,885 - action Bot_1 goTo(DropZone)
+06:17:41,975 - action Bot_1 putDown
+06:17:42,006 - action Bot_1 goTo(RoomC3)
+06:17:44,117 - action Bot_1 pickUp(41)
+06:17:44,132 - action Bot_1 goTo(DropZone)
+06:17:46,240 - action Bot_1 putDown
+06:17:46,272 - action Bot_1 goTo(RoomA3)
+06:17:48,386 - action Bot_1 pickUp(33)
+06:17:48,402 - action Bot_1 goTo(DropZone)
+06:17:50,515 - action Bot_1 putDown
+06:17:50,515 - Time to finish sequence is 14 minutes and 49 seconds
+06:17:50,516 - agentsummary Bot_1 handicaps none
+06:17:50,516 - agentsummary robot gooddrops 6
+06:17:50,516 - agentsummary robot wrongdrops 0
+06:17:50,516 - agentsummary robot nmessage 0
+06:17:50,516 - agentsummary robot idletime 1.465
+06:17:50,516 - agentsummary robot nroomsentered 14
+06:17:51,585 - total time is 14 minutes and 50 seconds

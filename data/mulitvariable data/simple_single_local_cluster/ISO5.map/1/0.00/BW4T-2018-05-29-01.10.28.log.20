@@ -1,0 +1,47 @@
+02:06:40,297 - sequence
+02:06:40,299 - room RoomA3 contains blocks:  Y P
+02:06:40,299 - room RoomB3 contains blocks:  Y
+02:06:40,299 - room RoomA2 contains blocks:  O B
+02:06:40,299 - room RoomC1 contains blocks:  G
+02:06:40,299 - room RoomB2 contains blocks:  O
+02:06:40,300 - room RoomA1 contains blocks:  R G
+02:06:40,300 - room RoomC3 contains blocks:  P
+02:06:40,300 - room RoomB1 contains blocks:  R
+02:06:40,300 - room RoomC2 contains blocks:  B
+02:06:40,300 - sequence R O Y G B P
+02:06:45,043 - action Bot_1 goTo(RoomA3)
+02:06:54,385 - action Bot_1 goTo(RoomB3)
+02:07:05,995 - action Bot_1 goTo(RoomA1)
+02:07:20,771 - action Bot_1 pickUp(39)
+02:07:21,699 - action Bot_1 goTo(DropZone)
+02:07:38,085 - action Bot_1 putDown
+02:07:38,250 - action Bot_1 goTo(RoomB2)
+02:07:52,054 - action Bot_1 goToBlock(38)
+02:07:53,922 - action Bot_1 pickUp(38)
+02:07:54,008 - action Bot_1 goTo(DropZone)
+02:08:12,597 - action Bot_1 putDown
+02:08:13,520 - action Bot_1 goTo(RoomB3)
+02:08:25,305 - action Bot_1 pickUp(34)
+02:08:25,589 - action Bot_1 goTo(DropZone)
+02:08:40,672 - action Bot_1 putDown
+02:08:41,965 - action Bot_1 goTo(RoomA1)
+02:08:56,825 - action Bot_1 goToBlock(40)
+02:08:58,513 - action Bot_1 pickUp(40)
+02:08:58,666 - action Bot_1 goTo(DropZone)
+02:09:10,287 - action Bot_1 putDown
+02:09:10,648 - action Bot_1 goTo(RoomC2)
+02:09:23,757 - action Bot_1 pickUp(43)
+02:09:24,094 - action Bot_1 goTo(DropZone)
+02:09:38,391 - action Bot_1 putDown
+02:09:38,785 - action Bot_1 goTo(RoomA3)
+02:09:51,020 - action Bot_1 pickUp(33)
+02:09:51,175 - action Bot_1 goTo(DropZone)
+02:10:02,533 - action Bot_1 putDown
+02:10:02,533 - Time to finish sequence is 58 minutes and 46 seconds
+02:10:02,533 - agentsummary Bot_1 handicaps none
+02:10:02,533 - agentsummary robot gooddrops 6
+02:10:02,533 - agentsummary robot wrongdrops 0
+02:10:02,533 - agentsummary robot nmessage 0
+02:10:02,533 - agentsummary robot idletime 24.083
+02:10:02,533 - agentsummary robot nroomsentered 14
+02:11:17,488 - total time is 60 minutes and 1 seconds

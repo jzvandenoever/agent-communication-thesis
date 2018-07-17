@@ -1,0 +1,128 @@
+FINISHED AGENT simple_single_local_windows
+This many runs failed: 17
+Average Runtime: 35.92955531453366 Median runtime: 36.611 Higest Runtime: 47.996 10 highest runtimes: [45.674, 45.686, 45.765, 45.795, 46.035, 46.062, 46.079, 46.376, 47.54, 47.996]
+long runtime counts defaultdict(<class 'int'>, {})
+
+FINISHED AGENT simple_single_local_cluster
+This many runs failed: 19
+Average Runtime: 133.63108695652173 Median runtime: 124.868 Higest Runtime: 392.085 10 highest runtimes: [293.652, 307.923, 310.237, 316.843, 326.103, 329.52, 331.816, 335.894, 376.219, 392.085]
+long runtime counts defaultdict(<class 'int'>, {
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single\\ISO1.map\\1\\0.00': 2, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single\\ISO10.map\\1\\0.00': 28, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single\\ISO11.map\\1\\0.00': 25, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single\\ISO12.map\\1\\0.00': 22, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single\\ISO5.map\\1\\0.00': 1, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single\\ISO9.map\\1\\0.00': 6
+})
+
+
+
+FINISHED AGENT simple_single_cloud
+This many runs failed: 17
+Average Runtime: 90.2170183727034 Median runtime: 42.459 Higest Runtime: 206.344 10 highest runtimes: [193.706, 195.528, 195.571, 197.159, 199.567, 200.089, 200.499, 200.81, 202.036, 206.344]
+long runtime counts defaultdict(<class 'int'>, {
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO7.map\\1\\0.00': 1, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO8.map\\1\\0.00': 1, 
+	'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO9.map\\1\\0.00': 3
+})
+
+
+
+Second iteration with corrected data:
+AGENT DIRS! ['simple_single_cloud', 'simple_single_local_cluster', 'simple_single_local_windows', 'simple_single_local_windows_corrected', 'simple_single_local_windows_map3']
+FINISHED AGENT simple_single_cloud
+This many runs failed: 17
+Average Runtime: 90.2170183727034 Median runtime: 42.459 Higest Runtime: 206.344 10 highest runtimes: [193.706, 195.528, 195.571, 197.159, 199.567, 200.089, 200.499, 200.81, 202.036, 206.344]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO1.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO10.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO5.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO7.map\\1\\0.00': 1, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO8.map\\1\\0.00': 1, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO9.map\\1\\0.00': 3})
+==========================================================================================================
+FINISHED AGENT simple_single_local_cluster
+This many runs failed: 19
+Average Runtime: 133.63108695652173 Median runtime: 124.868 Higest Runtime: 392.085 10 highest runtimes: [293.652, 307.923, 310.237, 316.843, 326.103, 329.52, 331.816, 335.894, 376.219, 392.085]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO1.map\\1\\0.00': 2, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO10.map\\1\\0.00': 28, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO11.map\\1\\0.00': 25, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO12.map\\1\\0.00': 22, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO5.map\\1\\0.00': 1, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO7.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO8.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO9.map\\1\\0.00': 6})
+==========================================================================================================
+FINISHED AGENT simple_single_local_windows
+This many runs failed: 17
+Average Runtime: 35.92955531453366 Median runtime: 36.611 Higest Runtime: 47.996 10 highest runtimes: [45.674, 45.686, 45.765, 45.795, 46.035, 46.062, 46.079, 46.376, 47.54, 47.996]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO1.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO10.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO11.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO12.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO5.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO7.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO8.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO9.map\\1\\0.00': 0})
+==========================================================================================================
+FINISHED AGENT simple_single_local_windows_corrected
+This many runs failed: 32
+Average Runtime: 35.63077499999994 Median runtime: 35.965 Higest Runtime: 47.355 10 highest runtimes: [45.077, 45.259, 45.312, 45.327, 45.648, 45.667, 45.828, 46.516, 47.085, 47.355]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO1.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO10.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO11.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO12.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO5.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO7.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO8.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO9.map\\1\\0.00': 0})
+==========================================================================================================
+FINISHED AGENT simple_single_local_windows_map3
+This many runs failed: 1
+Average Runtime: 39.0042 Median runtime: 39.0245 Higest Runtime: 43.906 10 highest runtimes: [33.035, 34.431, 37.682, 38.078, 38.686, 39.363, 40.193, 41.275, 43.393, 43.906]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_map3\\ISO3.map\\1\\0.00': 0})
+==========================================================================================================
+PS D:\Eclipse Workspace\bw4t\data\mulitvariable data> py.exe .\multivariable_log_to_csv.py
+  File ".\multivariable_log_to_csv.py", line 80
+    return cur_summary, missing_end_time_count, long_runtime_count
+         ^
+SyntaxError: invalid syntax
+PS D:\Eclipse Workspace\bw4t\data\mulitvariable data> py.exe .\multivariable_log_to_csv.py
+AGENT DIRS! ['simple_single_cloud', 'simple_single_local_cluster', 'simple_single_local_windows', 'simple_single_local_windows_corrected', 'simple_single_local_windows_map3']
+TEST! D:\Eclipse Workspace\bw4t\data\mulitvariable data\simple_single_cloud\ISO3.map\1\0.00 31
+TEST! D:\Eclipse Workspace\bw4t\data\mulitvariable data\simple_single_cloud\ISO9.map\1\0.00 30
+FINISHED AGENT simple_single_cloud
+This many runs failed: 17
+Average Runtime: 90.2170183727034 Median runtime: 42.459 Higest Runtime: 206.344 10 highest runtimes: [193.706, 195.528, 195.571, 197.159, 199.567, 200.089, 200.499, 200.81, 202.036, 206.344]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO1.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO10.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO5.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO7.map\\1\\0.00': 1, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO8.map\\1\\0.00': 1, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_cloud\\ISO9.map\\1\\0.00': 3})
+==========================================================================================================
+TEST! D:\Eclipse Workspace\bw4t\data\mulitvariable data\simple_single_local_cluster\ISO3.map\1\0.00 32
+TEST! D:\Eclipse Workspace\bw4t\data\mulitvariable data\simple_single_local_cluster\ISO9.map\1\0.00 28
+FINISHED AGENT simple_single_local_cluster
+This many runs failed: 19
+Average Runtime: 133.63108695652173 Median runtime: 124.868 Higest Runtime: 392.085 10 highest runtimes: [293.652, 307.923, 310.237, 316.843, 326.103, 329.52, 331.816, 335.894, 376.219, 392.085]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO1.map\\1\\0.00': 2, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO10.map\\1\\0.00': 28, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO11.map\\1\\0.00': 25, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO12.map\\1\\0.00': 22, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO5.map\\1\\0.00': 1, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO7.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO8.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_cluster\\ISO9.map\\1\\0.00': 6})
+==========================================================================================================
+TEST! D:\Eclipse Workspace\bw4t\data\mulitvariable data\simple_single_local_windows\ISO3.map\1\0.00 28
+TEST! D:\Eclipse Workspace\bw4t\data\mulitvariable data\simple_single_local_windows\ISO9.map\1\0.00 33
+FINISHED AGENT simple_single_local_windows
+This many runs failed: 17
+Average Runtime: 35.92955531453366 Median runtime: 36.611 Higest Runtime: 47.996 10 highest runtimes: [45.674, 45.686, 45.765, 45.795, 46.035, 46.062, 46.079, 46.376, 47.54, 47.996]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO1.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO10.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO11.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO12.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO5.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO7.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO8.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows\\ISO9.map\\1\\0.00': 0})
+==========================================================================================================
+FINISHED AGENT simple_single_local_windows_corrected
+This many runs failed: 32
+Average Runtime: 35.63077499999994 Median runtime: 35.965 Higest Runtime: 47.355 10 highest runtimes: [45.077, 45.259, 45.312, 45.327, 45.648, 45.667, 45.828, 46.516, 47.085, 47.355]
+long runtime counts defaultdict(<class 'int'>, {'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO1.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO10.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO11.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO12.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO2.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO3.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO4.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO5.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO6.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO7.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO8.map\\1\\0.00': 0, 'D:\\Eclipse Workspace\\bw4t\\data\\mulitvariable data\\simple_single_local_windows_corrected\\ISO9.map\\1\\0.00': 0})
+==========================================================================================================
+KS Test result for simple_single_local_windows ISO9.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.22196969696969698, pvalue=0.296317473252475)
+KS Test result for simple_single_local_windows ISO8.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.09999999999999998, pvalue=0.9833662338944181)
+KS Test result for simple_single_local_windows ISO1.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.275, pvalue=0.0796039319616463)
+KS Test result for simple_single_local_windows ISO11.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.20000000000000007, pvalue=0.36131292028978895)
+KS Test result for simple_single_local_windows ISO10.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.25, pvalue=0.1392522339398094)
+KS Test result for simple_single_local_windows ISO7.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.25, pvalue=0.1392522339398094)
+KS Test result for simple_single_local_windows ISO6.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.17499999999999993, pvalue=0.5312986823451931)
+KS Test result for simple_single_local_windows ISO5.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.22499999999999998, pvalue=0.2307404990230462)
+KS Test result for simple_single_local_windows ISO4.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.14999999999999997, pvalue=0.7236654245436784)
+KS Test result for simple_single_local_windows ISO3.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.21785714285714292, pvalue=0.3707569962102431)
+KS Test result for simple_single_local_windows ISO2.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.15, pvalue=0.7236654245436783)
+KS Test result for simple_single_local_windows ISO12.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.175, pvalue=0.5312986823451926)
+
+KS Test result for simple_single_local_cluster ISO9.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=8.688689916609392e-16)
+KS Test result for simple_single_local_cluster ISO8.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.975, pvalue=5.033001198572707e-18)
+KS Test result for simple_single_local_cluster ISO1.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_local_cluster ISO11.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_local_cluster ISO10.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_local_cluster ISO7.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_local_cluster ISO6.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_local_cluster ISO5.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.95, pvalue=3.9154298913199995e-17)
+KS Test result for simple_single_local_cluster ISO4.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_local_cluster ISO3.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=5.900261275186784e-17)
+KS Test result for simple_single_local_cluster ISO2.map 	1 0.00 resulting in Ks_2sampResult(statistic=0.95, pvalue=3.9154298913199995e-17)
+KS Test result for simple_single_local_cluster ISO12.map 	1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+
+KS Test result for simple_single_local_windows_map3 ISO3.map 1 0.00 resulting in Ks_2sampResult(statistic=0.2, pvalue=0.8676233453543062)
+
+KS Test result for simple_single_cloud ISO9.map 			1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=2.178075075059737e-16)
+KS Test result for simple_single_cloud ISO8.map 			1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_cloud ISO1.map 			1 0.00 resulting in Ks_2sampResult(statistic=0.17499999999999993, pvalue=0.5312986823451931)
+KS Test result for simple_single_cloud ISO10.map 			1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_cloud ISO7.map 			1 0.00 resulting in Ks_2sampResult(statistic=1.0, pvalue=6.133847783205273e-19)
+KS Test result for simple_single_cloud ISO6.map 			1 0.00 resulting in Ks_2sampResult(statistic=0.32499999999999996, pvalue=0.022159625126756823)
+KS Test result for simple_single_cloud ISO5.map 			1 0.00 resulting in Ks_2sampResult(statistic=0.22499999999999998, pvalue=0.2307404990230462)
+KS Test result for simple_single_cloud ISO4.map 			1 0.00 resulting in Ks_2sampResult(statistic=0.275, pvalue=0.0796039319616463)
+KS Test result for simple_single_cloud ISO3.map 			1 0.00 resulting in Ks_2sampResult(statistic=0.14193548387096777, pvalue=0.8453188966004777)
+KS Test result for simple_single_cloud ISO2.map 			1 0.00 resulting in Ks_2sampResult(statistic=0.15000000000000002, pvalue=0.7236654245436781)

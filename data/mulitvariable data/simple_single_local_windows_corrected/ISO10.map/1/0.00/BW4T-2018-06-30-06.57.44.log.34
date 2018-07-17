@@ -1,0 +1,53 @@
+07:01:03,058 - sequence
+07:01:03,058 - room RoomA3 contains blocks:  Y
+07:01:03,058 - room RoomB3 contains blocks: 
+07:01:03,059 - room RoomA2 contains blocks:  R
+07:01:03,059 - room RoomC1 contains blocks:  Y
+07:01:03,059 - room RoomB2 contains blocks: 
+07:01:03,059 - room RoomA1 contains blocks:  R
+07:01:03,059 - room RoomC3 contains blocks:  B
+07:01:03,059 - room RoomB1 contains blocks: 
+07:01:03,059 - room RoomC2 contains blocks:  B
+07:01:03,059 - sequence R R Y Y B B
+07:01:03,201 - action Bot_1 goTo(RoomA1)
+07:01:05,042 - action Bot_1 pickUp(35)
+07:01:05,061 - action Bot_1 goTo(DropZone)
+07:01:07,156 - action Bot_1 putDown
+07:01:07,175 - action Bot_1 goTo(RoomC3)
+07:01:09,284 - action Bot_1 goTo(RoomB2)
+07:01:11,812 - action Bot_1 goTo(RoomA3)
+07:01:14,339 - action Bot_1 goTo(RoomA2)
+07:01:15,187 - action Bot_1 goToBlock(33)
+07:01:15,399 - action Bot_1 pickUp(33)
+07:01:15,416 - action Bot_1 goTo(DropZone)
+07:01:17,704 - action Bot_1 putDown
+07:01:17,732 - action Bot_1 goTo(RoomA3)
+07:01:19,823 - action Bot_1 pickUp(32)
+07:01:19,839 - action Bot_1 goTo(DropZone)
+07:01:21,967 - action Bot_1 putDown
+07:01:21,983 - action Bot_1 goTo(RoomC2)
+07:01:24,095 - action Bot_1 goTo(RoomB3)
+07:01:26,615 - action Bot_1 goTo(RoomB1)
+07:01:27,484 - action Bot_1 goTo(RoomC1)
+07:01:29,980 - action Bot_1 goToBlock(34)
+07:01:30,192 - action Bot_1 pickUp(34)
+07:01:30,208 - action Bot_1 goTo(DropZone)
+07:01:32,522 - action Bot_1 putDown
+07:01:32,552 - action Bot_1 goTo(RoomC2)
+07:01:34,648 - action Bot_1 goToBlock(37)
+07:01:34,806 - action Bot_1 pickUp(37)
+07:01:34,824 - action Bot_1 goTo(DropZone)
+07:01:37,058 - action Bot_1 putDown
+07:01:37,089 - action Bot_1 goTo(RoomC3)
+07:01:39,202 - action Bot_1 goToBlock(36)
+07:01:39,388 - action Bot_1 pickUp(36)
+07:01:39,403 - action Bot_1 goTo(DropZone)
+07:01:41,704 - action Bot_1 putDown
+07:01:41,704 - Time to finish sequence is 3 minutes and 54 seconds
+07:01:41,704 - agentsummary Bot_1 handicaps none
+07:01:41,704 - agentsummary robot gooddrops 6
+07:01:41,704 - agentsummary robot wrongdrops 0
+07:01:41,704 - agentsummary robot nmessage 0
+07:01:41,704 - agentsummary robot idletime 1.777
+07:01:41,704 - agentsummary robot nroomsentered 18
+07:01:42,837 - total time is 3 minutes and 55 seconds

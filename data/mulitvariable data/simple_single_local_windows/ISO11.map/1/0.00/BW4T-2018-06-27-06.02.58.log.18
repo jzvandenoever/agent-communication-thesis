@@ -1,0 +1,48 @@
+06:15:00,657 - sequence
+06:15:00,658 - room RoomA3 contains blocks:  Y B
+06:15:00,658 - room RoomB3 contains blocks:  Y
+06:15:00,658 - room RoomA2 contains blocks:  R B
+06:15:00,658 - room RoomC1 contains blocks:  Y
+06:15:00,658 - room RoomB2 contains blocks:  R
+06:15:00,658 - room RoomA1 contains blocks:  R Y
+06:15:00,658 - room RoomC3 contains blocks:  B
+06:15:00,658 - room RoomB1 contains blocks:  R
+06:15:00,658 - room RoomC2 contains blocks:  B
+06:15:00,658 - sequence R R Y Y B B
+06:15:00,810 - action Bot_1 goTo(RoomC1)
+06:15:02,660 - action Bot_1 goTo(RoomC2)
+06:15:03,529 - action Bot_1 goTo(RoomB3)
+06:15:06,049 - action Bot_1 goTo(RoomA2)
+06:15:08,596 - action Bot_1 pickUp(35)
+06:15:08,612 - action Bot_1 goTo(DropZone)
+06:15:10,739 - action Bot_1 putDown
+06:15:10,757 - action Bot_1 goTo(RoomA1)
+06:15:12,868 - action Bot_1 goToBlock(39)
+06:15:13,060 - action Bot_1 pickUp(39)
+06:15:13,076 - action Bot_1 goTo(DropZone)
+06:15:15,346 - action Bot_1 putDown
+06:15:15,379 - action Bot_1 goTo(RoomA1)
+06:15:17,495 - action Bot_1 pickUp(40)
+06:15:17,512 - action Bot_1 goTo(DropZone)
+06:15:19,608 - action Bot_1 putDown
+06:15:19,641 - action Bot_1 goTo(RoomC1)
+06:15:21,763 - action Bot_1 pickUp(37)
+06:15:21,781 - action Bot_1 goTo(DropZone)
+06:15:23,894 - action Bot_1 putDown
+06:15:23,925 - action Bot_1 goTo(RoomC2)
+06:15:26,022 - action Bot_1 pickUp(43)
+06:15:26,040 - action Bot_1 goTo(DropZone)
+06:15:28,142 - action Bot_1 putDown
+06:15:28,172 - action Bot_1 goTo(RoomA2)
+06:15:30,272 - action Bot_1 goToBlock(36)
+06:15:30,459 - action Bot_1 pickUp(36)
+06:15:30,476 - action Bot_1 goTo(DropZone)
+06:15:32,729 - action Bot_1 putDown
+06:15:32,729 - Time to finish sequence is 12 minutes and 31 seconds
+06:15:32,729 - agentsummary Bot_1 handicaps none
+06:15:32,729 - agentsummary robot gooddrops 6
+06:15:32,729 - agentsummary robot wrongdrops 0
+06:15:32,729 - agentsummary robot nmessage 0
+06:15:32,729 - agentsummary robot idletime 1.538
+06:15:32,729 - agentsummary robot nroomsentered 15
+06:15:33,726 - total time is 12 minutes and 32 seconds

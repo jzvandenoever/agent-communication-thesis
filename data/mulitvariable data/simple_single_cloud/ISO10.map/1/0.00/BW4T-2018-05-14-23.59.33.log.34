@@ -1,0 +1,48 @@
+00:18:07,430 - sequence
+00:18:07,430 - room RoomA3 contains blocks:  Y
+00:18:07,430 - room RoomB3 contains blocks: 
+00:18:07,430 - room RoomA2 contains blocks:  R
+00:18:07,430 - room RoomC1 contains blocks:  Y
+00:18:07,430 - room RoomB2 contains blocks: 
+00:18:07,431 - room RoomA1 contains blocks:  R
+00:18:07,431 - room RoomC3 contains blocks:  B
+00:18:07,431 - room RoomB1 contains blocks: 
+00:18:07,431 - room RoomC2 contains blocks:  B
+00:18:07,431 - sequence R R Y Y B B
+00:18:14,265 - action Bot_1 goTo(RoomA3)
+00:18:22,141 - action Bot_1 goTo(RoomC3)
+00:18:32,782 - action Bot_1 goTo(RoomB3)
+00:18:43,138 - action Bot_1 goTo(RoomA2)
+00:18:53,612 - action Bot_1 pickUp(33)
+00:18:54,062 - action Bot_1 goTo(DropZone)
+00:19:02,792 - action Bot_1 putDown
+00:19:03,196 - action Bot_1 goTo(RoomA1)
+00:19:11,927 - action Bot_1 pickUp(35)
+00:19:12,337 - action Bot_1 goTo(DropZone)
+00:19:21,000 - action Bot_1 putDown
+00:19:21,376 - action Bot_1 goTo(RoomA3)
+00:19:30,328 - action Bot_1 goToBlock(32)
+00:19:31,229 - action Bot_1 pickUp(32)
+00:19:31,435 - action Bot_1 goTo(DropZone)
+00:19:40,672 - action Bot_1 putDown
+00:19:40,880 - action Bot_1 goTo(RoomC1)
+00:19:49,673 - action Bot_1 pickUp(34)
+00:19:50,292 - action Bot_1 goTo(DropZone)
+00:19:59,071 - action Bot_1 putDown
+00:19:59,402 - action Bot_1 goTo(RoomC3)
+00:20:08,036 - action Bot_1 pickUp(36)
+00:20:08,198 - action Bot_1 goTo(DropZone)
+00:20:16,800 - action Bot_1 putDown
+00:20:17,008 - action Bot_1 goTo(RoomC2)
+00:20:25,990 - action Bot_1 goToBlock(37)
+00:20:26,932 - action Bot_1 pickUp(37)
+00:20:27,140 - action Bot_1 goTo(DropZone)
+00:20:36,455 - action Bot_1 putDown
+00:20:36,455 - Time to finish sequence is 20 minutes and 1 seconds
+00:20:36,455 - agentsummary Bot_1 handicaps none
+00:20:36,455 - agentsummary robot gooddrops 6
+00:20:36,455 - agentsummary robot wrongdrops 0
+00:20:36,455 - agentsummary robot nmessage 0
+00:20:36,455 - agentsummary robot idletime 16.79
+00:20:36,455 - agentsummary robot nroomsentered 15
+00:21:16,921 - total time is 20 minutes and 42 seconds

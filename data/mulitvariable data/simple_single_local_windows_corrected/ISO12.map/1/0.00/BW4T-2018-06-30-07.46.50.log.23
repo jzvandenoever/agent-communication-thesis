@@ -1,0 +1,47 @@
+07:54:45,016 - sequence
+07:54:45,016 - room RoomA3 contains blocks:  Y R B
+07:54:45,016 - room RoomB3 contains blocks:  Y R W
+07:54:45,016 - room RoomA2 contains blocks:  B W Y
+07:54:45,016 - room RoomC1 contains blocks:  R Y B
+07:54:45,016 - room RoomB2 contains blocks:  B R W Y
+07:54:45,016 - room RoomA1 contains blocks:  R B Y
+07:54:45,016 - room RoomC3 contains blocks:  Y B R
+07:54:45,016 - room RoomB1 contains blocks:  R B W
+07:54:45,016 - room RoomC2 contains blocks:  B Y R
+07:54:45,016 - sequence R R Y Y B B
+07:54:45,144 - action Bot_1 goTo(RoomB1)
+07:54:46,143 - action Bot_1 pickUp(54)
+07:54:46,161 - action Bot_1 goTo(DropZone)
+07:54:48,260 - action Bot_1 putDown
+07:54:48,279 - action Bot_1 goTo(RoomC1)
+07:54:50,398 - action Bot_1 pickUp(41)
+07:54:50,415 - action Bot_1 goTo(DropZone)
+07:54:52,514 - action Bot_1 putDown
+07:54:52,546 - action Bot_1 goTo(RoomC1)
+07:54:54,626 - action Bot_1 goToBlock(42)
+07:54:54,814 - action Bot_1 pickUp(42)
+07:54:54,831 - action Bot_1 goTo(DropZone)
+07:54:57,081 - action Bot_1 putDown
+07:54:57,098 - action Bot_1 goTo(RoomA3)
+07:54:59,197 - action Bot_1 goToBlock(32)
+07:54:59,412 - action Bot_1 pickUp(32)
+07:54:59,428 - action Bot_1 goTo(DropZone)
+07:55:01,703 - action Bot_1 putDown
+07:55:01,735 - action Bot_1 goTo(RoomB1)
+07:55:03,818 - action Bot_1 goToBlock(55)
+07:55:04,030 - action Bot_1 pickUp(55)
+07:55:04,046 - action Bot_1 goTo(DropZone)
+07:55:06,334 - action Bot_1 putDown
+07:55:06,366 - action Bot_1 goTo(RoomC1)
+07:55:08,444 - action Bot_1 goToBlock(43)
+07:55:08,657 - action Bot_1 pickUp(43)
+07:55:08,673 - action Bot_1 goTo(DropZone)
+07:55:10,934 - action Bot_1 putDown
+07:55:10,934 - Time to finish sequence is 8 minutes and 16 seconds
+07:55:10,934 - agentsummary Bot_1 handicaps none
+07:55:10,934 - agentsummary robot gooddrops 6
+07:55:10,934 - agentsummary robot wrongdrops 0
+07:55:10,934 - agentsummary robot nmessage 0
+07:55:10,934 - agentsummary robot idletime 1.332
+07:55:10,934 - agentsummary robot nroomsentered 12
+07:55:11,893 - total time is 8 minutes and 17 seconds

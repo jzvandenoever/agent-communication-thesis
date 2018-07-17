@@ -1,0 +1,47 @@
+07:56:40,966 - sequence
+07:56:40,966 - room RoomA3 contains blocks:  Y R B
+07:56:40,966 - room RoomB3 contains blocks:  Y R W
+07:56:40,966 - room RoomA2 contains blocks:  B W Y
+07:56:40,966 - room RoomC1 contains blocks:  R Y B
+07:56:40,966 - room RoomB2 contains blocks:  B R W Y
+07:56:40,966 - room RoomA1 contains blocks:  R B Y
+07:56:40,966 - room RoomC3 contains blocks:  Y B R
+07:56:40,967 - room RoomB1 contains blocks:  R B W
+07:56:40,967 - room RoomC2 contains blocks:  B Y R
+07:56:40,967 - sequence R R Y Y B B
+07:56:41,104 - action Bot_1 goTo(RoomC1)
+07:56:42,948 - action Bot_1 goToBlock(41)
+07:56:43,160 - action Bot_1 pickUp(41)
+07:56:43,180 - action Bot_1 goTo(DropZone)
+07:56:45,449 - action Bot_1 putDown
+07:56:45,467 - action Bot_1 goTo(RoomC3)
+07:56:47,600 - action Bot_1 goToBlock(53)
+07:56:47,836 - action Bot_1 pickUp(53)
+07:56:47,854 - action Bot_1 goTo(DropZone)
+07:56:50,177 - action Bot_1 putDown
+07:56:50,209 - action Bot_1 goTo(RoomC1)
+07:56:52,324 - action Bot_1 goToBlock(42)
+07:56:52,486 - action Bot_1 pickUp(42)
+07:56:52,503 - action Bot_1 goTo(DropZone)
+07:56:54,777 - action Bot_1 putDown
+07:56:54,810 - action Bot_1 goTo(RoomC3)
+07:56:56,949 - action Bot_1 pickUp(51)
+07:56:56,967 - action Bot_1 goTo(DropZone)
+07:56:59,080 - action Bot_1 putDown
+07:56:59,113 - action Bot_1 goTo(RoomC1)
+07:57:01,248 - action Bot_1 goToBlock(43)
+07:57:01,406 - action Bot_1 pickUp(43)
+07:57:01,423 - action Bot_1 goTo(DropZone)
+07:57:03,658 - action Bot_1 putDown
+07:57:03,688 - action Bot_1 goTo(RoomC3)
+07:57:05,792 - action Bot_1 pickUp(52)
+07:57:05,808 - action Bot_1 goTo(DropZone)
+07:57:07,935 - action Bot_1 putDown
+07:57:07,935 - Time to finish sequence is 10 minutes and 13 seconds
+07:57:07,935 - agentsummary Bot_1 handicaps none
+07:57:07,935 - agentsummary robot gooddrops 6
+07:57:07,935 - agentsummary robot wrongdrops 0
+07:57:07,935 - agentsummary robot nmessage 0
+07:57:07,935 - agentsummary robot idletime 1.376
+07:57:07,935 - agentsummary robot nroomsentered 12
+07:57:08,986 - total time is 10 minutes and 14 seconds

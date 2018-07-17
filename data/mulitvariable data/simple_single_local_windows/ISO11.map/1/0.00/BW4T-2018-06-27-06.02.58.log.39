@@ -1,0 +1,48 @@
+06:03:01,307 - sequence
+06:03:01,307 - room RoomA3 contains blocks:  Y B
+06:03:01,308 - room RoomB3 contains blocks:  Y
+06:03:01,308 - room RoomA2 contains blocks:  R B
+06:03:01,308 - room RoomC1 contains blocks:  Y
+06:03:01,308 - room RoomB2 contains blocks:  R
+06:03:01,308 - room RoomA1 contains blocks:  R Y
+06:03:01,309 - room RoomC3 contains blocks:  B
+06:03:01,309 - room RoomB1 contains blocks:  R
+06:03:01,309 - room RoomC2 contains blocks:  B
+06:03:01,309 - sequence R R Y Y B B
+06:03:01,505 - action Bot_1 goTo(RoomB1)
+06:03:02,537 - action Bot_1 goToBlock(42)
+06:03:02,775 - action Bot_1 pickUp(42)
+06:03:02,798 - action Bot_1 goTo(DropZone)
+06:03:05,077 - action Bot_1 putDown
+06:03:05,098 - action Bot_1 goTo(RoomB3)
+06:03:07,217 - action Bot_1 goTo(RoomC3)
+06:03:09,769 - action Bot_1 goTo(RoomC2)
+06:03:10,638 - action Bot_1 goTo(RoomA2)
+06:03:13,169 - action Bot_1 pickUp(35)
+06:03:13,187 - action Bot_1 goTo(DropZone)
+06:03:15,313 - action Bot_1 putDown
+06:03:15,345 - action Bot_1 goTo(RoomB3)
+06:03:17,465 - action Bot_1 goToBlock(34)
+06:03:17,623 - action Bot_1 pickUp(34)
+06:03:17,641 - action Bot_1 goTo(DropZone)
+06:03:19,876 - action Bot_1 putDown
+06:03:19,894 - action Bot_1 goTo(RoomA3)
+06:03:22,011 - action Bot_1 pickUp(32)
+06:03:22,028 - action Bot_1 goTo(DropZone)
+06:03:24,145 - action Bot_1 putDown
+06:03:24,178 - action Bot_1 goTo(RoomC2)
+06:03:26,285 - action Bot_1 pickUp(43)
+06:03:26,303 - action Bot_1 goTo(DropZone)
+06:03:28,391 - action Bot_1 putDown
+06:03:28,421 - action Bot_1 goTo(RoomA3)
+06:03:30,519 - action Bot_1 pickUp(33)
+06:03:30,535 - action Bot_1 goTo(DropZone)
+06:03:32,640 - action Bot_1 putDown
+06:03:32,640 - Time to finish sequence is 31.135 seconds
+06:03:32,640 - agentsummary Bot_1 handicaps none
+06:03:32,640 - agentsummary robot gooddrops 6
+06:03:32,640 - agentsummary robot wrongdrops 0
+06:03:32,640 - agentsummary robot nmessage 0
+06:03:32,640 - agentsummary robot idletime 1.558
+06:03:32,641 - agentsummary robot nroomsentered 15
+06:03:33,646 - total time is 32.141 seconds
